@@ -1,0 +1,35 @@
+% experiment 1.0 find the mean first passage time of a random walk in 1D 
+% 1. generate a path
+
+b    = 1;
+N    = 10;
+numSimulations = 10000;
+encounterDist  = b/5;
+encounterTime  = nan(numSimulations,1);
+for nIdx = 1:numSimulations
+    runFlag = true;
+    step    = 1;
+    while runFlag 
+    n = b*randn(N-1,1);
+    s = sum(n)^2;
+    if s<encounterDist
+        runFlag            = false;
+        encounterTime(nIdx) = step;
+    else 
+        step = step+1;
+    end
+    end
+end
+
+[h, bins] = hist(encounterTime,linspace(0,max(encounterTime),100));
+h = h./sum(h);
+figure, bar(bins,h); title('first encounter pdf')
+% calculate the CDF 
+c = cumsum(h);
+figure, bar(bins,c), title('first encounter cdf')
+% calculate survival function 
+s = 1-c;
+meanFirstPassagetime = sum(s);
+% fit a gamma distribution to the data 
+
+
