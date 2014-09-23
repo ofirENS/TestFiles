@@ -1,15 +1,12 @@
-function opimtDists = OptimizeEncounterDistances(observedProb)
+function optimDists = OptimizeEncounterDistances(observedProb)
 % assuming encounter frequencies follow a*d^(-1.5) model 
 % and given the observed encounter probabilities, find the distances which
 % optimize the error between the model and observed data 
-
+close all
 numObs = numel(observedProb);% umber of observations 
-optimdists = fminsearch(@MyFun,[1:numObs]);
-
-end
-
-function valsout = MuFun(x)
-
-(x.^(-1.5))
-
+beta   = 1.41;
+MyFun  = @(x) sum((((x.^(-beta))-sum(x.^(-beta)).*observedProb).^2)./sum(x.^(-beta))^2);
+[optimDists,fVal] = fm(MyFun,[1:numObs],optimset('TolFun',1e-10,'TolX',1e-10,'MaxIter',1e4),...
+    [],[],[],[],ones(1,numObs),numObs*ones(1,numObs));
+figure, plot(1:numObs,optimDists)
 end
