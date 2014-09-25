@@ -1,0 +1,20 @@
+function BrownianBridge3Points()
+N = 100;% num points 
+% initial path starts at zero 
+p(1,:) = zeros(1,3); % path in 3D
+for pIdx = 2:100
+    p(pIdx,:) = p(pIdx-1,:)+randn(1,3);
+end
+tx = 1; % first time 
+x  = p(tx,:); % first point 
+ty = 10;% second time 
+y  = [];% second point
+tk = 40;% third time 
+k  = [];% third point
+
+beta  = tk-(tk/(2*ty))*(p(ty,:)-y+x)-0.5*(p(tk,:)+x);
+alpha = (ty/tk)*(p(tk,:)+x-k+beta)-y; 
+for wIdx = 1:N
+    w(wIdx,:) = x+p(wIdx,:)-(wIdx/
+end
+end
