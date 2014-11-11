@@ -20,16 +20,16 @@ end
  k(10,10)  = k(10,10)*3;
  k(10,:)   = k(10,:)./sum(k(10,:));
  k(20,20)  = k(20,20)*3;
- k(20,:)  = k(20,:)./sum(k(20,:));
- k(30,30) = k(30,30)*3;
- k(30,:)  = k(30,:)./sum(k(30,:));
- k(40,40) = k(40,40)*3; 
- k(40,:)  = k(40,:)./sum(k(40,:));
- k(50,50) = k(50,50)*3; 
- k(50,:)  = k(50,:)./sum(k(50,:));
+ k(20,:)   = k(20,:)./sum(k(20,:));
+ k(30,30)  = k(30,30)*3;
+ k(30,:)   = k(30,:)./sum(k(30,:));
+ k(40,40)  = k(40,40)*3; 
+ k(40,:)   = k(40,:)./sum(k(40,:));
+ k(50,50)  = k(50,50)*3; 
+ k(50,:)   = k(50,:)./sum(k(50,:));
  
 p = PeakCalling();
-p.params.fitType        = 'mean';
+p.params.fitType        = 'loess';
 p.params.peaksDirection = 'high';
 p.params.smoothingSpan  = ceil(size(k,2)/10);
 p.FindPeaks(k);
