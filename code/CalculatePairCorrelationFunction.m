@@ -1,5 +1,7 @@
 function CalculatePairCorrelationFunction
 % Calculate the pair correlation function for many realization of a Rouse chain
+% the pair correlation is between segment positions, and it i linked to the
+% probability of encounter between the different beads of the Rouse chain. 
 numBeads = 100;
 numExp   = 10;
 rMin     = 0.01;
