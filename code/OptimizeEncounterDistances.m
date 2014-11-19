@@ -3,13 +3,13 @@ function outStruct = OptimizeEncounterDistances(observedProb)
 % and given the observed encounter probabilities, find the distances which
 % optimize the error between the model and observed data 
 % close all
-% observedProb       = (1:64).^(-1.5);
-% observedProb       =(observedProb+fliplr(observedProb))/2;
-% observedProb(1:32) = (observedProb(1:32)+fliplr(observedProb(1:32)))/2; 
-% observedProb(33:64)= observedProb(1:32); 
-% observedProb(41:48) = (observedProb(41:48)+fliplr(observedProb(41:48)))/2; 
+observedProb       = (1:64).^(-1.5);
+observedProb       =(observedProb+fliplr(observedProb))/2;
+observedProb(1:32) = (observedProb(1:32)+fliplr(observedProb(1:32)))/2; 
+observedProb(33:64)= observedProb(1:32); 
+observedProb(41:48) = (observedProb(41:48)+fliplr(observedProb(41:48)))/2; 
 % observedProb(41:64)= observedProb(1:32); 
-% observedProb       = observedProb/sum(observedProb);
+observedProb       = observedProb/sum(observedProb);
 
 numObs = numel(observedProb);% number of observations 
 p      = (pdist2(observedProb', observedProb'));
@@ -83,7 +83,7 @@ hold on
 plot(1:numObs,observedProb)
 end
 
-function [c,ceq]=MyCon(x)
+function [c,ceq] = MyCon(x)
 beta         = 1.5;
 observedProb = getappdata(0,'obs');
  ceq = sum(((x(1:end-1).^(-beta+x(1))/sum(x(1:end-1).^(-beta+x(1))))-(observedProb)).^2);
