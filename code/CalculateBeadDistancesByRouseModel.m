@@ -1,16 +1,21 @@
-function [dists,histK] = CalculateBeadDistancesByRouseModel
+function [dists,histK,beta] = CalculateBeadDistancesByRouseModel
 load('savedAnalysisTADDAndE')
 % set bead range for TAD D
 br.bead1    = 1:40;
 br.bead2    = 1:40;
 [~,~,encounterMat,~] = a.ProcessEncounters(br,'average');
+
 % truncate the matrix 
 encounterMat = encounterMat(br.bead1,br.bead2);
 meanSig      = MeanIgnoreNaN(encounterMat);
+
 % fit a model to get the mean beta values 
-model = fittype('(1/sum(x.^(-beta))).*x.^(-beta)');
-bDists = 1:numel(meanSig);
-[fitStruct] = fit(bDists',meanSig',model);% take the mean beta as a reference for histogram odf distances.
+model   = fittype('(1/sum(x.^(-beta))).*x.^(-beta)');
+% bDists = 1:numel(meanSig);
+fitOpt = fitoptions(model);
+set(fitOpt,'Lower',0,'Upper',1.5,'StartPoint',1,'Robust','on');
+% take the mean beta as a reference for histogram odf distances.
+% [fitStruct] = fit(bDists',meanSig',model);
 
 % preallocations
 above = cell(1,size(encounterMat,1));
@@ -29,11 +34,15 @@ for bIdx = 1:size(encounterMat,1);
  
  % Divide the probabilites into distances according to axis given by the
  % mean model 
+ sig1 = encounterMat(bIdx,:)';
+ inds = find(~isnan(sig1));
+ [fitStruct] = fit(inds,sig1(inds),model,fitOpt);
+ beta(bIdx) = fitStruct.beta;
  k = (1:numel(observedProb)).^(-fitStruct.beta);
  k = k./sum(k);
  k = k./(k(1)) * observedProb(1);% normalize tomatch the nerest neighbor encounter probability 
  
- % calculate the histogram 
+ % Calculate the histogram 
  above{bIdx} = find(observedProb>k(1));
  for kIdx = 1:numel(k)-1
   dists{bIdx,kIdx} = find(observedProb>k(kIdx+1) & observedProb<=k(kIdx));
@@ -43,19 +52,21 @@ for bIdx = 1:size(encounterMat,1);
       dists{bIdx,kIdx} = [dists{bIdx,kIdx} above{bIdx}];
   end
  end
-
 end
 
 % construct a binary connection matrix for a specific distance
 eMat = false(numel(br.bead1),numel(br.bead2),2);
+di   = diag(ones(1,size(eMat,2)-1),1);
+
 for dIdx = 1:2
-  for bIdx = 1:size(encounterMat,1)
+    eMat(:,:,dIdx) = eMat(:,:,dIdx) |di;
+  for b1Idx = 1:size(encounterMat,1)
     % collect all beads at distance 1
-     inds1 = bIdx+dists{bIdx,dIdx};
+     inds1 = b1Idx+dists{b1Idx,dIdx};
      inds1 = inds1(inds1<numel(br.bead2));
-     inds2 = bIdx-dists{bIdx,dIdx};
+     inds2 = b1Idx-dists{b1Idx,dIdx};
      inds2 = inds2(inds2>=1);
-     eMat(bIdx,[inds1 inds2],dIdx)= true;
+     eMat(b1Idx,[inds1 inds2],dIdx)= true;
   end
 end
 
