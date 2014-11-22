@@ -1,55 +1,70 @@
-function [dists,histK,beta] = CalculateBeadDistancesByRouseModel
-load('savedAnalysisTADDAndE')
-% set bead range for TAD D
-br.bead1      = 1:30;
-br.bead2      = 1:30;
-smoothingSpan = 5;
-numDistances  = 5;
-distToAnalyze = 1; % can be a vector of integers
+classdef CalculateBeadDistancesByRouseModel<handle
+    
+properties 
+encounterMat    
+beadRange       % set bead range for TAD D
+smoothingSpan   % smoothing span for the encounter probability signal
+numDistances    % for how many distances to perform analysis for connectivity 
+distToAnalyze   % can be a vector of integers, for what disance to show the analysis
+beadsToAnalyze  % for what beads to show the connectivity graphs 
+model          
+fitOpt       
+dataFolder
+dataFileName
+end
 
-[~,~,encounterMat,~] = a.ProcessEncounters(br,'average');
+methods    
+    
+function obj = CalculateBeadDistancesByRouseModel
+   obj.SetDefaultParams;
+ end
+        
+function SetDefaultParams(obj)
+    obj.beadRange      = struct('bead1',1:30,...
+                                'bead2',1:30);
+    obj.smoothingSpan  = 3;
+    obj.numDistances   = 5; % for how many distances to perform analysis for connectivity 
+    obj.distToAnalyze  = 3; % can be a vector of integers, for what disance to show the analysis
+    obj.beadsToAnalyze = 10; % for what beads to show the connectivity graphs 
+    obj.model          = fittype('(1/sum(x.^(-beta))).*x.^(-beta)');
+    obj.fitOpt         = fitoptions(obj.model);
+    set(obj.fitOpt,'Lower',0,'Upper',1.5,'StartPoint',1,'Robust','off');
+    obj.dataFolder     = 'D:\Ofir\ENS\PolymerChainDynamics\Code\ExperimentDataAnalysis';
+    obj.dataFileName   = 'savedAnalysisTADDAndE';
+ end
+ 
+function Initialize(obj)
+ load(fullfile(obj.dataFolder,obj.dataFileName))
+[~,~,obj.encounterMat,~] = a.ProcessEncounters(obj.beadRange,'average');
 % Truncate the encounter matrix 
-encounterMat = encounterMat(br.bead1,br.bead2(1:(end-1))-br.bead1(1)+1);
-
-% fit a model to get the mean beta values 
-model   = fittype('(1/sum(x.^(-beta))).*x.^(-beta)');
-% bDists = 1:numel(meanSig);
-fitOpt = fitoptions(model);
-set(fitOpt,'Lower',0,'Upper',1.5,'StartPoint',1,'Robust','off');
-% take the mean beta as a reference for histogram odf distances.
-% [fitStruct] = fit(bDists',meanSig',model);
+obj.encounterMat = obj.encounterMat(obj.beadRange.bead1,obj.beadRange.bead2(1:(end-1))-obj.beadRange.bead1(1)+1);
 
 % preallocations
-above = cell(1,numel(br.bead1));
-dists = cell(size(encounterMat,1),size(encounterMat,2));
-histK = cell(size(encounterMat,1),size(encounterMat,2));
-beta  = zeros(size(encounterMat,1),1);
+above = cell(1,numel(obj.beadRange.bead1));% save indices of distances falling above the nearest neighor encounter probability
+dists = cell(size(obj.encounterMat,1),size(obj.encounterMat,2));
+histK = cell(size(obj.encounterMat,1),size(obj.encounterMat,2));
+beta  = zeros(size(obj.encounterMat,1),1);
 % construct a binary connection matrix for a specific distance
-eMat = false(numel(br.bead1),numel(br.bead2),numDistances);
+eMat = false(numel(obj.beadRange.bead1),numel(obj.beadRange.bead2),obj.numDistances);
 di   = diag(ones(1,size(eMat,2)-1),1)+diag(ones(1,size(eMat,2)-1),-1);% include nearest neighbors by default 
 
 
-for bIdx = 1:size(encounterMat,1);
- observedProb = smooth(encounterMat(bIdx,~isnan(encounterMat(bIdx,:))),smoothingSpan)';
- % if the first observed probability is much lower than the second, compare
- % them 
+for bIdx = 1:size(obj.encounterMat,1);
+ observedProb = smooth(obj.encounterMat(bIdx,~isnan(obj.encounterMat(bIdx,:))),obj.smoothingSpan)';
 
  if ~all(isnan(observedProb))
-%   if observedProb(1)<observedProb(2)
-%      observedProb(1)= observedProb(2);
-%   end
+
  observedProb = observedProb/sum(observedProb);
-%   mO          = max(observedProb);
- % Divide the probabilites into distances according to axis given by the
- % mean model 
-%  sig1        = encounterMat(bIdx,:)';
+
+ % Divide the probabilites into distances according to a division given by the
+ % expected model 
  inds        = find(~isnan(observedProb));
 %  [fitStruct] = fit(inds',observedProb(inds)',model,fitOpt);
  beta(bIdx)  = 1.5;%fitStruct.beta;
- k           =  model(beta(bIdx),inds);
+ k           =  obj.model(beta(bIdx),inds);
  % normalize to match the nerest neighbor encounter probability 
  if mod(bIdx,10)==0 
-   PlotBeadClusteringByDistance(observedProb,inds,k);
+   obj.PlotBeadClusteringByDistance(observedProb,inds,k);
    title(num2str(bIdx))
  end
  % Calculate the histogram 
@@ -65,12 +80,12 @@ for bIdx = 1:size(encounterMat,1);
 end
 end
 
-for dIdx = distToAnalyze
+for dIdx = obj.distToAnalyze
     eMat(:,:,dIdx) = eMat(:,:,dIdx)|di;
-  for b1Idx = 1:size(encounterMat,1)
+  for b1Idx = 1:size(obj.encounterMat,1)
     % collect all beads at distance 1
      inds1 = b1Idx+dists{b1Idx,dIdx};
-     inds1 = inds1(inds1<numel(br.bead2));
+     inds1 = inds1(inds1<numel(obj.beadRange.bead2));
      inds2 = b1Idx-dists{b1Idx,dIdx};
      inds2 = inds2(inds2>=1);
      eMat(b1Idx,[inds1 inds2],dIdx)= true;
@@ -78,11 +93,86 @@ for dIdx = distToAnalyze
 end
 
 
-DisplayConnectivityGraph(eMat,above,distToAnalyze,5);
+obj.DisplayConnectivityGraph(eMat,above,obj.distToAnalyze,obj.beadsToAnalyze);
 
- 
 end
 
+function GetDistanceDistribution(obj,dist)
+    % calculate the distribution for a specifind distance
+    figure,hold on
+    for dIdx = 1:numel(dist)
+    d     = obj.encounterMat(:,dist(dIdx));
+    d     = d(~isnan(d));
+    d     = d(d~=0);
+    d     = (d-mean(d));
+    s     = std(d);
+    if s~=0
+        d=d./s;
+        
+    [v,e] = ecdf(d);
+    line('XData',e,...
+        'YData',v,...
+        'DisplayName',num2str(dist(dIdx)),...
+        'Color',rand(1,3),...
+        'LineWidth',4);
+    end
+    
+    end
+    legend(get(gca,'Children'));
+    
+end
+
+function DisplayConnectivityGraph(obj,eMat,above,distToAnalyze,beadToAnalyze)
+% construct a graph 
+if ~exist('beadToAnalyze','var')
+    beadToAnalyze = 1:size(eMat,1);
+end
+connectivityMat         = triu(eMat(:,:,distToAnalyze));
+inds                    = setdiff(beadToAnalyze,1:size(eMat,1));
+connectivityMat(inds,:) = false;
+b                       = biograph(connectivityMat);
+set(b,'LayoutType','hierarchical','EdgeType','straight','NodeCallback',@obj.NodeCallback);
+
+% mark edges between nodes that have higher probability than nearest
+% neighbor with red 
+for aIdx = 1:size(eMat,1)
+    set(b.Nodes(aIdx),'Label',['Bead ' num2str(aIdx)]);
+  for a1Idx = 1:numel(above{aIdx})
+      sourceNode = ['Node ' num2str(aIdx)];
+      if (aIdx +a1Idx)<=numel(br.bead2)
+      sinkNode =  ['Node ' num2str(aIdx+a1Idx)];
+      else
+       sinkNode = ['Node ' num2str(aIdx-a1Idx)];
+      end
+      
+    f = b.getedgesbynodeid(sourceNode,sinkNode);
+    set(f,'LineColor',[1 0 0]);
+  end
+end
+ view(b)
+end
+
+function NodeCallback(obj,varargin)
+    disp('node')
+    node = varargin{1};
+    a = node.getancestors;
+    d = node.getdescendants;
+    for aIdx = 1:numel(a);
+     a(aIdx).Color=[0 1 0];
+     a(aIdx).display
+    end
+    
+    for dIdx = 1:numel(d)
+        d(dIdx).Color=[0 1 0];
+        d(dIdx).display
+    end
+   
+end
+
+end
+
+methods (Static)
+    
 function m = MeanIgnoreNaN(sigIn)
  sigIn(isnan(sigIn)) = 0;
  m = mean(sigIn);
@@ -105,34 +195,6 @@ end
 set(gca,'XLim',[1 inds(end)])
 end
 
-function DisplayConnectivityGraph(eMat,above,distToAnalyze,beadToAnalyze)
-% construct a graph 
-if ~exist('beadToAnalyze','var')
-    beadToAnalyze = 1:size(eMat,1);
-end
-connectivityMat = triu(eMat(:,:,distToAnalyze));
-inds = setdiff(beadToAnalyze,1:size(eMat,1));
-connectivityMat(inds,:) = false;
-b = biograph(connectivityMat);
-set(b,'LayoutType','hierarchical','EdgeType','straight');
-
-% mark edges between nodes that have higher probability than nearest
-% neighbor with red 
-for aIdx = 1:size(eMat,1)
-    set(b.Nodes(aIdx),'Label',['Bead ' num2str(aIdx)]);
-  for a1Idx = 1:numel(above{aIdx})
-      sourceNode = ['Node ' num2str(aIdx)];
-      if (aIdx +a1Idx)<=numel(br.bead2)
-      sinkNode =  ['Node ' num2str(aIdx+a1Idx)];
-      else
-       sinkNode = ['Node ' num2str(aIdx-a1Idx)];
-      end
-      
-    f = b.getedgesbynodeid(sourceNode,sinkNode);
-    set(f,'LineColor',[1 0 0]);
-  end
 end
 
- view(b)
 end
-
