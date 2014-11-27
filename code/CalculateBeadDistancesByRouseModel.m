@@ -3,9 +3,9 @@ load('savedAnalysisTADDAndE')
 % set bead range for TAD D
 br.bead1      = 1:30;
 br.bead2      = 1:30;
-smoothingSpan = 5;
+smoothingSpan = 2;
 numDistances  = 5;
-distToAnalyze = 1; % can be a vector of integers
+distToAnalyze = 3; % can be a vector of integers
 
 [~,~,encounterMat,~] = a.ProcessEncounters(br,'average');
 % Truncate the encounter matrix 
