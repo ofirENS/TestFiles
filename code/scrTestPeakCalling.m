@@ -2,11 +2,11 @@
 % add utils folder 
 addpath(genpath(fullfile(pwd,'..','..','Utils')))
 numSignals = 50;
-noiseStd   = 0.2; 
+noiseStd   = 0.1; 
 k = zeros(numSignals);
 close all 
 for kIdx = 1:numSignals
-%     k(kIdx,:) = 5*(1:numSignals).^(-1.5)+ noiseStd*randn(1,numSignals);
+%     k(kIdx,:) = 3*(1:numSignals).^(-1.5)+ noiseStd*randn(1,numSignals);
 %     m         = (min(k(kIdx,:)));
 %     if m<0
 %         k(kIdx,:) = k(kIdx,:)-m;
