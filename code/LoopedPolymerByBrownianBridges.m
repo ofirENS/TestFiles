@@ -7,5 +7,5 @@ function LoopedPolymerByBrownianBridges(connectedBeads,N)
 
 % sort the loops to those contianing other loops and those which doesn't 
 
-
+% this function will be created in future release
 end
