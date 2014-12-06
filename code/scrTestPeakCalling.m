@@ -8,12 +8,12 @@ noiseStd   = 0.1;
 k = zeros(numSignals);
 close all 
 for kIdx = 1:numSignals
-%     k(kIdx,:) = 3*(1:numSignals).^(-1.5)+ noiseStd*randn(1,numSignals);
-%     m         = (min(k(kIdx,:)));
-%     if m<0
-%         k(kIdx,:) = k(kIdx,:)-m;
-%     end
-    k(kIdx,:) = noiseStd*rand(1,numSignals);
+    k(kIdx,:) = 3*(1:numSignals).^(-1.5)+ noiseStd*randn(1,numSignals);
+    m         = (min(k(kIdx,:)));
+    if m<0
+        k(kIdx,:) = k(kIdx,:)-m;
+    end
+%     k(kIdx,:) = noiseStd*rand(1,numSignals);
 %     k(kIdx,:) = sin(linspace(-pi,pi,numSignals)) +noiseStd*randn(1,numSignals)+1;
     k(kIdx,:) = k(kIdx,:)./sum(k(kIdx,:));
 end
@@ -36,7 +36,7 @@ p.params.fitType        = 'mean';
 p.params.peaksDirection = 'high';
 p.params.smoothingSpan  = ceil(size(k,2)/10);
 p.params.rejectionThresh = 0.99;
-p.params.rejectionTNew   = 0.9;
+p.params.rejectionTNew   = 0.99;
 p.params.checkPeakForLocalMaximality = false;
 
 p.FindPeaks(k);
