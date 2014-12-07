@@ -2,18 +2,18 @@
 % add utils folder 
 addpath(genpath(fullfile(pwd,'..','..','Utils')))
 % set seed 
-s          = rng(6);
+s          = rng(14);
 numSignals = 50;
 noiseStd   = 0.1; 
 k = zeros(numSignals);
 close all 
 for kIdx = 1:numSignals
-%     k(kIdx,:) = 3*(1:numSignals).^(-1.5)+ noiseStd*randn(1,numSignals);
-%     m         = (min(k(kIdx,:)));
-%     if m<0
-%         k(kIdx,:) = k(kIdx,:)-m;
-%     end
-    k(kIdx,:) = noiseStd*rand(1,numSignals);
+    k(kIdx,:) = 1*(1:numSignals).^(-1.5)+ noiseStd*randn(1,numSignals);
+    m         = (min(k(kIdx,:)));
+    if m<0
+        k(kIdx,:) = k(kIdx,:)-m;
+    end
+%     k(kIdx,:) = noiseStd*rand(1,numSignals);
 %     k(kIdx,:) = sin(linspace(-pi,pi,numSignals)) +noiseStd*randn(1,numSignals)+1;
     k(kIdx,:) = k(kIdx,:)./sum(k(kIdx,:));
 end
