@@ -30,6 +30,10 @@ end
  k(50,50)  = abs(k(50,50))*3; 
  k(50,:)   = k(50,:)./sum(k(50,:));
  
+ load(fullfile(pwd,'..','..','PolymerChainDynamics','Code','ExperimentDataAnalysis','savedAnalysisTADDAndE.mat'))
+ beadRange.bead1 = 108:307;
+ beadRange.bead2 = 108:307;
+ [~,~,k] = a.ProcessEncounters(beadRange,'Average');
 p                       = PeakCalling();
 % Set parameters 
 p.params.fitType        = 'mean';
