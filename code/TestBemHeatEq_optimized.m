@@ -12,19 +12,19 @@ function [u,r]= TestBemHeatEq_optimized(sigIn)
 % The convention for most matrices is that rows are time, columns are space
 alpha    = -1; % for the boundary condition
 lambda   = 1.7; % regularization constant (affects smoothness of source solution)
-regOrder = 1;  % Tikhonov regularization term order, [0,1,or 2]
+regOrder = 2;  % Tikhonov regularization term order, [0,1,or 2]
 
-if ~exist('sigIn','var')
-    N0     = 3;   % space points
-    N      = 90; % time points
-    % test signal
-    sigIn      = (3*cos((1:N) *pi/8)./N+0.5*randn(1,N));% a vector of N points is the integral of the solution over the space
-    E          = sigIn;
-else
+% if ~exist('sigIn','var')
+%     N0     = 3;   % space points
+%     N      = 150; % time points
+%     % test signal
+%     sigIn      = (3*cos((1:N) *pi/8)./N+0.5*randn(1,N));% a vector of N points is the integral of the solution over the space
+%     E          = sigIn;
+% else
     N0 = 3;        % space points;
     E  = (sigIn);  % int(u(x,t)dx) is a time function of size 1xN
     N  = numel(E); % time points
-end
+% end
 f      = 1*ones(N,N0); % function of N time points over N0 space points
 u0     = max(E(1:10))*ones(1,N0); % is the phi function
 
@@ -42,14 +42,14 @@ for xIdx = 1:numel(x)
 end
 
 % Determine the boundary and initial functions
-% u(0,t) = h0j
-h0j = zeros(N,1);
-% u(1,t) = h1j
-h1j = zeros(N,1);
-% du/dn(0,t) = q0j
-q0j = zeros(N,1);
-%du/dn(1,t) = q1j
-q1j = zeros(N,1);
+% % u(0,t) = h0j
+% h0j = zeros(N,1);
+% % u(1,t) = h1j
+% h1j = zeros(N,1);
+% % du/dn(0,t) = q0j
+% q0j = zeros(N,1);
+% %du/dn(1,t) = q1j
+% q1j = zeros(N,1);
 
 %===========================
 % Calculate the matrix for the Acoeff,Bcoeff, BStar, D, C to be used later
@@ -94,10 +94,10 @@ for j = 1:N % time
                                   Bcoeff(0,j,1,t(i),gridT), b1j1i+0.5*deltaij];
         
         Bstar(2*i-1:2*i,2*j-1:2*j) = [b1j0i,            -b1j0i;...
-            b1j1i+deltaij/2, -b1j1i-0.5*deltaij];
+                                      b1j1i+deltaij/2, -b1j1i-0.5*deltaij];
         
         D(2*i-1:2*i,j)=[Dcoeff(x,j,0,t(i),gridT,f(i,:));...
-            Dcoeff(x,j,1,t(i),gridT,f(i,:))];
+                        Dcoeff(x,j,1,t(i),gridT,f(i,:))];
     end
 end
 
@@ -119,12 +119,15 @@ s1 = zeros(N,N,N0);
 s2 = zeros(N,N0);
 for k = 1:N0% space variable
     % components of X
-    ax = (Aone(k,x,t,gridT)-(1/alpha)*(Bone(k,x,t,gridT)-BoneStar(k,x,t,gridT)))/...
+    a1k = Aone(k,x,t,gridT);
+    b1k = Bone(k,x,t,gridT);
+    b1s = BoneStar(k,x,t,gridT); 
+    ax  = (a1k-(1/alpha)*(b1k-b1s))/...
          (A-(1/alpha)*(B+Bstar));
     s1(:,:,k) = (1/N0).*(-ax*D + Done(k,x,t,gridT,f));
     
     % components of Y
-    ay = (Aone(k,x,t,gridT)-(1/alpha)*(Bone(k,x,t,gridT)+BoneStar(k,x,t,gridT)))/...
+    ay = (a1k-(1/alpha)*(b1k+b1s))/...
          (A-(1/alpha)*(B+Bstar));
     s2(:,k) = (1/N0)*(ay*C-Cone(x,gridX,t))*u0' ;
 end
@@ -138,27 +141,27 @@ regTerm = GetRegularizationTerm(N,regOrder); % get RregTerm= 'R term
 r   = ((X')*X+lambda*regTerm)\(X'*Y);
 
 % Calculate the solution u(x,t)
-eta     = ones(1,N0);
-eta(1)  = 0.5;
-eta(N0) = 0.5;
+% eta     = ones(1,N0);
+% eta(1)  = 0.5;
+% eta(N0) = 0.5;
 u       = zeros(N,N0);
-for j=1:N0    % space index
-    for i=1:N % time index
-        sTime   = 0;% cumulative sums
-        sSpace  = 0;
-        
-        for stIdx = 1:N % time index
-            sTime = sTime+ Acoeff(0,stIdx,x(j),t(i),gridT)*q0j(stIdx) + Acoeff(1,stIdx,x(j),t(i), gridT)*q1j(stIdx)-...
-                Bcoeff(0,stIdx,x(j),t(i),gridT)*h0j(stIdx) - Bcoeff(1,stIdx,x(j),t(i), gridT)*h1j(stIdx)+...
-                Dcoeff(x,stIdx,x(j),t(i),gridT,f(i,:))*r(stIdx);
-        end
-        
-        for ssIdx = 1:N0 % space index
-            sSpace = sSpace +Ccoeff(ssIdx,x(j),t(i),gridT)*u0(ssIdx);
-        end
-        u(i,j) = (sTime+sSpace)*eta(j);
-    end
-end
+% for j=1:N0    % space index
+%     for i=1:N % time index
+%         sTime   = 0;% cumulative sums
+%         sSpace  = 0;
+%         
+%         for stIdx = 1:N % time index
+%             sTime = sTime+ Acoeff(0,stIdx,x(j),t(i),gridT)*q0j(stIdx) + Acoeff(1,stIdx,x(j),t(i), gridT)*q1j(stIdx)-...
+%                 Bcoeff(0,stIdx,x(j),t(i),gridT)*h0j(stIdx) - Bcoeff(1,stIdx,x(j),t(i), gridT)*h1j(stIdx)+...
+%                 Dcoeff(x,stIdx,x(j),t(i),gridT,f(i,:))*r(stIdx);
+%         end
+%         
+%         for ssIdx = 1:N0 % space index
+%             sSpace = sSpace +Ccoeff(ssIdx,x(j),t(i),gridT)*u0(ssIdx);
+%         end
+%         u(i,j) = (sTime+sSpace)*eta(j);
+%     end
+% end
 
 PlotResults(t,sigIn,u,r);
 
@@ -259,8 +262,9 @@ function vals = BoneStar(k,spacePoints,t,timePoints)
 vals = zeros(numel(t),2*numel(t));
 for j = 1:numel(t)
     for i = 1:numel(t)
-        vals(j,2*i-1:2*i) =[Bcoeff(1,j,spacePoints(k),t(i),timePoints),...
-                           -Bcoeff(1,j,spacePoints(k),t(i),timePoints)];
+        b1ki = Bcoeff(1,j,spacePoints(k),t(i),timePoints);
+        vals(j,2*i-1:2*i) =[b1ki,...
+                           -b1ki];
     end
 end
 
@@ -273,7 +277,7 @@ function vals = Cone(x,spacePoints,t)
 vals = zeros(numel(t),numel(x));
 for l = 1:numel(x)
     for i=1:numel(t)
-        vals(l,:) =Ccoeff(l,x,t(i),spacePoints);
+        vals(l,:) = Ccoeff(l,x,t(i),spacePoints);
     end
 end
 
@@ -319,8 +323,8 @@ fig = figure;
 ax = axes('Parent',fig,'nextPlot','Add');
 line('XData',t,'YData',r,'DisplayName','Source','Color','r','Parent',ax);
 line('XData',t,'YData',sigIn,'DisplayName','heat energy','Color','b','parent',ax);
-legend(get(ax,'Children'));
+% legend(get(ax,'Children'));
 line('XData',t,'YData',u(:,2),'DisplayName','u(t)','Color','g','parent',ax);
-legend(get(ax,'Children'));
+% legend(get(ax,'Children'));
 
 end
