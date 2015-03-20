@@ -22,10 +22,9 @@
 
 /* Function Declarations */
 extern void Acoeff_api(const mxArray * const prhs[5], const mxArray *plhs[1]);
-extern void Aone_api(const mxArray * const prhs[4], const mxArray *plhs[1]);
 extern void Bcoeff_api(const mxArray * const prhs[5], const mxArray *plhs[1]);
-extern void BoneStar_api(const mxArray * const prhs[4], const mxArray *plhs[1]);
-extern void Bone_api(const mxArray * const prhs[4], const mxArray *plhs[1]);
+extern void CalculateA1B1B1Star_api(const mxArray * const prhs[4], const mxArray
+  *plhs[3]);
 extern void Ccoeff_api(const mxArray * const prhs[4], const mxArray *plhs[1]);
 extern void Cone_api(const mxArray * const prhs[3], const mxArray *plhs[1]);
 extern void Dcoeff_api(const mxArray * const prhs[6], const mxArray *plhs[1]);
@@ -33,7 +32,7 @@ extern void Done_api(const mxArray * const prhs[5], const mxArray *plhs[1]);
 extern void GetRegularizationTerm_api(const mxArray * const prhs[2], const
   mxArray *plhs[1]);
 extern void PlotResults_api(const mxArray * const prhs[4]);
-extern void TestBemHeatEq_optimized_api(const mxArray * const prhs[4], const
+extern void TestBemHeatEq_optimized_api(const mxArray * const prhs[6], const
   mxArray *plhs[2]);
 
 #endif

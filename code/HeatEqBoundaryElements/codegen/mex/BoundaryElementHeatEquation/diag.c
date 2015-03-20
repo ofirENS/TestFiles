@@ -8,10 +8,8 @@
 /* Include files */
 #include "rt_nonfinite.h"
 #include "Acoeff.h"
-#include "Aone.h"
 #include "Bcoeff.h"
-#include "Bone.h"
-#include "BoneStar.h"
+#include "CalculateA1B1B1Star.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -34,7 +32,7 @@ void b_diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
 {
   int32_T unnamed_idx_0;
   int32_T unnamed_idx_1;
-  int32_T i28;
+  int32_T i26;
   boolean_T overflow;
   emlrtStack st;
   emlrtStack b_st;
@@ -44,20 +42,20 @@ void b_diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
   b_st.tls = st.tls;
   unnamed_idx_0 = v->size[1] + 1;
   unnamed_idx_1 = v->size[1] + 1;
-  i28 = d->size[0] * d->size[1];
+  i26 = d->size[0] * d->size[1];
   d->size[0] = unnamed_idx_0;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i28, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(sp, (emxArray__common *)d, i26, (int32_T)sizeof(real_T),
                     &s_emlrtRTEI);
-  i28 = d->size[0] * d->size[1];
+  i26 = d->size[0] * d->size[1];
   d->size[1] = unnamed_idx_1;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i28, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(sp, (emxArray__common *)d, i26, (int32_T)sizeof(real_T),
                     &s_emlrtRTEI);
   unnamed_idx_0 *= unnamed_idx_1;
-  for (i28 = 0; i28 < unnamed_idx_0; i28++) {
-    d->data[i28] = 0.0;
+  for (i26 = 0; i26 < unnamed_idx_0; i26++) {
+    d->data[i26] = 0.0;
   }
 
-  st.site = &yd_emlrtRSI;
+  st.site = &xd_emlrtRSI;
   if (1 > v->size[1]) {
     overflow = false;
   } else {
@@ -65,7 +63,7 @@ void b_diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
   }
 
   if (overflow) {
-    b_st.site = &db_emlrtRSI;
+    b_st.site = &cb_emlrtRSI;
     check_forloop_overflow_error(&b_st);
   }
 
@@ -78,7 +76,7 @@ void diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
 {
   int32_T unnamed_idx_0;
   int32_T unnamed_idx_1;
-  int32_T i27;
+  int32_T i25;
   boolean_T overflow;
   emlrtStack st;
   emlrtStack b_st;
@@ -88,20 +86,20 @@ void diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
   b_st.tls = st.tls;
   unnamed_idx_0 = v->size[1] + 1;
   unnamed_idx_1 = v->size[1] + 1;
-  i27 = d->size[0] * d->size[1];
+  i25 = d->size[0] * d->size[1];
   d->size[0] = unnamed_idx_0;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i27, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(sp, (emxArray__common *)d, i25, (int32_T)sizeof(real_T),
                     &s_emlrtRTEI);
-  i27 = d->size[0] * d->size[1];
+  i25 = d->size[0] * d->size[1];
   d->size[1] = unnamed_idx_1;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i27, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(sp, (emxArray__common *)d, i25, (int32_T)sizeof(real_T),
                     &s_emlrtRTEI);
   unnamed_idx_0 *= unnamed_idx_1;
-  for (i27 = 0; i27 < unnamed_idx_0; i27++) {
-    d->data[i27] = 0.0;
+  for (i25 = 0; i25 < unnamed_idx_0; i25++) {
+    d->data[i25] = 0.0;
   }
 
-  st.site = &xd_emlrtRSI;
+  st.site = &wd_emlrtRSI;
   if (1 > v->size[1]) {
     overflow = false;
   } else {
@@ -109,7 +107,7 @@ void diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
   }
 
   if (overflow) {
-    b_st.site = &db_emlrtRSI;
+    b_st.site = &cb_emlrtRSI;
     check_forloop_overflow_error(&b_st);
   }
 

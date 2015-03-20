@@ -8,5 +8,4 @@ for l = 1:numel(x)
         vals(l,:) = Ccoeff(l,x,t(i),spacePoints);
     end
 end
-
 end

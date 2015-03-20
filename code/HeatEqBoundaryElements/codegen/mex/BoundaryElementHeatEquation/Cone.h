@@ -24,8 +24,6 @@
 extern void Cone(const emlrtStack *sp, const emxArray_real_T *x, const
                  emxArray_real_T *spacePoints, const emxArray_real_T *t,
                  emxArray_real_T *vals);
-extern void b_Cone(const emlrtStack *sp, const real_T x[3], const
-                   emxArray_real_T *t, emxArray_real_T *vals);
 
 #endif
 

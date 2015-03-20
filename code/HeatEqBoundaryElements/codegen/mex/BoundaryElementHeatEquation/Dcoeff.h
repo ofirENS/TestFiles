@@ -31,12 +31,31 @@ extern real_T Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
 
 #endif
 
-extern real_T b_Dcoeff(const emlrtStack *sp, const real_T y[3], real_T j, real_T
-  x, real_T t, const emxArray_real_T *timePoints);
+extern real_T b_Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
+  real_T t, const emxArray_real_T *timePoints, const emxArray_real_T *f);
 
 #ifdef __WATCOMC__
 
 #pragma aux b_Dcoeff value [8087];
+
+#endif
+
+extern real_T c_Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
+  real_T t, const emxArray_real_T *timePoints, const emxArray_real_T *f);
+
+#ifdef __WATCOMC__
+
+#pragma aux c_Dcoeff value [8087];
+
+#endif
+
+extern real_T d_Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
+  real_T x, real_T t, const emxArray_real_T *timePoints, const emxArray_real_T
+  *f);
+
+#ifdef __WATCOMC__
+
+#pragma aux d_Dcoeff value [8087];
 
 #endif
 #endif

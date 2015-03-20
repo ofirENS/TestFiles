@@ -8,10 +8,8 @@
 /* Include files */
 #include "rt_nonfinite.h"
 #include "Acoeff.h"
-#include "Aone.h"
 #include "Bcoeff.h"
-#include "Bone.h"
-#include "BoneStar.h"
+#include "CalculateA1B1B1Star.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -25,13 +23,13 @@
 #include "BoundaryElementHeatEquation_data.h"
 
 /* Variable Definitions */
-static emlrtRSInfo ub_emlrtRSI = { 151, "colon",
+static emlrtRSInfo tb_emlrtRSI = { 151, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-static emlrtRSInfo vb_emlrtRSI = { 156, "colon",
+static emlrtRSInfo ub_emlrtRSI = { 156, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-static emlrtRTEInfo l_emlrtRTEI = { 152, 1, "colon",
+static emlrtRTEInfo m_emlrtRTEI = { 152, 1, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
 /* Function Definitions */
@@ -46,7 +44,7 @@ void eml_signed_integer_colon(const emlrtStack *sp, int32_T b, emxArray_int32_T 
   emlrtStack b_st;
   st.prev = sp;
   st.tls = sp->tls;
-  st.site = &ub_emlrtRSI;
+  st.site = &tb_emlrtRSI;
   b_st.prev = &st;
   b_st.tls = st.tls;
   if (b < 1) {
@@ -59,11 +57,11 @@ void eml_signed_integer_colon(const emlrtStack *sp, int32_T b, emxArray_int32_T 
   y->size[0] = 1;
   y->size[1] = n;
   emxEnsureCapacity(sp, (emxArray__common *)y, yk, (int32_T)sizeof(int32_T),
-                    &l_emlrtRTEI);
+                    &m_emlrtRTEI);
   if (n > 0) {
     y->data[0] = 1;
     yk = 1;
-    st.site = &vb_emlrtRSI;
+    st.site = &ub_emlrtRSI;
     if (2 > n) {
       b1 = false;
     } else {
@@ -71,7 +69,7 @@ void eml_signed_integer_colon(const emlrtStack *sp, int32_T b, emxArray_int32_T 
     }
 
     if (b1) {
-      b_st.site = &db_emlrtRSI;
+      b_st.site = &cb_emlrtRSI;
       check_forloop_overflow_error(&b_st);
     }
 

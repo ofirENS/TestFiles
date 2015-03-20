@@ -6,10 +6,8 @@ libmwmathutil.lib
 /export:mexFunction
 /export:emlrtMexFcnProperties
 /export:Acoeff
-/export:Aone
 /export:Bcoeff
-/export:Bone
-/export:BoneStar
+/export:CalculateA1B1B1Star
 /export:Ccoeff
 /export:Cone
 /export:Dcoeff

@@ -8,10 +8,8 @@
 /* Include files */
 #include "rt_nonfinite.h"
 #include "Acoeff.h"
-#include "Aone.h"
 #include "Bcoeff.h"
-#include "Bone.h"
-#include "BoneStar.h"
+#include "CalculateA1B1B1Star.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -25,18 +23,18 @@
 #include "BoundaryElementHeatEquation_data.h"
 
 /* Variable Definitions */
-static emlrtRSInfo y_emlrtRSI = { 12, "all",
+static emlrtRSInfo x_emlrtRSI = { 12, "all",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\all.m" };
 
-static emlrtRSInfo ab_emlrtRSI = { 39, "allOrAny",
+static emlrtRSInfo y_emlrtRSI = { 39, "allOrAny",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\shared\\coder\\coder\\+coder\\+internal\\allOrAny.m"
 };
 
-static emlrtRSInfo bb_emlrtRSI = { 42, "allOrAny",
+static emlrtRSInfo ab_emlrtRSI = { 42, "allOrAny",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\shared\\coder\\coder\\+coder\\+internal\\allOrAny.m"
 };
 
-static emlrtRSInfo cb_emlrtRSI = { 124, "allOrAny",
+static emlrtRSInfo bb_emlrtRSI = { 124, "allOrAny",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\shared\\coder\\coder\\+coder\\+internal\\allOrAny.m"
 };
 
@@ -44,11 +42,11 @@ static emlrtMCInfo emlrtMCI = { 25, 19, "assert",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\shared\\coder\\coder\\+coder\\+internal\\assert.m"
 };
 
-static emlrtBCInfo ub_emlrtBCI = { -1, -1, 126, 24, "", "allOrAny",
+static emlrtBCInfo tb_emlrtBCI = { -1, -1, 126, 24, "", "allOrAny",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\shared\\coder\\coder\\+coder\\+internal\\allOrAny.m",
   0 };
 
-static emlrtRSInfo sg_emlrtRSI = { 25, "assert",
+static emlrtRSInfo tg_emlrtRSI = { 25, "assert",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\shared\\coder\\coder\\+coder\\+internal\\assert.m"
 };
 
@@ -69,25 +67,25 @@ boolean_T all(const emlrtStack *sp, const emxArray_boolean_T *x)
     'o', 'm', 'p', 'a', 't', 'i', 'b', 'i', 'l', 'i', 't', 'y' };
 
   boolean_T exitg1;
-  int32_T i20;
+  int32_T i16;
   emlrtStack st;
   emlrtStack b_st;
   emlrtStack c_st;
   st.prev = sp;
   st.tls = sp->tls;
-  st.site = &y_emlrtRSI;
+  st.site = &x_emlrtRSI;
   b_st.prev = &st;
   b_st.tls = st.tls;
   c_st.prev = &b_st;
   c_st.tls = b_st.tls;
-  b_st.site = &ab_emlrtRSI;
+  b_st.site = &y_emlrtRSI;
   if ((x->size[1] == 1) || (x->size[1] != 1)) {
     overflow = true;
   } else {
     overflow = false;
   }
 
-  b_st.site = &bb_emlrtRSI;
+  b_st.site = &ab_emlrtRSI;
   if (overflow) {
   } else {
     b_y = NULL;
@@ -98,12 +96,12 @@ boolean_T all(const emlrtStack *sp, const emxArray_boolean_T *x)
 
     emlrtInitCharArrayR2013a(&b_st, 51, m1, cv5);
     emlrtAssign(&b_y, m1);
-    c_st.site = &sg_emlrtRSI;
+    c_st.site = &tg_emlrtRSI;
     error(&c_st, message(&c_st, b_y, &emlrtMCI), &emlrtMCI);
   }
 
   y = true;
-  b_st.site = &cb_emlrtRSI;
+  b_st.site = &bb_emlrtRSI;
   if (1 > x->size[1]) {
     overflow = false;
   } else {
@@ -111,15 +109,15 @@ boolean_T all(const emlrtStack *sp, const emxArray_boolean_T *x)
   }
 
   if (overflow) {
-    c_st.site = &db_emlrtRSI;
+    c_st.site = &cb_emlrtRSI;
     check_forloop_overflow_error(&c_st);
   }
 
   i = 1;
   exitg1 = false;
   while ((!exitg1) && (i <= x->size[1])) {
-    i20 = x->size[1];
-    if (x->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, i20, &ub_emlrtBCI, &st)
+    i16 = x->size[1];
+    if (x->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, i16, &tb_emlrtBCI, &st)
         - 1] == 0) {
       y = false;
       exitg1 = true;

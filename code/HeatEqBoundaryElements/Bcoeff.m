@@ -6,9 +6,9 @@ function vals = Bcoeff(ksi,j,x,t,timePoints)
 
 if t<=timePoints(j)
     vals = 0;
-elseif t>timePoints(j) && t<= timePoints(j+1) && x==ksi
+elseif all([t>timePoints(j), t<= timePoints(j+1),x==ksi])
     vals = 0;
-elseif t>timePoints(j) && t<= timePoints(j+1) && x~=ksi
+elseif all([t>timePoints(j), t<=timePoints(j+1),x~=ksi])
     z0   = abs(x-ksi)/(2*sqrt(t-timePoints(j)));
     vals = -(erfc(z0))/2;
 elseif t>timePoints(j+1)

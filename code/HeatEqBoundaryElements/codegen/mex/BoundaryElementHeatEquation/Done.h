@@ -31,9 +31,9 @@ extern real_T Done(const emlrtStack *sp, real_T k, const emxArray_real_T
 
 #endif
 
-extern void b_Done(const emlrtStack *sp, real_T k, const real_T spacePoints[3],
-                   const emxArray_real_T *t, const emxArray_real_T *timePoints,
-                   const emxArray_real_T *f, emxArray_real_T *vals);
+extern void b_Done(const emlrtStack *sp, real_T k, const emxArray_real_T
+                   *spacePoints, const emxArray_real_T *t, const emxArray_real_T
+                   *timePoints, const emxArray_real_T *f, emxArray_real_T *vals);
 
 #endif
 

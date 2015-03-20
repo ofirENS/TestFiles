@@ -8,10 +8,8 @@
 /* Include files */
 #include "rt_nonfinite.h"
 #include "Acoeff.h"
-#include "Aone.h"
 #include "Bcoeff.h"
-#include "Bone.h"
-#include "BoneStar.h"
+#include "CalculateA1B1B1Star.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -25,11 +23,11 @@
 #include "BoundaryElementHeatEquation_data.h"
 
 /* Variable Definitions */
-static emlrtRSInfo eb_emlrtRSI = { 41, "mpower",
+static emlrtRSInfo db_emlrtRSI = { 41, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRSInfo fb_emlrtRSI = { 54, "mpower",
+static emlrtRSInfo eb_emlrtRSI = { 54, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
@@ -41,15 +39,15 @@ static emlrtMCInfo e_emlrtMCI = { 33, 15, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRTEInfo j_emlrtRTEI = { 1, 14, "mpower",
+static emlrtRTEInfo k_emlrtRTEI = { 1, 14, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRSInfo qg_emlrtRSI = { 33, "mpower",
+static emlrtRSInfo rg_emlrtRSI = { 33, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRSInfo bh_emlrtRSI = { 34, "mpower",
+static emlrtRSInfo ch_emlrtRSI = { 34, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
@@ -113,14 +111,14 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
 
     emlrtInitCharArrayR2013a(sp, 19, m3, cv11);
     emlrtAssign(&y, m3);
-    st.site = &qg_emlrtRSI;
-    b_st.site = &bh_emlrtRSI;
+    st.site = &rg_emlrtRSI;
+    b_st.site = &ch_emlrtRSI;
     error(&st, message(&b_st, y, &d_emlrtMCI), &e_emlrtMCI);
   }
 
-  st.site = &eb_emlrtRSI;
-  c_st.site = &fb_emlrtRSI;
-  d_st.site = &gb_emlrtRSI;
+  st.site = &db_emlrtRSI;
+  c_st.site = &eb_emlrtRSI;
+  d_st.site = &fb_emlrtRSI;
   if (!(a->size[1] == 1)) {
     if (a->size[1] == 1) {
       b_y = NULL;
@@ -131,8 +129,8 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
 
       emlrtInitCharArrayR2013a(&d_st, 45, m3, cv13);
       emlrtAssign(&b_y, m3);
-      e_st.site = &ig_emlrtRSI;
-      f_st.site = &tg_emlrtRSI;
+      e_st.site = &jg_emlrtRSI;
+      f_st.site = &ug_emlrtRSI;
       error(&e_st, message(&f_st, b_y, &f_emlrtMCI), &g_emlrtMCI);
     } else {
       c_y = NULL;
@@ -143,8 +141,8 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
 
       emlrtInitCharArrayR2013a(&d_st, 21, m3, cv15);
       emlrtAssign(&c_y, m3);
-      e_st.site = &jg_emlrtRSI;
-      f_st.site = &ug_emlrtRSI;
+      e_st.site = &kg_emlrtRSI;
+      f_st.site = &vg_emlrtRSI;
       error(&e_st, message(&f_st, c_y, &h_emlrtMCI), &i_emlrtMCI);
     }
   }
@@ -153,7 +151,7 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
   c->size[0] = 1;
   c->size[1] = a->size[1];
   emxEnsureCapacity(&c_st, (emxArray__common *)c, i, (int32_T)sizeof(real_T),
-                    &j_emlrtRTEI);
+                    &k_emlrtRTEI);
   b_a = a->data[0];
   loop_ub = a->size[0] * a->size[1];
   for (i = 0; i < loop_ub; i++) {

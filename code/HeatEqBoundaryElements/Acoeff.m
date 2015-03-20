@@ -9,13 +9,13 @@ elseif all([t>timePoints(j), t<= timePoints(j+1), x==ksi])
     vals = sqrt((t-timePoints(j))/pi);
 elseif all([t>timePoints(j), t<= timePoints(j+1), x~=ksi])
     z0 = abs(x-ksi)/(2*sqrt(t-timePoints(j)));
-    vals = abs(x-ksi)/(2*sqrt(pi)) *(exp(-z0^2)/z0 - sqrt(pi)*(erfc(z0)));
+    vals = (abs(x-ksi)/(2*sqrt(pi)))*((exp(-z0^2)/z0) - sqrt(pi)*erfc(z0));
 elseif all([t>timePoints(j+1), x==ksi])
     vals = sqrt((t-timePoints(j))/pi)-sqrt((t-timePoints(j+1))/pi);
 elseif all([t>timePoints(j+1), x~=ksi])
     z0 = abs(x-ksi)/(2*sqrt(t-timePoints(j)));
     z1 = abs(x-ksi)/(2*sqrt(t-timePoints(j+1)));
-    vals = abs(x-ksi)/(2*sqrt(pi)) *(exp(-(z0^2))/z0 - exp(-(z1^2))/z1 +sqrt(pi)*(erf(z0)-erf(z1)));
+    vals = (abs(x-ksi)/(2*sqrt(pi)))*((exp(-(z0^2))/z0) - exp(-(z1^2))/z1 +sqrt(pi)*(erf(z0)-erf(z1)));
 else
     vals = 0;
 end

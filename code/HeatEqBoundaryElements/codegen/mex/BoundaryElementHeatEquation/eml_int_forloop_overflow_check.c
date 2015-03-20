@@ -8,10 +8,8 @@
 /* Include files */
 #include "rt_nonfinite.h"
 #include "Acoeff.h"
-#include "Aone.h"
 #include "Bcoeff.h"
-#include "Bone.h"
-#include "BoneStar.h"
+#include "CalculateA1B1B1Star.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -31,11 +29,11 @@ static emlrtMCInfo c_emlrtMCI = { 74, 15, "eml_int_forloop_overflow_check",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
 };
 
-static emlrtRSInfo rg_emlrtRSI = { 74, "eml_int_forloop_overflow_check",
+static emlrtRSInfo sg_emlrtRSI = { 74, "eml_int_forloop_overflow_check",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
 };
 
-static emlrtRSInfo ch_emlrtRSI = { 75, "eml_int_forloop_overflow_check",
+static emlrtRSInfo dh_emlrtRSI = { 75, "eml_int_forloop_overflow_check",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
 };
 
@@ -48,10 +46,10 @@ static const mxArray *b_message(const emlrtStack *sp, const mxArray *b, const
   mxArray *c, emlrtMCInfo *location)
 {
   const mxArray *pArrays[2];
-  const mxArray *m23;
+  const mxArray *m21;
   pArrays[0] = b;
   pArrays[1] = c;
-  return emlrtCallMATLABR2012b(sp, 1, &m23, 2, pArrays, "message", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m21, 2, pArrays, "message", true,
     location);
 }
 
@@ -96,8 +94,8 @@ void check_forloop_overflow_error(const emlrtStack *sp)
 
   emlrtInitCharArrayR2013a(sp, 23, m2, cv9);
   emlrtAssign(&b_y, m2);
-  st.site = &rg_emlrtRSI;
-  b_st.site = &ch_emlrtRSI;
+  st.site = &sg_emlrtRSI;
+  b_st.site = &dh_emlrtRSI;
   error(&st, b_message(&b_st, y, b_y, &b_emlrtMCI), &c_emlrtMCI);
 }
 

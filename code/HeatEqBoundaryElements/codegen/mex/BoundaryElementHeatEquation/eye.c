@@ -8,10 +8,8 @@
 /* Include files */
 #include "rt_nonfinite.h"
 #include "Acoeff.h"
-#include "Aone.h"
 #include "Bcoeff.h"
-#include "Bone.h"
-#include "BoneStar.h"
+#include "CalculateA1B1B1Star.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -27,10 +25,10 @@
 #include "BoundaryElementHeatEquation_data.h"
 
 /* Variable Definitions */
-static emlrtRSInfo vd_emlrtRSI = { 34, "eye",
+static emlrtRSInfo ud_emlrtRSI = { 34, "eye",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\eye.m" };
 
-static emlrtRSInfo wd_emlrtRSI = { 80, "eye",
+static emlrtRSInfo vd_emlrtRSI = { 80, "eye",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\eye.m" };
 
 static emlrtMCInfo q_emlrtMCI = { 51, 13, "eml_assert_valid_size_arg",
@@ -52,27 +50,27 @@ static emlrtMCInfo t_emlrtMCI = { 56, 15, "eml_assert_valid_size_arg",
 static emlrtRTEInfo r_emlrtRTEI = { 1, 14, "eye",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\eye.m" };
 
-static emlrtDCInfo v_emlrtDCI = { 78, 11, "eye",
+static emlrtDCInfo s_emlrtDCI = { 78, 11, "eye",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\eye.m",
   4 };
 
-static emlrtDCInfo w_emlrtDCI = { 78, 13, "eye",
+static emlrtDCInfo t_emlrtDCI = { 78, 13, "eye",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\eye.m",
   4 };
 
-static emlrtRSInfo ng_emlrtRSI = { 56, "eml_assert_valid_size_arg",
+static emlrtRSInfo og_emlrtRSI = { 56, "eml_assert_valid_size_arg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_assert_valid_size_arg.m"
 };
 
-static emlrtRSInfo og_emlrtRSI = { 50, "eml_assert_valid_size_arg",
+static emlrtRSInfo pg_emlrtRSI = { 50, "eml_assert_valid_size_arg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_assert_valid_size_arg.m"
 };
 
-static emlrtRSInfo yg_emlrtRSI = { 57, "eml_assert_valid_size_arg",
+static emlrtRSInfo ah_emlrtRSI = { 57, "eml_assert_valid_size_arg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_assert_valid_size_arg.m"
 };
 
-static emlrtRSInfo dh_emlrtRSI = { 51, "eml_assert_valid_size_arg",
+static emlrtRSInfo eh_emlrtRSI = { 51, "eml_assert_valid_size_arg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_assert_valid_size_arg.m"
 };
 
@@ -108,7 +106,7 @@ void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *I)
   emlrtStack c_st;
   st.prev = sp;
   st.tls = sp->tls;
-  st.site = &vd_emlrtRSI;
+  st.site = &ud_emlrtRSI;
   b_st.prev = &st;
   b_st.tls = st.tls;
   c_st.prev = &st;
@@ -159,8 +157,8 @@ void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *I)
     m8 = emlrtCreateNumericMatrix(1, 1, mxINT32_CLASS, mxREAL);
     *(int32_T *)mxGetData(m8) = MAX_int32_T;
     emlrtAssign(&c_y, m8);
-    b_st.site = &og_emlrtRSI;
-    c_st.site = &dh_emlrtRSI;
+    b_st.site = &pg_emlrtRSI;
+    c_st.site = &eh_emlrtRSI;
     error(&b_st, c_message(&c_st, y, b_y, c_y, &q_emlrtMCI), &r_emlrtMCI);
   }
 
@@ -180,26 +178,26 @@ void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *I)
 
     emlrtInitCharArrayR2013a(&st, 21, m8, cv28);
     emlrtAssign(&d_y, m8);
-    b_st.site = &ng_emlrtRSI;
-    c_st.site = &yg_emlrtRSI;
+    b_st.site = &og_emlrtRSI;
+    c_st.site = &ah_emlrtRSI;
     error(&b_st, message(&c_st, d_y, &s_emlrtMCI), &t_emlrtMCI);
   }
 
   i = I->size[0] * I->size[1];
-  I->size[0] = (int32_T)emlrtNonNegativeCheckFastR2012b(varargin_1, &v_emlrtDCI,
+  I->size[0] = (int32_T)emlrtNonNegativeCheckFastR2012b(varargin_1, &s_emlrtDCI,
     sp);
-  I->size[1] = (int32_T)emlrtNonNegativeCheckFastR2012b(varargin_1, &w_emlrtDCI,
+  I->size[1] = (int32_T)emlrtNonNegativeCheckFastR2012b(varargin_1, &t_emlrtDCI,
     sp);
   emxEnsureCapacity(sp, (emxArray__common *)I, i, (int32_T)sizeof(real_T),
                     &r_emlrtRTEI);
-  loop_ub = (int32_T)emlrtNonNegativeCheckFastR2012b(varargin_1, &v_emlrtDCI, sp)
-    * (int32_T)emlrtNonNegativeCheckFastR2012b(varargin_1, &w_emlrtDCI, sp);
+  loop_ub = (int32_T)emlrtNonNegativeCheckFastR2012b(varargin_1, &s_emlrtDCI, sp)
+    * (int32_T)emlrtNonNegativeCheckFastR2012b(varargin_1, &t_emlrtDCI, sp);
   for (i = 0; i < loop_ub; i++) {
     I->data[i] = 0.0;
   }
 
   if ((int32_T)varargin_1 > 0) {
-    st.site = &wd_emlrtRSI;
+    st.site = &vd_emlrtRSI;
     if (1 > (int32_T)varargin_1) {
       b5 = false;
     } else {
@@ -207,7 +205,7 @@ void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *I)
     }
 
     if (b5) {
-      b_st.site = &db_emlrtRSI;
+      b_st.site = &cb_emlrtRSI;
       check_forloop_overflow_error(&b_st);
     }
 

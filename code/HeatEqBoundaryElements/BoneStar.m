@@ -10,5 +10,4 @@ for j = 1:numel(t)
                            -b1ki];
     end
 end
-
 end

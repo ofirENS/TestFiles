@@ -1,6 +1,6 @@
-START_DIR = D:\Ofir\ENS\TESTFI~1\code\NEWFOL~1
+START_DIR = D:\Ofir\Work\ENS\TESTFI~1\code\HEATEQ~1
 
-MATLAB_ROOT = D:\PROGRA~2\MATLAB\R2014a
+MATLAB_ROOT = D:\PROGRA~1\MATLAB\R2014a
 MAKEFILE = BoundaryElementHeatEquation_mex.mk
 
 include BoundaryElementHeatEquation_mex.mki
@@ -12,10 +12,8 @@ SRC_FILES =  \
 	BoundaryElementHeatEquation_initialize.c \
 	BoundaryElementHeatEquation_terminate.c \
 	Acoeff.c \
-	Aone.c \
 	Bcoeff.c \
-	Bone.c \
-	BoneStar.c \
+	CalculateA1B1B1Star.c \
 	Ccoeff.c \
 	Cone.c \
 	Dcoeff.c \
@@ -25,6 +23,7 @@ SRC_FILES =  \
 	TestBemHeatEq_optimized.c \
 	all.c \
 	mrdivide.c \
+	rdivide.c \
 	eml_error.c \
 	abs.c \
 	mpower.c \
@@ -35,7 +34,7 @@ SRC_FILES =  \
 	eye.c \
 	diag.c \
 	sum.c \
-	mldivide.c \
+	mod.c \
 	_coder_BoundaryElementHeatEquation_api.c \
 	BoundaryElementHeatEquation_emxutil.c \
 	_coder_BoundaryElementHeatEquation_mex.c \

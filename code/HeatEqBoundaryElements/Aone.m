@@ -9,5 +9,4 @@ for j = 1:numel(t)
                             Acoeff(1,j,spacePoints(k),t(i),timePoints)];
     end
 end
-
 end

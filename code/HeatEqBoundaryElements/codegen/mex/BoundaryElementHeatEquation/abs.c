@@ -8,10 +8,8 @@
 /* Include files */
 #include "rt_nonfinite.h"
 #include "Acoeff.h"
-#include "Aone.h"
 #include "Bcoeff.h"
-#include "Bone.h"
-#include "BoneStar.h"
+#include "CalculateA1B1B1Star.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -23,7 +21,7 @@
 #include "BoundaryElementHeatEquation_emxutil.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo i_emlrtRTEI = { 16, 5, "abs",
+static emlrtRTEInfo j_emlrtRTEI = { 16, 5, "abs",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elfun\\abs.m" };
 
 /* Function Definitions */
@@ -39,7 +37,7 @@ void b_abs(const emlrtStack *sp, const emxArray_real_T *x, emxArray_real_T *y)
   y->size[0] = 1;
   y->size[1] = (int32_T)uv0[1];
   emxEnsureCapacity(sp, (emxArray__common *)y, k, (int32_T)sizeof(real_T),
-                    &i_emlrtRTEI);
+                    &j_emlrtRTEI);
   for (k = 0; k < x->size[1]; k++) {
     y->data[k] = muDoubleScalarAbs(x->data[k]);
   }

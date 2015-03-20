@@ -8,10 +8,8 @@
 /* Include files */
 #include "rt_nonfinite.h"
 #include "Acoeff.h"
-#include "Aone.h"
 #include "Bcoeff.h"
-#include "Bone.h"
-#include "BoneStar.h"
+#include "CalculateA1B1B1Star.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -31,7 +29,7 @@ static emlrtMCInfo n_emlrtMCI = { 16, 5, "eml_warning",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_warning.m"
 };
 
-static emlrtRSInfo ah_emlrtRSI = { 16, "eml_warning",
+static emlrtRSInfo bh_emlrtRSI = { 16, "eml_warning",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_warning.m"
 };
 
@@ -84,7 +82,7 @@ void b_eml_warning(const emlrtStack *sp, real_T varargin_2, const char_T
 
   emlrtInitCharArrayR2013a(sp, 14, m6, b_varargin_3);
   emlrtAssign(&b_y, m6);
-  st.site = &ah_emlrtRSI;
+  st.site = &bh_emlrtRSI;
   warning(&st, c_message(&st, y, emlrt_marshallOut(varargin_2), b_y, &m_emlrtMCI),
           &n_emlrtMCI);
 }
@@ -112,7 +110,7 @@ void eml_warning(const emlrtStack *sp)
 
   emlrtInitCharArrayR2013a(sp, 27, m4, cv17);
   emlrtAssign(&y, m4);
-  st.site = &ah_emlrtRSI;
+  st.site = &bh_emlrtRSI;
   warning(&st, message(&st, y, &m_emlrtMCI), &n_emlrtMCI);
 }
 

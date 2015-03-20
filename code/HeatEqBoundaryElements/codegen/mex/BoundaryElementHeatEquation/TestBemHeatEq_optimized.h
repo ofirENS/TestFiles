@@ -22,8 +22,8 @@
 
 /* Function Declarations */
 extern void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *
-  sigIn, real_T regOrder, real_T lambda, boolean_T plotFlag, emxArray_real_T *u,
-  emxArray_real_T *r);
+  sigIn, real_T regOrder, real_T lambda, real_T alpha, real_T numSpacePoints,
+  boolean_T plotFlag, emxArray_real_T *u, emxArray_real_T *r);
 
 #endif
 
