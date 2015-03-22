@@ -33,7 +33,8 @@ u0(midPoint)       = u0m;
 u0(1:midPoint-1)   = ((0:(midPoint-2))./midPoint)*u0m;
 u0(midPoint+1:end) = (((midPoint-2):-1:0)./midPoint)*u0m;
  % is the Phi function
-
+% u0 = zeros(1,numSpacePoints);
+% u0(midPoint) = u0m;
 % Determine the boundary and initial functions
 % du/dn(0,t) = q0j
 q0j = zeros(N,1);
