@@ -22,11 +22,11 @@
 
 /* Function Declarations */
 extern void CalculateA1B1B1Star(const emlrtStack *sp, real_T k, const
-  emxArray_real_T *spacePoints, real_T t, const emxArray_real_T *timePoints,
-  real_T a1k[2], real_T b1k[2], real_T b1s[2]);
+  emxArray_real_T *x, real_T t, const emxArray_real_T *gridT, real_T N,
+  emxArray_real_T *a1k, emxArray_real_T *b1k, emxArray_real_T *b1s);
 extern void b_CalculateA1B1B1Star(const emlrtStack *sp, real_T k, const
-  emxArray_real_T *spacePoints, const emxArray_real_T *t, const emxArray_real_T *
-  timePoints, emxArray_real_T *a1k, emxArray_real_T *b1k, emxArray_real_T *b1s);
+  emxArray_real_T *x, const emxArray_real_T *t, const emxArray_real_T *gridT,
+  real_T N, emxArray_real_T *a1k, emxArray_real_T *b1k, emxArray_real_T *b1s);
 
 #endif
 

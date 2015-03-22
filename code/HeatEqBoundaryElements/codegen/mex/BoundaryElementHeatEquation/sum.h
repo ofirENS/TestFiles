@@ -21,8 +21,6 @@
 #include "BoundaryElementHeatEquation_types.h"
 
 /* Function Declarations */
-extern void b_sum(const emlrtStack *sp, const emxArray_real_T *x,
-                  emxArray_real_T *y);
 extern void sum(const emlrtStack *sp, const emxArray_real_T *x, emxArray_real_T *
                 y);
 

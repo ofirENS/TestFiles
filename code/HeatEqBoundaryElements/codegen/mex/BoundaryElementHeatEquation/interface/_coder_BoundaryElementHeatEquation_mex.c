@@ -15,6 +15,10 @@
 static void Acoeff_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
 static void Bcoeff_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
 static void CalculateA1B1B1Star_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
+static void CalculateABBStarD_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
+static void CalculateC_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
+static void CalculateHeatSolution_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
+static void CalculateXY_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
 static void Ccoeff_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
 static void Cone_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
 static void Dcoeff_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]);
@@ -26,10 +30,14 @@ static void TestBemHeatEq_optimized_mexFunction(int nlhs, mxArray *plhs[], int n
 /* Variable Definitions */
 emlrtContext emlrtContextGlobal = { true, false, EMLRT_VERSION_INFO, NULL, "BoundaryElementHeatEquation", NULL, false, {2045744189U,2170104910U,2743257031U,4284093946U}, NULL };
 void *emlrtRootTLSGlobal = NULL;
-emlrtEntryPoint emlrtEntryPoints[10] = {
+emlrtEntryPoint emlrtEntryPoints[14] = {
   { "Acoeff", Acoeff_mexFunction },
   { "Bcoeff", Bcoeff_mexFunction },
   { "CalculateA1B1B1Star", CalculateA1B1B1Star_mexFunction },
+  { "CalculateABBStarD", CalculateABBStarD_mexFunction },
+  { "CalculateC", CalculateC_mexFunction },
+  { "CalculateHeatSolution", CalculateHeatSolution_mexFunction },
+  { "CalculateXY", CalculateXY_mexFunction },
   { "Ccoeff", Ccoeff_mexFunction },
   { "Cone", Cone_mexFunction },
   { "Dcoeff", Dcoeff_mexFunction },
@@ -103,6 +111,66 @@ static void Bcoeff_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArra
 static void CalculateA1B1B1Star_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   const mxArray *outputs[3];
+  const mxArray *inputs[5];
+  int n = 0;
+  int nOutputs = (nlhs < 1 ? 1 : nlhs);
+  int nInputs = nrhs;
+  emlrtStack st = { NULL, NULL, NULL };
+  /* Module initialization. */
+  BoundaryElementHeatEquation_initialize(&emlrtContextGlobal);
+  st.tls = emlrtRootTLSGlobal;
+  /* Check for proper number of arguments. */
+  if (nrhs != 5) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 5, mxCHAR_CLASS, 19, "CalculateA1B1B1Star");
+  } else if (nlhs > 3) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 19, "CalculateA1B1B1Star");
+  }
+  /* Temporary copy for mex inputs. */
+  for (n = 0; n < nInputs; ++n) {
+    inputs[n] = prhs[n];
+  }
+  /* Call the function. */
+  CalculateA1B1B1Star_api(inputs, outputs);
+  /* Copy over outputs to the caller. */
+  for (n = 0; n < nOutputs; ++n) {
+    plhs[n] = emlrtReturnArrayR2009a(outputs[n]);
+  }
+  /* Module finalization. */
+  BoundaryElementHeatEquation_terminate();
+}
+static void CalculateABBStarD_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+{
+  const mxArray *outputs[4];
+  const mxArray *inputs[5];
+  int n = 0;
+  int nOutputs = (nlhs < 1 ? 1 : nlhs);
+  int nInputs = nrhs;
+  emlrtStack st = { NULL, NULL, NULL };
+  /* Module initialization. */
+  BoundaryElementHeatEquation_initialize(&emlrtContextGlobal);
+  st.tls = emlrtRootTLSGlobal;
+  /* Check for proper number of arguments. */
+  if (nrhs != 5) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 5, mxCHAR_CLASS, 17, "CalculateABBStarD");
+  } else if (nlhs > 4) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 17, "CalculateABBStarD");
+  }
+  /* Temporary copy for mex inputs. */
+  for (n = 0; n < nInputs; ++n) {
+    inputs[n] = prhs[n];
+  }
+  /* Call the function. */
+  CalculateABBStarD_api(inputs, outputs);
+  /* Copy over outputs to the caller. */
+  for (n = 0; n < nOutputs; ++n) {
+    plhs[n] = emlrtReturnArrayR2009a(outputs[n]);
+  }
+  /* Module finalization. */
+  BoundaryElementHeatEquation_terminate();
+}
+static void CalculateC_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+{
+  const mxArray *outputs[1];
   const mxArray *inputs[4];
   int n = 0;
   int nOutputs = (nlhs < 1 ? 1 : nlhs);
@@ -113,16 +181,76 @@ static void CalculateA1B1B1Star_mexFunction(int nlhs, mxArray *plhs[], int nrhs,
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
   if (nrhs != 4) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 4, mxCHAR_CLASS, 19, "CalculateA1B1B1Star");
-  } else if (nlhs > 3) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 19, "CalculateA1B1B1Star");
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 4, mxCHAR_CLASS, 10, "CalculateC");
+  } else if (nlhs > 1) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 10, "CalculateC");
   }
   /* Temporary copy for mex inputs. */
   for (n = 0; n < nInputs; ++n) {
     inputs[n] = prhs[n];
   }
   /* Call the function. */
-  CalculateA1B1B1Star_api(inputs, outputs);
+  CalculateC_api(inputs, outputs);
+  /* Copy over outputs to the caller. */
+  for (n = 0; n < nOutputs; ++n) {
+    plhs[n] = emlrtReturnArrayR2009a(outputs[n]);
+  }
+  /* Module finalization. */
+  BoundaryElementHeatEquation_terminate();
+}
+static void CalculateHeatSolution_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+{
+  const mxArray *outputs[1];
+  const mxArray *inputs[12];
+  int n = 0;
+  int nOutputs = (nlhs < 1 ? 1 : nlhs);
+  int nInputs = nrhs;
+  emlrtStack st = { NULL, NULL, NULL };
+  /* Module initialization. */
+  BoundaryElementHeatEquation_initialize(&emlrtContextGlobal);
+  st.tls = emlrtRootTLSGlobal;
+  /* Check for proper number of arguments. */
+  if (nrhs != 12) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 12, mxCHAR_CLASS, 21, "CalculateHeatSolution");
+  } else if (nlhs > 1) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 21, "CalculateHeatSolution");
+  }
+  /* Temporary copy for mex inputs. */
+  for (n = 0; n < nInputs; ++n) {
+    inputs[n] = prhs[n];
+  }
+  /* Call the function. */
+  CalculateHeatSolution_api(inputs, outputs);
+  /* Copy over outputs to the caller. */
+  for (n = 0; n < nOutputs; ++n) {
+    plhs[n] = emlrtReturnArrayR2009a(outputs[n]);
+  }
+  /* Module finalization. */
+  BoundaryElementHeatEquation_terminate();
+}
+static void CalculateXY_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+{
+  const mxArray *outputs[2];
+  const mxArray *inputs[15];
+  int n = 0;
+  int nOutputs = (nlhs < 1 ? 1 : nlhs);
+  int nInputs = nrhs;
+  emlrtStack st = { NULL, NULL, NULL };
+  /* Module initialization. */
+  BoundaryElementHeatEquation_initialize(&emlrtContextGlobal);
+  st.tls = emlrtRootTLSGlobal;
+  /* Check for proper number of arguments. */
+  if (nrhs != 15) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 15, mxCHAR_CLASS, 11, "CalculateXY");
+  } else if (nlhs > 2) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 11, "CalculateXY");
+  }
+  /* Temporary copy for mex inputs. */
+  for (n = 0; n < nInputs; ++n) {
+    inputs[n] = prhs[n];
+  }
+  /* Call the function. */
+  CalculateXY_api(inputs, outputs);
   /* Copy over outputs to the caller. */
   for (n = 0; n < nOutputs; ++n) {
     plhs[n] = emlrtReturnArrayR2009a(outputs[n]);
@@ -163,7 +291,7 @@ static void Ccoeff_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArra
 static void Cone_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   const mxArray *outputs[1];
-  const mxArray *inputs[3];
+  const mxArray *inputs[4];
   int n = 0;
   int nOutputs = (nlhs < 1 ? 1 : nlhs);
   int nInputs = nrhs;
@@ -172,8 +300,8 @@ static void Cone_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray 
   BoundaryElementHeatEquation_initialize(&emlrtContextGlobal);
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 3) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 3, mxCHAR_CLASS, 4, "Cone");
+  if (nrhs != 4) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 4, mxCHAR_CLASS, 4, "Cone");
   } else if (nlhs > 1) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 4, "Cone");
   }
@@ -223,7 +351,7 @@ static void Dcoeff_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArra
 static void Done_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   const mxArray *outputs[1];
-  const mxArray *inputs[5];
+  const mxArray *inputs[6];
   int n = 0;
   int nOutputs = (nlhs < 1 ? 1 : nlhs);
   int nInputs = nrhs;
@@ -232,8 +360,8 @@ static void Done_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray 
   BoundaryElementHeatEquation_initialize(&emlrtContextGlobal);
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 5) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 5, mxCHAR_CLASS, 4, "Done");
+  if (nrhs != 6) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 6, mxCHAR_CLASS, 4, "Done");
   } else if (nlhs > 1) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 4, "Done");
   }
@@ -307,7 +435,7 @@ static void PlotResults_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const m
 static void TestBemHeatEq_optimized_mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   const mxArray *outputs[2];
-  const mxArray *inputs[6];
+  const mxArray *inputs[7];
   int n = 0;
   int nOutputs = (nlhs < 1 ? 1 : nlhs);
   int nInputs = nrhs;
@@ -316,8 +444,8 @@ static void TestBemHeatEq_optimized_mexFunction(int nlhs, mxArray *plhs[], int n
   BoundaryElementHeatEquation_initialize(&emlrtContextGlobal);
   st.tls = emlrtRootTLSGlobal;
   /* Check for proper number of arguments. */
-  if (nrhs != 6) {
-    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 6, mxCHAR_CLASS, 23, "TestBemHeatEq_optimized");
+  if (nrhs != 7) {
+    emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:WrongNumberOfInputs", 5, mxINT32_CLASS, 7, mxCHAR_CLASS, 23, "TestBemHeatEq_optimized");
   } else if (nlhs > 2) {
     emlrtErrMsgIdAndTxt(&st, "EMLRT:runTime:TooManyOutputArguments", 3, mxCHAR_CLASS, 23, "TestBemHeatEq_optimized");
   }
@@ -343,7 +471,7 @@ void BoundaryElementHeatEquation_atexit_wrapper(void)
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
   emlrtMexFunction method;
-  method = emlrtGetMethod(nrhs, prhs, emlrtEntryPoints, 10);
+  method = emlrtGetMethod(nrhs, prhs, emlrtEntryPoints, 14);
   /* Initialize the memory manager. */
   mexAtExit(BoundaryElementHeatEquation_atexit_wrapper);
   /* Dispatch the entry-point. */

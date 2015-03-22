@@ -10,6 +10,10 @@
 #include "Acoeff.h"
 #include "Bcoeff.h"
 #include "CalculateA1B1B1Star.h"
+#include "CalculateABBStarD.h"
+#include "CalculateC.h"
+#include "CalculateHeatSolution.h"
+#include "CalculateXY.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -30,39 +34,39 @@ static emlrtRSInfo h_emlrtRSI = { 15, "Bcoeff",
 static emlrtRSInfo i_emlrtRSI = { 16, "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m" };
 
-static emlrtBCInfo n_emlrtBCI = { -1, -1, 7, 7, "timePoints", "Bcoeff",
+static emlrtBCInfo n_emlrtBCI = { -1, -1, 7, 7, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
 static emlrtDCInfo b_emlrtDCI = { 7, 7, "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 1 };
 
-static emlrtBCInfo o_emlrtBCI = { -1, -1, 9, 15, "timePoints", "Bcoeff",
+static emlrtBCInfo o_emlrtBCI = { -1, -1, 9, 15, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
-static emlrtBCInfo p_emlrtBCI = { -1, -1, 9, 34, "timePoints", "Bcoeff",
+static emlrtBCInfo p_emlrtBCI = { -1, -1, 9, 29, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
-static emlrtBCInfo q_emlrtBCI = { -1, -1, 11, 15, "timePoints", "Bcoeff",
+static emlrtBCInfo q_emlrtBCI = { -1, -1, 11, 15, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
-static emlrtBCInfo r_emlrtBCI = { -1, -1, 11, 33, "timePoints", "Bcoeff",
+static emlrtBCInfo r_emlrtBCI = { -1, -1, 11, 28, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
-static emlrtBCInfo s_emlrtBCI = { -1, -1, 14, 10, "timePoints", "Bcoeff",
+static emlrtBCInfo s_emlrtBCI = { -1, -1, 14, 10, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
-static emlrtBCInfo t_emlrtBCI = { -1, -1, 15, 33, "timePoints", "Bcoeff",
+static emlrtBCInfo t_emlrtBCI = { -1, -1, 15, 33, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
-static emlrtBCInfo u_emlrtBCI = { -1, -1, 16, 33, "timePoints", "Bcoeff",
+static emlrtBCInfo u_emlrtBCI = { -1, -1, 16, 33, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
-static emlrtBCInfo v_emlrtBCI = { -1, -1, 12, 33, "timePoints", "Bcoeff",
+static emlrtBCInfo v_emlrtBCI = { -1, -1, 12, 33, "gridT", "Bcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
 
 /* Function Definitions */
 real_T Bcoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
-              const emxArray_real_T *timePoints)
+              const emxArray_real_T *gridT)
 {
   real_T vals;
   int32_T k;
@@ -84,19 +88,19 @@ real_T Bcoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
   /*  for the index j which describes the time steps timePoints_j, at time t and space */
   /*  point x */
   /*  timePoints is a vector describing the time descritized domain */
-  k = timePoints->size[1];
+  k = gridT->size[1];
   i1 = (int32_T)emlrtIntegerCheckFastR2012b(j, &b_emlrtDCI, sp);
-  if (t <= timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
-       &n_emlrtBCI, sp) - 1]) {
+  if (t <= gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k, &n_emlrtBCI,
+       sp) - 1]) {
     vals = 0.0;
   } else {
-    k = timePoints->size[1];
+    k = gridT->size[1];
     i1 = (int32_T)j;
-    b_x[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
+    b_x[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
                &o_emlrtBCI, sp) - 1]);
-    k = timePoints->size[1];
+    k = gridT->size[1];
     i1 = (int32_T)((uint32_T)j + 1U);
-    b_x[1] = (t <= timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
+    b_x[1] = (t <= gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
                &p_emlrtBCI, sp) - 1]);
     b_x[2] = (x == ksi);
     y = true;
@@ -114,13 +118,13 @@ real_T Bcoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
     if (y) {
       vals = 0.0;
     } else {
-      k = timePoints->size[1];
+      k = gridT->size[1];
       i1 = (int32_T)j;
-      b_x[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
+      b_x[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
                  &q_emlrtBCI, sp) - 1]);
-      k = timePoints->size[1];
+      k = gridT->size[1];
       i1 = (int32_T)((uint32_T)j + 1U);
-      b_x[1] = (t <= timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
+      b_x[1] = (t <= gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
                  &r_emlrtBCI, sp) - 1]);
       b_x[2] = (x != ksi);
       y = true;
@@ -137,9 +141,9 @@ real_T Bcoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
 
       if (y) {
         st.site = &g_emlrtRSI;
-        k = timePoints->size[1];
+        k = gridT->size[1];
         i1 = (int32_T)j;
-        c_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
+        c_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
           &v_emlrtBCI, &st) - 1];
         if (c_x < 0.0) {
           b_st.site = &f_emlrtRSI;
@@ -149,14 +153,14 @@ real_T Bcoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
         vals = -scalar_erf(muDoubleScalarAbs(x - ksi) / (2.0 *
           muDoubleScalarSqrt(c_x))) / 2.0;
       } else {
-        k = timePoints->size[1];
+        k = gridT->size[1];
         i1 = (int32_T)((uint32_T)j + 1U);
-        if (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
+        if (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
              &s_emlrtBCI, sp) - 1]) {
           st.site = &h_emlrtRSI;
-          k = timePoints->size[1];
+          k = gridT->size[1];
           i1 = (int32_T)j;
-          c_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
+          c_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
             &t_emlrtBCI, &st) - 1];
           if (c_x < 0.0) {
             b_st.site = &f_emlrtRSI;
@@ -164,9 +168,9 @@ real_T Bcoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
           }
 
           st.site = &i_emlrtRSI;
-          k = timePoints->size[1];
+          k = gridT->size[1];
           i1 = (int32_T)((uint32_T)j + 1U);
-          d_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
+          d_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i1, 1, k,
             &u_emlrtBCI, &st) - 1];
           if (d_x < 0.0) {
             b_st.site = &f_emlrtRSI;

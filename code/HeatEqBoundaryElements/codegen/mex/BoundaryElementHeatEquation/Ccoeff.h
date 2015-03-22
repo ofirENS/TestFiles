@@ -22,9 +22,9 @@
 
 /* Function Declarations */
 extern void Ccoeff(const emlrtStack *sp, real_T k, const emxArray_real_T *x,
-                   real_T t, real_T spacePoints, emxArray_real_T *vals);
+                   real_T t, real_T gridX, emxArray_real_T *vals);
 extern real_T b_Ccoeff(const emlrtStack *sp, real_T k, real_T x, real_T t, const
-  emxArray_real_T *spacePoints);
+  emxArray_real_T *gridX);
 
 #ifdef __WATCOMC__
 

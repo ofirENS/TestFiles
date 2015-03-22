@@ -21,8 +21,8 @@
 #include "BoundaryElementHeatEquation_types.h"
 
 /* Function Declarations */
-extern void Cone(const emlrtStack *sp, const emxArray_real_T *x, const
-                 emxArray_real_T *spacePoints, const emxArray_real_T *t,
+extern void Cone(const emlrtStack *sp, real_T k, const emxArray_real_T *x, const
+                 emxArray_real_T *gridX, const emxArray_real_T *t,
                  emxArray_real_T *vals);
 
 #endif

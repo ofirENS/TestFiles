@@ -21,17 +21,6 @@
 #include "BoundaryElementHeatEquation_types.h"
 
 /* Function Declarations */
-extern real_T b_eml_xnrm2(const emlrtStack *sp, int32_T n, const emxArray_real_T
-  *x, int32_T ix0);
-
-#ifdef __WATCOMC__
-
-#pragma aux b_eml_xnrm2 value [8087];
-
-#endif
-
-extern void b_eml_xscal(const emlrtStack *sp, int32_T n, real_T a,
-  emxArray_real_T *x, int32_T ix0);
 extern void b_mrdivide(const emlrtStack *sp, emxArray_real_T *A, const
   emxArray_real_T *B);
 extern real_T eml_div(real_T x, real_T y);
@@ -55,6 +44,17 @@ extern real_T eml_matlab_zlarfg(void);
 
 #endif
 
+extern real_T eml_xnrm2(const emlrtStack *sp, int32_T n, const emxArray_real_T
+  *x, int32_T ix0);
+
+#ifdef __WATCOMC__
+
+#pragma aux eml_xnrm2 value [8087];
+
+#endif
+
+extern void eml_xscal(const emlrtStack *sp, int32_T n, real_T a, emxArray_real_T
+                      *x, int32_T ix0);
 extern void mrdivide(const emlrtStack *sp, const emxArray_real_T *A, const
                      emxArray_real_T *B, emxArray_real_T *y);
 extern void warn_singular(const emlrtStack *sp);

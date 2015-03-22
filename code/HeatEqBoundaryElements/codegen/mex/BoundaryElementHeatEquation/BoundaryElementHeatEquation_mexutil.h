@@ -23,6 +23,8 @@
 /* Function Declarations */
 extern void b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   emlrtMsgIdentifier *parentId, char_T y[14]);
+extern void b_error(const emlrtStack *sp, const mxArray *b, emlrtMCInfo
+                    *location);
 extern const mxArray *b_sprintf(const emlrtStack *sp, const mxArray *b, const
   mxArray *c, const mxArray *d, emlrtMCInfo *location);
 extern const mxArray *c_message(const emlrtStack *sp, const mxArray *b, const
@@ -32,7 +34,6 @@ extern const mxArray *c_sprintf(const emlrtStack *sp, const mxArray *b, const
 extern void emlrt_marshallIn(const emlrtStack *sp, const mxArray *d_sprintf,
   const char_T *identifier, char_T y[14]);
 extern const mxArray *emlrt_marshallOut(const real_T u);
-extern void error(const emlrtStack *sp, const mxArray *b, emlrtMCInfo *location);
 extern void m_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
   emlrtMsgIdentifier *msgId, char_T ret[14]);
 extern const mxArray *message(const emlrtStack *sp, const mxArray *b,

@@ -10,6 +10,10 @@
 #include "Acoeff.h"
 #include "Bcoeff.h"
 #include "CalculateA1B1B1Star.h"
+#include "CalculateABBStarD.h"
+#include "CalculateC.h"
+#include "CalculateHeatSolution.h"
+#include "CalculateXY.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -28,15 +32,22 @@ void b_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
   emlrtDestroyArray(&u);
 }
 
+void b_error(const emlrtStack *sp, const mxArray *b, emlrtMCInfo *location)
+{
+  const mxArray *pArray;
+  pArray = b;
+  emlrtCallMATLABR2012b(sp, 0, NULL, 1, &pArray, "error", true, location);
+}
+
 const mxArray *b_sprintf(const emlrtStack *sp, const mxArray *b, const mxArray
   *c, const mxArray *d, emlrtMCInfo *location)
 {
   const mxArray *pArrays[3];
-  const mxArray *m22;
+  const mxArray *m23;
   pArrays[0] = b;
   pArrays[1] = c;
   pArrays[2] = d;
-  return emlrtCallMATLABR2012b(sp, 1, &m22, 3, pArrays, "sprintf", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m23, 3, pArrays, "sprintf", true,
     location);
 }
 
@@ -44,11 +55,11 @@ const mxArray *c_message(const emlrtStack *sp, const mxArray *b, const mxArray
   *c, const mxArray *d, emlrtMCInfo *location)
 {
   const mxArray *pArrays[3];
-  const mxArray *m24;
+  const mxArray *m25;
   pArrays[0] = b;
   pArrays[1] = c;
   pArrays[2] = d;
-  return emlrtCallMATLABR2012b(sp, 1, &m24, 3, pArrays, "message", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m25, 3, pArrays, "message", true,
     location);
 }
 
@@ -56,10 +67,10 @@ const mxArray *c_sprintf(const emlrtStack *sp, const mxArray *b, const mxArray
   *c, emlrtMCInfo *location)
 {
   const mxArray *pArrays[2];
-  const mxArray *m23;
+  const mxArray *m24;
   pArrays[0] = b;
   pArrays[1] = c;
-  return emlrtCallMATLABR2012b(sp, 1, &m23, 2, pArrays, "sprintf", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m24, 2, pArrays, "sprintf", true,
     location);
 }
 
@@ -76,30 +87,23 @@ void emlrt_marshallIn(const emlrtStack *sp, const mxArray *d_sprintf, const
 const mxArray *emlrt_marshallOut(const real_T u)
 {
   const mxArray *y;
-  const mxArray *m14;
+  const mxArray *m16;
   y = NULL;
-  m14 = emlrtCreateDoubleScalar(u);
-  emlrtAssign(&y, m14);
+  m16 = emlrtCreateDoubleScalar(u);
+  emlrtAssign(&y, m16);
   return y;
-}
-
-void error(const emlrtStack *sp, const mxArray *b, emlrtMCInfo *location)
-{
-  const mxArray *pArray;
-  pArray = b;
-  emlrtCallMATLABR2012b(sp, 0, NULL, 1, &pArray, "error", true, location);
 }
 
 void m_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
   emlrtMsgIdentifier *msgId, char_T ret[14])
 {
-  int32_T iv67[2];
-  int32_T i82;
-  for (i82 = 0; i82 < 2; i82++) {
-    iv67[i82] = 1 + 13 * i82;
+  int32_T iv65[2];
+  int32_T i94;
+  for (i94 = 0; i94 < 2; i94++) {
+    iv65[i94] = 1 + 13 * i94;
   }
 
-  emlrtCheckBuiltInR2012b(sp, msgId, src, "char", false, 2U, iv67);
+  emlrtCheckBuiltInR2012b(sp, msgId, src, "char", false, 2U, iv65);
   emlrtImportCharArray(src, ret, 14);
   emlrtDestroyArray(&src);
 }
@@ -108,9 +112,9 @@ const mxArray *message(const emlrtStack *sp, const mxArray *b, emlrtMCInfo
   *location)
 {
   const mxArray *pArray;
-  const mxArray *m20;
+  const mxArray *m21;
   pArray = b;
-  return emlrtCallMATLABR2012b(sp, 1, &m20, 1, &pArray, "message", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m21, 1, &pArray, "message", true,
     location);
 }
 

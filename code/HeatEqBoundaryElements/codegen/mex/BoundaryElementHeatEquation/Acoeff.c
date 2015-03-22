@@ -10,6 +10,10 @@
 #include "Acoeff.h"
 #include "Bcoeff.h"
 #include "CalculateA1B1B1Star.h"
+#include "CalculateABBStarD.h"
+#include "CalculateC.h"
+#include "CalculateHeatSolution.h"
+#include "CalculateXY.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -19,9 +23,9 @@
 #include "TestBemHeatEq_optimized.h"
 #include "eml_error.h"
 #include "BoundaryElementHeatEquation_emxutil.h"
+#include "erf.h"
 #include "abs.h"
 #include "rdivide.h"
-#include "erf.h"
 #include "mrdivide.h"
 #include "mpower.h"
 #include "all.h"
@@ -44,87 +48,87 @@ static emlrtRSInfo d_emlrtRSI = { 16, "Acoeff",
 static emlrtRSInfo e_emlrtRSI = { 17, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRSInfo r_emlrtRSI = { 8, "Acoeff",
+static emlrtRSInfo pe_emlrtRSI = { 8, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRSInfo s_emlrtRSI = { 10, "Acoeff",
+static emlrtRSInfo qe_emlrtRSI = { 10, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRSInfo t_emlrtRSI = { 12, "Acoeff",
+static emlrtRSInfo re_emlrtRSI = { 12, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRSInfo u_emlrtRSI = { 13, "Acoeff",
+static emlrtRSInfo se_emlrtRSI = { 13, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRSInfo v_emlrtRSI = { 15, "Acoeff",
+static emlrtRSInfo te_emlrtRSI = { 15, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRSInfo w_emlrtRSI = { 18, "Acoeff",
+static emlrtRSInfo ue_emlrtRSI = { 18, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRTEInfo g_emlrtRTEI = { 1, 17, "Acoeff",
+static emlrtRTEInfo bb_emlrtRTEI = { 1, 17, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRTEInfo h_emlrtRTEI = { 11, 5, "Acoeff",
+static emlrtRTEInfo cb_emlrtRTEI = { 11, 5, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtRTEInfo i_emlrtRTEI = { 17, 5, "Acoeff",
+static emlrtRTEInfo db_emlrtRTEI = { 17, 5, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtBCInfo emlrtBCI = { -1, -1, 14, 47, "timePoints", "Acoeff",
+static emlrtBCInfo emlrtBCI = { -1, -1, 14, 42, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo b_emlrtBCI = { -1, -1, 14, 20, "timePoints", "Acoeff",
+static emlrtBCInfo b_emlrtBCI = { -1, -1, 14, 20, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo c_emlrtBCI = { -1, -1, 9, 20, "timePoints", "Acoeff",
+static emlrtBCInfo c_emlrtBCI = { -1, -1, 9, 20, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo d_emlrtBCI = { -1, -1, 6, 7, "timePoints", "Acoeff",
+static emlrtBCInfo d_emlrtBCI = { -1, -1, 6, 7, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
 static emlrtDCInfo emlrtDCI = { 6, 7, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 1 };
 
-static emlrtBCInfo e_emlrtBCI = { -1, -1, 8, 15, "timePoints", "Acoeff",
+static emlrtBCInfo e_emlrtBCI = { -1, -1, 8, 15, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo f_emlrtBCI = { -1, -1, 8, 34, "timePoints", "Acoeff",
+static emlrtBCInfo f_emlrtBCI = { -1, -1, 8, 29, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo g_emlrtBCI = { -1, -1, 10, 15, "timePoints", "Acoeff",
+static emlrtBCInfo g_emlrtBCI = { -1, -1, 10, 15, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo h_emlrtBCI = { -1, -1, 10, 34, "timePoints", "Acoeff",
+static emlrtBCInfo h_emlrtBCI = { -1, -1, 10, 29, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo i_emlrtBCI = { -1, -1, 13, 15, "timePoints", "Acoeff",
+static emlrtBCInfo i_emlrtBCI = { -1, -1, 13, 15, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo j_emlrtBCI = { -1, -1, 15, 15, "timePoints", "Acoeff",
+static emlrtBCInfo j_emlrtBCI = { -1, -1, 15, 15, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo k_emlrtBCI = { -1, -1, 16, 31, "timePoints", "Acoeff",
+static emlrtBCInfo k_emlrtBCI = { -1, -1, 16, 31, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo l_emlrtBCI = { -1, -1, 17, 31, "timePoints", "Acoeff",
+static emlrtBCInfo l_emlrtBCI = { -1, -1, 17, 31, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtBCInfo m_emlrtBCI = { -1, -1, 11, 31, "timePoints", "Acoeff",
+static emlrtBCInfo m_emlrtBCI = { -1, -1, 11, 31, "gridT", "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m", 0 };
 
-static emlrtECInfo e_emlrtECI = { 2, 18, 39, "Acoeff",
+static emlrtECInfo m_emlrtECI = { 2, 18, 39, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtECInfo f_emlrtECI = { 2, 18, 86, "Acoeff",
+static emlrtECInfo n_emlrtECI = { 2, 18, 86, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
-static emlrtECInfo g_emlrtECI = { 2, 12, 39, "Acoeff",
+static emlrtECInfo o_emlrtECI = { 2, 12, 39, "Acoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Acoeff.m" };
 
 /* Function Definitions */
 real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
-              const emxArray_real_T *timePoints)
+              const emxArray_real_T *gridT)
 {
   real_T vals;
   int32_T k;
@@ -150,19 +154,19 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
   /*  for the index j which describes the time steps timePoints_j, at time t and space */
   /*  point x */
   /*  timePoints is a vector describing the time descritized domain */
-  k = timePoints->size[1];
+  k = gridT->size[1];
   i0 = (int32_T)emlrtIntegerCheckFastR2012b(j, &emlrtDCI, sp);
-  if (t <= timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
-       &d_emlrtBCI, sp) - 1]) {
+  if (t <= gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k, &d_emlrtBCI,
+       sp) - 1]) {
     vals = 0.0;
   } else {
-    k = timePoints->size[1];
+    k = gridT->size[1];
     i0 = (int32_T)j;
-    b_x[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+    b_x[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
                &e_emlrtBCI, sp) - 1]);
-    k = timePoints->size[1];
+    k = gridT->size[1];
     i0 = (int32_T)((uint32_T)j + 1U);
-    b_x[1] = (t <= timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+    b_x[1] = (t <= gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
                &f_emlrtBCI, sp) - 1]);
     b_x[2] = (x == ksi);
     y = true;
@@ -178,10 +182,10 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
     }
 
     if (y) {
-      k = timePoints->size[1];
+      k = gridT->size[1];
       i0 = (int32_T)j;
       emlrtDynamicBoundsCheckFastR2012b(i0, 1, k, &c_emlrtBCI, sp);
-      c_x = (t - timePoints->data[(int32_T)j - 1]) / 3.1415926535897931;
+      c_x = (t - gridT->data[(int32_T)j - 1]) / 3.1415926535897931;
       st.site = &emlrtRSI;
       if (c_x < 0.0) {
         b_st.site = &f_emlrtRSI;
@@ -190,13 +194,13 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
 
       vals = muDoubleScalarSqrt(c_x);
     } else {
-      k = timePoints->size[1];
+      k = gridT->size[1];
       i0 = (int32_T)j;
-      b_x[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+      b_x[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
                  &g_emlrtBCI, sp) - 1]);
-      k = timePoints->size[1];
+      k = gridT->size[1];
       i0 = (int32_T)((uint32_T)j + 1U);
-      b_x[1] = (t <= timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+      b_x[1] = (t <= gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
                  &h_emlrtBCI, sp) - 1]);
       b_x[2] = (x != ksi);
       y = true;
@@ -213,9 +217,9 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
 
       if (y) {
         st.site = &b_emlrtRSI;
-        k = timePoints->size[1];
+        k = gridT->size[1];
         i0 = (int32_T)j;
-        c_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+        c_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
           &m_emlrtBCI, &st) - 1];
         if (c_x < 0.0) {
           b_st.site = &f_emlrtRSI;
@@ -227,10 +231,10 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
           (muDoubleScalarExp(-(z0 * z0)) / z0 - 1.7724538509055159 * scalar_erf
            (z0));
       } else {
-        k = timePoints->size[1];
+        k = gridT->size[1];
         i0 = (int32_T)((uint32_T)j + 1U);
-        d_x[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1,
-                   k, &i_emlrtBCI, sp) - 1]);
+        d_x[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+                   &i_emlrtBCI, sp) - 1]);
         d_x[1] = (x == ksi);
         y = true;
         k = 0;
@@ -245,15 +249,14 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
         }
 
         if (y) {
-          k = timePoints->size[1];
+          k = gridT->size[1];
           i0 = (int32_T)j;
           emlrtDynamicBoundsCheckFastR2012b(i0, 1, k, &b_emlrtBCI, sp);
-          c_x = (t - timePoints->data[(int32_T)j - 1]) / 3.1415926535897931;
-          k = timePoints->size[1];
+          c_x = (t - gridT->data[(int32_T)j - 1]) / 3.1415926535897931;
+          k = gridT->size[1];
           i0 = (int32_T)(j + 1.0);
           emlrtDynamicBoundsCheckFastR2012b(i0, 1, k, &emlrtBCI, sp);
-          z1 = (t - timePoints->data[(int32_T)(j + 1.0) - 1]) /
-            3.1415926535897931;
+          z1 = (t - gridT->data[(int32_T)(j + 1.0) - 1]) / 3.1415926535897931;
           st.site = &c_emlrtRSI;
           if (c_x < 0.0) {
             b_st.site = &f_emlrtRSI;
@@ -268,10 +271,10 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
 
           vals = muDoubleScalarSqrt(c_x) - muDoubleScalarSqrt(z1);
         } else {
-          k = timePoints->size[1];
+          k = gridT->size[1];
           i0 = (int32_T)((uint32_T)j + 1U);
-          d_x[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1,
-                     k, &j_emlrtBCI, sp) - 1]);
+          d_x[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+                     &j_emlrtBCI, sp) - 1]);
           d_x[1] = (x != ksi);
           y = true;
           k = 0;
@@ -287,10 +290,10 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
 
           if (y) {
             st.site = &d_emlrtRSI;
-            k = timePoints->size[1];
+            k = gridT->size[1];
             i0 = (int32_T)j;
-            c_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1,
-              k, &k_emlrtBCI, &st) - 1];
+            c_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+              &k_emlrtBCI, &st) - 1];
             if (c_x < 0.0) {
               b_st.site = &f_emlrtRSI;
               eml_error(&b_st);
@@ -298,10 +301,10 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
 
             z0 = muDoubleScalarAbs(x - ksi) / (2.0 * muDoubleScalarSqrt(c_x));
             st.site = &e_emlrtRSI;
-            k = timePoints->size[1];
+            k = gridT->size[1];
             i0 = (int32_T)((uint32_T)j + 1U);
-            c_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1,
-              k, &l_emlrtBCI, &st) - 1];
+            c_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i0, 1, k,
+              &l_emlrtBCI, &st) - 1];
             if (c_x < 0.0) {
               b_st.site = &f_emlrtRSI;
               eml_error(&b_st);
@@ -323,8 +326,7 @@ real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,
 }
 
 void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T *
-              x, real_T t, const emxArray_real_T *timePoints, emxArray_real_T
-              *vals)
+              x, real_T t, const emxArray_real_T *gridT, emxArray_real_T *vals)
 {
   emxArray_real_T *b;
   emxArray_real_T *r8;
@@ -342,20 +344,20 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
   emxArray_real_T *g_x;
   emxArray_real_T *r10;
   const mxArray *y;
-  static const int32_T iv4[2] = { 1, 45 };
+  static const int32_T iv16[2] = { 1, 45 };
 
-  const mxArray *m0;
-  char_T cv1[45];
-  static const char_T cv2[45] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
+  const mxArray *m6;
+  char_T cv18[45];
+  static const char_T cv19[45] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
     'l', 'b', 'o', 'x', ':', 'm', 't', 'i', 'm', 'e', 's', '_', 'n', 'o', 'D',
     'y', 'n', 'a', 'm', 'i', 'c', 'S', 'c', 'a', 'l', 'a', 'r', 'E', 'x', 'p',
     'a', 'n', 's', 'i', 'o', 'n' };
 
   const mxArray *b_y;
-  static const int32_T iv5[2] = { 1, 21 };
+  static const int32_T iv17[2] = { 1, 21 };
 
-  char_T cv3[21];
-  static const char_T cv4[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
+  char_T cv20[21];
+  static const char_T cv21[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
     'L', 'A', 'B', ':', 'i', 'n', 'n', 'e', 'r', 'd', 'i', 'm' };
 
   emxArray_boolean_T *d_t;
@@ -370,10 +372,10 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
   emxArray_real_T *c_z0;
   emxArray_real_T *k_x;
   const mxArray *c_y;
-  static const int32_T iv6[2] = { 1, 45 };
+  static const int32_T iv18[2] = { 1, 45 };
 
   const mxArray *d_y;
-  static const int32_T iv7[2] = { 1, 21 };
+  static const int32_T iv19[2] = { 1, 21 };
 
   emlrtStack st;
   emlrtStack b_st;
@@ -388,49 +390,49 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
   d_st.prev = &b_st;
   d_st.tls = b_st.tls;
   emlrtHeapReferenceStackEnterFcnR2012b(sp);
-  emxInit_real_T(sp, &b, 2, &g_emlrtRTEI, true);
-  emxInit_real_T(sp, &r8, 2, &g_emlrtRTEI, true);
+  emxInit_real_T(sp, &b, 2, &bb_emlrtRTEI, true);
+  emxInit_real_T(sp, &r8, 2, &bb_emlrtRTEI, true);
 
   /*  evaluate the coefficient A at the  boundary ksi=0 or ksi=1; */
   /*  for the index j which describes the time steps timePoints_j, at time t and space */
   /*  point x */
   /*  timePoints is a vector describing the time descritized domain */
-  b_x = timePoints->size[1];
+  b_x = gridT->size[1];
   i = (int32_T)emlrtIntegerCheckFastR2012b(j, &emlrtDCI, sp);
-  if (t <= timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x,
-       &d_emlrtBCI, sp) - 1]) {
+  if (t <= gridT->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x, &d_emlrtBCI,
+       sp) - 1]) {
     b_x = vals->size[0] * vals->size[1];
     vals->size[0] = 1;
     vals->size[1] = 1;
     emxEnsureCapacity(sp, (emxArray__common *)vals, b_x, (int32_T)sizeof(real_T),
-                      &g_emlrtRTEI);
+                      &bb_emlrtRTEI);
     vals->data[0] = 0.0;
   } else {
-    emxInit_boolean_T(sp, &b_t, 2, &g_emlrtRTEI, true);
+    emxInit_boolean_T(sp, &b_t, 2, &bb_emlrtRTEI, true);
     b_x = b_t->size[0] * b_t->size[1];
     b_t->size[0] = 1;
     b_t->size[1] = 2 + x->size[1];
     emxEnsureCapacity(sp, (emxArray__common *)b_t, b_x, (int32_T)sizeof
-                      (boolean_T), &g_emlrtRTEI);
-    b_x = timePoints->size[1];
+                      (boolean_T), &bb_emlrtRTEI);
+    b_x = gridT->size[1];
     i = (int32_T)j;
-    b_t->data[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i, 1,
-      b_x, &e_emlrtBCI, sp) - 1]);
-    b_x = timePoints->size[1];
+    b_t->data[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x,
+      &e_emlrtBCI, sp) - 1]);
+    b_x = gridT->size[1];
     i = (int32_T)((uint32_T)j + 1U);
-    b_t->data[b_t->size[0]] = (t <= timePoints->
+    b_t->data[b_t->size[0]] = (t <= gridT->
       data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x, &f_emlrtBCI, sp) - 1]);
     i = x->size[1];
     for (b_x = 0; b_x < i; b_x++) {
       b_t->data[b_t->size[0] * (b_x + 2)] = (x->data[x->size[0] * b_x] == ksi);
     }
 
-    st.site = &r_emlrtRSI;
+    st.site = &pe_emlrtRSI;
     if (all(&st, b_t)) {
-      b_x = timePoints->size[1];
+      b_x = gridT->size[1];
       i = (int32_T)j;
       emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x, &c_emlrtBCI, sp);
-      c_x = (t - timePoints->data[(int32_T)j - 1]) / 3.1415926535897931;
+      c_x = (t - gridT->data[(int32_T)j - 1]) / 3.1415926535897931;
       st.site = &emlrtRSI;
       if (c_x < 0.0) {
         b_st.site = &f_emlrtRSI;
@@ -441,60 +443,60 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
       vals->size[0] = 1;
       vals->size[1] = 1;
       emxEnsureCapacity(sp, (emxArray__common *)vals, b_x, (int32_T)sizeof
-                        (real_T), &g_emlrtRTEI);
+                        (real_T), &bb_emlrtRTEI);
       vals->data[0] = muDoubleScalarSqrt(c_x);
     } else {
-      emxInit_boolean_T(sp, &c_t, 2, &g_emlrtRTEI, true);
+      emxInit_boolean_T(sp, &c_t, 2, &bb_emlrtRTEI, true);
       b_x = c_t->size[0] * c_t->size[1];
       c_t->size[0] = 1;
       c_t->size[1] = 2 + x->size[1];
       emxEnsureCapacity(sp, (emxArray__common *)c_t, b_x, (int32_T)sizeof
-                        (boolean_T), &g_emlrtRTEI);
-      b_x = timePoints->size[1];
+                        (boolean_T), &bb_emlrtRTEI);
+      b_x = gridT->size[1];
       i = (int32_T)j;
-      c_t->data[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i,
-        1, b_x, &g_emlrtBCI, sp) - 1]);
-      b_x = timePoints->size[1];
+      c_t->data[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i, 1,
+        b_x, &g_emlrtBCI, sp) - 1]);
+      b_x = gridT->size[1];
       i = (int32_T)((uint32_T)j + 1U);
-      c_t->data[c_t->size[0]] = (t <= timePoints->
+      c_t->data[c_t->size[0]] = (t <= gridT->
         data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x, &h_emlrtBCI, sp) - 1]);
       i = x->size[1];
       for (b_x = 0; b_x < i; b_x++) {
         c_t->data[c_t->size[0] * (b_x + 2)] = (x->data[x->size[0] * b_x] != ksi);
       }
 
-      emxInit_real_T(sp, &z0, 2, &h_emlrtRTEI, true);
-      emxInit_real_T(sp, &d_x, 2, &g_emlrtRTEI, true);
-      st.site = &s_emlrtRSI;
+      emxInit_real_T(sp, &z0, 2, &cb_emlrtRTEI, true);
+      emxInit_real_T(sp, &d_x, 2, &bb_emlrtRTEI, true);
+      st.site = &qe_emlrtRSI;
       if (all(&st, c_t)) {
         st.site = &b_emlrtRSI;
-        b_x = timePoints->size[1];
+        b_x = gridT->size[1];
         i = (int32_T)j;
-        c_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x,
+        c_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x,
           &m_emlrtBCI, &st) - 1];
         if (c_x < 0.0) {
           b_st.site = &f_emlrtRSI;
           eml_error(&b_st);
         }
 
-        emxInit_real_T(&st, &e_x, 2, &g_emlrtRTEI, true);
+        emxInit_real_T(&st, &e_x, 2, &bb_emlrtRTEI, true);
         b_x = e_x->size[0] * e_x->size[1];
         e_x->size[0] = 1;
         e_x->size[1] = x->size[1];
         emxEnsureCapacity(sp, (emxArray__common *)e_x, b_x, (int32_T)sizeof
-                          (real_T), &g_emlrtRTEI);
+                          (real_T), &bb_emlrtRTEI);
         i = x->size[0] * x->size[1];
         for (b_x = 0; b_x < i; b_x++) {
           e_x->data[b_x] = x->data[b_x] - ksi;
         }
 
-        emxInit_real_T(sp, &r9, 2, &g_emlrtRTEI, true);
+        emxInit_real_T(sp, &r9, 2, &bb_emlrtRTEI, true);
         b_abs(sp, e_x, r9);
         b_x = r8->size[0] * r8->size[1];
         r8->size[0] = 1;
         r8->size[1] = r9->size[1];
         emxEnsureCapacity(sp, (emxArray__common *)r8, b_x, (int32_T)sizeof
-                          (real_T), &g_emlrtRTEI);
+                          (real_T), &bb_emlrtRTEI);
         i = r9->size[0] * r9->size[1];
         emxFree_real_T(&e_x);
         for (b_x = 0; b_x < i; b_x++) {
@@ -503,12 +505,12 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
 
         emxFree_real_T(&r9);
         rdivide(sp, r8, 2.0 * muDoubleScalarSqrt(c_x), z0);
-        st.site = &t_emlrtRSI;
+        st.site = &re_emlrtRSI;
         mpower(&st, z0, d_x);
         b_x = d_x->size[0] * d_x->size[1];
         d_x->size[0] = 1;
         emxEnsureCapacity(sp, (emxArray__common *)d_x, b_x, (int32_T)sizeof
-                          (real_T), &g_emlrtRTEI);
+                          (real_T), &bb_emlrtRTEI);
         i = d_x->size[0];
         b_x = d_x->size[1];
         i *= b_x;
@@ -520,7 +522,7 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
         b->size[0] = 1;
         b->size[1] = d_x->size[1];
         emxEnsureCapacity(sp, (emxArray__common *)b, b_x, (int32_T)sizeof(real_T),
-                          &g_emlrtRTEI);
+                          &bb_emlrtRTEI);
         i = d_x->size[0] * d_x->size[1];
         for (b_x = 0; b_x < i; b_x++) {
           b->data[b_x] = d_x->data[b_x];
@@ -530,13 +532,13 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
           b->data[i] = muDoubleScalarExp(b->data[i]);
         }
 
-        st.site = &t_emlrtRSI;
+        st.site = &re_emlrtRSI;
         b_mrdivide(&st, b, z0);
         for (b_x = 0; b_x < 2; b_x++) {
           i = d_x->size[0] * d_x->size[1];
           d_x->size[b_x] = z0->size[b_x];
           emxEnsureCapacity(sp, (emxArray__common *)d_x, i, (int32_T)sizeof
-                            (real_T), &c_emlrtRTEI);
+                            (real_T), &ab_emlrtRTEI);
         }
 
         for (i = 0; i < z0->size[1]; i++) {
@@ -546,7 +548,7 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
         b_x = d_x->size[0] * d_x->size[1];
         d_x->size[0] = 1;
         emxEnsureCapacity(sp, (emxArray__common *)d_x, b_x, (int32_T)sizeof
-                          (real_T), &g_emlrtRTEI);
+                          (real_T), &bb_emlrtRTEI);
         i = d_x->size[0];
         b_x = d_x->size[1];
         i *= b_x;
@@ -562,25 +564,25 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
           f_x[b_x] = d_x->size[b_x];
         }
 
-        emxInit_real_T(sp, &g_x, 2, &g_emlrtRTEI, true);
-        emlrtSizeEqCheck2DFastR2012b(b_b, f_x, &g_emlrtECI, sp);
+        emxInit_real_T(sp, &g_x, 2, &bb_emlrtRTEI, true);
+        emlrtSizeEqCheck2DFastR2012b(b_b, f_x, &o_emlrtECI, sp);
         b_x = g_x->size[0] * g_x->size[1];
         g_x->size[0] = 1;
         g_x->size[1] = x->size[1];
         emxEnsureCapacity(sp, (emxArray__common *)g_x, b_x, (int32_T)sizeof
-                          (real_T), &g_emlrtRTEI);
+                          (real_T), &bb_emlrtRTEI);
         i = x->size[0] * x->size[1];
         for (b_x = 0; b_x < i; b_x++) {
           g_x->data[b_x] = x->data[b_x] - ksi;
         }
 
-        emxInit_real_T(sp, &r10, 2, &g_emlrtRTEI, true);
+        emxInit_real_T(sp, &r10, 2, &bb_emlrtRTEI, true);
         b_abs(sp, g_x, r10);
         b_x = r8->size[0] * r8->size[1];
         r8->size[0] = 1;
         r8->size[1] = r10->size[1];
         emxEnsureCapacity(sp, (emxArray__common *)r8, b_x, (int32_T)sizeof
-                          (real_T), &g_emlrtRTEI);
+                          (real_T), &bb_emlrtRTEI);
         i = r10->size[0] * r10->size[1];
         emxFree_real_T(&g_x);
         for (b_x = 0; b_x < i; b_x++) {
@@ -589,11 +591,11 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
 
         emxFree_real_T(&r10);
         rdivide(sp, r8, 3.5449077018110318, vals);
-        st.site = &t_emlrtRSI;
+        st.site = &re_emlrtRSI;
         b_x = b->size[0] * b->size[1];
         b->size[0] = 1;
         emxEnsureCapacity(&st, (emxArray__common *)b, b_x, (int32_T)sizeof
-                          (real_T), &g_emlrtRTEI);
+                          (real_T), &bb_emlrtRTEI);
         i = b->size[0];
         b_x = b->size[1];
         i *= b_x;
@@ -601,32 +603,32 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
           b->data[b_x] -= d_x->data[b_x];
         }
 
-        b_st.site = &fb_emlrtRSI;
+        b_st.site = &he_emlrtRSI;
         if (!(vals->size[1] == 1)) {
           if ((vals->size[1] == 1) || (b->size[1] == 1)) {
             y = NULL;
-            m0 = emlrtCreateCharArray(2, iv4);
+            m6 = emlrtCreateCharArray(2, iv16);
             for (i = 0; i < 45; i++) {
-              cv1[i] = cv2[i];
+              cv18[i] = cv19[i];
             }
 
-            emlrtInitCharArrayR2013a(&b_st, 45, m0, cv1);
-            emlrtAssign(&y, m0);
-            c_st.site = &jg_emlrtRSI;
+            emlrtInitCharArrayR2013a(&b_st, 45, m6, cv18);
+            emlrtAssign(&y, m6);
+            c_st.site = &eh_emlrtRSI;
             d_st.site = &ug_emlrtRSI;
-            error(&c_st, message(&d_st, y, &f_emlrtMCI), &g_emlrtMCI);
+            b_error(&c_st, message(&d_st, y, &j_emlrtMCI), &k_emlrtMCI);
           } else {
             b_y = NULL;
-            m0 = emlrtCreateCharArray(2, iv5);
+            m6 = emlrtCreateCharArray(2, iv17);
             for (i = 0; i < 21; i++) {
-              cv3[i] = cv4[i];
+              cv20[i] = cv21[i];
             }
 
-            emlrtInitCharArrayR2013a(&b_st, 21, m0, cv3);
-            emlrtAssign(&b_y, m0);
-            c_st.site = &kg_emlrtRSI;
+            emlrtInitCharArrayR2013a(&b_st, 21, m6, cv20);
+            emlrtAssign(&b_y, m6);
+            c_st.site = &fh_emlrtRSI;
             d_st.site = &vg_emlrtRSI;
-            error(&c_st, message(&d_st, b_y, &h_emlrtMCI), &i_emlrtMCI);
+            b_error(&c_st, message(&d_st, b_y, &l_emlrtMCI), &m_emlrtMCI);
           }
         }
 
@@ -635,39 +637,38 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
         vals->size[0] = 1;
         vals->size[1] = b->size[1];
         emxEnsureCapacity(&st, (emxArray__common *)vals, b_x, (int32_T)sizeof
-                          (real_T), &g_emlrtRTEI);
+                          (real_T), &bb_emlrtRTEI);
         i = b->size[1];
         for (b_x = 0; b_x < i; b_x++) {
           vals->data[vals->size[0] * b_x] = c_x * b->data[b->size[0] * b_x];
         }
       } else {
-        emxInit_boolean_T(sp, &d_t, 2, &g_emlrtRTEI, true);
+        emxInit_boolean_T(sp, &d_t, 2, &bb_emlrtRTEI, true);
         b_x = d_t->size[0] * d_t->size[1];
         d_t->size[0] = 1;
         d_t->size[1] = 1 + x->size[1];
         emxEnsureCapacity(sp, (emxArray__common *)d_t, b_x, (int32_T)sizeof
-                          (boolean_T), &g_emlrtRTEI);
-        b_x = timePoints->size[1];
+                          (boolean_T), &bb_emlrtRTEI);
+        b_x = gridT->size[1];
         i = (int32_T)((uint32_T)j + 1U);
-        d_t->data[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i,
-          1, b_x, &i_emlrtBCI, sp) - 1]);
+        d_t->data[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i, 1,
+          b_x, &i_emlrtBCI, sp) - 1]);
         i = x->size[1];
         for (b_x = 0; b_x < i; b_x++) {
           d_t->data[d_t->size[0] * (b_x + 1)] = (x->data[x->size[0] * b_x] ==
             ksi);
         }
 
-        st.site = &u_emlrtRSI;
+        st.site = &se_emlrtRSI;
         if (all(&st, d_t)) {
-          b_x = timePoints->size[1];
+          b_x = gridT->size[1];
           i = (int32_T)j;
           emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x, &b_emlrtBCI, sp);
-          c_x = (t - timePoints->data[(int32_T)j - 1]) / 3.1415926535897931;
-          b_x = timePoints->size[1];
+          c_x = (t - gridT->data[(int32_T)j - 1]) / 3.1415926535897931;
+          b_x = gridT->size[1];
           i = (int32_T)(j + 1.0);
           emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x, &emlrtBCI, sp);
-          h_x = (t - timePoints->data[(int32_T)(j + 1.0) - 1]) /
-            3.1415926535897931;
+          h_x = (t - gridT->data[(int32_T)(j + 1.0) - 1]) / 3.1415926535897931;
           st.site = &c_emlrtRSI;
           if (c_x < 0.0) {
             b_st.site = &f_emlrtRSI;
@@ -684,55 +685,55 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
           vals->size[0] = 1;
           vals->size[1] = 1;
           emxEnsureCapacity(sp, (emxArray__common *)vals, b_x, (int32_T)sizeof
-                            (real_T), &g_emlrtRTEI);
+                            (real_T), &bb_emlrtRTEI);
           vals->data[0] = muDoubleScalarSqrt(c_x) - muDoubleScalarSqrt(h_x);
         } else {
-          emxInit_boolean_T(sp, &e_t, 2, &g_emlrtRTEI, true);
+          emxInit_boolean_T(sp, &e_t, 2, &bb_emlrtRTEI, true);
           b_x = e_t->size[0] * e_t->size[1];
           e_t->size[0] = 1;
           e_t->size[1] = 1 + x->size[1];
           emxEnsureCapacity(sp, (emxArray__common *)e_t, b_x, (int32_T)sizeof
-                            (boolean_T), &g_emlrtRTEI);
-          b_x = timePoints->size[1];
+                            (boolean_T), &bb_emlrtRTEI);
+          b_x = gridT->size[1];
           i = (int32_T)((uint32_T)j + 1U);
-          e_t->data[0] = (t > timePoints->data[emlrtDynamicBoundsCheckFastR2012b
-                          (i, 1, b_x, &j_emlrtBCI, sp) - 1]);
+          e_t->data[0] = (t > gridT->data[emlrtDynamicBoundsCheckFastR2012b(i, 1,
+            b_x, &j_emlrtBCI, sp) - 1]);
           i = x->size[1];
           for (b_x = 0; b_x < i; b_x++) {
             e_t->data[e_t->size[0] * (b_x + 1)] = (x->data[x->size[0] * b_x] !=
               ksi);
           }
 
-          st.site = &v_emlrtRSI;
+          st.site = &te_emlrtRSI;
           if (all(&st, e_t)) {
             st.site = &d_emlrtRSI;
-            b_x = timePoints->size[1];
+            b_x = gridT->size[1];
             i = (int32_T)j;
-            c_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i, 1,
-              b_x, &k_emlrtBCI, &st) - 1];
+            c_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x,
+              &k_emlrtBCI, &st) - 1];
             if (c_x < 0.0) {
               b_st.site = &f_emlrtRSI;
               eml_error(&b_st);
             }
 
-            emxInit_real_T(&st, &i_x, 2, &g_emlrtRTEI, true);
+            emxInit_real_T(&st, &i_x, 2, &bb_emlrtRTEI, true);
             b_x = i_x->size[0] * i_x->size[1];
             i_x->size[0] = 1;
             i_x->size[1] = x->size[1];
             emxEnsureCapacity(sp, (emxArray__common *)i_x, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = x->size[0] * x->size[1];
             for (b_x = 0; b_x < i; b_x++) {
               i_x->data[b_x] = x->data[b_x] - ksi;
             }
 
-            emxInit_real_T(sp, &r11, 2, &g_emlrtRTEI, true);
+            emxInit_real_T(sp, &r11, 2, &bb_emlrtRTEI, true);
             b_abs(sp, i_x, r11);
             b_x = r8->size[0] * r8->size[1];
             r8->size[0] = 1;
             r8->size[1] = r11->size[1];
             emxEnsureCapacity(sp, (emxArray__common *)r8, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = r11->size[0] * r11->size[1];
             emxFree_real_T(&i_x);
             for (b_x = 0; b_x < i; b_x++) {
@@ -742,33 +743,33 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
             emxFree_real_T(&r11);
             rdivide(sp, r8, 2.0 * muDoubleScalarSqrt(c_x), z0);
             st.site = &e_emlrtRSI;
-            b_x = timePoints->size[1];
+            b_x = gridT->size[1];
             i = (int32_T)((uint32_T)j + 1U);
-            c_x = t - timePoints->data[emlrtDynamicBoundsCheckFastR2012b(i, 1,
-              b_x, &l_emlrtBCI, &st) - 1];
+            c_x = t - gridT->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, b_x,
+              &l_emlrtBCI, &st) - 1];
             if (c_x < 0.0) {
               b_st.site = &f_emlrtRSI;
               eml_error(&b_st);
             }
 
-            emxInit_real_T(&st, &j_x, 2, &g_emlrtRTEI, true);
+            emxInit_real_T(&st, &j_x, 2, &bb_emlrtRTEI, true);
             b_x = j_x->size[0] * j_x->size[1];
             j_x->size[0] = 1;
             j_x->size[1] = x->size[1];
             emxEnsureCapacity(sp, (emxArray__common *)j_x, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = x->size[0] * x->size[1];
             for (b_x = 0; b_x < i; b_x++) {
               j_x->data[b_x] = x->data[b_x] - ksi;
             }
 
-            emxInit_real_T(sp, &r12, 2, &g_emlrtRTEI, true);
+            emxInit_real_T(sp, &r12, 2, &bb_emlrtRTEI, true);
             b_abs(sp, j_x, r12);
             b_x = r8->size[0] * r8->size[1];
             r8->size[0] = 1;
             r8->size[1] = r12->size[1];
             emxEnsureCapacity(sp, (emxArray__common *)r8, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = r12->size[0] * r12->size[1];
             emxFree_real_T(&j_x);
             for (b_x = 0; b_x < i; b_x++) {
@@ -776,14 +777,14 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
             }
 
             emxFree_real_T(&r12);
-            emxInit_real_T(sp, &z1, 2, &i_emlrtRTEI, true);
+            emxInit_real_T(sp, &z1, 2, &db_emlrtRTEI, true);
             rdivide(sp, r8, 2.0 * muDoubleScalarSqrt(c_x), z1);
-            st.site = &w_emlrtRSI;
+            st.site = &ue_emlrtRSI;
             mpower(&st, z0, d_x);
             b_x = d_x->size[0] * d_x->size[1];
             d_x->size[0] = 1;
             emxEnsureCapacity(sp, (emxArray__common *)d_x, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = d_x->size[0];
             b_x = d_x->size[1];
             i *= b_x;
@@ -795,7 +796,7 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
             b->size[0] = 1;
             b->size[1] = d_x->size[1];
             emxEnsureCapacity(sp, (emxArray__common *)b, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = d_x->size[0] * d_x->size[1];
             for (b_x = 0; b_x < i; b_x++) {
               b->data[b_x] = d_x->data[b_x];
@@ -805,14 +806,14 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
               b->data[i] = muDoubleScalarExp(b->data[i]);
             }
 
-            st.site = &w_emlrtRSI;
+            st.site = &ue_emlrtRSI;
             b_mrdivide(&st, b, z0);
-            st.site = &w_emlrtRSI;
+            st.site = &ue_emlrtRSI;
             mpower(&st, z1, d_x);
             b_x = d_x->size[0] * d_x->size[1];
             d_x->size[0] = 1;
             emxEnsureCapacity(sp, (emxArray__common *)d_x, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = d_x->size[0];
             b_x = d_x->size[1];
             i *= b_x;
@@ -824,7 +825,7 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
             r8->size[0] = 1;
             r8->size[1] = d_x->size[1];
             emxEnsureCapacity(sp, (emxArray__common *)r8, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = d_x->size[0] * d_x->size[1];
             for (b_x = 0; b_x < i; b_x++) {
               r8->data[b_x] = d_x->data[b_x];
@@ -834,7 +835,7 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
               r8->data[i] = muDoubleScalarExp(r8->data[i]);
             }
 
-            st.site = &w_emlrtRSI;
+            st.site = &ue_emlrtRSI;
             b_mrdivide(&st, r8, z1);
             for (b_x = 0; b_x < 2; b_x++) {
               b_b[b_x] = b->size[b_x];
@@ -844,13 +845,13 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
               b_z0[b_x] = r8->size[b_x];
             }
 
-            emxInit_real_T(sp, &c_z0, 2, &g_emlrtRTEI, true);
-            emlrtSizeEqCheck2DFastR2012b(b_b, b_z0, &e_emlrtECI, sp);
+            emxInit_real_T(sp, &c_z0, 2, &bb_emlrtRTEI, true);
+            emlrtSizeEqCheck2DFastR2012b(b_b, b_z0, &m_emlrtECI, sp);
             b_x = c_z0->size[0] * c_z0->size[1];
             c_z0->size[0] = 1;
             c_z0->size[1] = z0->size[1];
             emxEnsureCapacity(sp, (emxArray__common *)c_z0, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = z0->size[0] * z0->size[1];
             for (b_x = 0; b_x < i; b_x++) {
               c_z0->data[b_x] = z0->data[b_x];
@@ -868,11 +869,11 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
               f_x[b_x] = d_x->size[b_x];
             }
 
-            emlrtSizeEqCheck2DFastR2012b(b_z0, f_x, &f_emlrtECI, sp);
+            emlrtSizeEqCheck2DFastR2012b(b_z0, f_x, &n_emlrtECI, sp);
             b_x = z0->size[0] * z0->size[1];
             z0->size[0] = 1;
             emxEnsureCapacity(sp, (emxArray__common *)z0, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = z0->size[0];
             b_x = z0->size[1];
             i *= b_x;
@@ -889,13 +890,13 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
               b_z0[b_x] = z0->size[b_x];
             }
 
-            emxInit_real_T(sp, &k_x, 2, &g_emlrtRTEI, true);
-            emlrtSizeEqCheck2DFastR2012b(b_b, b_z0, &e_emlrtECI, sp);
+            emxInit_real_T(sp, &k_x, 2, &bb_emlrtRTEI, true);
+            emlrtSizeEqCheck2DFastR2012b(b_b, b_z0, &m_emlrtECI, sp);
             b_x = k_x->size[0] * k_x->size[1];
             k_x->size[0] = 1;
             k_x->size[1] = x->size[1];
             emxEnsureCapacity(sp, (emxArray__common *)k_x, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = x->size[0] * x->size[1];
             for (b_x = 0; b_x < i; b_x++) {
               k_x->data[b_x] = x->data[b_x] - ksi;
@@ -903,11 +904,11 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
 
             b_abs(sp, k_x, d_x);
             rdivide(sp, d_x, 3.5449077018110318, vals);
-            st.site = &w_emlrtRSI;
+            st.site = &ue_emlrtRSI;
             b_x = b->size[0] * b->size[1];
             b->size[0] = 1;
             emxEnsureCapacity(&st, (emxArray__common *)b, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             i = b->size[0];
             b_x = b->size[1];
             i *= b_x;
@@ -916,32 +917,32 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
               b->data[b_x] = (b->data[b_x] - r8->data[b_x]) + z0->data[b_x];
             }
 
-            b_st.site = &fb_emlrtRSI;
+            b_st.site = &he_emlrtRSI;
             if (!(vals->size[1] == 1)) {
               if ((vals->size[1] == 1) || (b->size[1] == 1)) {
                 c_y = NULL;
-                m0 = emlrtCreateCharArray(2, iv6);
+                m6 = emlrtCreateCharArray(2, iv18);
                 for (i = 0; i < 45; i++) {
-                  cv1[i] = cv2[i];
+                  cv18[i] = cv19[i];
                 }
 
-                emlrtInitCharArrayR2013a(&b_st, 45, m0, cv1);
-                emlrtAssign(&c_y, m0);
-                c_st.site = &jg_emlrtRSI;
+                emlrtInitCharArrayR2013a(&b_st, 45, m6, cv18);
+                emlrtAssign(&c_y, m6);
+                c_st.site = &eh_emlrtRSI;
                 d_st.site = &ug_emlrtRSI;
-                error(&c_st, message(&d_st, c_y, &f_emlrtMCI), &g_emlrtMCI);
+                b_error(&c_st, message(&d_st, c_y, &j_emlrtMCI), &k_emlrtMCI);
               } else {
                 d_y = NULL;
-                m0 = emlrtCreateCharArray(2, iv7);
+                m6 = emlrtCreateCharArray(2, iv19);
                 for (i = 0; i < 21; i++) {
-                  cv3[i] = cv4[i];
+                  cv20[i] = cv21[i];
                 }
 
-                emlrtInitCharArrayR2013a(&b_st, 21, m0, cv3);
-                emlrtAssign(&d_y, m0);
-                c_st.site = &kg_emlrtRSI;
+                emlrtInitCharArrayR2013a(&b_st, 21, m6, cv20);
+                emlrtAssign(&d_y, m6);
+                c_st.site = &fh_emlrtRSI;
                 d_st.site = &vg_emlrtRSI;
-                error(&c_st, message(&d_st, d_y, &h_emlrtMCI), &i_emlrtMCI);
+                b_error(&c_st, message(&d_st, d_y, &l_emlrtMCI), &m_emlrtMCI);
               }
             }
 
@@ -950,7 +951,7 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
             vals->size[0] = 1;
             vals->size[1] = b->size[1];
             emxEnsureCapacity(&st, (emxArray__common *)vals, b_x, (int32_T)
-                              sizeof(real_T), &g_emlrtRTEI);
+                              sizeof(real_T), &bb_emlrtRTEI);
             i = b->size[1];
             for (b_x = 0; b_x < i; b_x++) {
               vals->data[vals->size[0] * b_x] = c_x * b->data[b->size[0] * b_x];
@@ -960,7 +961,7 @@ void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const emxArray_real_T 
             vals->size[0] = 1;
             vals->size[1] = 1;
             emxEnsureCapacity(sp, (emxArray__common *)vals, b_x, (int32_T)sizeof
-                              (real_T), &g_emlrtRTEI);
+                              (real_T), &bb_emlrtRTEI);
             vals->data[0] = 0.0;
           }
 

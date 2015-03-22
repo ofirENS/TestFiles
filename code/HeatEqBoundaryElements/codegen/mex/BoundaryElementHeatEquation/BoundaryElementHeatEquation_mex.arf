@@ -8,6 +8,10 @@ libmwmathutil.lib
 /export:Acoeff
 /export:Bcoeff
 /export:CalculateA1B1B1Star
+/export:CalculateABBStarD
+/export:CalculateC
+/export:CalculateHeatSolution
+/export:CalculateXY
 /export:Ccoeff
 /export:Cone
 /export:Dcoeff
