@@ -22,7 +22,7 @@
 
 /* Function Declarations */
 extern real_T Bcoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x,
-                     real_T t, const emxArray_real_T *timePoints);
+                     real_T t, const emxArray_real_T *gridT);
 
 #ifdef __WATCOMC__
 

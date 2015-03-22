@@ -10,6 +10,10 @@
 #include "Acoeff.h"
 #include "Bcoeff.h"
 #include "CalculateA1B1B1Star.h"
+#include "CalculateABBStarD.h"
+#include "CalculateC.h"
+#include "CalculateHeatSolution.h"
+#include "CalculateXY.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -25,371 +29,495 @@ emlrtRSInfo f_emlrtRSI = { 14, "sqrt",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elfun\\sqrt.m"
 };
 
-emlrtRSInfo n_emlrtRSI = { 4, "Ccoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Ccoeff.m" };
-
-emlrtRSInfo p_emlrtRSI = { 7, "Dcoeff",
+emlrtRSInfo v_emlrtRSI = { 7, "Dcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m" };
 
-emlrtRSInfo q_emlrtRSI = { 9, "Dcoeff",
+emlrtRSInfo w_emlrtRSI = { 10, "Dcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m" };
 
-emlrtRSInfo cb_emlrtRSI = { 22, "eml_int_forloop_overflow_check",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
+emlrtRSInfo bb_emlrtRSI = { 25, "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
 };
 
-emlrtRSInfo fb_emlrtRSI = { 21, "eml_mtimes_helper",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+emlrtRSInfo cb_emlrtRSI = { 26, "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
 };
 
-emlrtRSInfo hb_emlrtRSI = { 42, "eml_lusolve",
+emlrtRSInfo db_emlrtRSI = { 27, "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
+};
+
+emlrtRSInfo eb_emlrtRSI = { 31, "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
+};
+
+emlrtRSInfo mb_emlrtRSI = { 42, "eml_lusolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
 };
 
-emlrtRSInfo kb_emlrtRSI = { 90, "eml_lusolve",
+emlrtRSInfo nb_emlrtRSI = { 92, "eml_lusolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
 };
 
-emlrtRSInfo lb_emlrtRSI = { 92, "eml_lusolve",
+emlrtRSInfo ob_emlrtRSI = { 90, "eml_lusolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
 };
 
-emlrtRSInfo mb_emlrtRSI = { 8, "eml_xgetrf",
+emlrtRSInfo sb_emlrtRSI = { 8, "eml_xgetrf",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\eml_xgetrf.m"
 };
 
-emlrtRSInfo nb_emlrtRSI = { 8, "eml_lapack_xgetrf",
+emlrtRSInfo tb_emlrtRSI = { 8, "eml_lapack_xgetrf",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\internal\\eml_lapack_xgetrf.m"
 };
 
-emlrtRSInfo ob_emlrtRSI = { 30, "eml_matlab_zgetrf",
+emlrtRSInfo ub_emlrtRSI = { 23, "eml_matlab_zgetrf",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
 };
 
-emlrtRSInfo pb_emlrtRSI = { 23, "eml_matlab_zgetrf",
+emlrtRSInfo vb_emlrtRSI = { 30, "eml_matlab_zgetrf",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
 };
 
-emlrtRSInfo qb_emlrtRSI = { 21, "colon",
+emlrtRSInfo wb_emlrtRSI = { 36, "eml_matlab_zgetrf",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
+};
+
+emlrtRSInfo xb_emlrtRSI = { 44, "eml_matlab_zgetrf",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
+};
+
+emlrtRSInfo yb_emlrtRSI = { 50, "eml_matlab_zgetrf",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
+};
+
+emlrtRSInfo ac_emlrtRSI = { 58, "eml_matlab_zgetrf",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
+};
+
+emlrtRSInfo bc_emlrtRSI = { 21, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-emlrtRSInfo rb_emlrtRSI = { 75, "colon",
+emlrtRSInfo cc_emlrtRSI = { 75, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-emlrtRSInfo sb_emlrtRSI = { 112, "colon",
+emlrtRSInfo dc_emlrtRSI = { 112, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-emlrtRSInfo vb_emlrtRSI = { 241, "colon",
+emlrtRSInfo gc_emlrtRSI = { 241, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-emlrtRSInfo wb_emlrtRSI = { 268, "colon",
+emlrtRSInfo hc_emlrtRSI = { 268, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-emlrtRSInfo xb_emlrtRSI = { 20, "eml_ixamax",
+emlrtRSInfo ic_emlrtRSI = { 22, "eml_int_forloop_overflow_check",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
+};
+
+emlrtRSInfo jc_emlrtRSI = { 20, "eml_ixamax",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_ixamax.m"
 };
 
-emlrtRSInfo yb_emlrtRSI = { 1, "ixamax",
+emlrtRSInfo kc_emlrtRSI = { 1, "ixamax",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\ixamax.p"
 };
 
-emlrtRSInfo ac_emlrtRSI = { 26, "eml_xswap",
+emlrtRSInfo lc_emlrtRSI = { 26, "eml_xswap",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_xswap.m"
 };
 
-emlrtRSInfo bc_emlrtRSI = { 1, "xswap",
+emlrtRSInfo mc_emlrtRSI = { 1, "xswap",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xswap.p"
 };
 
-emlrtRSInfo cc_emlrtRSI = { 1, "xswap",
+emlrtRSInfo nc_emlrtRSI = { 1, "xswap",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+refblas\\xswap.p"
 };
 
-emlrtRSInfo dc_emlrtRSI = { 41, "eml_xgeru",
+emlrtRSInfo oc_emlrtRSI = { 41, "eml_xgeru",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_xgeru.m"
 };
 
-emlrtRSInfo ec_emlrtRSI = { 1, "xgeru",
+emlrtRSInfo pc_emlrtRSI = { 1, "xgeru",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xgeru.p"
 };
 
-emlrtRSInfo fc_emlrtRSI = { 1, "xger",
+emlrtRSInfo qc_emlrtRSI = { 1, "xger",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xger.p"
 };
 
-emlrtRSInfo hc_emlrtRSI = { 54, "eml_xtrsm",
+emlrtRSInfo sc_emlrtRSI = { 54, "eml_xtrsm",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_xtrsm.m"
 };
 
-emlrtRSInfo ic_emlrtRSI = { 1, "xtrsm",
+emlrtRSInfo tc_emlrtRSI = { 1, "xtrsm",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xtrsm.p"
 };
 
-emlrtRSInfo jc_emlrtRSI = { 37, "eml_qrsolve",
+emlrtRSInfo uc_emlrtRSI = { 29, "eml_qrsolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
 };
 
-emlrtRSInfo kc_emlrtRSI = { 38, "eml_qrsolve",
+emlrtRSInfo vc_emlrtRSI = { 38, "eml_qrsolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
 };
 
-emlrtRSInfo lc_emlrtRSI = { 29, "eml_qrsolve",
+emlrtRSInfo wc_emlrtRSI = { 37, "eml_qrsolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
 };
 
-emlrtRSInfo mc_emlrtRSI = { 8, "eml_xgeqp3",
+emlrtRSInfo xc_emlrtRSI = { 8, "eml_xgeqp3",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\eml_xgeqp3.m"
 };
 
-emlrtRSInfo nc_emlrtRSI = { 8, "eml_lapack_xgeqp3",
+emlrtRSInfo yc_emlrtRSI = { 8, "eml_lapack_xgeqp3",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\internal\\eml_lapack_xgeqp3.m"
 };
 
-emlrtRSInfo oc_emlrtRSI = { 66, "eml_matlab_zgeqp3",
+emlrtRSInfo ad_emlrtRSI = { 19, "eml_matlab_zgeqp3",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
 };
 
-emlrtRSInfo pc_emlrtRSI = { 64, "eml_matlab_zgeqp3",
+emlrtRSInfo bd_emlrtRSI = { 25, "eml_matlab_zgeqp3",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
 };
 
-emlrtRSInfo qc_emlrtRSI = { 37, "eml_matlab_zgeqp3",
+emlrtRSInfo cd_emlrtRSI = { 31, "eml_matlab_zgeqp3",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
 };
 
-emlrtRSInfo rc_emlrtRSI = { 32, "eml_matlab_zgeqp3",
+emlrtRSInfo dd_emlrtRSI = { 32, "eml_matlab_zgeqp3",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
 };
 
-emlrtRSInfo sc_emlrtRSI = { 25, "eml_matlab_zgeqp3",
+emlrtRSInfo ed_emlrtRSI = { 37, "eml_matlab_zgeqp3",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
 };
 
-emlrtRSInfo tc_emlrtRSI = { 19, "eml_xnrm2",
+emlrtRSInfo fd_emlrtRSI = { 47, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRSInfo gd_emlrtRSI = { 51, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRSInfo hd_emlrtRSI = { 64, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRSInfo id_emlrtRSI = { 66, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRSInfo jd_emlrtRSI = { 74, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRSInfo kd_emlrtRSI = { 79, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRSInfo ld_emlrtRSI = { 93, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRSInfo md_emlrtRSI = { 100, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRSInfo nd_emlrtRSI = { 19, "eml_xnrm2",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_xnrm2.m"
 };
 
-emlrtRSInfo uc_emlrtRSI = { 1, "xnrm2",
+emlrtRSInfo od_emlrtRSI = { 1, "xnrm2",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xnrm2.p"
 };
 
-emlrtRSInfo vc_emlrtRSI = { 18, "eml_matlab_zlarfg",
+emlrtRSInfo pd_emlrtRSI = { 18, "eml_matlab_zlarfg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarfg.m"
 };
 
-emlrtRSInfo wc_emlrtRSI = { 39, "eml_matlab_zlarfg",
+emlrtRSInfo qd_emlrtRSI = { 39, "eml_matlab_zlarfg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarfg.m"
 };
 
-emlrtRSInfo xc_emlrtRSI = { 51, "eml_matlab_zlarfg",
+emlrtRSInfo rd_emlrtRSI = { 51, "eml_matlab_zlarfg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarfg.m"
 };
 
-emlrtRSInfo yc_emlrtRSI = { 66, "eml_matlab_zlarfg",
+emlrtRSInfo sd_emlrtRSI = { 66, "eml_matlab_zlarfg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarfg.m"
 };
 
-emlrtRSInfo ad_emlrtRSI = { 69, "eml_matlab_zlarfg",
+emlrtRSInfo td_emlrtRSI = { 69, "eml_matlab_zlarfg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarfg.m"
 };
 
-emlrtRSInfo bd_emlrtRSI = { 79, "eml_matlab_zlarfg",
+emlrtRSInfo ud_emlrtRSI = { 79, "eml_matlab_zlarfg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarfg.m"
 };
 
-emlrtRSInfo wd_emlrtRSI = { 67, "diag",
+emlrtRSInfo ge_emlrtRSI = { 68, "eml_mtimes_helper",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+};
+
+emlrtRSInfo he_emlrtRSI = { 21, "eml_mtimes_helper",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+};
+
+emlrtRSInfo ie_emlrtRSI = { 54, "eml_xgemm",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_xgemm.m"
+};
+
+emlrtRSInfo je_emlrtRSI = { 1, "xgemm",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xgemm.p"
+};
+
+emlrtRSInfo ne_emlrtRSI = { 72, "sum",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\datafun\\sum.m"
+};
+
+emlrtRSInfo oe_emlrtRSI = { 76, "sum",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\datafun\\sum.m"
+};
+
+emlrtRSInfo lf_emlrtRSI = { 67, "diag",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\diag.m"
 };
 
-emlrtRSInfo xd_emlrtRSI = { 74, "diag",
+emlrtRSInfo mf_emlrtRSI = { 74, "diag",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\diag.m"
 };
 
-emlrtRSInfo of_emlrtRSI = { 36, "eml_matlab_zgetrf",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
-};
-
-emlrtRSInfo pf_emlrtRSI = { 44, "eml_matlab_zgetrf",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
-};
-
-emlrtRSInfo qf_emlrtRSI = { 50, "eml_matlab_zgetrf",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
-};
-
-emlrtRSInfo rf_emlrtRSI = { 58, "eml_matlab_zgetrf",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgetrf.m"
-};
-
-emlrtRSInfo sf_emlrtRSI = { 19, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRSInfo tf_emlrtRSI = { 31, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRSInfo uf_emlrtRSI = { 47, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRSInfo vf_emlrtRSI = { 51, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRSInfo wf_emlrtRSI = { 74, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRSInfo xf_emlrtRSI = { 79, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRSInfo yf_emlrtRSI = { 93, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRSInfo ag_emlrtRSI = { 100, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtMCInfo f_emlrtMCI = { 99, 13, "eml_mtimes_helper",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
-};
-
-emlrtMCInfo g_emlrtMCI = { 98, 23, "eml_mtimes_helper",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
-};
-
-emlrtMCInfo h_emlrtMCI = { 104, 13, "eml_mtimes_helper",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
-};
-
-emlrtMCInfo i_emlrtMCI = { 103, 23, "eml_mtimes_helper",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
-};
-
-emlrtMCInfo o_emlrtMCI = { 29, 23, "eml_flt2str",
+emlrtMCInfo h_emlrtMCI = { 29, 23, "eml_flt2str",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_flt2str.m"
 };
 
-emlrtMCInfo p_emlrtMCI = { 29, 15, "eml_flt2str",
+emlrtMCInfo i_emlrtMCI = { 29, 15, "eml_flt2str",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_flt2str.m"
 };
 
-emlrtRTEInfo c_emlrtRTEI = { 18, 1, "eml_erfcore",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\specfun\\eml_erfcore.m"
+emlrtMCInfo j_emlrtMCI = { 99, 13, "eml_mtimes_helper",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
 };
 
-emlrtRTEInfo f_emlrtRTEI = { 5, 1, "Dcoeff",
+emlrtMCInfo k_emlrtMCI = { 98, 23, "eml_mtimes_helper",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+};
+
+emlrtMCInfo l_emlrtMCI = { 104, 13, "eml_mtimes_helper",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+};
+
+emlrtMCInfo m_emlrtMCI = { 103, 23, "eml_mtimes_helper",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+};
+
+emlrtMCInfo u_emlrtMCI = { 16, 1, "error",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\lang\\error.m"
+};
+
+emlrtRTEInfo c_emlrtRTEI = { 5, 1, "Dcoeff",
   "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m" };
 
-emlrtRTEInfo n_emlrtRTEI = { 1, 24, "eml_qrsolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
+emlrtRTEInfo i_emlrtRTEI = { 55, 1, "sum",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\datafun\\sum.m"
 };
 
-emlrtRTEInfo o_emlrtRTEI = { 16, 1, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRTEInfo qb_emlrtRTEI = { 1, 19, "eml_lusolve",
+emlrtRTEInfo n_emlrtRTEI = { 1, 19, "eml_lusolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
 };
 
-emlrtRTEInfo rb_emlrtRTEI = { 28, 5, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRTEInfo sb_emlrtRTEI = { 29, 5, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtRTEInfo tb_emlrtRTEI = { 24, 1, "eml_matlab_zgeqp3",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
-};
-
-emlrtECInfo emlrtECI = { 2, 4, 13, "Ccoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Ccoeff.m" };
-
-emlrtBCInfo fb_emlrtBCI = { -1, -1, 4, 20, "spacePoints", "Ccoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Ccoeff.m", 0 };
-
-emlrtBCInfo gb_emlrtBCI = { -1, -1, 4, 56, "spacePoints", "Ccoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Ccoeff.m", 0 };
-
-emlrtBCInfo hb_emlrtBCI = { -1, -1, 7, 15, "y", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo ib_emlrtBCI = { -1, -1, 7, 1, "a", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo lb_emlrtBCI = { -1, -1, 9, 22, "y", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo mb_emlrtBCI = { -1, -1, 9, 5, "a", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo nb_emlrtBCI = { -1, -1, 10, 26, "a", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo ob_emlrtBCI = { -1, -1, 10, 34, "f", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo pb_emlrtBCI = { -1, -1, 10, 42, "a", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo qb_emlrtBCI = { -1, -1, 10, 52, "f", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo rb_emlrtBCI = { -1, -1, 10, 64, "y", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtBCInfo sb_emlrtBCI = { -1, -1, 10, 72, "y", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
-
-emlrtRTEInfo wb_emlrtRTEI = { 106, 5, "eml_qrsolve",
+emlrtRTEInfo p_emlrtRTEI = { 1, 24, "eml_qrsolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
 };
 
-emlrtRTEInfo xb_emlrtRTEI = { 99, 5, "eml_qrsolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
+emlrtRTEInfo q_emlrtRTEI = { 16, 1, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
 };
 
-emlrtBCInfo ub_emlrtBCI = { -1, -1, 1, 1, "", "xnrm2",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xnrm2.p",
+emlrtRTEInfo r_emlrtRTEI = { 28, 5, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRTEInfo s_emlrtRTEI = { 29, 5, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRTEInfo t_emlrtRTEI = { 24, 1, "eml_matlab_zgeqp3",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zgeqp3.m"
+};
+
+emlrtRTEInfo ab_emlrtRTEI = { 18, 1, "eml_erfcore",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\specfun\\eml_erfcore.m"
+};
+
+emlrtBCInfo hb_emlrtBCI = { -1, -1, 11, 52, "f", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo ib_emlrtBCI = { -1, -1, 11, 34, "f", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo jb_emlrtBCI = { -1, -1, 7, 1, "a", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo kb_emlrtBCI = { -1, -1, 7, 15, "y", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo gc_emlrtBCI = { -1, -1, 10, 5, "a", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo hc_emlrtBCI = { -1, -1, 10, 22, "y", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo ic_emlrtBCI = { -1, -1, 11, 26, "a", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo jc_emlrtBCI = { -1, -1, 11, 42, "a", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo kc_emlrtBCI = { -1, -1, 11, 64, "y", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo lc_emlrtBCI = { -1, -1, 11, 72, "y", "Dcoeff",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+
+emlrtBCInfo sc_emlrtBCI = { -1, -1, 27, 49, "f", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
   0 };
 
-emlrtBCInfo cf_emlrtBCI = { -1, -1, 1, 1, "", "xtrsm",
+emlrtBCInfo tc_emlrtBCI = { -1, -1, 16, 1, "eta", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo uc_emlrtBCI = { -1, -1, 17, 1, "eta", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo vc_emlrtBCI = { -1, -1, 33, 11, "u", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo wc_emlrtBCI = { -1, -1, 33, 13, "u", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo xc_emlrtBCI = { -1, -1, 33, 33, "eta", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo yc_emlrtBCI = { -1, -1, 31, 43, "x", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo ad_emlrtBCI = { -1, -1, 31, 48, "t", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo bd_emlrtBCI = { -1, -1, 31, 60, "u0", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo cd_emlrtBCI = { -1, -1, 25, 42, "x", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo dd_emlrtBCI = { -1, -1, 25, 47, "t", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo ed_emlrtBCI = { -1, -1, 25, 59, "q0j", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo fd_emlrtBCI = { -1, -1, 25, 85, "x", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo gd_emlrtBCI = { -1, -1, 25, 90, "t", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo hd_emlrtBCI = { -1, -1, 25, 102, "q1j", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo id_emlrtBCI = { -1, -1, 26, 31, "x", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo jd_emlrtBCI = { -1, -1, 26, 36, "t", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo kd_emlrtBCI = { -1, -1, 26, 48, "h0j", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo ld_emlrtBCI = { -1, -1, 26, 74, "x", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo md_emlrtBCI = { -1, -1, 26, 79, "t", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo nd_emlrtBCI = { -1, -1, 26, 92, "h1j", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo od_emlrtBCI = { -1, -1, 27, 31, "x", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo pd_emlrtBCI = { -1, -1, 27, 36, "t", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo qd_emlrtBCI = { -1, -1, 27, 55, "r", "CalculateHeatSolution",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  0 };
+
+emlrtBCInfo td_emlrtBCI = { -1, -1, 1, 1, "", "xgemm",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xgemm.p",
+  0 };
+
+emlrtBCInfo yd_emlrtBCI = { -1, -1, 1, 1, "", "xtrsm",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xtrsm.p",
   0 };
 
-emlrtBCInfo df_emlrtBCI = { -1, -1, 1, 1, "", "ixamax",
+emlrtBCInfo ae_emlrtBCI = { -1, -1, 1, 1, "", "ixamax",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\ixamax.p",
   0 };
 
-emlrtBCInfo ef_emlrtBCI = { -1, -1, 1, 1, "", "xger",
+emlrtBCInfo be_emlrtBCI = { -1, -1, 1, 1, "", "xger",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xger.p",
   0 };
 
-emlrtBCInfo ff_emlrtBCI = { -1, -1, 1, 1, "", "xswap",
+emlrtBCInfo ce_emlrtBCI = { -1, -1, 1, 1, "", "xswap",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+refblas\\xswap.p",
   0 };
 
-emlrtRTEInfo bc_emlrtRTEI = { 82, 21, "eml_qrsolve",
+emlrtRTEInfo jc_emlrtRTEI = { 106, 5, "eml_qrsolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
 };
 
-emlrtRTEInfo cc_emlrtRTEI = { 76, 17, "eml_qrsolve",
+emlrtRTEInfo kc_emlrtRTEI = { 99, 5, "eml_qrsolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
 };
 
-emlrtRSInfo jg_emlrtRSI = { 98, "eml_mtimes_helper",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+emlrtRTEInfo lc_emlrtRTEI = { 82, 21, "eml_qrsolve",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
 };
 
-emlrtRSInfo kg_emlrtRSI = { 103, "eml_mtimes_helper",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+emlrtRTEInfo mc_emlrtRTEI = { 76, 17, "eml_qrsolve",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_qrsolve.m"
 };
+
+emlrtBCInfo de_emlrtBCI = { -1, -1, 1, 1, "", "xnrm2",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xnrm2.p",
+  0 };
 
 emlrtRSInfo ug_emlrtRSI = { 99, "eml_mtimes_helper",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
@@ -399,7 +527,19 @@ emlrtRSInfo vg_emlrtRSI = { 104, "eml_mtimes_helper",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
 };
 
-emlrtRSInfo fh_emlrtRSI = { 29, "eml_flt2str",
+emlrtRSInfo dh_emlrtRSI = { 16, "error",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\lang\\error.m"
+};
+
+emlrtRSInfo eh_emlrtRSI = { 98, "eml_mtimes_helper",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+};
+
+emlrtRSInfo fh_emlrtRSI = { 103, "eml_mtimes_helper",
+  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\eml_mtimes_helper.m"
+};
+
+emlrtRSInfo ph_emlrtRSI = { 29, "eml_flt2str",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_flt2str.m"
 };
 

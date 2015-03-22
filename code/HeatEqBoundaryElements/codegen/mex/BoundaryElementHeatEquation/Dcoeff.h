@@ -23,7 +23,7 @@
 /* Function Declarations */
 extern real_T Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
                      const emxArray_real_T *x, real_T t, const emxArray_real_T
-                     *timePoints, const emxArray_real_T *f);
+                     *gridT, const emxArray_real_T *f);
 
 #ifdef __WATCOMC__
 
@@ -32,30 +32,11 @@ extern real_T Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
 #endif
 
 extern real_T b_Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
-  real_T t, const emxArray_real_T *timePoints, const emxArray_real_T *f);
+  real_T x, real_T t, const emxArray_real_T *gridT, const emxArray_real_T *f);
 
 #ifdef __WATCOMC__
 
 #pragma aux b_Dcoeff value [8087];
-
-#endif
-
-extern real_T c_Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
-  real_T t, const emxArray_real_T *timePoints, const emxArray_real_T *f);
-
-#ifdef __WATCOMC__
-
-#pragma aux c_Dcoeff value [8087];
-
-#endif
-
-extern real_T d_Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j,
-  real_T x, real_T t, const emxArray_real_T *timePoints, const emxArray_real_T
-  *f);
-
-#ifdef __WATCOMC__
-
-#pragma aux d_Dcoeff value [8087];
 
 #endif
 #endif

@@ -10,6 +10,10 @@
 #include "Acoeff.h"
 #include "Bcoeff.h"
 #include "CalculateA1B1B1Star.h"
+#include "CalculateABBStarD.h"
+#include "CalculateC.h"
+#include "CalculateHeatSolution.h"
+#include "CalculateXY.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -23,7 +27,7 @@
 #include "BoundaryElementHeatEquation_data.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo s_emlrtRTEI = { 1, 14, "diag",
+static emlrtRTEInfo ib_emlrtRTEI = { 1, 14, "diag",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\diag.m"
 };
 
@@ -32,7 +36,7 @@ void b_diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
 {
   int32_T unnamed_idx_0;
   int32_T unnamed_idx_1;
-  int32_T i26;
+  int32_T i77;
   boolean_T overflow;
   emlrtStack st;
   emlrtStack b_st;
@@ -42,20 +46,20 @@ void b_diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
   b_st.tls = st.tls;
   unnamed_idx_0 = v->size[1] + 1;
   unnamed_idx_1 = v->size[1] + 1;
-  i26 = d->size[0] * d->size[1];
+  i77 = d->size[0] * d->size[1];
   d->size[0] = unnamed_idx_0;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i26, (int32_T)sizeof(real_T),
-                    &s_emlrtRTEI);
-  i26 = d->size[0] * d->size[1];
+  emxEnsureCapacity(sp, (emxArray__common *)d, i77, (int32_T)sizeof(real_T),
+                    &ib_emlrtRTEI);
+  i77 = d->size[0] * d->size[1];
   d->size[1] = unnamed_idx_1;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i26, (int32_T)sizeof(real_T),
-                    &s_emlrtRTEI);
+  emxEnsureCapacity(sp, (emxArray__common *)d, i77, (int32_T)sizeof(real_T),
+                    &ib_emlrtRTEI);
   unnamed_idx_0 *= unnamed_idx_1;
-  for (i26 = 0; i26 < unnamed_idx_0; i26++) {
-    d->data[i26] = 0.0;
+  for (i77 = 0; i77 < unnamed_idx_0; i77++) {
+    d->data[i77] = 0.0;
   }
 
-  st.site = &xd_emlrtRSI;
+  st.site = &mf_emlrtRSI;
   if (1 > v->size[1]) {
     overflow = false;
   } else {
@@ -63,7 +67,7 @@ void b_diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
   }
 
   if (overflow) {
-    b_st.site = &cb_emlrtRSI;
+    b_st.site = &ic_emlrtRSI;
     check_forloop_overflow_error(&b_st);
   }
 
@@ -76,7 +80,7 @@ void diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
 {
   int32_T unnamed_idx_0;
   int32_T unnamed_idx_1;
-  int32_T i25;
+  int32_T i76;
   boolean_T overflow;
   emlrtStack st;
   emlrtStack b_st;
@@ -86,20 +90,20 @@ void diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
   b_st.tls = st.tls;
   unnamed_idx_0 = v->size[1] + 1;
   unnamed_idx_1 = v->size[1] + 1;
-  i25 = d->size[0] * d->size[1];
+  i76 = d->size[0] * d->size[1];
   d->size[0] = unnamed_idx_0;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i25, (int32_T)sizeof(real_T),
-                    &s_emlrtRTEI);
-  i25 = d->size[0] * d->size[1];
+  emxEnsureCapacity(sp, (emxArray__common *)d, i76, (int32_T)sizeof(real_T),
+                    &ib_emlrtRTEI);
+  i76 = d->size[0] * d->size[1];
   d->size[1] = unnamed_idx_1;
-  emxEnsureCapacity(sp, (emxArray__common *)d, i25, (int32_T)sizeof(real_T),
-                    &s_emlrtRTEI);
+  emxEnsureCapacity(sp, (emxArray__common *)d, i76, (int32_T)sizeof(real_T),
+                    &ib_emlrtRTEI);
   unnamed_idx_0 *= unnamed_idx_1;
-  for (i25 = 0; i25 < unnamed_idx_0; i25++) {
-    d->data[i25] = 0.0;
+  for (i76 = 0; i76 < unnamed_idx_0; i76++) {
+    d->data[i76] = 0.0;
   }
 
-  st.site = &wd_emlrtRSI;
+  st.site = &lf_emlrtRSI;
   if (1 > v->size[1]) {
     overflow = false;
   } else {
@@ -107,7 +111,7 @@ void diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)
   }
 
   if (overflow) {
-    b_st.site = &cb_emlrtRSI;
+    b_st.site = &ic_emlrtRSI;
     check_forloop_overflow_error(&b_st);
   }
 

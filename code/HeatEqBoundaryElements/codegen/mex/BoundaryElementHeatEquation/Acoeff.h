@@ -22,7 +22,7 @@
 
 /* Function Declarations */
 extern real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x,
-                     real_T t, const emxArray_real_T *timePoints);
+                     real_T t, const emxArray_real_T *gridT);
 
 #ifdef __WATCOMC__
 
@@ -31,8 +31,8 @@ extern real_T Acoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x,
 #endif
 
 extern void b_Acoeff(const emlrtStack *sp, real_T ksi, real_T j, const
-                     emxArray_real_T *x, real_T t, const emxArray_real_T
-                     *timePoints, emxArray_real_T *vals);
+                     emxArray_real_T *x, real_T t, const emxArray_real_T *gridT,
+                     emxArray_real_T *vals);
 extern real_T b_scalar_erf(real_T x);
 
 #ifdef __WATCOMC__

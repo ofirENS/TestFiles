@@ -14,6 +14,10 @@ SRC_FILES =  \
 	Acoeff.c \
 	Bcoeff.c \
 	CalculateA1B1B1Star.c \
+	CalculateABBStarD.c \
+	CalculateC.c \
+	CalculateHeatSolution.c \
+	CalculateXY.c \
 	Ccoeff.c \
 	Cone.c \
 	Dcoeff.c \
@@ -28,12 +32,13 @@ SRC_FILES =  \
 	abs.c \
 	mpower.c \
 	erf.c \
-	eml_int_forloop_overflow_check.c \
 	colon.c \
+	eml_int_forloop_overflow_check.c \
 	eml_warning.c \
+	sum.c \
 	eye.c \
 	diag.c \
-	sum.c \
+	error.c \
 	mod.c \
 	_coder_BoundaryElementHeatEquation_api.c \
 	BoundaryElementHeatEquation_emxutil.c \

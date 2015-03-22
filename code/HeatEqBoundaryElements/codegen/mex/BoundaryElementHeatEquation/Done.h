@@ -21,9 +21,9 @@
 #include "BoundaryElementHeatEquation_types.h"
 
 /* Function Declarations */
-extern real_T Done(const emlrtStack *sp, real_T k, const emxArray_real_T
-                   *spacePoints, real_T t, const emxArray_real_T *timePoints,
-                   const emxArray_real_T *f);
+extern real_T Done(const emlrtStack *sp, real_T k, const emxArray_real_T *x,
+                   const emxArray_real_T *gridX, real_T t, const emxArray_real_T
+                   *gridT, const emxArray_real_T *f);
 
 #ifdef __WATCOMC__
 
@@ -31,9 +31,10 @@ extern real_T Done(const emlrtStack *sp, real_T k, const emxArray_real_T
 
 #endif
 
-extern void b_Done(const emlrtStack *sp, real_T k, const emxArray_real_T
-                   *spacePoints, const emxArray_real_T *t, const emxArray_real_T
-                   *timePoints, const emxArray_real_T *f, emxArray_real_T *vals);
+extern void b_Done(const emlrtStack *sp, real_T k, const emxArray_real_T *x,
+                   const emxArray_real_T *gridX, const emxArray_real_T *t, const
+                   emxArray_real_T *gridT, const emxArray_real_T *f,
+                   emxArray_real_T *vals);
 
 #endif
 

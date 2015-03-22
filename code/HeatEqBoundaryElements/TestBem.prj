@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.matlabcoder" plugin-version="R2014a_nu">
-  <configuration build-checksum="4219762501" file="D:\Ofir\Work\ENS\TestFiles\code\HeatEqBoundaryElements\TestBem.prj" location="D:\Ofir\Work\ENS\TestFiles\code\HeatEqBoundaryElements" name="TestBem" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
+  <configuration build-checksum="259841421" file="D:\Ofir\Work\ENS\TestFiles\code\HeatEqBoundaryElements\TestBem.prj" location="D:\Ofir\Work\ENS\TestFiles\code\HeatEqBoundaryElements" name="TestBem" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
     <profile key="profile.mex">
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
@@ -335,7 +335,7 @@
     <param.AutoInferUseUnboundedSize>false</param.AutoInferUseUnboundedSize>
     <param.AutoInferVariableSizeThreshold>1024</param.AutoInferVariableSizeThreshold>
     <param.AutoInferUnboundedSizeThreshold>2048</param.AutoInferUnboundedSizeThreshold>
-    <param.AnnotationChecksum>2018694078</param.AnnotationChecksum>
+    <param.AnnotationChecksum>970335107</param.AnnotationChecksum>
     <param.mex.outputfile>BoundaryElementHeatEquation</param.mex.outputfile>
     <param.grt.outputfile>Acoeff</param.grt.outputfile>
     <param.artifact>option.target.artifact.mex</param.artifact>
@@ -466,7 +466,7 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="timePoints">
+          <Input Name="gridT">
             <Class>double</Class>
             <Size>1 x :inf</Size>
             <Value />
@@ -510,7 +510,7 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="timePoints">
+          <Input Name="gridT">
             <Class>double</Class>
             <Size>1 x :inf</Size>
             <Value />
@@ -530,7 +530,7 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="spacePoints">
+          <Input Name="x">
             <Class>double</Class>
             <Size>1 x :inf</Size>
             <Value />
@@ -546,9 +546,321 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="timePoints">
+          <Input Name="gridT">
             <Class>double</Class>
             <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="N">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+        </Inputs>
+      </file>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateABBStarD.m">
+        <Inputs fileName="CalculateABBStarD.m" functionName="CalculateABBStarD">
+          <Input Name="N">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="t">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="gridT">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="x">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="f">
+            <Class>double</Class>
+            <Size>:inf x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+        </Inputs>
+      </file>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateC.m">
+        <Inputs fileName="CalculateC.m" functionName="CalculateC">
+          <Input Name="N">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="N0">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="t">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="gridX">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+        </Inputs>
+      </file>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateHeatSolution.m">
+        <Inputs fileName="CalculateHeatSolution.m" functionName="CalculateHeatSolution">
+          <Input Name="N0">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="N">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="t">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="gridT">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="x">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="u0">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="q0j">
+            <Class>double</Class>
+            <Size>:inf x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="q1j">
+            <Class>double</Class>
+            <Size>:inf x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="h0j">
+            <Class>double</Class>
+            <Size>:inf x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="h1j">
+            <Class>double</Class>
+            <Size>:inf x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="f">
+            <Class>double</Class>
+            <Size>:inf x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="r">
+            <Class>double</Class>
+            <Size>:inf x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+        </Inputs>
+      </file>
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateXY.m">
+        <Inputs fileName="CalculateXY.m" functionName="CalculateXY">
+          <Input Name="N">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="N0">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="t">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="gridT">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="x">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="gridX">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="E">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="A">
+            <Class>double</Class>
+            <Size>:inf x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="B">
+            <Class>double</Class>
+            <Size>:inf x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="Bstar">
+            <Class>double</Class>
+            <Size>:inf x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="C">
+            <Class>double</Class>
+            <Size>:inf x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="D">
+            <Class>double</Class>
+            <Size>:inf x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="u0">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="f">
+            <Class>double</Class>
+            <Size>:inf x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="alpha">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
             <Value />
             <InitialValue />
             <UserDefined>true</UserDefined>
@@ -582,7 +894,7 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="spacePoints">
+          <Input Name="gridX">
             <Class>double</Class>
             <Size>1 x 1</Size>
             <Value />
@@ -594,6 +906,14 @@
       </file>
       <file custom-data-expanded="false" value="${PROJECT_ROOT}\Cone.m">
         <Inputs fileName="Cone.m" functionName="Cone">
+          <Input Name="k">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
           <Input Name="x">
             <Class>double</Class>
             <Size>1 x :inf</Size>
@@ -602,7 +922,7 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="spacePoints">
+          <Input Name="gridX">
             <Class>double</Class>
             <Size>1 x :inf</Size>
             <Value />
@@ -654,7 +974,7 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="timePoints">
+          <Input Name="gridT">
             <Class>double</Class>
             <Size>1 x :inf</Size>
             <Value />
@@ -682,7 +1002,15 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="spacePoints">
+          <Input Name="x">
+            <Class>double</Class>
+            <Size>1 x :inf</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="gridX">
             <Class>double</Class>
             <Size>1 x :inf</Size>
             <Value />
@@ -698,7 +1026,7 @@
             <UserDefined>true</UserDefined>
             <Complex>false</Complex>
           </Input>
-          <Input Name="timePoints">
+          <Input Name="gridT">
             <Class>double</Class>
             <Size>1 x :inf</Size>
             <Value />
@@ -807,6 +1135,14 @@
             <Complex>false</Complex>
           </Input>
           <Input Name="numSpacePoints">
+            <Class>double</Class>
+            <Size>1 x 1</Size>
+            <Value />
+            <InitialValue />
+            <UserDefined>true</UserDefined>
+            <Complex>false</Complex>
+          </Input>
+          <Input Name="initCond">
             <Class>double</Class>
             <Size>1 x 1</Size>
             <Value />

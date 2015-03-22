@@ -10,6 +10,10 @@
 #include "Acoeff.h"
 #include "Bcoeff.h"
 #include "CalculateA1B1B1Star.h"
+#include "CalculateABBStarD.h"
+#include "CalculateC.h"
+#include "CalculateHeatSolution.h"
+#include "CalculateXY.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -21,19 +25,19 @@
 #include "BoundaryElementHeatEquation_mexutil.h"
 
 /* Variable Definitions */
-static emlrtMCInfo b_emlrtMCI = { 75, 9, "eml_int_forloop_overflow_check",
+static emlrtMCInfo d_emlrtMCI = { 75, 9, "eml_int_forloop_overflow_check",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
 };
 
-static emlrtMCInfo c_emlrtMCI = { 74, 15, "eml_int_forloop_overflow_check",
+static emlrtMCInfo e_emlrtMCI = { 74, 15, "eml_int_forloop_overflow_check",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
 };
 
-static emlrtRSInfo sg_emlrtRSI = { 74, "eml_int_forloop_overflow_check",
+static emlrtRSInfo mh_emlrtRSI = { 74, "eml_int_forloop_overflow_check",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
 };
 
-static emlrtRSInfo dh_emlrtRSI = { 75, "eml_int_forloop_overflow_check",
+static emlrtRSInfo nh_emlrtRSI = { 75, "eml_int_forloop_overflow_check",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_int_forloop_overflow_check.m"
 };
 
@@ -46,10 +50,10 @@ static const mxArray *b_message(const emlrtStack *sp, const mxArray *b, const
   mxArray *c, emlrtMCInfo *location)
 {
   const mxArray *pArrays[2];
-  const mxArray *m21;
+  const mxArray *m22;
   pArrays[0] = b;
   pArrays[1] = c;
-  return emlrtCallMATLABR2012b(sp, 1, &m21, 2, pArrays, "message", true,
+  return emlrtCallMATLABR2012b(sp, 1, &m22, 2, pArrays, "message", true,
     location);
 }
 
@@ -94,9 +98,9 @@ void check_forloop_overflow_error(const emlrtStack *sp)
 
   emlrtInitCharArrayR2013a(sp, 23, m2, cv9);
   emlrtAssign(&b_y, m2);
-  st.site = &sg_emlrtRSI;
-  b_st.site = &dh_emlrtRSI;
-  error(&st, b_message(&b_st, y, b_y, &b_emlrtMCI), &c_emlrtMCI);
+  st.site = &mh_emlrtRSI;
+  b_st.site = &nh_emlrtRSI;
+  b_error(&st, b_message(&b_st, y, b_y, &d_emlrtMCI), &e_emlrtMCI);
 }
 
 /* End of code generation (eml_int_forloop_overflow_check.c) */

@@ -10,6 +10,10 @@
 #include "Acoeff.h"
 #include "Bcoeff.h"
 #include "CalculateA1B1B1Star.h"
+#include "CalculateABBStarD.h"
+#include "CalculateC.h"
+#include "CalculateHeatSolution.h"
+#include "CalculateXY.h"
 #include "Ccoeff.h"
 #include "Cone.h"
 #include "Dcoeff.h"
@@ -23,61 +27,61 @@
 #include "BoundaryElementHeatEquation_data.h"
 
 /* Variable Definitions */
-static emlrtRSInfo db_emlrtRSI = { 41, "mpower",
+static emlrtRSInfo af_emlrtRSI = { 41, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRSInfo eb_emlrtRSI = { 54, "mpower",
+static emlrtRSInfo bf_emlrtRSI = { 54, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtMCInfo d_emlrtMCI = { 34, 5, "mpower",
+static emlrtMCInfo o_emlrtMCI = { 34, 5, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtMCInfo e_emlrtMCI = { 33, 15, "mpower",
+static emlrtMCInfo p_emlrtMCI = { 33, 15, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRTEInfo k_emlrtRTEI = { 1, 14, "mpower",
+static emlrtRTEInfo fb_emlrtRTEI = { 1, 14, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRSInfo rg_emlrtRSI = { 33, "mpower",
+static emlrtRSInfo bh_emlrtRSI = { 34, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRSInfo ch_emlrtRSI = { 34, "mpower",
+static emlrtRSInfo lh_emlrtRSI = { 33, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
 /* Function Definitions */
 void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
 {
-  boolean_T b0;
+  boolean_T b5;
   const mxArray *y;
-  static const int32_T iv11[2] = { 1, 19 };
+  static const int32_T iv21[2] = { 1, 19 };
 
-  const mxArray *m3;
-  char_T cv11[19];
+  const mxArray *m8;
+  char_T cv24[19];
   int32_T i;
-  static const char_T cv12[19] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
+  static const char_T cv25[19] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
     'L', 'A', 'B', ':', 's', 'q', 'u', 'a', 'r', 'e' };
 
   const mxArray *b_y;
-  static const int32_T iv12[2] = { 1, 45 };
+  static const int32_T iv22[2] = { 1, 45 };
 
-  char_T cv13[45];
-  static const char_T cv14[45] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
+  char_T cv26[45];
+  static const char_T cv27[45] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
     'l', 'b', 'o', 'x', ':', 'm', 't', 'i', 'm', 'e', 's', '_', 'n', 'o', 'D',
     'y', 'n', 'a', 'm', 'i', 'c', 'S', 'c', 'a', 'l', 'a', 'r', 'E', 'x', 'p',
     'a', 'n', 's', 'i', 'o', 'n' };
 
   const mxArray *c_y;
-  static const int32_T iv13[2] = { 1, 21 };
+  static const int32_T iv23[2] = { 1, 21 };
 
-  char_T cv15[21];
-  static const char_T cv16[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
+  char_T cv28[21];
+  static const char_T cv29[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
     'L', 'A', 'B', ':', 'i', 'n', 'n', 'e', 'r', 'd', 'i', 'm' };
 
   real_T b_a;
@@ -100,50 +104,50 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
   e_st.tls = d_st.tls;
   f_st.prev = &d_st;
   f_st.tls = d_st.tls;
-  b0 = (1 == a->size[1]);
-  if (b0) {
+  b5 = (1 == a->size[1]);
+  if (b5) {
   } else {
     y = NULL;
-    m3 = emlrtCreateCharArray(2, iv11);
+    m8 = emlrtCreateCharArray(2, iv21);
     for (i = 0; i < 19; i++) {
-      cv11[i] = cv12[i];
+      cv24[i] = cv25[i];
     }
 
-    emlrtInitCharArrayR2013a(sp, 19, m3, cv11);
-    emlrtAssign(&y, m3);
-    st.site = &rg_emlrtRSI;
-    b_st.site = &ch_emlrtRSI;
-    error(&st, message(&b_st, y, &d_emlrtMCI), &e_emlrtMCI);
+    emlrtInitCharArrayR2013a(sp, 19, m8, cv24);
+    emlrtAssign(&y, m8);
+    st.site = &lh_emlrtRSI;
+    b_st.site = &bh_emlrtRSI;
+    b_error(&st, message(&b_st, y, &o_emlrtMCI), &p_emlrtMCI);
   }
 
-  st.site = &db_emlrtRSI;
-  c_st.site = &eb_emlrtRSI;
-  d_st.site = &fb_emlrtRSI;
+  st.site = &af_emlrtRSI;
+  c_st.site = &bf_emlrtRSI;
+  d_st.site = &he_emlrtRSI;
   if (!(a->size[1] == 1)) {
     if (a->size[1] == 1) {
       b_y = NULL;
-      m3 = emlrtCreateCharArray(2, iv12);
+      m8 = emlrtCreateCharArray(2, iv22);
       for (i = 0; i < 45; i++) {
-        cv13[i] = cv14[i];
+        cv26[i] = cv27[i];
       }
 
-      emlrtInitCharArrayR2013a(&d_st, 45, m3, cv13);
-      emlrtAssign(&b_y, m3);
-      e_st.site = &jg_emlrtRSI;
+      emlrtInitCharArrayR2013a(&d_st, 45, m8, cv26);
+      emlrtAssign(&b_y, m8);
+      e_st.site = &eh_emlrtRSI;
       f_st.site = &ug_emlrtRSI;
-      error(&e_st, message(&f_st, b_y, &f_emlrtMCI), &g_emlrtMCI);
+      b_error(&e_st, message(&f_st, b_y, &j_emlrtMCI), &k_emlrtMCI);
     } else {
       c_y = NULL;
-      m3 = emlrtCreateCharArray(2, iv13);
+      m8 = emlrtCreateCharArray(2, iv23);
       for (i = 0; i < 21; i++) {
-        cv15[i] = cv16[i];
+        cv28[i] = cv29[i];
       }
 
-      emlrtInitCharArrayR2013a(&d_st, 21, m3, cv15);
-      emlrtAssign(&c_y, m3);
-      e_st.site = &kg_emlrtRSI;
+      emlrtInitCharArrayR2013a(&d_st, 21, m8, cv28);
+      emlrtAssign(&c_y, m8);
+      e_st.site = &fh_emlrtRSI;
       f_st.site = &vg_emlrtRSI;
-      error(&e_st, message(&f_st, c_y, &h_emlrtMCI), &i_emlrtMCI);
+      b_error(&e_st, message(&f_st, c_y, &l_emlrtMCI), &m_emlrtMCI);
     }
   }
 
@@ -151,7 +155,7 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
   c->size[0] = 1;
   c->size[1] = a->size[1];
   emxEnsureCapacity(&c_st, (emxArray__common *)c, i, (int32_T)sizeof(real_T),
-                    &k_emlrtRTEI);
+                    &fb_emlrtRTEI);
   b_a = a->data[0];
   loop_ub = a->size[0] * a->size[1];
   for (i = 0; i < loop_ub; i++) {
