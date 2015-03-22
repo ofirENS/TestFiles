@@ -26,191 +26,191 @@
 
 /* Variable Definitions */
 static emlrtRSInfo n_emlrtRSI = { 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtRSInfo o_emlrtRSI = { 17, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtRSInfo p_emlrtRSI = { 19, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtRSInfo q_emlrtRSI = { 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtRSInfo r_emlrtRSI = { 22, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtRSInfo s_emlrtRSI = { 23, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtRSInfo t_emlrtRSI = { 28, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtRSInfo u_emlrtRSI = { 29, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtRTEInfo b_emlrtRTEI = { 1, 26, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtBCInfo lb_emlrtBCI = { -1, -1, 28, 23, "D", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo mb_emlrtBCI = { -1, -1, 29, 54, "f", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo nb_emlrtBCI = { -1, -1, 29, 41, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo ob_emlrtBCI = { -1, -1, 28, 54, "f", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo pb_emlrtBCI = { -1, -1, 28, 41, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
-static emlrtRTEInfo cc_emlrtRTEI = { 13, 5, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+static emlrtRTEInfo dc_emlrtRTEI = { 13, 5, "CalculateABBStarD",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
-static emlrtRTEInfo dc_emlrtRTEI = { 12, 1, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
+static emlrtRTEInfo ec_emlrtRTEI = { 12, 1, "CalculateABBStarD",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m"
 };
 
 static emlrtDCInfo i_emlrtDCI = { 8, 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   1 };
 
 static emlrtDCInfo j_emlrtDCI = { 8, 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   4 };
 
 static emlrtDCInfo k_emlrtDCI = { 8, 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   1 };
 
 static emlrtDCInfo l_emlrtDCI = { 8, 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   4 };
 
 static emlrtDCInfo m_emlrtDCI = { 9, 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   1 };
 
 static emlrtDCInfo n_emlrtDCI = { 9, 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   4 };
 
 static emlrtDCInfo o_emlrtDCI = { 9, 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   1 };
 
 static emlrtDCInfo p_emlrtDCI = { 9, 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   4 };
 
 static emlrtDCInfo q_emlrtDCI = { 10, 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   1 };
 
 static emlrtDCInfo r_emlrtDCI = { 10, 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   4 };
 
 static emlrtDCInfo s_emlrtDCI = { 10, 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   1 };
 
 static emlrtDCInfo t_emlrtDCI = { 10, 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   4 };
 
 static emlrtDCInfo u_emlrtDCI = { 11, 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   1 };
 
 static emlrtDCInfo v_emlrtDCI = { 11, 16, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   4 };
 
 static emlrtDCInfo w_emlrtDCI = { 11, 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   1 };
 
 static emlrtDCInfo x_emlrtDCI = { 11, 20, "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   4 };
 
 static emlrtBCInfo qb_emlrtBCI = { -1, -1, 16, 52, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo rb_emlrtBCI = { -1, -1, 16, 78, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo sb_emlrtBCI = { -1, -1, 17, 52, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo tb_emlrtBCI = { -1, -1, 17, 78, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo ub_emlrtBCI = { -1, -1, 16, 11, "A", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo vb_emlrtBCI = { -1, -1, 16, 23, "A", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo wb_emlrtBCI = { -1, -1, 19, 30, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo xb_emlrtBCI = { -1, -1, 20, 30, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo yb_emlrtBCI = { -1, -1, 22, 52, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo ac_emlrtBCI = { -1, -1, 23, 52, "t", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo bc_emlrtBCI = { -1, -1, 22, 11, "B", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo cc_emlrtBCI = { -1, -1, 22, 23, "B", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo dc_emlrtBCI = { -1, -1, 25, 15, "Bstar", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo ec_emlrtBCI = { -1, -1, 25, 27, "Bstar", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 static emlrtBCInfo fc_emlrtBCI = { -1, -1, 28, 11, "D", "CalculateABBStarD",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateABBStarD.m",
   0 };
 
 /* Function Definitions */
@@ -324,13 +324,13 @@ void CalculateABBStarD(const emlrtStack *sp, real_T N, const emxArray_real_T *t,
   }
 
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, N, mxDOUBLE_CLASS, (int32_T)N,
-    &dc_emlrtRTEI, sp);
+    &ec_emlrtRTEI, sp);
   i = 0;
   emxInit_real_T(sp, &a, 2, &c_emlrtRTEI, true);
   while (i <= (int32_T)N - 1) {
     /*  time */
     emlrtForLoopVectorCheckR2012b(1.0, 1.0, N, mxDOUBLE_CLASS, (int32_T)N,
-      &cc_emlrtRTEI, sp);
+      &dc_emlrtRTEI, sp);
     j = 0;
     while (j <= (int32_T)N - 1) {
       /*  time */

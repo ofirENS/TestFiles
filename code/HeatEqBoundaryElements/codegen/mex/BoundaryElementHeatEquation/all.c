@@ -50,7 +50,7 @@ static emlrtBCInfo re_emlrtBCI = { -1, -1, 126, 24, "", "allOrAny",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\shared\\coder\\coder\\+coder\\+internal\\allOrAny.m",
   0 };
 
-static emlrtRSInfo ch_emlrtRSI = { 25, "assert",
+static emlrtRSInfo dh_emlrtRSI = { 25, "assert",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\shared\\coder\\coder\\+coder\\+internal\\assert.m"
 };
 
@@ -100,7 +100,7 @@ boolean_T all(const emlrtStack *sp, const emxArray_boolean_T *x)
 
     emlrtInitCharArrayR2013a(&b_st, 51, m7, cv22);
     emlrtAssign(&b_y, m7);
-    c_st.site = &ch_emlrtRSI;
+    c_st.site = &dh_emlrtRSI;
     b_error(&c_st, message(&c_st, b_y, &n_emlrtMCI), &n_emlrtMCI);
   }
 

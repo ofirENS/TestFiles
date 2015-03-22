@@ -21,12 +21,14 @@
 #include "GetRegularizationTerm.h"
 #include "PlotResults.h"
 #include "TestBemHeatEq_optimized.h"
+#include "linspace.h"
 #include "rdivide.h"
 #include "BoundaryElementHeatEquation_emxutil.h"
 #include "mrdivide.h"
 #include "eml_int_forloop_overflow_check.h"
 #include "colon.h"
 #include "eml_warning.h"
+#include "exp.h"
 #include "error.h"
 #include "mod.h"
 #include "BoundaryElementHeatEquation_mexutil.h"
@@ -34,103 +36,107 @@
 
 /* Variable Definitions */
 static emlrtRSInfo nf_emlrtRSI = { 31, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo of_emlrtRSI = { 50, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo pf_emlrtRSI = { 54, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo qf_emlrtRSI = { 55, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo rf_emlrtRSI = { 68, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo rf_emlrtRSI = { 74, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo sf_emlrtRSI = { 73, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo sf_emlrtRSI = { 88, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo tf_emlrtRSI = { 79, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo tf_emlrtRSI = { 93, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo uf_emlrtRSI = { 89, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo uf_emlrtRSI = { 99, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo vf_emlrtRSI = { 92, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo vf_emlrtRSI = { 109, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo wf_emlrtRSI = { 99, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo wf_emlrtRSI = { 112, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo xf_emlrtRSI = { 102, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo xf_emlrtRSI = { 119, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo yf_emlrtRSI = { 105, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo yf_emlrtRSI = { 122, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo ag_emlrtRSI = { 108, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo ag_emlrtRSI = { 125, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo bg_emlrtRSI = { 113, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRSInfo bg_emlrtRSI = { 128, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRSInfo cg_emlrtRSI = { 16, "max",
+static emlrtRSInfo cg_emlrtRSI = { 133, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+};
+
+static emlrtRSInfo dg_emlrtRSI = { 16, "max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\datafun\\max.m"
 };
 
-static emlrtRSInfo dg_emlrtRSI = { 18, "eml_min_or_max",
+static emlrtRSInfo eg_emlrtRSI = { 18, "eml_min_or_max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
 };
 
-static emlrtRSInfo eg_emlrtRSI = { 96, "eml_min_or_max",
+static emlrtRSInfo fg_emlrtRSI = { 96, "eml_min_or_max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
 };
 
-static emlrtRSInfo fg_emlrtRSI = { 229, "eml_min_or_max",
+static emlrtRSInfo gg_emlrtRSI = { 229, "eml_min_or_max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
 };
 
-static emlrtRSInfo gg_emlrtRSI = { 202, "eml_min_or_max",
+static emlrtRSInfo hg_emlrtRSI = { 202, "eml_min_or_max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
 };
 
-static emlrtRSInfo hg_emlrtRSI = { 79, "colon",
+static emlrtRSInfo ig_emlrtRSI = { 79, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-static emlrtRSInfo ig_emlrtRSI = { 283, "colon",
+static emlrtRSInfo jg_emlrtRSI = { 283, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-static emlrtRSInfo jg_emlrtRSI = { 291, "colon",
+static emlrtRSInfo kg_emlrtRSI = { 291, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-static emlrtRSInfo kg_emlrtRSI = { 1, "mldivide",
+static emlrtRSInfo lg_emlrtRSI = { 1, "mldivide",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mldivide.p"
 };
 
-static emlrtRSInfo lg_emlrtRSI = { 117, "eml_lusolve",
+static emlrtRSInfo mg_emlrtRSI = { 117, "eml_lusolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
 };
 
-static emlrtRSInfo mg_emlrtRSI = { 128, "eml_lusolve",
+static emlrtRSInfo ng_emlrtRSI = { 128, "eml_lusolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
 };
 
-static emlrtRSInfo ng_emlrtRSI = { 130, "eml_lusolve",
+static emlrtRSInfo og_emlrtRSI = { 130, "eml_lusolve",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
 };
 
@@ -161,160 +167,170 @@ static emlrtMCInfo fb_emlrtMCI = { 1, 1, "mldivide",
 };
 
 static emlrtRTEInfo kb_emlrtRTEI = { 1, 17, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo lb_emlrtRTEI = { 284, 1, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
 static emlrtRTEInfo mb_emlrtRTEI = { 23, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo nb_emlrtRTEI = { 27, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo ob_emlrtRTEI = { 32, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo pb_emlrtRTEI = { 36, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo qb_emlrtRTEI = { 38, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo rb_emlrtRTEI = { 40, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo sb_emlrtRTEI = { 42, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRTEInfo tb_emlrtRTEI = { 73, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRTEInfo tb_emlrtRTEI = { 93, 1, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRTEInfo ub_emlrtRTEI = { 74, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRTEInfo ub_emlrtRTEI = { 94, 1, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRTEInfo vb_emlrtRTEI = { 79, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRTEInfo vb_emlrtRTEI = { 99, 1, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRTEInfo wb_emlrtRTEI = { 80, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRTEInfo wb_emlrtRTEI = { 100, 1, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRTEInfo xb_emlrtRTEI = { 92, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRTEInfo xb_emlrtRTEI = { 112, 1, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtRTEInfo yb_emlrtRTEI = { 102, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtRTEInfo yb_emlrtRTEI = { 122, 1, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
-static emlrtECInfo t_emlrtECI = { 2, 105, 8, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+static emlrtECInfo t_emlrtECI = { 2, 125, 8, "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtECInfo u_emlrtECI = { -1, 55, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtBCInfo af_emlrtBCI = { -1, -1, 55, 1, "u0",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
 static emlrtECInfo v_emlrtECI = { -1, 54, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
 };
 
 static emlrtBCInfo bf_emlrtBCI = { -1, -1, 54, 1, "u0",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
 static emlrtBCInfo cf_emlrtBCI = { -1, -1, 53, 1, "u0",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo df_emlrtBCI = { -1, -1, 24, 5, "f", "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+static emlrtBCInfo df_emlrtBCI = { -1, -1, 71, 5, "f", "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo ef_emlrtBCI = { -1, -1, 82, 30, "gridX",
+static emlrtBCInfo ef_emlrtBCI = { -1, -1, 24, 5, "f", "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  0 };
+
+static emlrtBCInfo ff_emlrtBCI = { -1, -1, 102, 30, "gridX",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo ff_emlrtBCI = { -1, -1, 82, 16, "gridX",
+static emlrtBCInfo gf_emlrtBCI = { -1, -1, 102, 16, "gridX",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo gf_emlrtBCI = { -1, -1, 76, 28, "gridT",
+static emlrtBCInfo hf_emlrtBCI = { -1, -1, 96, 28, "gridT",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo hf_emlrtBCI = { -1, -1, 76, 16, "gridT",
+static emlrtBCInfo if_emlrtBCI = { -1, -1, 96, 16, "gridT",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo if_emlrtBCI = { -1, -1, 50, 16, "sigIn",
+static emlrtBCInfo jf_emlrtBCI = { -1, -1, 74, 16, "sigIn",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo jf_emlrtBCI = { -1, -1, 31, 16, "sigIn",
+static emlrtBCInfo kf_emlrtBCI = { -1, -1, 50, 16, "sigIn",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  0 };
+
+static emlrtBCInfo lf_emlrtBCI = { -1, -1, 31, 16, "sigIn",
+  "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
 static emlrtDCInfo fc_emlrtDCI = { 23, 14, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   1 };
 
 static emlrtDCInfo gc_emlrtDCI = { 23, 14, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   4 };
 
-static emlrtBCInfo kf_emlrtBCI = { -1, -1, 82, 5, "x", "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+static emlrtBCInfo mf_emlrtBCI = { -1, -1, 102, 5, "x",
+  "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo lf_emlrtBCI = { -1, -1, 76, 5, "t", "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+static emlrtBCInfo nf_emlrtBCI = { -1, -1, 96, 5, "t", "TestBemHeatEq_optimized",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtRSInfo wg_emlrtRSI = { 405, "colon",
+static emlrtRSInfo xg_emlrtRSI = { 405, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-static emlrtRSInfo xg_emlrtRSI = { 82, "eml_min_or_max",
+static emlrtRSInfo yg_emlrtRSI = { 82, "eml_min_or_max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
 };
 
-static emlrtRSInfo yg_emlrtRSI = { 41, "eml_min_or_max",
+static emlrtRSInfo ah_emlrtRSI = { 41, "eml_min_or_max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
 };
 
-static emlrtRSInfo gh_emlrtRSI = { 404, "colon",
+static emlrtRSInfo hh_emlrtRSI = { 404, "colon",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
 
-static emlrtRSInfo hh_emlrtRSI = { 81, "eml_min_or_max",
+static emlrtRSInfo ih_emlrtRSI = { 81, "eml_min_or_max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
 };
 
-static emlrtRSInfo ih_emlrtRSI = { 38, "eml_min_or_max",
+static emlrtRSInfo jh_emlrtRSI = { 38, "eml_min_or_max",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
 };
 
@@ -329,11 +345,11 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
   emxArray_real_T *B)
 {
   emxArray_real_T *b_A;
-  int32_T i98;
+  int32_T i100;
   int32_T iy;
   emxArray_int32_T *ipiv;
   int32_T info;
-  int32_T i99;
+  int32_T i101;
   int32_T b;
   int32_T j;
   int32_T mmj;
@@ -345,7 +361,7 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
   boolean_T overflow;
   int32_T k;
   real_T temp;
-  int32_T i100;
+  int32_T i102;
   boolean_T b_c;
   ptrdiff_t m_t;
   ptrdiff_t incy_t;
@@ -390,14 +406,14 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
   b_st.site = &ob_emlrtRSI;
   c_st.site = &sb_emlrtRSI;
   d_st.site = &tb_emlrtRSI;
-  i98 = b_A->size[0] * b_A->size[1];
+  i100 = b_A->size[0] * b_A->size[1];
   b_A->size[0] = A->size[0];
   b_A->size[1] = A->size[1];
-  emxEnsureCapacity(&d_st, (emxArray__common *)b_A, i98, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(&d_st, (emxArray__common *)b_A, i100, (int32_T)sizeof(real_T),
                     &n_emlrtRTEI);
   iy = A->size[0] * A->size[1];
-  for (i98 = 0; i98 < iy; i98++) {
-    b_A->data[i98] = A->data[i98];
+  for (i100 = 0; i100 < iy; i100++) {
+    b_A->data[i100] = A->data[i100];
   }
 
   b_emxInit_int32_T(&d_st, &ipiv, 2, &n_emlrtRTEI, true);
@@ -410,8 +426,8 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
   info = 0;
   if (A->size[1] < 1) {
   } else {
-    i99 = A->size[1] - 1;
-    b = muIntScalarMin_sint32(i99, A->size[1]);
+    i101 = A->size[1] - 1;
+    b = muIntScalarMin_sint32(i101, A->size[1]);
     e_st.site = &vb_emlrtRSI;
     for (j = 1; j <= b; j++) {
       mmj = A->size[1] - j;
@@ -426,9 +442,9 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
         n_t = (ptrdiff_t)(mmj + 1);
         h_st.site = &kc_emlrtRSI;
         incx_t = (ptrdiff_t)(1);
-        i98 = b_A->size[0] * b_A->size[1];
+        i100 = b_A->size[0] * b_A->size[1];
         xix0_t = (double *)(&b_A->data[emlrtDynamicBoundsCheckFastR2012b(c, 1,
-          i98, &ae_emlrtBCI, &g_st) - 1]);
+          i100, &ae_emlrtBCI, &g_st) - 1]);
         incx_t = idamax(&n_t, xix0_t, &incx_t);
         iy = (int32_T)incx_t - 1;
       }
@@ -449,17 +465,18 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
           }
 
           for (k = 1; k <= A->size[1]; k++) {
-            i98 = b_A->size[0] * b_A->size[1];
-            temp = b_A->data[emlrtDynamicBoundsCheckFastR2012b(ix, 1, i98,
-              &ce_emlrtBCI, &g_st) - 1];
-            i98 = b_A->size[0] * b_A->size[1];
             i100 = b_A->size[0] * b_A->size[1];
-            b_A->data[emlrtDynamicBoundsCheckFastR2012b(ix, 1, i98, &ce_emlrtBCI,
-              &g_st) - 1] = b_A->data[emlrtDynamicBoundsCheckFastR2012b(iy, 1,
-              i100, &ce_emlrtBCI, &g_st) - 1];
-            i98 = b_A->size[0] * b_A->size[1];
-            b_A->data[emlrtDynamicBoundsCheckFastR2012b(iy, 1, i98, &ce_emlrtBCI,
-              &g_st) - 1] = temp;
+            temp = b_A->data[emlrtDynamicBoundsCheckFastR2012b(ix, 1, i100,
+              &ce_emlrtBCI, &g_st) - 1];
+            i100 = b_A->size[0] * b_A->size[1];
+            i102 = b_A->size[0] * b_A->size[1];
+            b_A->data[emlrtDynamicBoundsCheckFastR2012b(ix, 1, i100,
+              &ce_emlrtBCI, &g_st) - 1] = b_A->
+              data[emlrtDynamicBoundsCheckFastR2012b(iy, 1, i102, &ce_emlrtBCI,
+              &g_st) - 1];
+            i100 = b_A->size[0] * b_A->size[1];
+            b_A->data[emlrtDynamicBoundsCheckFastR2012b(iy, 1, i100,
+              &ce_emlrtBCI, &g_st) - 1] = temp;
             ix += A->size[1];
             iy += A->size[1];
           }
@@ -499,17 +516,17 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
         incy_t = (ptrdiff_t)(A->size[1]);
         lda_t = (ptrdiff_t)(A->size[1]);
         alpha1_t = (double *)(&temp);
-        i98 = b_A->size[0] * b_A->size[1];
-        i100 = (c + A->size[1]) + 1;
-        Aia0_t = (double *)(&b_A->data[emlrtDynamicBoundsCheckFastR2012b(i100, 1,
-          i98, &be_emlrtBCI, &h_st) - 1]);
-        i98 = b_A->size[0] * b_A->size[1];
+        i100 = b_A->size[0] * b_A->size[1];
+        i102 = (c + A->size[1]) + 1;
+        Aia0_t = (double *)(&b_A->data[emlrtDynamicBoundsCheckFastR2012b(i102, 1,
+          i100, &be_emlrtBCI, &h_st) - 1]);
+        i100 = b_A->size[0] * b_A->size[1];
         xix0_t = (double *)(&b_A->data[emlrtDynamicBoundsCheckFastR2012b(c + 1,
-          1, i98, &be_emlrtBCI, &h_st) - 1]);
-        i98 = b_A->size[0] * b_A->size[1];
-        i100 = c + A->size[1];
-        Aiy0_t = (double *)(&b_A->data[emlrtDynamicBoundsCheckFastR2012b(i100, 1,
-          i98, &be_emlrtBCI, &h_st) - 1]);
+          1, i100, &be_emlrtBCI, &h_st) - 1]);
+        i100 = b_A->size[0] * b_A->size[1];
+        i102 = c + A->size[1];
+        Aiy0_t = (double *)(&b_A->data[emlrtDynamicBoundsCheckFastR2012b(i102, 1,
+          i100, &be_emlrtBCI, &h_st) - 1]);
         dger(&m_t, &n_t, alpha1_t, xix0_t, &incx_t, Aiy0_t, &incy_t, Aia0_t,
              &lda_t);
       }
@@ -526,7 +543,7 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
     warn_singular(&b_st);
   }
 
-  b_st.site = &lg_emlrtRSI;
+  b_st.site = &mg_emlrtRSI;
   for (iy = 0; iy + 1 < A->size[1]; iy++) {
     if (ipiv->data[iy] != iy + 1) {
       temp = B->data[iy];
@@ -536,7 +553,7 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
   }
 
   emxFree_int32_T(&ipiv);
-  b_st.site = &mg_emlrtRSI;
+  b_st.site = &ng_emlrtRSI;
   c_st.site = &sc_emlrtRSI;
   if (A->size[1] < 1) {
   } else {
@@ -554,8 +571,8 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
     lda_t = (ptrdiff_t)(A->size[1]);
     e_st.site = &tc_emlrtRSI;
     incx_t = (ptrdiff_t)(A->size[1]);
-    i98 = b_A->size[0] * b_A->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(1, 1, i98, &yd_emlrtBCI, &d_st);
+    i100 = b_A->size[0] * b_A->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(1, 1, i100, &yd_emlrtBCI, &d_st);
     Aia0_t = (double *)(&b_A->data[0]);
     xix0_t = (double *)(&B->data[0]);
     alpha1_t = (double *)(&temp);
@@ -563,7 +580,7 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
           xix0_t, &incx_t);
   }
 
-  b_st.site = &ng_emlrtRSI;
+  b_st.site = &og_emlrtRSI;
   c_st.site = &sc_emlrtRSI;
   if (A->size[1] < 1) {
   } else {
@@ -581,8 +598,8 @@ static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
     lda_t = (ptrdiff_t)(A->size[1]);
     e_st.site = &tc_emlrtRSI;
     incx_t = (ptrdiff_t)(A->size[1]);
-    i98 = b_A->size[0] * b_A->size[1];
-    emlrtDynamicBoundsCheckFastR2012b(1, 1, i98, &yd_emlrtBCI, &d_st);
+    i100 = b_A->size[0] * b_A->size[1];
+    emlrtDynamicBoundsCheckFastR2012b(1, 1, i100, &yd_emlrtBCI, &d_st);
     Aia0_t = (double *)(&b_A->data[0]);
     xix0_t = (double *)(&B->data[0]);
     alpha1_t = (double *)(&temp);
@@ -600,7 +617,7 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   emxArray_real_T *b_A;
   emxArray_real_T *work;
   int32_T mn;
-  int32_T i91;
+  int32_T i92;
   int32_T ix;
   emxArray_real_T *tau;
   emxArray_int32_T *jpvt;
@@ -620,7 +637,7 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   int32_T iy;
   boolean_T b11;
   real_T xnorm;
-  int32_T i92;
+  int32_T i93;
   real_T atmp;
   real_T d13;
   boolean_T b12;
@@ -630,7 +647,7 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   double * xix0_t;
   boolean_T exitg1;
   const mxArray *y;
-  static const int32_T iv61[2] = { 1, 8 };
+  static const int32_T iv63[2] = { 1, 8 };
 
   const mxArray *m15;
   char_T cv68[8];
@@ -669,14 +686,14 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   st.site = &uc_emlrtRSI;
   b_st.site = &xc_emlrtRSI;
   c_st.site = &yc_emlrtRSI;
-  i91 = b_A->size[0] * b_A->size[1];
+  i92 = b_A->size[0] * b_A->size[1];
   b_A->size[0] = A->size[0];
   b_A->size[1] = A->size[1];
-  emxEnsureCapacity(&c_st, (emxArray__common *)b_A, i91, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(&c_st, (emxArray__common *)b_A, i92, (int32_T)sizeof(real_T),
                     &p_emlrtRTEI);
   ix = A->size[0] * A->size[1];
-  for (i91 = 0; i91 < ix; i91++) {
-    b_A->data[i91] = A->data[i91];
+  for (i92 = 0; i92 < ix; i92++) {
+    b_A->data[i92] = A->data[i92];
   }
 
   c_emxInit_real_T(&c_st, &tau, 1, &p_emlrtRTEI, true);
@@ -684,9 +701,9 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   m = b_A->size[0];
   n = b_A->size[1];
   b_mn = muIntScalarMin_sint32(b_A->size[0], b_A->size[1]);
-  i91 = tau->size[0];
+  i92 = tau->size[0];
   tau->size[0] = b_mn;
-  emxEnsureCapacity(&c_st, (emxArray__common *)tau, i91, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(&c_st, (emxArray__common *)tau, i92, (int32_T)sizeof(real_T),
                     &q_emlrtRTEI);
   d_st.site = &ad_emlrtRSI;
   e_st.site = &bc_emlrtRSI;
@@ -696,25 +713,25 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   if ((b_A->size[0] == 0) || (b_A->size[1] == 0)) {
   } else {
     ix = b_A->size[1];
-    i91 = work->size[0];
+    i92 = work->size[0];
     work->size[0] = ix;
-    emxEnsureCapacity(&c_st, (emxArray__common *)work, i91, (int32_T)sizeof
+    emxEnsureCapacity(&c_st, (emxArray__common *)work, i92, (int32_T)sizeof
                       (real_T), &p_emlrtRTEI);
-    for (i91 = 0; i91 < ix; i91++) {
-      work->data[i91] = 0.0;
+    for (i92 = 0; i92 < ix; i92++) {
+      work->data[i92] = 0.0;
     }
 
     c_emxInit_real_T(&c_st, &vn1, 1, &r_emlrtRTEI, true);
     c_emxInit_real_T(&c_st, &vn2, 1, &s_emlrtRTEI, true);
     d_st.site = &bd_emlrtRSI;
     ix = b_A->size[1];
-    i91 = vn1->size[0];
+    i92 = vn1->size[0];
     vn1->size[0] = ix;
-    emxEnsureCapacity(&c_st, (emxArray__common *)vn1, i91, (int32_T)sizeof
+    emxEnsureCapacity(&c_st, (emxArray__common *)vn1, i92, (int32_T)sizeof
                       (real_T), &r_emlrtRTEI);
-    i91 = vn2->size[0];
+    i92 = vn2->size[0];
     vn2->size[0] = ix;
-    emxEnsureCapacity(&c_st, (emxArray__common *)vn2, i91, (int32_T)sizeof
+    emxEnsureCapacity(&c_st, (emxArray__common *)vn2, i92, (int32_T)sizeof
                       (real_T), &s_emlrtRTEI);
     k = 1;
     d_st.site = &cd_emlrtRSI;
@@ -769,16 +786,16 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
         }
 
         for (k = 1; k <= m; k++) {
-          i91 = b_A->size[0] * b_A->size[1];
-          xnorm = b_A->data[emlrtDynamicBoundsCheckFastR2012b(ix, 1, i91,
-            &ce_emlrtBCI, &f_st) - 1];
-          i91 = b_A->size[0] * b_A->size[1];
           i92 = b_A->size[0] * b_A->size[1];
-          b_A->data[emlrtDynamicBoundsCheckFastR2012b(ix, 1, i91, &ce_emlrtBCI,
-            &f_st) - 1] = b_A->data[emlrtDynamicBoundsCheckFastR2012b(iy, 1, i92,
+          xnorm = b_A->data[emlrtDynamicBoundsCheckFastR2012b(ix, 1, i92,
             &ce_emlrtBCI, &f_st) - 1];
-          i91 = b_A->size[0] * b_A->size[1];
-          b_A->data[emlrtDynamicBoundsCheckFastR2012b(iy, 1, i91, &ce_emlrtBCI,
+          i92 = b_A->size[0] * b_A->size[1];
+          i93 = b_A->size[0] * b_A->size[1];
+          b_A->data[emlrtDynamicBoundsCheckFastR2012b(ix, 1, i92, &ce_emlrtBCI,
+            &f_st) - 1] = b_A->data[emlrtDynamicBoundsCheckFastR2012b(iy, 1, i93,
+            &ce_emlrtBCI, &f_st) - 1];
+          i92 = b_A->size[0] * b_A->size[1];
+          b_A->data[emlrtDynamicBoundsCheckFastR2012b(iy, 1, i92, &ce_emlrtBCI,
             &f_st) - 1] = xnorm;
           ix++;
           iy++;
@@ -904,10 +921,10 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
                 n_t = (ptrdiff_t)(mmi);
                 g_st.site = &od_emlrtRSI;
                 incx_t = (ptrdiff_t)(1);
-                i91 = b_A->size[0] * b_A->size[1];
-                i92 = (i + m * ix) + 1;
+                i92 = b_A->size[0] * b_A->size[1];
+                i93 = (i + m * ix) + 1;
                 xix0_t = (double *)(&b_A->data[emlrtDynamicBoundsCheckFastR2012b
-                                    (i92, 1, i91, &de_emlrtBCI, &f_st) - 1]);
+                                    (i93, 1, i92, &de_emlrtBCI, &f_st) - 1]);
                 xnorm = dnrm2(&n_t, xix0_t, &incx_t);
               }
 
@@ -939,14 +956,14 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
       if (muDoubleScalarAbs(b_A->data[k + b_A->size[0] * k]) <= xnorm) {
         st.site = &vc_emlrtRSI;
         y = NULL;
-        m15 = emlrtCreateCharArray(2, iv61);
+        m15 = emlrtCreateCharArray(2, iv63);
         for (i = 0; i < 8; i++) {
           cv68[i] = cv69[i];
         }
 
         emlrtInitCharArrayR2013a(&st, 8, m15, cv68);
         emlrtAssign(&y, m15);
-        b_st.site = &ph_emlrtRSI;
+        b_st.site = &qh_emlrtRSI;
         emlrt_marshallIn(&b_st, c_sprintf(&b_st, b_sprintf(&b_st, y,
           emlrt_marshallOut(14.0), emlrt_marshallOut(6.0), &h_emlrtMCI),
           emlrt_marshallOut(xnorm), &i_emlrtMCI), "sprintf", cv70);
@@ -961,22 +978,22 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   }
 
   unnamed_idx_0 = (uint32_T)A->size[1];
-  i91 = Y->size[0];
+  i92 = Y->size[0];
   Y->size[0] = (int32_T)unnamed_idx_0;
-  emxEnsureCapacity(sp, (emxArray__common *)Y, i91, (int32_T)sizeof(real_T),
+  emxEnsureCapacity(sp, (emxArray__common *)Y, i92, (int32_T)sizeof(real_T),
                     &p_emlrtRTEI);
   ix = (int32_T)unnamed_idx_0;
-  for (i91 = 0; i91 < ix; i91++) {
-    Y->data[i91] = 0.0;
+  for (i92 = 0; i92 < ix; i92++) {
+    Y->data[i92] = 0.0;
   }
 
   for (ix = 0; ix < mn; ix++) {
     if (tau->data[ix] != 0.0) {
       xnorm = B->data[ix];
-      i91 = A->size[0] + (int32_T)(1.0 - ((1.0 + (real_T)ix) + 1.0));
+      i92 = A->size[0] + (int32_T)(1.0 - ((1.0 + (real_T)ix) + 1.0));
       emlrtForLoopVectorCheckR2012b((1.0 + (real_T)ix) + 1.0, 1.0, A->size[0],
-        mxDOUBLE_CLASS, i91, &mc_emlrtRTEI, sp);
-      for (i = 0; i < i91; i++) {
+        mxDOUBLE_CLASS, i92, &nc_emlrtRTEI, sp);
+      for (i = 0; i < i92; i++) {
         unnamed_idx_0 = ((uint32_T)ix + i) + 2U;
         xnorm += b_A->data[((int32_T)unnamed_idx_0 + b_A->size[0] * ix) - 1] *
           B->data[(int32_T)unnamed_idx_0 - 1];
@@ -985,10 +1002,10 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
       xnorm *= tau->data[ix];
       if (xnorm != 0.0) {
         B->data[ix] -= xnorm;
-        i91 = A->size[0] + (int32_T)(1.0 - ((1.0 + (real_T)ix) + 1.0));
+        i92 = A->size[0] + (int32_T)(1.0 - ((1.0 + (real_T)ix) + 1.0));
         emlrtForLoopVectorCheckR2012b((1.0 + (real_T)ix) + 1.0, 1.0, A->size[0],
-          mxDOUBLE_CLASS, i91, &lc_emlrtRTEI, sp);
-        for (i = 0; i < i91; i++) {
+          mxDOUBLE_CLASS, i92, &mc_emlrtRTEI, sp);
+        for (i = 0; i < i92; i++) {
           unnamed_idx_0 = ((uint32_T)ix + i) + 2U;
           B->data[(int32_T)unnamed_idx_0 - 1] -= b_A->data[((int32_T)
             unnamed_idx_0 + b_A->size[0] * ix) - 1] * xnorm;
@@ -999,13 +1016,13 @@ static void c_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
 
   emxFree_real_T(&tau);
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, atmp, mxDOUBLE_CLASS, (int32_T)atmp,
-    &kc_emlrtRTEI, sp);
+    &lc_emlrtRTEI, sp);
   for (i = 0; i < (int32_T)atmp; i++) {
     Y->data[jpvt->data[i] - 1] = B->data[i];
   }
 
   emlrtForLoopVectorCheckR2012b(atmp, -1.0, 1.0, mxDOUBLE_CLASS, (int32_T)-(1.0
-    + (-1.0 - atmp)), &jc_emlrtRTEI, sp);
+    + (-1.0 - atmp)), &kc_emlrtRTEI, sp);
   for (ix = 0; ix < (int32_T)-(1.0 + (-1.0 - atmp)); ix++) {
     xnorm = atmp + -(real_T)ix;
     Y->data[jpvt->data[(int32_T)xnorm - 1] - 1] = eml_div(Y->data[jpvt->data
@@ -1029,7 +1046,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 {
   emxArray_real_T *f;
   int32_T cdiff;
-  real_T midPoint;
+  real_T sTime;
   int32_T i80;
   int32_T ndbl;
   int32_T i81;
@@ -1060,24 +1077,31 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     '_', 'm', 'a', 'x', '_', 'v', 'a', 'r', 'D', 'i', 'm', 'Z', 'e', 'r', 'o' };
 
   int32_T ixstart;
-  real_T sSpace;
-  boolean_T exitg2;
+  boolean_T exitg3;
+  real_T midPoint;
   const mxArray *c_y;
   static const int32_T iv51[2] = { 1, 36 };
 
   const mxArray *d_y;
   static const int32_T iv52[2] = { 1, 39 };
 
-  boolean_T exitg1;
+  boolean_T exitg2;
   int32_T apnd;
   emxArray_real_T *b_gridX;
   int32_T i82;
   int32_T anew;
   real_T b_apnd;
   emxArray_real_T *c_gridX;
-  uint32_T b_ndbl;
   const mxArray *e_y;
-  static const int32_T iv53[2] = { 1, 21 };
+  static const int32_T iv53[2] = { 1, 36 };
+
+  const mxArray *f_y;
+  static const int32_T iv54[2] = { 1, 39 };
+
+  boolean_T exitg1;
+  uint32_T b_ndbl;
+  const mxArray *g_y;
+  static const int32_T iv55[2] = { 1, 21 };
 
   char_T cv60[21];
   static const char_T cv61[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
@@ -1087,8 +1111,8 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   emxArray_real_T *t;
   int32_T tIdx;
   real_T b_cdiff;
-  const mxArray *f_y;
-  static const int32_T iv54[2] = { 1, 21 };
+  const mxArray *h_y;
+  static const int32_T iv56[2] = { 1, 21 };
 
   emxArray_real_T *d_gridX;
   emxArray_real_T *x;
@@ -1099,8 +1123,8 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   emxArray_real_T *D;
   emxArray_real_T *b_A;
   emxArray_real_T *Y;
-  const mxArray *g_y;
-  static const int32_T iv55[2] = { 1, 45 };
+  const mxArray *i_y;
+  static const int32_T iv57[2] = { 1, 45 };
 
   char_T cv62[45];
   static const char_T cv63[45] = { 'C', 'o', 'd', 'e', 'r', ':', 't', 'o', 'o',
@@ -1108,8 +1132,8 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     'y', 'n', 'a', 'm', 'i', 'c', 'S', 'c', 'a', 'l', 'a', 'r', 'E', 'x', 'p',
     'a', 'n', 's', 'i', 'o', 'n' };
 
-  const mxArray *h_y;
-  static const int32_T iv56[2] = { 1, 21 };
+  const mxArray *j_y;
+  static const int32_T iv58[2] = { 1, 21 };
 
   static const char_T cv64[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
     'L', 'A', 'B', ':', 'i', 'n', 'n', 'e', 'r', 'd', 'i', 'm' };
@@ -1130,15 +1154,15 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   double * Cic0_t;
   int32_T b_C[2];
   int32_T b_regTerm[2];
-  const mxArray *i_y;
-  static const int32_T iv57[2] = { 1, 45 };
+  const mxArray *k_y;
+  static const int32_T iv59[2] = { 1, 45 };
 
-  const mxArray *j_y;
-  static const int32_T iv58[2] = { 1, 21 };
+  const mxArray *l_y;
+  static const int32_T iv60[2] = { 1, 21 };
 
   emxArray_real_T *r18;
-  const mxArray *k_y;
-  static const int32_T iv59[2] = { 1, 21 };
+  const mxArray *m_y;
+  static const int32_T iv61[2] = { 1, 21 };
 
   static const char_T cv65[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
     'L', 'A', 'B', ':', 'd', 'i', 'm', 'a', 'g', 'r', 'e', 'e' };
@@ -1212,20 +1236,20 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   /*  space points; */
   /*  time points */
   cdiff = sigIn->size[1];
-  midPoint = emlrtNonNegativeCheckFastR2012b(numSpacePoints, &gc_emlrtDCI, sp);
-  emlrtIntegerCheckFastR2012b(midPoint, &fc_emlrtDCI, sp);
+  sTime = emlrtNonNegativeCheckFastR2012b(numSpacePoints, &gc_emlrtDCI, sp);
+  emlrtIntegerCheckFastR2012b(sTime, &fc_emlrtDCI, sp);
   i80 = f->size[0] * f->size[1];
   f->size[0] = cdiff;
   emxEnsureCapacity(sp, (emxArray__common *)f, i80, (int32_T)sizeof(real_T),
                     &kb_emlrtRTEI);
-  midPoint = emlrtNonNegativeCheckFastR2012b(numSpacePoints, &gc_emlrtDCI, sp);
-  emlrtIntegerCheckFastR2012b(midPoint, &fc_emlrtDCI, sp);
+  sTime = emlrtNonNegativeCheckFastR2012b(numSpacePoints, &gc_emlrtDCI, sp);
+  emlrtIntegerCheckFastR2012b(sTime, &fc_emlrtDCI, sp);
   i80 = f->size[0] * f->size[1];
   f->size[1] = (int32_T)numSpacePoints;
   emxEnsureCapacity(sp, (emxArray__common *)f, i80, (int32_T)sizeof(real_T),
                     &kb_emlrtRTEI);
-  midPoint = emlrtNonNegativeCheckFastR2012b(numSpacePoints, &gc_emlrtDCI, sp);
-  ndbl = sigIn->size[1] * (int32_T)emlrtIntegerCheckFastR2012b(midPoint,
+  sTime = emlrtNonNegativeCheckFastR2012b(numSpacePoints, &gc_emlrtDCI, sp);
+  ndbl = sigIn->size[1] * (int32_T)emlrtIntegerCheckFastR2012b(sTime,
     &fc_emlrtDCI, sp);
   for (i80 = 0; i80 < ndbl; i80++) {
     f->data[i80] = 0.0;
@@ -1235,7 +1259,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   cdiff = sigIn->size[1];
   i80 = (int32_T)numSpacePoints;
   i81 = (int32_T)muDoubleScalarCeil(numSpacePoints / 2.0);
-  i80 = emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &df_emlrtBCI, sp);
+  i80 = emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &ef_emlrtBCI, sp);
   for (i81 = 0; i81 < cdiff; i81++) {
     f->data[i81 + f->size[0] * (i80 - 1)] = 1.0;
   }
@@ -1266,14 +1290,14 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       i80 = 0;
     } else {
       i81 = sigIn->size[1];
-      emlrtDynamicBoundsCheckFastR2012b(1, 1, i81, &jf_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckFastR2012b(1, 1, i81, &lf_emlrtBCI, sp);
       i81 = sigIn->size[1];
-      i80 = emlrtDynamicBoundsCheckFastR2012b(i80, 1, i81, &jf_emlrtBCI, sp);
+      i80 = emlrtDynamicBoundsCheckFastR2012b(i80, 1, i81, &lf_emlrtBCI, sp);
     }
 
     st.site = &nf_emlrtRSI;
-    b_st.site = &cg_emlrtRSI;
-    c_st.site = &dg_emlrtRSI;
+    b_st.site = &dg_emlrtRSI;
+    c_st.site = &eg_emlrtRSI;
     if ((i80 == 1) || (i80 != 1)) {
       n_too_large = true;
     } else {
@@ -1290,8 +1314,8 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 
       emlrtInitCharArrayR2013a(&c_st, 36, m13, cv56);
       emlrtAssign(&y, m13);
-      d_st.site = &ih_emlrtRSI;
-      e_st.site = &yg_emlrtRSI;
+      d_st.site = &jh_emlrtRSI;
+      e_st.site = &ah_emlrtRSI;
       b_error(&d_st, message(&e_st, y, &bb_emlrtMCI), &cb_emlrtMCI);
     }
 
@@ -1305,24 +1329,24 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 
       emlrtInitCharArrayR2013a(&c_st, 39, m13, cv58);
       emlrtAssign(&b_y, m13);
-      d_st.site = &hh_emlrtRSI;
-      e_st.site = &xg_emlrtRSI;
+      d_st.site = &ih_emlrtRSI;
+      e_st.site = &yg_emlrtRSI;
       b_error(&d_st, message(&e_st, b_y, &db_emlrtMCI), &eb_emlrtMCI);
     }
 
-    d_st.site = &eg_emlrtRSI;
+    d_st.site = &fg_emlrtRSI;
     ixstart = 1;
-    sSpace = sigIn->data[0];
+    sTime = sigIn->data[0];
     if (i80 > 1) {
-      if (muDoubleScalarIsNaN(sSpace)) {
-        f_st.site = &gg_emlrtRSI;
+      if (muDoubleScalarIsNaN(sTime)) {
+        f_st.site = &hg_emlrtRSI;
         cdiff = 2;
-        exitg2 = false;
-        while ((!exitg2) && (cdiff <= i80)) {
+        exitg3 = false;
+        while ((!exitg3) && (cdiff <= i80)) {
           ixstart = cdiff;
           if (!muDoubleScalarIsNaN(sigIn->data[cdiff - 1])) {
-            sSpace = sigIn->data[cdiff - 1];
-            exitg2 = true;
+            sTime = sigIn->data[cdiff - 1];
+            exitg3 = true;
           } else {
             cdiff++;
           }
@@ -1330,10 +1354,10 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       }
 
       if (ixstart < i80) {
-        f_st.site = &fg_emlrtRSI;
+        f_st.site = &gg_emlrtRSI;
         for (cdiff = ixstart + 1; cdiff <= i80; cdiff++) {
-          if (sigIn->data[cdiff - 1] > sSpace) {
-            sSpace = sigIn->data[cdiff - 1];
+          if (sigIn->data[cdiff - 1] > sTime) {
+            sTime = sigIn->data[cdiff - 1];
           }
         }
       }
@@ -1347,7 +1371,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
                       &kb_emlrtRTEI);
     ndbl = (int32_T)numSpacePoints;
     for (i80 = 0; i80 < ndbl; i80++) {
-      u0->data[i80] = sSpace;
+      u0->data[i80] = sTime;
     }
 
     /*  u(x,0) */
@@ -1419,14 +1443,14 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       i80 = 0;
     } else {
       i81 = sigIn->size[1];
-      emlrtDynamicBoundsCheckFastR2012b(1, 1, i81, &if_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckFastR2012b(1, 1, i81, &kf_emlrtBCI, sp);
       i81 = sigIn->size[1];
-      i80 = emlrtDynamicBoundsCheckFastR2012b(i80, 1, i81, &if_emlrtBCI, sp);
+      i80 = emlrtDynamicBoundsCheckFastR2012b(i80, 1, i81, &kf_emlrtBCI, sp);
     }
 
     st.site = &of_emlrtRSI;
-    b_st.site = &cg_emlrtRSI;
-    c_st.site = &dg_emlrtRSI;
+    b_st.site = &dg_emlrtRSI;
+    c_st.site = &eg_emlrtRSI;
     if ((i80 == 1) || (i80 != 1)) {
       n_too_large = true;
     } else {
@@ -1443,8 +1467,8 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 
       emlrtInitCharArrayR2013a(&c_st, 36, m13, cv56);
       emlrtAssign(&c_y, m13);
-      d_st.site = &ih_emlrtRSI;
-      e_st.site = &yg_emlrtRSI;
+      d_st.site = &jh_emlrtRSI;
+      e_st.site = &ah_emlrtRSI;
       b_error(&d_st, message(&e_st, c_y, &bb_emlrtMCI), &cb_emlrtMCI);
     }
 
@@ -1458,24 +1482,24 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 
       emlrtInitCharArrayR2013a(&c_st, 39, m13, cv58);
       emlrtAssign(&d_y, m13);
-      d_st.site = &hh_emlrtRSI;
-      e_st.site = &xg_emlrtRSI;
+      d_st.site = &ih_emlrtRSI;
+      e_st.site = &yg_emlrtRSI;
       b_error(&d_st, message(&e_st, d_y, &db_emlrtMCI), &eb_emlrtMCI);
     }
 
-    d_st.site = &eg_emlrtRSI;
+    d_st.site = &fg_emlrtRSI;
     ixstart = 1;
-    sSpace = sigIn->data[0];
+    sTime = sigIn->data[0];
     if (i80 > 1) {
-      if (muDoubleScalarIsNaN(sSpace)) {
-        f_st.site = &gg_emlrtRSI;
+      if (muDoubleScalarIsNaN(sTime)) {
+        f_st.site = &hg_emlrtRSI;
         cdiff = 2;
-        exitg1 = false;
-        while ((!exitg1) && (cdiff <= i80)) {
+        exitg2 = false;
+        while ((!exitg2) && (cdiff <= i80)) {
           ixstart = cdiff;
           if (!muDoubleScalarIsNaN(sigIn->data[cdiff - 1])) {
-            sSpace = sigIn->data[cdiff - 1];
-            exitg1 = true;
+            sTime = sigIn->data[cdiff - 1];
+            exitg2 = true;
           } else {
             cdiff++;
           }
@@ -1483,10 +1507,10 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       }
 
       if (ixstart < i80) {
-        f_st.site = &fg_emlrtRSI;
+        f_st.site = &gg_emlrtRSI;
         for (cdiff = ixstart + 1; cdiff <= i80; cdiff++) {
-          if (sigIn->data[cdiff - 1] > sSpace) {
-            sSpace = sigIn->data[cdiff - 1];
+          if (sigIn->data[cdiff - 1] > sTime) {
+            sTime = sigIn->data[cdiff - 1];
           }
         }
       }
@@ -1498,7 +1522,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     i80 = (int32_T)numSpacePoints;
     i81 = (int32_T)midPoint;
     u0->data[emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &cf_emlrtBCI, sp) -
-      1] = sSpace;
+      1] = sTime;
     if (1.0 > midPoint - 1.0) {
       i80 = 0;
     } else {
@@ -1511,7 +1535,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 
     st.site = &pf_emlrtRSI;
     b_st.site = &bc_emlrtRSI;
-    c_st.site = &hg_emlrtRSI;
+    c_st.site = &ig_emlrtRSI;
     if (midPoint - 2.0 < 0.0) {
       ndbl = -1;
       apnd = (int32_T)midPoint - 2;
@@ -1532,7 +1556,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       ndbl--;
     }
 
-    d_st.site = &ig_emlrtRSI;
+    d_st.site = &jg_emlrtRSI;
     i81 = gridX->size[0] * gridX->size[1];
     gridX->size[0] = 1;
     gridX->size[1] = ndbl + 1;
@@ -1549,7 +1573,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
           ixstart = ~(int32_T)((uint32_T)~i81 >> 1);
         }
 
-        d_st.site = &jg_emlrtRSI;
+        d_st.site = &kg_emlrtRSI;
         for (cdiff = 1; cdiff < ixstart; cdiff++) {
           gridX->data[cdiff] = cdiff;
           gridX->data[ndbl - cdiff] = apnd - cdiff;
@@ -1585,7 +1609,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     ndbl = ixstart * cdiff;
     emxFree_real_T(&b_gridX);
     for (i81 = 0; i81 < ndbl; i81++) {
-      gridX->data[i81] *= sSpace;
+      gridX->data[i81] *= sTime;
     }
 
     i81 = gridX->size[1];
@@ -1608,7 +1632,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     }
 
     st.site = &qf_emlrtRSI;
-    b_st.site = &hg_emlrtRSI;
+    b_st.site = &ig_emlrtRSI;
     if (midPoint - 2.0 < 0.0) {
       ndbl = -1;
       anew = (int32_T)midPoint - 2;
@@ -1632,7 +1656,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       ndbl--;
     }
 
-    c_st.site = &ig_emlrtRSI;
+    c_st.site = &jg_emlrtRSI;
     i82 = gridX->size[0] * gridX->size[1];
     gridX->size[0] = 1;
     gridX->size[1] = ndbl + 1;
@@ -1649,7 +1673,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
           ixstart = ~(int32_T)((uint32_T)~i82 >> 1);
         }
 
-        c_st.site = &jg_emlrtRSI;
+        c_st.site = &kg_emlrtRSI;
         for (cdiff = 1; cdiff < ixstart; cdiff++) {
           gridX->data[cdiff] = anew - cdiff;
           gridX->data[ndbl - cdiff] = b_apnd - (-(real_T)cdiff);
@@ -1685,7 +1709,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     ndbl = ixstart * cdiff;
     emxFree_real_T(&c_gridX);
     for (i82 = 0; i82 < ndbl; i82++) {
-      gridX->data[i82] *= sSpace;
+      gridX->data[i82] *= sTime;
     }
 
     i81 -= i80;
@@ -1748,16 +1772,198 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     for (i80 = 0; i80 < cdiff; i80++) {
       h1j->data[i80] = 0.0;
     }
-  } else {
+  } else if (initCond == 3.0) {
+    rdivide(sp, sigIn, 2.0, E);
+
+    /*  int(u(x,t)dx) is a time function of size 1xN % assuming the temp drops to 0 at the boundaries linearly */
+    /*  set f to be active only in the initial point  */
+    cdiff = sigIn->size[1];
+    i80 = f->size[0] * f->size[1];
+    f->size[0] = cdiff;
+    emxEnsureCapacity(sp, (emxArray__common *)f, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    i80 = f->size[0] * f->size[1];
+    f->size[1] = (int32_T)numSpacePoints;
+    emxEnsureCapacity(sp, (emxArray__common *)f, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    ndbl = sigIn->size[1] * (int32_T)numSpacePoints;
+    for (i80 = 0; i80 < ndbl; i80++) {
+      f->data[i80] = 0.0;
+    }
+
+    /*  function of N time points over N0 space points */
+    i80 = (int32_T)numSpacePoints;
+    emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &df_emlrtBCI, sp);
+    cdiff = sigIn->size[1];
+    for (i80 = 0; i80 < cdiff; i80++) {
+      f->data[i80] = 1.0;
+    }
+
+    /*  the source is only active at the mid point x=0.5; */
+    /*  determine initial wave u(x,0) is the Phi function */
+    i80 = (int32_T)muDoubleScalarMin(10.0, sigIn->size[1]);
+    if (1 > i80) {
+      i80 = 0;
+    } else {
+      i81 = sigIn->size[1];
+      emlrtDynamicBoundsCheckFastR2012b(1, 1, i81, &jf_emlrtBCI, sp);
+      i81 = sigIn->size[1];
+      i80 = emlrtDynamicBoundsCheckFastR2012b(i80, 1, i81, &jf_emlrtBCI, sp);
+    }
+
     st.site = &rf_emlrtRSI;
+    b_st.site = &dg_emlrtRSI;
+    c_st.site = &eg_emlrtRSI;
+    if ((i80 == 1) || (i80 != 1)) {
+      n_too_large = true;
+    } else {
+      n_too_large = false;
+    }
+
+    if (n_too_large) {
+    } else {
+      e_y = NULL;
+      m13 = emlrtCreateCharArray(2, iv53);
+      for (i = 0; i < 36; i++) {
+        cv56[i] = cv57[i];
+      }
+
+      emlrtInitCharArrayR2013a(&c_st, 36, m13, cv56);
+      emlrtAssign(&e_y, m13);
+      d_st.site = &jh_emlrtRSI;
+      e_st.site = &ah_emlrtRSI;
+      b_error(&d_st, message(&e_st, e_y, &bb_emlrtMCI), &cb_emlrtMCI);
+    }
+
+    if (i80 > 0) {
+    } else {
+      f_y = NULL;
+      m13 = emlrtCreateCharArray(2, iv54);
+      for (i = 0; i < 39; i++) {
+        cv58[i] = cv59[i];
+      }
+
+      emlrtInitCharArrayR2013a(&c_st, 39, m13, cv58);
+      emlrtAssign(&f_y, m13);
+      d_st.site = &ih_emlrtRSI;
+      e_st.site = &yg_emlrtRSI;
+      b_error(&d_st, message(&e_st, f_y, &db_emlrtMCI), &eb_emlrtMCI);
+    }
+
+    d_st.site = &fg_emlrtRSI;
+    ixstart = 1;
+    sTime = sigIn->data[0];
+    if (i80 > 1) {
+      if (muDoubleScalarIsNaN(sTime)) {
+        f_st.site = &hg_emlrtRSI;
+        cdiff = 2;
+        exitg1 = false;
+        while ((!exitg1) && (cdiff <= i80)) {
+          ixstart = cdiff;
+          if (!muDoubleScalarIsNaN(sigIn->data[cdiff - 1])) {
+            sTime = sigIn->data[cdiff - 1];
+            exitg1 = true;
+          } else {
+            cdiff++;
+          }
+        }
+      }
+
+      if (ixstart < i80) {
+        f_st.site = &gg_emlrtRSI;
+        for (cdiff = ixstart + 1; cdiff <= i80; cdiff++) {
+          if (sigIn->data[cdiff - 1] > sTime) {
+            sTime = sigIn->data[cdiff - 1];
+          }
+        }
+      }
+    }
+
+    /*  take the max value  */
+    linspace(sp, numSpacePoints, u0);
+    i80 = u0->size[0] * u0->size[1];
+    u0->size[0] = 1;
+    emxEnsureCapacity(sp, (emxArray__common *)u0, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    cdiff = u0->size[0];
+    ixstart = u0->size[1];
+    ndbl = cdiff * ixstart;
+    for (i80 = 0; i80 < ndbl; i80++) {
+      u0->data[i80] = -u0->data[i80];
+    }
+
+    b_exp(u0);
+    i80 = u0->size[0] * u0->size[1];
+    u0->size[0] = 1;
+    emxEnsureCapacity(sp, (emxArray__common *)u0, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    cdiff = u0->size[0];
+    ixstart = u0->size[1];
+    ndbl = cdiff * ixstart;
+    for (i80 = 0; i80 < ndbl; i80++) {
+      u0->data[i80] *= sTime;
+    }
+
+    /* ones(1,N0); % u(x,0) */
+    /*  Determine the boundary and initial functions */
+    /*  du/dn(0,t) = q0j */
+    i80 = q0j->size[0];
+    q0j->size[0] = sigIn->size[1];
+    emxEnsureCapacity(sp, (emxArray__common *)q0j, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    ndbl = sigIn->size[1];
+    for (i80 = 0; i80 < ndbl; i80++) {
+      q0j->data[i80] = 0.0;
+    }
+
+    /*  the flux in */
+    /* du/dn(1,t) = q1j */
+    i80 = q1j->size[0];
+    q1j->size[0] = sigIn->size[1];
+    emxEnsureCapacity(sp, (emxArray__common *)q1j, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    ndbl = sigIn->size[1];
+    for (i80 = 0; i80 < ndbl; i80++) {
+      q1j->data[i80] = 0.0;
+    }
+
+    /*  the flux out */
+    /*  u(0,t) = h0j */
+    i80 = h0j->size[0] * h0j->size[1];
+    h0j->size[0] = 1;
+    h0j->size[1] = sigIn->size[1];
+    emxEnsureCapacity(sp, (emxArray__common *)h0j, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    ndbl = sigIn->size[0] * sigIn->size[1];
+    for (i80 = 0; i80 < ndbl; i80++) {
+      h0j->data[i80] = sigIn->data[i80];
+    }
+
+    /* zeros(N,1); */
+    /*  u(1,t) = h1j */
+    cdiff = sigIn->size[1];
+    i80 = h1j->size[0] * h1j->size[1];
+    h1j->size[0] = cdiff;
+    emxEnsureCapacity(sp, (emxArray__common *)h1j, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    i80 = h1j->size[0] * h1j->size[1];
+    h1j->size[1] = 1;
+    emxEnsureCapacity(sp, (emxArray__common *)h1j, i80, (int32_T)sizeof(real_T),
+                      &kb_emlrtRTEI);
+    cdiff = sigIn->size[1];
+    for (i80 = 0; i80 < cdiff; i80++) {
+      h1j->data[i80] = 0.0;
+    }
+  } else {
+    st.site = &sf_emlrtRSI;
     error(&st);
   }
 
   /*  Discretize the time domain */
   /*  max time; */
-  st.site = &sf_emlrtRSI;
+  st.site = &tf_emlrtRSI;
   b_st.site = &bc_emlrtRSI;
-  c_st.site = &hg_emlrtRSI;
+  c_st.site = &ig_emlrtRSI;
   b_ndbl = (uint32_T)muDoubleScalarFloor((real_T)sigIn->size[1] + 0.5);
   apnd = (int32_T)b_ndbl;
   cdiff = (int32_T)b_ndbl - sigIn->size[1];
@@ -1772,20 +1978,20 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   }
 
   ndbl = (int32_T)b_ndbl - 1;
-  d_st.site = &ig_emlrtRSI;
+  d_st.site = &jg_emlrtRSI;
   if (!(2147483647U < b_ndbl)) {
   } else {
-    e_y = NULL;
-    m13 = emlrtCreateCharArray(2, iv53);
+    g_y = NULL;
+    m13 = emlrtCreateCharArray(2, iv55);
     for (i = 0; i < 21; i++) {
       cv60[i] = cv61[i];
     }
 
     emlrtInitCharArrayR2013a(&d_st, 21, m13, cv60);
-    emlrtAssign(&e_y, m13);
-    f_st.site = &gh_emlrtRSI;
-    g_st.site = &wg_emlrtRSI;
-    b_error(&f_st, message(&g_st, e_y, &b_emlrtMCI), &c_emlrtMCI);
+    emlrtAssign(&g_y, m13);
+    f_st.site = &hh_emlrtRSI;
+    g_st.site = &xg_emlrtRSI;
+    b_error(&f_st, message(&g_st, g_y, &b_emlrtMCI), &c_emlrtMCI);
   }
 
   emxInit_real_T(&d_st, &gridT, 2, &tb_emlrtRTEI, true);
@@ -1805,7 +2011,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
         ixstart = ~(int32_T)((uint32_T)~i80 >> 1);
       }
 
-      d_st.site = &jg_emlrtRSI;
+      d_st.site = &kg_emlrtRSI;
       for (cdiff = 1; cdiff < ixstart; cdiff++) {
         gridT->data[cdiff] = cdiff;
         gridT->data[ndbl - cdiff] = apnd - cdiff;
@@ -1820,7 +2026,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     }
   }
 
-  midPoint = (real_T)sigIn->size[1] / (real_T)sigIn->size[1];
+  sTime = (real_T)sigIn->size[1] / (real_T)sigIn->size[1];
   i80 = gridT->size[0] * gridT->size[1];
   gridT->size[0] = 1;
   emxEnsureCapacity(sp, (emxArray__common *)gridT, i80, (int32_T)sizeof(real_T),
@@ -1829,7 +2035,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   ixstart = gridT->size[1];
   ndbl = cdiff * ixstart;
   for (i80 = 0; i80 < ndbl; i80++) {
-    gridT->data[i80] *= midPoint;
+    gridT->data[i80] *= sTime;
   }
 
   emxInit_real_T(sp, &t, 2, &ub_emlrtRTEI, true);
@@ -1854,13 +2060,13 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   while (tIdx <= sigIn->size[1] - 1) {
     i80 = gridT->size[1];
     i81 = tIdx + 1;
-    emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &hf_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &if_emlrtBCI, sp);
     i80 = gridT->size[1];
     i81 = (int32_T)((1.0 + (real_T)tIdx) + 1.0);
-    emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &gf_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &hf_emlrtBCI, sp);
     i80 = t->size[1];
     i81 = 1 + tIdx;
-    t->data[emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &lf_emlrtBCI, sp) - 1]
+    t->data[emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &nf_emlrtBCI, sp) - 1]
       = (gridT->data[tIdx] + gridT->data[(int32_T)((1.0 + (real_T)tIdx) + 1.0) -
          1]) / 2.0;
     tIdx++;
@@ -1868,16 +2074,16 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   }
 
   /*  Discretize the space domain */
-  st.site = &tf_emlrtRSI;
+  st.site = &uf_emlrtRSI;
   b_st.site = &bc_emlrtRSI;
-  c_st.site = &hg_emlrtRSI;
+  c_st.site = &ig_emlrtRSI;
   if (muDoubleScalarIsInf(numSpacePoints)) {
     ndbl = 0;
-    sSpace = rtNaN;
+    sTime = rtNaN;
     b_apnd = numSpacePoints;
     n_too_large = !(0.0 == numSpacePoints);
   } else {
-    sSpace = 0.0;
+    sTime = 0.0;
     midPoint = muDoubleScalarFloor(numSpacePoints + 0.5);
     b_apnd = midPoint;
     b_cdiff = midPoint - numSpacePoints;
@@ -1894,20 +2100,20 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     ndbl = (int32_T)midPoint - 1;
   }
 
-  d_st.site = &ig_emlrtRSI;
+  d_st.site = &jg_emlrtRSI;
   if (!n_too_large) {
   } else {
-    f_y = NULL;
-    m13 = emlrtCreateCharArray(2, iv54);
+    h_y = NULL;
+    m13 = emlrtCreateCharArray(2, iv56);
     for (i = 0; i < 21; i++) {
       cv60[i] = cv61[i];
     }
 
     emlrtInitCharArrayR2013a(&d_st, 21, m13, cv60);
-    emlrtAssign(&f_y, m13);
-    f_st.site = &gh_emlrtRSI;
-    g_st.site = &wg_emlrtRSI;
-    b_error(&f_st, message(&g_st, f_y, &b_emlrtMCI), &c_emlrtMCI);
+    emlrtAssign(&h_y, m13);
+    f_st.site = &hh_emlrtRSI;
+    g_st.site = &xg_emlrtRSI;
+    b_error(&f_st, message(&g_st, h_y, &b_emlrtMCI), &c_emlrtMCI);
   }
 
   i80 = gridX->size[0] * gridX->size[1];
@@ -1916,7 +2122,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   emxEnsureCapacity(&c_st, (emxArray__common *)gridX, i80, (int32_T)sizeof
                     (real_T), &lb_emlrtRTEI);
   if (ndbl + 1 > 0) {
-    gridX->data[0] = sSpace;
+    gridX->data[0] = sTime;
     if (ndbl + 1 > 1) {
       gridX->data[ndbl] = b_apnd;
       i80 = ndbl + (ndbl < 0);
@@ -1926,16 +2132,16 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
         ixstart = ~(int32_T)((uint32_T)~i80 >> 1);
       }
 
-      d_st.site = &jg_emlrtRSI;
+      d_st.site = &kg_emlrtRSI;
       for (cdiff = 1; cdiff < ixstart; cdiff++) {
-        gridX->data[cdiff] = sSpace + (real_T)cdiff;
+        gridX->data[cdiff] = sTime + (real_T)cdiff;
         gridX->data[ndbl - cdiff] = b_apnd - (real_T)cdiff;
       }
 
       if (ixstart << 1 == ndbl) {
-        gridX->data[ixstart] = (sSpace + b_apnd) / 2.0;
+        gridX->data[ixstart] = (sTime + b_apnd) / 2.0;
       } else {
-        gridX->data[ixstart] = sSpace + (real_T)ixstart;
+        gridX->data[ixstart] = sTime + (real_T)ixstart;
         gridX->data[ixstart + 1] = b_apnd - (real_T)ixstart;
       }
     }
@@ -1972,13 +2178,13 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   while (cdiff <= (int32_T)numSpacePoints - 1) {
     i80 = gridX->size[1];
     i81 = (int32_T)((1.0 + (real_T)cdiff) + 1.0);
-    emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &ff_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &gf_emlrtBCI, sp);
     i80 = gridX->size[1];
     i81 = cdiff + 1;
-    emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &ef_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &ff_emlrtBCI, sp);
     i80 = x->size[1];
     i81 = 1 + cdiff;
-    x->data[emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &kf_emlrtBCI, sp) - 1]
+    x->data[emlrtDynamicBoundsCheckFastR2012b(i81, 1, i80, &mf_emlrtBCI, sp) - 1]
       = (gridX->data[(int32_T)((1.0 + (real_T)cdiff) + 1.0) - 1] + gridX->
          data[cdiff]) / 2.0;
     cdiff++;
@@ -1995,12 +2201,12 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   /* =========================== */
   /*  Calculate the Boundary Elements */
   /*  Calculate A and B, B*, and D */
-  st.site = &uf_emlrtRSI;
+  st.site = &vf_emlrtRSI;
   CalculateABBStarD(&st, sigIn->size[1], t, gridT, x, f, A, regTerm, Bstar, D);
 
   /*  call the mex */
   /*  Calculate C */
-  st.site = &vf_emlrtRSI;
+  st.site = &wf_emlrtRSI;
   CalculateC(&st, sigIn->size[1], numSpacePoints, t, gridX, C);
 
   /*  Solve the equation */
@@ -2018,17 +2224,17 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   }
 
   c_emxInit_real_T(sp, &Y, 1, &kb_emlrtRTEI, true);
-  st.site = &wf_emlrtRSI;
+  st.site = &xf_emlrtRSI;
   CalculateXY(&st, sigIn->size[1], numSpacePoints, t, gridT, x, gridX, E, b_A,
               regTerm, Bstar, C, D, u0, f, alpha, A, Y);
 
   /*  get the regularization term  */
-  st.site = &xf_emlrtRSI;
+  st.site = &yf_emlrtRSI;
   GetRegularizationTerm(&st, sigIn->size[1], regOrder, regTerm);
 
   /*  get RregTerm= 'R term */
   /*  The source solution with regularization coefficient lambda */
-  st.site = &yf_emlrtRSI;
+  st.site = &ag_emlrtRSI;
   i80 = Bstar->size[0] * Bstar->size[1];
   Bstar->size[0] = A->size[1];
   Bstar->size[1] = A->size[0];
@@ -2048,29 +2254,29 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   if (!(Bstar->size[1] == A->size[0])) {
     if (((Bstar->size[0] == 1) && (Bstar->size[1] == 1)) || ((A->size[0] == 1) &&
          (A->size[1] == 1))) {
-      g_y = NULL;
-      m13 = emlrtCreateCharArray(2, iv55);
+      i_y = NULL;
+      m13 = emlrtCreateCharArray(2, iv57);
       for (i = 0; i < 45; i++) {
         cv62[i] = cv63[i];
       }
 
       emlrtInitCharArrayR2013a(&b_st, 45, m13, cv62);
-      emlrtAssign(&g_y, m13);
-      c_st.site = &eh_emlrtRSI;
-      h_st.site = &ug_emlrtRSI;
-      b_error(&c_st, message(&h_st, g_y, &j_emlrtMCI), &k_emlrtMCI);
+      emlrtAssign(&i_y, m13);
+      c_st.site = &fh_emlrtRSI;
+      h_st.site = &vg_emlrtRSI;
+      b_error(&c_st, message(&h_st, i_y, &j_emlrtMCI), &k_emlrtMCI);
     } else {
-      h_y = NULL;
-      m13 = emlrtCreateCharArray(2, iv56);
+      j_y = NULL;
+      m13 = emlrtCreateCharArray(2, iv58);
       for (i = 0; i < 21; i++) {
         cv60[i] = cv64[i];
       }
 
       emlrtInitCharArrayR2013a(&b_st, 21, m13, cv60);
-      emlrtAssign(&h_y, m13);
-      c_st.site = &fh_emlrtRSI;
-      h_st.site = &vg_emlrtRSI;
-      b_error(&c_st, message(&h_st, h_y, &l_emlrtMCI), &m_emlrtMCI);
+      emlrtAssign(&j_y, m13);
+      c_st.site = &gh_emlrtRSI;
+      h_st.site = &wg_emlrtRSI;
+      b_error(&c_st, message(&h_st, j_y, &l_emlrtMCI), &m_emlrtMCI);
     }
   }
 
@@ -2126,8 +2332,8 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     if ((Bstar->size[0] < 1) || (A->size[1] < 1) || (Bstar->size[1] < 1)) {
     } else {
       d_st.site = &je_emlrtRSI;
-      midPoint = 1.0;
-      sSpace = 0.0;
+      sTime = 1.0;
+      midPoint = 0.0;
       TRANSB = 'N';
       TRANSA = 'N';
       f_st.site = &je_emlrtRSI;
@@ -2142,14 +2348,14 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       ldb_t = (ptrdiff_t)(Bstar->size[1]);
       f_st.site = &je_emlrtRSI;
       ldc_t = (ptrdiff_t)(Bstar->size[0]);
-      alpha1_t = (double *)(&midPoint);
+      alpha1_t = (double *)(&sTime);
       i80 = Bstar->size[0] * Bstar->size[1];
       emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &td_emlrtBCI, &d_st);
       Aia0_t = (double *)(&Bstar->data[0]);
       i80 = A->size[0] * A->size[1];
       emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &td_emlrtBCI, &d_st);
       Bib0_t = (double *)(&A->data[0]);
-      beta1_t = (double *)(&sSpace);
+      beta1_t = (double *)(&midPoint);
       i80 = D->size[0] * D->size[1];
       emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &td_emlrtBCI, &d_st);
       Cic0_t = (double *)(&C->data[0]);
@@ -2178,7 +2384,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   }
 
   emlrtSizeEqCheck2DFastR2012b(b_C, b_regTerm, &t_emlrtECI, sp);
-  st.site = &yf_emlrtRSI;
+  st.site = &ag_emlrtRSI;
   i80 = Bstar->size[0] * Bstar->size[1];
   Bstar->size[0] = A->size[1];
   Bstar->size[1] = A->size[0];
@@ -2196,29 +2402,29 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   b_st.site = &he_emlrtRSI;
   if (!(Bstar->size[1] == Y->size[0])) {
     if (((Bstar->size[0] == 1) && (Bstar->size[1] == 1)) || (Y->size[0] == 1)) {
-      i_y = NULL;
-      m13 = emlrtCreateCharArray(2, iv57);
+      k_y = NULL;
+      m13 = emlrtCreateCharArray(2, iv59);
       for (i = 0; i < 45; i++) {
         cv62[i] = cv63[i];
       }
 
       emlrtInitCharArrayR2013a(&b_st, 45, m13, cv62);
-      emlrtAssign(&i_y, m13);
-      c_st.site = &eh_emlrtRSI;
-      h_st.site = &ug_emlrtRSI;
-      b_error(&c_st, message(&h_st, i_y, &j_emlrtMCI), &k_emlrtMCI);
+      emlrtAssign(&k_y, m13);
+      c_st.site = &fh_emlrtRSI;
+      h_st.site = &vg_emlrtRSI;
+      b_error(&c_st, message(&h_st, k_y, &j_emlrtMCI), &k_emlrtMCI);
     } else {
-      j_y = NULL;
-      m13 = emlrtCreateCharArray(2, iv58);
+      l_y = NULL;
+      m13 = emlrtCreateCharArray(2, iv60);
       for (i = 0; i < 21; i++) {
         cv60[i] = cv64[i];
       }
 
       emlrtInitCharArrayR2013a(&b_st, 21, m13, cv60);
-      emlrtAssign(&j_y, m13);
-      c_st.site = &fh_emlrtRSI;
-      h_st.site = &vg_emlrtRSI;
-      b_error(&c_st, message(&h_st, j_y, &l_emlrtMCI), &m_emlrtMCI);
+      emlrtAssign(&l_y, m13);
+      c_st.site = &gh_emlrtRSI;
+      h_st.site = &wg_emlrtRSI;
+      b_error(&c_st, message(&h_st, l_y, &l_emlrtMCI), &m_emlrtMCI);
     }
   }
 
@@ -2261,8 +2467,8 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     if ((Bstar->size[0] < 1) || (Bstar->size[1] < 1)) {
     } else {
       d_st.site = &je_emlrtRSI;
-      midPoint = 1.0;
-      sSpace = 0.0;
+      sTime = 1.0;
+      midPoint = 0.0;
       TRANSB = 'N';
       TRANSA = 'N';
       f_st.site = &je_emlrtRSI;
@@ -2277,14 +2483,14 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       ldb_t = (ptrdiff_t)(Bstar->size[1]);
       f_st.site = &je_emlrtRSI;
       ldc_t = (ptrdiff_t)(Bstar->size[0]);
-      alpha1_t = (double *)(&midPoint);
+      alpha1_t = (double *)(&sTime);
       i80 = Bstar->size[0] * Bstar->size[1];
       emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &td_emlrtBCI, &d_st);
       Aia0_t = (double *)(&Bstar->data[0]);
       i80 = Y->size[0];
       emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &td_emlrtBCI, &d_st);
       Bib0_t = (double *)(&Y->data[0]);
-      beta1_t = (double *)(&sSpace);
+      beta1_t = (double *)(&midPoint);
       i80 = r18->size[0];
       emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &td_emlrtBCI, &d_st);
       Cic0_t = (double *)(&r->data[0]);
@@ -2296,7 +2502,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   emxFree_real_T(&r18);
   emxFree_real_T(&Y);
   emxFree_real_T(&Bstar);
-  st.site = &yf_emlrtRSI;
+  st.site = &ag_emlrtRSI;
   i80 = C->size[0] * C->size[1];
   emxEnsureCapacity(&st, (emxArray__common *)C, i80, (int32_T)sizeof(real_T),
                     &kb_emlrtRTEI);
@@ -2310,16 +2516,16 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   emxFree_real_T(&regTerm);
   if (r->size[0] == C->size[0]) {
   } else {
-    k_y = NULL;
-    m13 = emlrtCreateCharArray(2, iv59);
+    m_y = NULL;
+    m13 = emlrtCreateCharArray(2, iv61);
     for (i = 0; i < 21; i++) {
       cv60[i] = cv65[i];
     }
 
     emlrtInitCharArrayR2013a(&st, 21, m13, cv60);
-    emlrtAssign(&k_y, m13);
-    b_st.site = &kg_emlrtRSI;
-    b_error(&b_st, message(&b_st, k_y, &fb_emlrtMCI), &fb_emlrtMCI);
+    emlrtAssign(&m_y, m13);
+    b_st.site = &lg_emlrtRSI;
+    b_error(&b_st, message(&b_st, m_y, &fb_emlrtMCI), &fb_emlrtMCI);
   }
 
   c_emxInit_real_T(&st, &b_r, 1, &kb_emlrtRTEI, true);
@@ -2335,7 +2541,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       r->data[i80] = 0.0;
     }
   } else if (C->size[0] == C->size[1]) {
-    b_st.site = &kg_emlrtRSI;
+    b_st.site = &lg_emlrtRSI;
     b_eml_lusolve(&b_st, C, r);
   } else {
     i80 = b_r->size[0];
@@ -2347,7 +2553,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       b_r->data[i80] = r->data[i80];
     }
 
-    b_st.site = &kg_emlrtRSI;
+    b_st.site = &lg_emlrtRSI;
     c_eml_qrsolve(&b_st, C, b_r, r19);
     i80 = r->size[0];
     r->size[0] = r19->size[0];
@@ -2364,7 +2570,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   emxFree_real_T(&C);
 
   /*  Calculate the solution u(x,t) */
-  st.site = &ag_emlrtRSI;
+  st.site = &bg_emlrtRSI;
 
   /*  get the solution for the inverse heat source, u(x,t),  */
   /*  N0 - number of space points */
@@ -2416,10 +2622,10 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     i = 1;
     while (i - 1 <= sigIn->size[1] - 1) {
       /*  time index */
-      midPoint = 0.0;
+      sTime = 0.0;
 
       /*  cumulative sums */
-      sSpace = 0.0;
+      midPoint = 0.0;
       tIdx = 0;
       while (tIdx <= sigIn->size[1] - 1) {
         /*  time index */
@@ -2461,26 +2667,28 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
         b_st.site = &bb_emlrtRSI;
         i_st.site = &cb_emlrtRSI;
         j_st.site = &db_emlrtRSI;
-        midPoint = ((((midPoint + Acoeff(&b_st, 0.0, 1.0 + (real_T)tIdx, x->
+        sTime = ((((sTime + Acoeff(&b_st, 0.0, 1.0 + (real_T)tIdx, x->
           data[emlrtDynamicBoundsCheckFastR2012b(j, 1, i80, &cd_emlrtBCI, &st) -
           1], t->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, i81, &dd_emlrtBCI,
           &st) - 1], gridT) * 0.0) + Acoeff(&b_st, 1.0, 1.0 + (real_T)tIdx,
-          x->data[emlrtDynamicBoundsCheckFastR2012b(j, 1, i82, &fd_emlrtBCI, &st)
-          - 1], t->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, i83,
-          &gd_emlrtBCI, &st) - 1], gridT) * 0.0) - Bcoeff(&i_st, 0.0, 1.0 +
-          (real_T)tIdx, x->data[emlrtDynamicBoundsCheckFastR2012b(j, 1, ixstart,
-          &id_emlrtBCI, &st) - 1], t->data[emlrtDynamicBoundsCheckFastR2012b(i,
-          1, cdiff, &jd_emlrtBCI, &st) - 1], gridT) * h0j->
-                     data[emlrtDynamicBoundsCheckFastR2012b(anew, 1, ndbl,
-          &kd_emlrtBCI, &st) - 1]) - Bcoeff(&i_st, 1.0, 1.0 + (real_T)tIdx,
-          x->data[emlrtDynamicBoundsCheckFastR2012b(j, 1, apnd, &ld_emlrtBCI,
-          &st) - 1], t->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, i84,
-          &md_emlrtBCI, &st) - 1], gridT) * h1j->
-                    data[emlrtDynamicBoundsCheckFastR2012b(i86, 1, i85,
-          &nd_emlrtBCI, &st) - 1]) + b_Dcoeff(&j_st, x, 1.0 + (real_T)tIdx,
-          x->data[emlrtDynamicBoundsCheckFastR2012b(j, 1, i87, &od_emlrtBCI, &st)
-          - 1], t->data[emlrtDynamicBoundsCheckFastR2012b(i, 1, i88,
-          &pd_emlrtBCI, &st) - 1], gridT, b_f) * r->
+                    x->data[emlrtDynamicBoundsCheckFastR2012b(j, 1, i82,
+          &fd_emlrtBCI, &st) - 1], t->data[emlrtDynamicBoundsCheckFastR2012b(i,
+          1, i83, &gd_emlrtBCI, &st) - 1], gridT) * 0.0) - Bcoeff(&i_st, 0.0,
+                   1.0 + (real_T)tIdx, x->data[emlrtDynamicBoundsCheckFastR2012b
+                   (j, 1, ixstart, &id_emlrtBCI, &st) - 1], t->
+                   data[emlrtDynamicBoundsCheckFastR2012b(i, 1, cdiff,
+                    &jd_emlrtBCI, &st) - 1], gridT) * h0j->
+                  data[emlrtDynamicBoundsCheckFastR2012b(anew, 1, ndbl,
+                   &kd_emlrtBCI, &st) - 1]) - Bcoeff(&i_st, 1.0, 1.0 + (real_T)
+                  tIdx, x->data[emlrtDynamicBoundsCheckFastR2012b(j, 1, apnd,
+                   &ld_emlrtBCI, &st) - 1], t->
+                  data[emlrtDynamicBoundsCheckFastR2012b(i, 1, i84, &md_emlrtBCI,
+                   &st) - 1], gridT) * h1j->
+                 data[emlrtDynamicBoundsCheckFastR2012b(i86, 1, i85,
+                  &nd_emlrtBCI, &st) - 1]) + b_Dcoeff(&j_st, x, 1.0 + (real_T)
+          tIdx, x->data[emlrtDynamicBoundsCheckFastR2012b(j, 1, i87,
+          &od_emlrtBCI, &st) - 1], t->data[emlrtDynamicBoundsCheckFastR2012b(i,
+          1, i88, &pd_emlrtBCI, &st) - 1], gridT, b_f) * r->
           data[emlrtDynamicBoundsCheckFastR2012b(i90, 1, i89, &qd_emlrtBCI, &st)
           - 1];
         tIdx++;
@@ -2495,8 +2703,8 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
         i82 = u0->size[1];
         i83 = 1 + ixstart;
         b_st.site = &eb_emlrtRSI;
-        sSpace += b_Ccoeff(&b_st, 1.0 + (real_T)ixstart, x->
-                           data[emlrtDynamicBoundsCheckFastR2012b(j, 1, i80,
+        midPoint += b_Ccoeff(&b_st, 1.0 + (real_T)ixstart, x->
+                             data[emlrtDynamicBoundsCheckFastR2012b(j, 1, i80,
           &yc_emlrtBCI, &st) - 1], t->data[emlrtDynamicBoundsCheckFastR2012b(i,
           1, i81, &ad_emlrtBCI, &st) - 1], gridT) * u0->
           data[emlrtDynamicBoundsCheckFastR2012b(i83, 1, i82, &bd_emlrtBCI, &st)
@@ -2510,7 +2718,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       i82 = gridX->size[1];
       u->data[(emlrtDynamicBoundsCheckFastR2012b(i, 1, i80, &vc_emlrtBCI, &st) +
                u->size[0] * (emlrtDynamicBoundsCheckFastR2012b(j, 1, i81,
-                 &wc_emlrtBCI, &st) - 1)) - 1] = (midPoint + sSpace) *
+                 &wc_emlrtBCI, &st) - 1)) - 1] = (sTime + midPoint) *
         gridX->data[emlrtDynamicBoundsCheckFastR2012b(j, 1, i82, &xc_emlrtBCI,
         &st) - 1];
       i++;
@@ -2534,7 +2742,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 
   /*  plot source, signal and solution */
   if (plotFlag) {
-    st.site = &bg_emlrtRSI;
+    st.site = &cg_emlrtRSI;
     PlotResults(&st, t, sigIn, u, r);
   }
 

@@ -62,19 +62,19 @@ static emlrtDCInfo ec_emlrtDCI = { 78, 13, "eye",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\eye.m",
   4 };
 
-static emlrtRSInfo ah_emlrtRSI = { 57, "eml_assert_valid_size_arg",
+static emlrtRSInfo bh_emlrtRSI = { 57, "eml_assert_valid_size_arg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_assert_valid_size_arg.m"
 };
 
-static emlrtRSInfo jh_emlrtRSI = { 56, "eml_assert_valid_size_arg",
+static emlrtRSInfo kh_emlrtRSI = { 56, "eml_assert_valid_size_arg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_assert_valid_size_arg.m"
 };
 
-static emlrtRSInfo kh_emlrtRSI = { 50, "eml_assert_valid_size_arg",
+static emlrtRSInfo lh_emlrtRSI = { 50, "eml_assert_valid_size_arg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_assert_valid_size_arg.m"
 };
 
-static emlrtRSInfo oh_emlrtRSI = { 51, "eml_assert_valid_size_arg",
+static emlrtRSInfo ph_emlrtRSI = { 51, "eml_assert_valid_size_arg",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_assert_valid_size_arg.m"
 };
 
@@ -161,8 +161,8 @@ void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *I)
     m11 = emlrtCreateNumericMatrix(1, 1, mxINT32_CLASS, mxREAL);
     *(int32_T *)mxGetData(m11) = MAX_int32_T;
     emlrtAssign(&c_y, m11);
-    b_st.site = &kh_emlrtRSI;
-    c_st.site = &oh_emlrtRSI;
+    b_st.site = &lh_emlrtRSI;
+    c_st.site = &ph_emlrtRSI;
     b_error(&b_st, c_message(&c_st, y, b_y, c_y, &q_emlrtMCI), &r_emlrtMCI);
   }
 
@@ -182,8 +182,8 @@ void eye(const emlrtStack *sp, real_T varargin_1, emxArray_real_T *I)
 
     emlrtInitCharArrayR2013a(&st, 21, m11, cv37);
     emlrtAssign(&d_y, m11);
-    b_st.site = &jh_emlrtRSI;
-    c_st.site = &ah_emlrtRSI;
+    b_st.site = &kh_emlrtRSI;
+    c_st.site = &bh_emlrtRSI;
     b_error(&b_st, message(&c_st, d_y, &s_emlrtMCI), &t_emlrtMCI);
   }
 

@@ -29,7 +29,7 @@
 void error(const emlrtStack *sp)
 {
   const mxArray *y;
-  static const int32_T iv60[2] = { 1, 21 };
+  static const int32_T iv62[2] = { 1, 21 };
 
   const mxArray *m14;
   char_T cv66[21];
@@ -41,14 +41,14 @@ void error(const emlrtStack *sp)
   st.prev = sp;
   st.tls = sp->tls;
   y = NULL;
-  m14 = emlrtCreateCharArray(2, iv60);
+  m14 = emlrtCreateCharArray(2, iv62);
   for (i = 0; i < 21; i++) {
     cv66[i] = cv67[i];
   }
 
   emlrtInitCharArrayR2013a(sp, 21, m14, cv66);
   emlrtAssign(&y, m14);
-  st.site = &dh_emlrtRSI;
+  st.site = &eh_emlrtRSI;
   b_error(&st, y, &u_emlrtMCI);
 }
 

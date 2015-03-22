@@ -26,35 +26,35 @@
 
 /* Variable Definitions */
 static emlrtRTEInfo e_emlrtRTEI = { 1, 16, "CalculateHeatSolution",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
 };
 
 static emlrtRTEInfo f_emlrtRTEI = { 15, 1, "CalculateHeatSolution",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
 };
 
-static emlrtRTEInfo gc_emlrtRTEI = { 20, 5, "CalculateHeatSolution",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
+static emlrtRTEInfo hc_emlrtRTEI = { 20, 5, "CalculateHeatSolution",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
 };
 
-static emlrtRTEInfo hc_emlrtRTEI = { 24, 9, "CalculateHeatSolution",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
+static emlrtRTEInfo ic_emlrtRTEI = { 24, 9, "CalculateHeatSolution",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m"
 };
 
 static emlrtDCInfo db_emlrtDCI = { 15, 18, "CalculateHeatSolution",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
   1 };
 
 static emlrtDCInfo eb_emlrtDCI = { 15, 18, "CalculateHeatSolution",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
   4 };
 
 static emlrtDCInfo fb_emlrtDCI = { 18, 17, "CalculateHeatSolution",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
   1 };
 
 static emlrtDCInfo gb_emlrtDCI = { 18, 17, "CalculateHeatSolution",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateHeatSolution.m",
   4 };
 
 /* Function Definitions */
@@ -147,7 +147,7 @@ void CalculateHeatSolution(const emlrtStack *sp, real_T N0, real_T N, const
   while (j - 1 <= (int32_T)N0 - 1) {
     /*  space index */
     emlrtForLoopVectorCheckR2012b(1.0, 1.0, N, mxDOUBLE_CLASS, (int32_T)N,
-      &gc_emlrtRTEI, sp);
+      &hc_emlrtRTEI, sp);
     i = 1;
     while (i - 1 <= (int32_T)N - 1) {
       /*  time index */
@@ -156,7 +156,7 @@ void CalculateHeatSolution(const emlrtStack *sp, real_T N0, real_T N, const
       /*  cumulative sums */
       sSpace = 0.0;
       emlrtForLoopVectorCheckR2012b(1.0, 1.0, N, mxDOUBLE_CLASS, (int32_T)N,
-        &hc_emlrtRTEI, sp);
+        &ic_emlrtRTEI, sp);
       tIdx = 0;
       while (tIdx <= (int32_T)N - 1) {
         /*  time index */

@@ -47,11 +47,11 @@ static emlrtRTEInfo fb_emlrtRTEI = { 1, 14, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRSInfo bh_emlrtRSI = { 34, "mpower",
+static emlrtRSInfo ch_emlrtRSI = { 34, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
-static emlrtRSInfo lh_emlrtRSI = { 33, "mpower",
+static emlrtRSInfo mh_emlrtRSI = { 33, "mpower",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
 };
 
@@ -115,8 +115,8 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
 
     emlrtInitCharArrayR2013a(sp, 19, m8, cv24);
     emlrtAssign(&y, m8);
-    st.site = &lh_emlrtRSI;
-    b_st.site = &bh_emlrtRSI;
+    st.site = &mh_emlrtRSI;
+    b_st.site = &ch_emlrtRSI;
     b_error(&st, message(&b_st, y, &o_emlrtMCI), &p_emlrtMCI);
   }
 
@@ -133,8 +133,8 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
 
       emlrtInitCharArrayR2013a(&d_st, 45, m8, cv26);
       emlrtAssign(&b_y, m8);
-      e_st.site = &eh_emlrtRSI;
-      f_st.site = &ug_emlrtRSI;
+      e_st.site = &fh_emlrtRSI;
+      f_st.site = &vg_emlrtRSI;
       b_error(&e_st, message(&f_st, b_y, &j_emlrtMCI), &k_emlrtMCI);
     } else {
       c_y = NULL;
@@ -145,8 +145,8 @@ void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)
 
       emlrtInitCharArrayR2013a(&d_st, 21, m8, cv28);
       emlrtAssign(&c_y, m8);
-      e_st.site = &fh_emlrtRSI;
-      f_st.site = &vg_emlrtRSI;
+      e_st.site = &gh_emlrtRSI;
+      f_st.site = &wg_emlrtRSI;
       b_error(&e_st, message(&f_st, c_y, &l_emlrtMCI), &m_emlrtMCI);
     }
   }

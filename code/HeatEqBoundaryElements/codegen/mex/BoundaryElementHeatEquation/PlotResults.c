@@ -25,52 +25,40 @@
 
 /* Variable Definitions */
 static emlrtMCInfo v_emlrtMCI = { 5, 7, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
 static emlrtMCInfo w_emlrtMCI = { 6, 6, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
 static emlrtMCInfo x_emlrtMCI = { 7, 1, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
 static emlrtMCInfo y_emlrtMCI = { 8, 1, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
 static emlrtMCInfo ab_emlrtMCI = { 10, 1, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
 static emlrtRTEInfo jb_emlrtRTEI = { 1, 10, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
 static emlrtBCInfo ye_emlrtBCI = { -1, -1, 10, 28, "u", "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m",
-  0 };
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m", 0 };
 
-static emlrtRSInfo og_emlrtRSI = { 10, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+static emlrtRSInfo pg_emlrtRSI = { 10, "PlotResults",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
-static emlrtRSInfo pg_emlrtRSI = { 8, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+static emlrtRSInfo qg_emlrtRSI = { 8, "PlotResults",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
-static emlrtRSInfo qg_emlrtRSI = { 7, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+static emlrtRSInfo rg_emlrtRSI = { 7, "PlotResults",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
-static emlrtRSInfo rg_emlrtRSI = { 6, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+static emlrtRSInfo sg_emlrtRSI = { 6, "PlotResults",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
-static emlrtRSInfo sg_emlrtRSI = { 5, "PlotResults",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m"
-};
+static emlrtRSInfo tg_emlrtRSI = { 5, "PlotResults",
+  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\PlotResults.m" };
 
 /* Function Declarations */
 static const mxArray *axes(const emlrtStack *sp, const mxArray *b, const mxArray
@@ -100,16 +88,16 @@ static const mxArray *b_emlrt_marshallOut(const emxArray_real_T *u)
   const mxArray *y;
   const mxArray *m17;
   real_T *pData;
-  int32_T i93;
+  int32_T i94;
   int32_T i;
   y = NULL;
   m17 = emlrtCreateNumericArray(2, *(int32_T (*)[2])u->size, mxDOUBLE_CLASS,
     mxREAL);
   pData = (real_T *)mxGetPr(m17);
-  i93 = 0;
+  i94 = 0;
   for (i = 0; i < u->size[1]; i++) {
-    pData[i93] = u->data[u->size[0] * i];
-    i93++;
+    pData[i94] = u->data[u->size[0] * i];
+    i94++;
   }
 
   emlrtAssign(&y, m17);
@@ -261,7 +249,7 @@ void PlotResults(const emlrtStack *sp, const emxArray_real_T *t, const
 
   /*  plot the input signal as a function of time, the solution u(x,t) and the */
   /*  source solution r(t) */
-  st.site = &sg_emlrtRSI;
+  st.site = &tg_emlrtRSI;
   emlrtAssign(&fig, figure(&st, &v_emlrtMCI));
   y = NULL;
   m12 = emlrtCreateCharArray(2, iv28);
@@ -287,7 +275,7 @@ void PlotResults(const emlrtStack *sp, const emxArray_real_T *t, const
 
   emlrtInitCharArrayR2013a(sp, 3, m12, cv43);
   emlrtAssign(&c_y, m12);
-  st.site = &rg_emlrtRSI;
+  st.site = &sg_emlrtRSI;
   emlrtAssign(&ax, axes(&st, y, emlrtAlias(fig), b_y, c_y, &w_emlrtMCI));
   d_y = NULL;
   m12 = emlrtCreateCharArray(2, iv31);
@@ -360,7 +348,7 @@ void PlotResults(const emlrtStack *sp, const emxArray_real_T *t, const
 
   emlrtInitCharArrayR2013a(sp, 6, m12, cv39);
   emlrtAssign(&k_y, m12);
-  st.site = &qg_emlrtRSI;
+  st.site = &rg_emlrtRSI;
   line(&st, d_y, b_emlrt_marshallOut(t), e_y, f_y, g_y, h_y, i_y, j_y, k_y,
        emlrtAlias(ax), &x_emlrtMCI);
   l_y = NULL;
@@ -414,7 +402,7 @@ void PlotResults(const emlrtStack *sp, const emxArray_real_T *t, const
 
   emlrtInitCharArrayR2013a(sp, 6, m12, cv39);
   emlrtAssign(&r_y, m12);
-  st.site = &pg_emlrtRSI;
+  st.site = &qg_emlrtRSI;
   line(&st, l_y, b_emlrt_marshallOut(t), m_y, b_emlrt_marshallOut(sigIn), n_y,
        o_y, p_y, q_y, r_y, emlrtAlias(ax), &y_emlrtMCI);
 
@@ -493,7 +481,7 @@ void PlotResults(const emlrtStack *sp, const emxArray_real_T *t, const
 
   emlrtInitCharArrayR2013a(sp, 6, m12, cv39);
   emlrtAssign(&ab_y, m12);
-  st.site = &og_emlrtRSI;
+  st.site = &pg_emlrtRSI;
   line(&st, s_y, b_emlrt_marshallOut(t), t_y, u_y, v_y, w_y, x_y, y_y, ab_y,
        emlrtAlias(ax), &ab_emlrtMCI);
 

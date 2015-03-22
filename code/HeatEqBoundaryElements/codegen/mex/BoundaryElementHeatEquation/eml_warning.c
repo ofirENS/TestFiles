@@ -33,7 +33,7 @@ static emlrtMCInfo g_emlrtMCI = { 16, 5, "eml_warning",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_warning.m"
 };
 
-static emlrtRSInfo tg_emlrtRSI = { 16, "eml_warning",
+static emlrtRSInfo ug_emlrtRSI = { 16, "eml_warning",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_warning.m"
 };
 
@@ -86,7 +86,7 @@ void b_eml_warning(const emlrtStack *sp, real_T varargin_2, const char_T
 
   emlrtInitCharArrayR2013a(sp, 14, m5, b_varargin_3);
   emlrtAssign(&b_y, m5);
-  st.site = &tg_emlrtRSI;
+  st.site = &ug_emlrtRSI;
   warning(&st, c_message(&st, y, emlrt_marshallOut(varargin_2), b_y, &f_emlrtMCI),
           &g_emlrtMCI);
 }
@@ -114,7 +114,7 @@ void eml_warning(const emlrtStack *sp)
 
   emlrtInitCharArrayR2013a(sp, 27, m3, cv11);
   emlrtAssign(&y, m3);
-  st.site = &tg_emlrtRSI;
+  st.site = &ug_emlrtRSI;
   warning(&st, message(&st, y, &f_emlrtMCI), &g_emlrtMCI);
 }
 

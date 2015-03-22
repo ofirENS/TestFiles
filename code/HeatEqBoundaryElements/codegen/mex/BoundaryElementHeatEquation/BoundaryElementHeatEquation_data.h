@@ -145,17 +145,17 @@ extern emlrtBCInfo yd_emlrtBCI;
 extern emlrtBCInfo ae_emlrtBCI;
 extern emlrtBCInfo be_emlrtBCI;
 extern emlrtBCInfo ce_emlrtBCI;
-extern emlrtRTEInfo jc_emlrtRTEI;
 extern emlrtRTEInfo kc_emlrtRTEI;
 extern emlrtRTEInfo lc_emlrtRTEI;
 extern emlrtRTEInfo mc_emlrtRTEI;
+extern emlrtRTEInfo nc_emlrtRTEI;
 extern emlrtBCInfo de_emlrtBCI;
-extern emlrtRSInfo ug_emlrtRSI;
 extern emlrtRSInfo vg_emlrtRSI;
-extern emlrtRSInfo dh_emlrtRSI;
+extern emlrtRSInfo wg_emlrtRSI;
 extern emlrtRSInfo eh_emlrtRSI;
 extern emlrtRSInfo fh_emlrtRSI;
-extern emlrtRSInfo ph_emlrtRSI;
+extern emlrtRSInfo gh_emlrtRSI;
+extern emlrtRSInfo qh_emlrtRSI;
 
 #endif
 

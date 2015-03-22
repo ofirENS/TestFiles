@@ -39,7 +39,7 @@
 <a name="27"><font color="#888888 "><i>   27   </i></font></a><font color="#992211">#</font><font color="#992211"><b>include</b></font> <font color="#992211">&quot;BoundaryElementHeatEquation_mexutil.h&quot;</font>
 <a name="28"><font color="#888888 "><i>   28   </i></font></a>
 <a name="29"><font color="#888888 "><i>   29   </i></font></a><font color="#117755"><i>/* Variable Definitions */</i></font>
-<a name="30"><font color="#888888 "><i>   30   </i></font></a><font color="#112266"><b>static</b></font> emlrtRTEInfo <a name="var_ac_emlrtRTEI">ac_emlrtRTEI</a> = <b>{</b> 1, 1,
+<a name="30"><font color="#888888 "><i>   30   </i></font></a><font color="#112266"><b>static</b></font> emlrtRTEInfo <a name="var_bc_emlrtRTEI">bc_emlrtRTEI</a> = <b>{</b> 1, 1,
 <a name="31"><font color="#888888 "><i>   31   </i></font></a>  <font color="#1122ff">&quot;_coder_BoundaryElementHeatEquation_api&quot;</font>, <font color="#1122ff">&quot;&quot;</font> <b>}</b>;
 <a name="32"><font color="#888888 "><i>   32   </i></font></a>
 <a name="33"><font color="#888888 "><i>   33   </i></font></a><font color="#117755"><i>/* Function Declarations */</i></font>
@@ -93,11 +93,11 @@
 <a name="81"><font color="#888888 "><i>   81   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> mxArray *<a name="fcn_c_emlrt_marshallOut">c_emlrt_marshallOut</a>(<font color="#112266"><b>const</b></font> emxArray_real_T *u)
 <a name="82"><font color="#888888 "><i>   82   </i></font></a><b>{</b>
 <a name="83"><font color="#888888 "><i>   83   </i></font></a>  <font color="#112266"><b>const</b></font> mxArray *y;
-<a name="84"><font color="#888888 "><i>   84   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> int32_T iv62[2] = <b>{</b> 0, 0 <b>}</b>;
+<a name="84"><font color="#888888 "><i>   84   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> int32_T iv64[2] = <b>{</b> 0, 0 <b>}</b>;
 <a name="85"><font color="#888888 "><i>   85   </i></font></a>
 <a name="86"><font color="#888888 "><i>   86   </i></font></a>  <font color="#112266"><b>const</b></font> mxArray *m18;
 <a name="87"><font color="#888888 "><i>   87   </i></font></a>  y = NULL;
-<a name="88"><font color="#888888 "><i>   88   </i></font></a>  m18 = emlrtCreateNumericArray(2, iv62, mxDOUBLE_CLASS, mxREAL);
+<a name="88"><font color="#888888 "><i>   88   </i></font></a>  m18 = emlrtCreateNumericArray(2, iv64, mxDOUBLE_CLASS, mxREAL);
 <a name="89"><font color="#888888 "><i>   89   </i></font></a>  mxSetData((mxArray *)m18, (<font color="#112266"><b>void</b></font> *)u-&gt;data);
 <a name="90"><font color="#888888 "><i>   90   </i></font></a>  emlrtSetDimensions((mxArray *)m18, u-&gt;size, 2);
 <a name="91"><font color="#888888 "><i>   91   </i></font></a>  emlrtAssign(&amp;y, m18);
@@ -116,11 +116,11 @@
 <a name="104"><font color="#888888 "><i>  104   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> mxArray *<a name="fcn_d_emlrt_marshallOut">d_emlrt_marshallOut</a>(<font color="#112266"><b>const</b></font> emxArray_real_T *u)
 <a name="105"><font color="#888888 "><i>  105   </i></font></a><b>{</b>
 <a name="106"><font color="#888888 "><i>  106   </i></font></a>  <font color="#112266"><b>const</b></font> mxArray *y;
-<a name="107"><font color="#888888 "><i>  107   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> int32_T iv63[1] = <b>{</b> 0 <b>}</b>;
+<a name="107"><font color="#888888 "><i>  107   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> int32_T iv65[1] = <b>{</b> 0 <b>}</b>;
 <a name="108"><font color="#888888 "><i>  108   </i></font></a>
 <a name="109"><font color="#888888 "><i>  109   </i></font></a>  <font color="#112266"><b>const</b></font> mxArray *m19;
 <a name="110"><font color="#888888 "><i>  110   </i></font></a>  y = NULL;
-<a name="111"><font color="#888888 "><i>  111   </i></font></a>  m19 = emlrtCreateNumericArray(1, iv63, mxDOUBLE_CLASS, mxREAL);
+<a name="111"><font color="#888888 "><i>  111   </i></font></a>  m19 = emlrtCreateNumericArray(1, iv65, mxDOUBLE_CLASS, mxREAL);
 <a name="112"><font color="#888888 "><i>  112   </i></font></a>  mxSetData((mxArray *)m19, (<font color="#112266"><b>void</b></font> *)u-&gt;data);
 <a name="113"><font color="#888888 "><i>  113   </i></font></a>  emlrtSetDimensions((mxArray *)m19, u-&gt;size, 1);
 <a name="114"><font color="#888888 "><i>  114   </i></font></a>  emlrtAssign(&amp;y, m19);
@@ -140,11 +140,11 @@
 <a name="128"><font color="#888888 "><i>  128   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> mxArray *<a name="fcn_e_emlrt_marshallOut">e_emlrt_marshallOut</a>(<font color="#112266"><b>const</b></font> emxArray_real_T *u)
 <a name="129"><font color="#888888 "><i>  129   </i></font></a><b>{</b>
 <a name="130"><font color="#888888 "><i>  130   </i></font></a>  <font color="#112266"><b>const</b></font> mxArray *y;
-<a name="131"><font color="#888888 "><i>  131   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> int32_T iv64[2] = <b>{</b> 0, 0 <b>}</b>;
+<a name="131"><font color="#888888 "><i>  131   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> int32_T iv66[2] = <b>{</b> 0, 0 <b>}</b>;
 <a name="132"><font color="#888888 "><i>  132   </i></font></a>
 <a name="133"><font color="#888888 "><i>  133   </i></font></a>  <font color="#112266"><b>const</b></font> mxArray *m20;
 <a name="134"><font color="#888888 "><i>  134   </i></font></a>  y = NULL;
-<a name="135"><font color="#888888 "><i>  135   </i></font></a>  m20 = emlrtCreateNumericArray(2, iv64, mxDOUBLE_CLASS, mxREAL);
+<a name="135"><font color="#888888 "><i>  135   </i></font></a>  m20 = emlrtCreateNumericArray(2, iv66, mxDOUBLE_CLASS, mxREAL);
 <a name="136"><font color="#888888 "><i>  136   </i></font></a>  mxSetData((mxArray *)m20, (<font color="#112266"><b>void</b></font> *)u-&gt;data);
 <a name="137"><font color="#888888 "><i>  137   </i></font></a>  emlrtSetDimensions((mxArray *)m20, u-&gt;size, 2);
 <a name="138"><font color="#888888 "><i>  138   </i></font></a>  emlrtAssign(&amp;y, m20);
@@ -226,20 +226,20 @@
 <a name="214"><font color="#888888 "><i>  214   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>void</b></font> <a name="fcn_o_emlrt_marshallIn">o_emlrt_marshallIn</a>(<font color="#112266"><b>const</b></font> emlrtStack *sp, <font color="#112266"><b>const</b></font> mxArray *src, <font color="#112266"><b>const</b></font>
 <a name="215"><font color="#888888 "><i>  215   </i></font></a>  emlrtMsgIdentifier *msgId, emxArray_real_T *ret)
 <a name="216"><font color="#888888 "><i>  216   </i></font></a><b>{</b>
-<a name="217"><font color="#888888 "><i>  217   </i></font></a>  int32_T iv66[2];
+<a name="217"><font color="#888888 "><i>  217   </i></font></a>  int32_T iv68[2];
 <a name="218"><font color="#888888 "><i>  218   </i></font></a>  boolean_T bv0[2];
-<a name="219"><font color="#888888 "><i>  219   </i></font></a>  int32_T i95;
+<a name="219"><font color="#888888 "><i>  219   </i></font></a>  int32_T i96;
 <a name="220"><font color="#888888 "><i>  220   </i></font></a>  <font color="#112266"><b>static</b></font> <font color="#112266"><b>const</b></font> boolean_T bv1[2] = <b>{</b> false, true <b>}</b>;
 <a name="221"><font color="#888888 "><i>  221   </i></font></a>
-<a name="222"><font color="#888888 "><i>  222   </i></font></a>  int32_T iv67[2];
-<a name="223"><font color="#888888 "><i>  223   </i></font></a>  <font color="#112266"><b>for</b></font> (i95 = 0; i95 &lt; 2; i95++) <b>{</b>
-<a name="224"><font color="#888888 "><i>  224   </i></font></a>    iv66[i95] = 1 + -2 * i95;
-<a name="225"><font color="#888888 "><i>  225   </i></font></a>    bv0[i95] = bv1[i95];
+<a name="222"><font color="#888888 "><i>  222   </i></font></a>  int32_T iv69[2];
+<a name="223"><font color="#888888 "><i>  223   </i></font></a>  <font color="#112266"><b>for</b></font> (i96 = 0; i96 &lt; 2; i96++) <b>{</b>
+<a name="224"><font color="#888888 "><i>  224   </i></font></a>    iv68[i96] = 1 + -2 * i96;
+<a name="225"><font color="#888888 "><i>  225   </i></font></a>    bv0[i96] = bv1[i96];
 <a name="226"><font color="#888888 "><i>  226   </i></font></a>  <b>}</b>
 <a name="227"><font color="#888888 "><i>  227   </i></font></a>
-<a name="228"><font color="#888888 "><i>  228   </i></font></a>  emlrtCheckVsBuiltInR2012b(sp, msgId, src, <font color="#1122ff">&quot;double&quot;</font>, false, 2U, iv66, bv0, iv67);
-<a name="229"><font color="#888888 "><i>  229   </i></font></a>  ret-&gt;size[0] = iv67[0];
-<a name="230"><font color="#888888 "><i>  230   </i></font></a>  ret-&gt;size[1] = iv67[1];
+<a name="228"><font color="#888888 "><i>  228   </i></font></a>  emlrtCheckVsBuiltInR2012b(sp, msgId, src, <font color="#1122ff">&quot;double&quot;</font>, false, 2U, iv68, bv0, iv69);
+<a name="229"><font color="#888888 "><i>  229   </i></font></a>  ret-&gt;size[0] = iv69[0];
+<a name="230"><font color="#888888 "><i>  230   </i></font></a>  ret-&gt;size[1] = iv69[1];
 <a name="231"><font color="#888888 "><i>  231   </i></font></a>  ret-&gt;allocatedSize = ret-&gt;size[0] * ret-&gt;size[1];
 <a name="232"><font color="#888888 "><i>  232   </i></font></a>  ret-&gt;data = (real_T *)mxGetData(src);
 <a name="233"><font color="#888888 "><i>  233   </i></font></a>  ret-&gt;canFreeData = false;
@@ -249,18 +249,18 @@
 <a name="237"><font color="#888888 "><i>  237   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>void</b></font> <a name="fcn_p_emlrt_marshallIn">p_emlrt_marshallIn</a>(<font color="#112266"><b>const</b></font> emlrtStack *sp, <font color="#112266"><b>const</b></font> mxArray *src, <font color="#112266"><b>const</b></font>
 <a name="238"><font color="#888888 "><i>  238   </i></font></a>  emlrtMsgIdentifier *msgId, emxArray_real_T *ret)
 <a name="239"><font color="#888888 "><i>  239   </i></font></a><b>{</b>
-<a name="240"><font color="#888888 "><i>  240   </i></font></a>  int32_T iv68[2];
+<a name="240"><font color="#888888 "><i>  240   </i></font></a>  int32_T iv70[2];
 <a name="241"><font color="#888888 "><i>  241   </i></font></a>  boolean_T bv2[2];
 <a name="242"><font color="#888888 "><i>  242   </i></font></a>  int32_T i;
-<a name="243"><font color="#888888 "><i>  243   </i></font></a>  int32_T iv69[2];
+<a name="243"><font color="#888888 "><i>  243   </i></font></a>  int32_T iv71[2];
 <a name="244"><font color="#888888 "><i>  244   </i></font></a>  <font color="#112266"><b>for</b></font> (i = 0; i &lt; 2; i++) <b>{</b>
-<a name="245"><font color="#888888 "><i>  245   </i></font></a>    iv68[i] = -1;
+<a name="245"><font color="#888888 "><i>  245   </i></font></a>    iv70[i] = -1;
 <a name="246"><font color="#888888 "><i>  246   </i></font></a>    bv2[i] = true;
 <a name="247"><font color="#888888 "><i>  247   </i></font></a>  <b>}</b>
 <a name="248"><font color="#888888 "><i>  248   </i></font></a>
-<a name="249"><font color="#888888 "><i>  249   </i></font></a>  emlrtCheckVsBuiltInR2012b(sp, msgId, src, <font color="#1122ff">&quot;double&quot;</font>, false, 2U, iv68, bv2, iv69);
-<a name="250"><font color="#888888 "><i>  250   </i></font></a>  ret-&gt;size[0] = iv69[0];
-<a name="251"><font color="#888888 "><i>  251   </i></font></a>  ret-&gt;size[1] = iv69[1];
+<a name="249"><font color="#888888 "><i>  249   </i></font></a>  emlrtCheckVsBuiltInR2012b(sp, msgId, src, <font color="#1122ff">&quot;double&quot;</font>, false, 2U, iv70, bv2, iv71);
+<a name="250"><font color="#888888 "><i>  250   </i></font></a>  ret-&gt;size[0] = iv71[0];
+<a name="251"><font color="#888888 "><i>  251   </i></font></a>  ret-&gt;size[1] = iv71[1];
 <a name="252"><font color="#888888 "><i>  252   </i></font></a>  ret-&gt;allocatedSize = ret-&gt;size[0] * ret-&gt;size[1];
 <a name="253"><font color="#888888 "><i>  253   </i></font></a>  ret-&gt;data = (real_T *)mxGetData(src);
 <a name="254"><font color="#888888 "><i>  254   </i></font></a>  ret-&gt;canFreeData = false;
@@ -270,13 +270,13 @@
 <a name="258"><font color="#888888 "><i>  258   </i></font></a><font color="#112266"><b>static</b></font> <font color="#112266"><b>void</b></font> <a name="fcn_q_emlrt_marshallIn">q_emlrt_marshallIn</a>(<font color="#112266"><b>const</b></font> emlrtStack *sp, <font color="#112266"><b>const</b></font> mxArray *src, <font color="#112266"><b>const</b></font>
 <a name="259"><font color="#888888 "><i>  259   </i></font></a>  emlrtMsgIdentifier *msgId, emxArray_real_T *ret)
 <a name="260"><font color="#888888 "><i>  260   </i></font></a><b>{</b>
-<a name="261"><font color="#888888 "><i>  261   </i></font></a>  int32_T iv70[1];
+<a name="261"><font color="#888888 "><i>  261   </i></font></a>  int32_T iv72[1];
 <a name="262"><font color="#888888 "><i>  262   </i></font></a>  boolean_T bv3[1];
-<a name="263"><font color="#888888 "><i>  263   </i></font></a>  int32_T iv71[1];
-<a name="264"><font color="#888888 "><i>  264   </i></font></a>  iv70[0] = -1;
+<a name="263"><font color="#888888 "><i>  263   </i></font></a>  int32_T iv73[1];
+<a name="264"><font color="#888888 "><i>  264   </i></font></a>  iv72[0] = -1;
 <a name="265"><font color="#888888 "><i>  265   </i></font></a>  bv3[0] = true;
-<a name="266"><font color="#888888 "><i>  266   </i></font></a>  emlrtCheckVsBuiltInR2012b(sp, msgId, src, <font color="#1122ff">&quot;double&quot;</font>, false, 1U, iv70, bv3, iv71);
-<a name="267"><font color="#888888 "><i>  267   </i></font></a>  ret-&gt;size[0] = iv71[0];
+<a name="266"><font color="#888888 "><i>  266   </i></font></a>  emlrtCheckVsBuiltInR2012b(sp, msgId, src, <font color="#1122ff">&quot;double&quot;</font>, false, 1U, iv72, bv3, iv73);
+<a name="267"><font color="#888888 "><i>  267   </i></font></a>  ret-&gt;size[0] = iv73[0];
 <a name="268"><font color="#888888 "><i>  268   </i></font></a>  ret-&gt;allocatedSize = ret-&gt;size[0];
 <a name="269"><font color="#888888 "><i>  269   </i></font></a>  ret-&gt;data = (real_T *)mxGetData(src);
 <a name="270"><font color="#888888 "><i>  270   </i></font></a>  ret-&gt;canFreeData = false;
@@ -304,7 +304,7 @@
 <a name="292"><font color="#888888 "><i>  292   </i></font></a>
 <a name="293"><font color="#888888 "><i>  293   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="294"><font color="#888888 "><i>  294   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="295"><font color="#888888 "><i>  295   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="295"><font color="#888888 "><i>  295   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="296"><font color="#888888 "><i>  296   </i></font></a>
 <a name="297"><font color="#888888 "><i>  297   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="298"><font color="#888888 "><i>  298   </i></font></a>  ksi = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;ksi&quot;</font>);
@@ -334,7 +334,7 @@
 <a name="322"><font color="#888888 "><i>  322   </i></font></a>
 <a name="323"><font color="#888888 "><i>  323   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="324"><font color="#888888 "><i>  324   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="325"><font color="#888888 "><i>  325   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="325"><font color="#888888 "><i>  325   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="326"><font color="#888888 "><i>  326   </i></font></a>
 <a name="327"><font color="#888888 "><i>  327   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="328"><font color="#888888 "><i>  328   </i></font></a>  ksi = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;ksi&quot;</font>);
@@ -368,11 +368,11 @@
 <a name="356"><font color="#888888 "><i>  356   </i></font></a>
 <a name="357"><font color="#888888 "><i>  357   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="358"><font color="#888888 "><i>  358   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="359"><font color="#888888 "><i>  359   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="360"><font color="#888888 "><i>  360   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="361"><font color="#888888 "><i>  361   </i></font></a>  emxInit_real_T(&amp;st, &amp;a1k, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="362"><font color="#888888 "><i>  362   </i></font></a>  emxInit_real_T(&amp;st, &amp;b1k, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="363"><font color="#888888 "><i>  363   </i></font></a>  emxInit_real_T(&amp;st, &amp;b1s, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="359"><font color="#888888 "><i>  359   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="360"><font color="#888888 "><i>  360   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="361"><font color="#888888 "><i>  361   </i></font></a>  emxInit_real_T(&amp;st, &amp;a1k, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="362"><font color="#888888 "><i>  362   </i></font></a>  emxInit_real_T(&amp;st, &amp;b1k, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="363"><font color="#888888 "><i>  363   </i></font></a>  emxInit_real_T(&amp;st, &amp;b1s, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="364"><font color="#888888 "><i>  364   </i></font></a>
 <a name="365"><font color="#888888 "><i>  365   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="366"><font color="#888888 "><i>  366   </i></font></a>  k = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;k&quot;</font>);
@@ -416,14 +416,14 @@
 <a name="404"><font color="#888888 "><i>  404   </i></font></a>
 <a name="405"><font color="#888888 "><i>  405   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="406"><font color="#888888 "><i>  406   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="407"><font color="#888888 "><i>  407   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="408"><font color="#888888 "><i>  408   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="409"><font color="#888888 "><i>  409   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="410"><font color="#888888 "><i>  410   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="411"><font color="#888888 "><i>  411   </i></font></a>  emxInit_real_T(&amp;st, &amp;A, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="412"><font color="#888888 "><i>  412   </i></font></a>  emxInit_real_T(&amp;st, &amp;B, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="413"><font color="#888888 "><i>  413   </i></font></a>  emxInit_real_T(&amp;st, &amp;Bstar, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="414"><font color="#888888 "><i>  414   </i></font></a>  emxInit_real_T(&amp;st, &amp;D, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="407"><font color="#888888 "><i>  407   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="408"><font color="#888888 "><i>  408   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="409"><font color="#888888 "><i>  409   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="410"><font color="#888888 "><i>  410   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="411"><font color="#888888 "><i>  411   </i></font></a>  emxInit_real_T(&amp;st, &amp;A, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="412"><font color="#888888 "><i>  412   </i></font></a>  emxInit_real_T(&amp;st, &amp;B, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="413"><font color="#888888 "><i>  413   </i></font></a>  emxInit_real_T(&amp;st, &amp;Bstar, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="414"><font color="#888888 "><i>  414   </i></font></a>  emxInit_real_T(&amp;st, &amp;D, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="415"><font color="#888888 "><i>  415   </i></font></a>
 <a name="416"><font color="#888888 "><i>  416   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="417"><font color="#888888 "><i>  417   </i></font></a>  N = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;N&quot;</font>);
@@ -470,9 +470,9 @@
 <a name="458"><font color="#888888 "><i>  458   </i></font></a>
 <a name="459"><font color="#888888 "><i>  459   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="460"><font color="#888888 "><i>  460   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="461"><font color="#888888 "><i>  461   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="462"><font color="#888888 "><i>  462   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridX, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="463"><font color="#888888 "><i>  463   </i></font></a>  emxInit_real_T(&amp;st, &amp;C, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="461"><font color="#888888 "><i>  461   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="462"><font color="#888888 "><i>  462   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridX, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="463"><font color="#888888 "><i>  463   </i></font></a>  emxInit_real_T(&amp;st, &amp;C, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="464"><font color="#888888 "><i>  464   </i></font></a>
 <a name="465"><font color="#888888 "><i>  465   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="466"><font color="#888888 "><i>  466   </i></font></a>  N = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;N&quot;</font>);
@@ -514,17 +514,17 @@
 <a name="502"><font color="#888888 "><i>  502   </i></font></a>
 <a name="503"><font color="#888888 "><i>  503   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="504"><font color="#888888 "><i>  504   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="505"><font color="#888888 "><i>  505   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="506"><font color="#888888 "><i>  506   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="507"><font color="#888888 "><i>  507   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="508"><font color="#888888 "><i>  508   </i></font></a>  emxInit_real_T(&amp;st, &amp;u0, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="509"><font color="#888888 "><i>  509   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;q0j, 1, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="510"><font color="#888888 "><i>  510   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;q1j, 1, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="511"><font color="#888888 "><i>  511   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;h0j, 1, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="512"><font color="#888888 "><i>  512   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;h1j, 1, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="513"><font color="#888888 "><i>  513   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="514"><font color="#888888 "><i>  514   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;r, 1, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="515"><font color="#888888 "><i>  515   </i></font></a>  emxInit_real_T(&amp;st, &amp;u, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="505"><font color="#888888 "><i>  505   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="506"><font color="#888888 "><i>  506   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="507"><font color="#888888 "><i>  507   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="508"><font color="#888888 "><i>  508   </i></font></a>  emxInit_real_T(&amp;st, &amp;u0, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="509"><font color="#888888 "><i>  509   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;q0j, 1, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="510"><font color="#888888 "><i>  510   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;q1j, 1, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="511"><font color="#888888 "><i>  511   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;h0j, 1, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="512"><font color="#888888 "><i>  512   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;h1j, 1, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="513"><font color="#888888 "><i>  513   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="514"><font color="#888888 "><i>  514   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;r, 1, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="515"><font color="#888888 "><i>  515   </i></font></a>  emxInit_real_T(&amp;st, &amp;u, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="516"><font color="#888888 "><i>  516   </i></font></a>
 <a name="517"><font color="#888888 "><i>  517   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="518"><font color="#888888 "><i>  518   </i></font></a>  N0 = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;N0&quot;</font>);
@@ -593,20 +593,20 @@
 <a name="581"><font color="#888888 "><i>  581   </i></font></a>
 <a name="582"><font color="#888888 "><i>  582   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="583"><font color="#888888 "><i>  583   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="584"><font color="#888888 "><i>  584   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="585"><font color="#888888 "><i>  585   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="586"><font color="#888888 "><i>  586   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="587"><font color="#888888 "><i>  587   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridX, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="588"><font color="#888888 "><i>  588   </i></font></a>  emxInit_real_T(&amp;st, &amp;E, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="589"><font color="#888888 "><i>  589   </i></font></a>  emxInit_real_T(&amp;st, &amp;A, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="590"><font color="#888888 "><i>  590   </i></font></a>  emxInit_real_T(&amp;st, &amp;B, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="591"><font color="#888888 "><i>  591   </i></font></a>  emxInit_real_T(&amp;st, &amp;Bstar, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="592"><font color="#888888 "><i>  592   </i></font></a>  emxInit_real_T(&amp;st, &amp;C, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="593"><font color="#888888 "><i>  593   </i></font></a>  emxInit_real_T(&amp;st, &amp;D, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="594"><font color="#888888 "><i>  594   </i></font></a>  emxInit_real_T(&amp;st, &amp;u0, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="595"><font color="#888888 "><i>  595   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="596"><font color="#888888 "><i>  596   </i></font></a>  emxInit_real_T(&amp;st, &amp;X, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="597"><font color="#888888 "><i>  597   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;Y, 1, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="584"><font color="#888888 "><i>  584   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="585"><font color="#888888 "><i>  585   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="586"><font color="#888888 "><i>  586   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="587"><font color="#888888 "><i>  587   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridX, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="588"><font color="#888888 "><i>  588   </i></font></a>  emxInit_real_T(&amp;st, &amp;E, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="589"><font color="#888888 "><i>  589   </i></font></a>  emxInit_real_T(&amp;st, &amp;A, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="590"><font color="#888888 "><i>  590   </i></font></a>  emxInit_real_T(&amp;st, &amp;B, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="591"><font color="#888888 "><i>  591   </i></font></a>  emxInit_real_T(&amp;st, &amp;Bstar, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="592"><font color="#888888 "><i>  592   </i></font></a>  emxInit_real_T(&amp;st, &amp;C, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="593"><font color="#888888 "><i>  593   </i></font></a>  emxInit_real_T(&amp;st, &amp;D, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="594"><font color="#888888 "><i>  594   </i></font></a>  emxInit_real_T(&amp;st, &amp;u0, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="595"><font color="#888888 "><i>  595   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="596"><font color="#888888 "><i>  596   </i></font></a>  emxInit_real_T(&amp;st, &amp;X, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="597"><font color="#888888 "><i>  597   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;Y, 1, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="598"><font color="#888888 "><i>  598   </i></font></a>
 <a name="599"><font color="#888888 "><i>  599   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="600"><font color="#888888 "><i>  600   </i></font></a>  N = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;N&quot;</font>);
@@ -674,8 +674,8 @@
 <a name="662"><font color="#888888 "><i>  662   </i></font></a>
 <a name="663"><font color="#888888 "><i>  663   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="664"><font color="#888888 "><i>  664   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="665"><font color="#888888 "><i>  665   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="666"><font color="#888888 "><i>  666   </i></font></a>  emxInit_real_T(&amp;st, &amp;vals, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="665"><font color="#888888 "><i>  665   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="666"><font color="#888888 "><i>  666   </i></font></a>  emxInit_real_T(&amp;st, &amp;vals, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="667"><font color="#888888 "><i>  667   </i></font></a>
 <a name="668"><font color="#888888 "><i>  668   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="669"><font color="#888888 "><i>  669   </i></font></a>  k = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;k&quot;</font>);
@@ -706,10 +706,10 @@
 <a name="694"><font color="#888888 "><i>  694   </i></font></a>
 <a name="695"><font color="#888888 "><i>  695   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="696"><font color="#888888 "><i>  696   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="697"><font color="#888888 "><i>  697   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="698"><font color="#888888 "><i>  698   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridX, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="699"><font color="#888888 "><i>  699   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="700"><font color="#888888 "><i>  700   </i></font></a>  emxInit_real_T(&amp;st, &amp;vals, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="697"><font color="#888888 "><i>  697   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="698"><font color="#888888 "><i>  698   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridX, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="699"><font color="#888888 "><i>  699   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="700"><font color="#888888 "><i>  700   </i></font></a>  emxInit_real_T(&amp;st, &amp;vals, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="701"><font color="#888888 "><i>  701   </i></font></a>
 <a name="702"><font color="#888888 "><i>  702   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="703"><font color="#888888 "><i>  703   </i></font></a>  k = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;k&quot;</font>);
@@ -745,10 +745,10 @@
 <a name="733"><font color="#888888 "><i>  733   </i></font></a>
 <a name="734"><font color="#888888 "><i>  734   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="735"><font color="#888888 "><i>  735   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="736"><font color="#888888 "><i>  736   </i></font></a>  emxInit_real_T(&amp;st, &amp;y, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="737"><font color="#888888 "><i>  737   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="738"><font color="#888888 "><i>  738   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="739"><font color="#888888 "><i>  739   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="736"><font color="#888888 "><i>  736   </i></font></a>  emxInit_real_T(&amp;st, &amp;y, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="737"><font color="#888888 "><i>  737   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="738"><font color="#888888 "><i>  738   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="739"><font color="#888888 "><i>  739   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="740"><font color="#888888 "><i>  740   </i></font></a>
 <a name="741"><font color="#888888 "><i>  741   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="742"><font color="#888888 "><i>  742   </i></font></a>  <a href="#fcn_e_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_e_emlrt_marshallIn');" target="_self"><font color="#1122aa">e_emlrt_marshallIn</font></a>(&amp;st, emlrtAlias(prhs[0]), <font color="#1122ff">&quot;y&quot;</font>, y);
@@ -786,10 +786,10 @@
 <a name="774"><font color="#888888 "><i>  774   </i></font></a>
 <a name="775"><font color="#888888 "><i>  775   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="776"><font color="#888888 "><i>  776   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="777"><font color="#888888 "><i>  777   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="778"><font color="#888888 "><i>  778   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridX, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="779"><font color="#888888 "><i>  779   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="780"><font color="#888888 "><i>  780   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="777"><font color="#888888 "><i>  777   </i></font></a>  emxInit_real_T(&amp;st, &amp;x, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="778"><font color="#888888 "><i>  778   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridX, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="779"><font color="#888888 "><i>  779   </i></font></a>  emxInit_real_T(&amp;st, &amp;gridT, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="780"><font color="#888888 "><i>  780   </i></font></a>  emxInit_real_T(&amp;st, &amp;f, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="781"><font color="#888888 "><i>  781   </i></font></a>
 <a name="782"><font color="#888888 "><i>  782   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="783"><font color="#888888 "><i>  783   </i></font></a>  k = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;k&quot;</font>);
@@ -825,7 +825,7 @@
 <a name="813"><font color="#888888 "><i>  813   </i></font></a>
 <a name="814"><font color="#888888 "><i>  814   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="815"><font color="#888888 "><i>  815   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="816"><font color="#888888 "><i>  816   </i></font></a>  emxInit_real_T(&amp;st, &amp;regTerm, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="816"><font color="#888888 "><i>  816   </i></font></a>  emxInit_real_T(&amp;st, &amp;regTerm, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="817"><font color="#888888 "><i>  817   </i></font></a>
 <a name="818"><font color="#888888 "><i>  818   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="819"><font color="#888888 "><i>  819   </i></font></a>  N = <a href="#fcn_c_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_c_emlrt_marshallIn');" target="_self"><font color="#1122aa">c_emlrt_marshallIn</font></a>(&amp;st, emlrtAliasP(prhs[0]), <font color="#1122ff">&quot;N&quot;</font>);
@@ -851,10 +851,10 @@
 <a name="839"><font color="#888888 "><i>  839   </i></font></a>
 <a name="840"><font color="#888888 "><i>  840   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="841"><font color="#888888 "><i>  841   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="842"><font color="#888888 "><i>  842   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="843"><font color="#888888 "><i>  843   </i></font></a>  emxInit_real_T(&amp;st, &amp;sigIn, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="844"><font color="#888888 "><i>  844   </i></font></a>  emxInit_real_T(&amp;st, &amp;u, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="845"><font color="#888888 "><i>  845   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;r, 1, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="842"><font color="#888888 "><i>  842   </i></font></a>  emxInit_real_T(&amp;st, &amp;t, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="843"><font color="#888888 "><i>  843   </i></font></a>  emxInit_real_T(&amp;st, &amp;sigIn, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="844"><font color="#888888 "><i>  844   </i></font></a>  emxInit_real_T(&amp;st, &amp;u, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="845"><font color="#888888 "><i>  845   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;r, 1, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="846"><font color="#888888 "><i>  846   </i></font></a>
 <a name="847"><font color="#888888 "><i>  847   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="848"><font color="#888888 "><i>  848   </i></font></a>  <a href="#fcn_e_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_e_emlrt_marshallIn');" target="_self"><font color="#1122aa">e_emlrt_marshallIn</font></a>(&amp;st, emlrtAlias(prhs[0]), <font color="#1122ff">&quot;t&quot;</font>, t);
@@ -891,9 +891,9 @@
 <a name="879"><font color="#888888 "><i>  879   </i></font></a>
 <a name="880"><font color="#888888 "><i>  880   </i></font></a>  st.tls = <a href="_coder_BoundaryElementHeatEquation_mex_c.html#var_emlrtRootTLSGlobal" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_emlrtRootTLSGlobal');" target="_self"><font color="#1122aa">emlrtRootTLSGlobal</font></a>;
 <a name="881"><font color="#888888 "><i>  881   </i></font></a>  emlrtHeapReferenceStackEnterFcnR2012b(&amp;st);
-<a name="882"><font color="#888888 "><i>  882   </i></font></a>  emxInit_real_T(&amp;st, &amp;sigIn, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="883"><font color="#888888 "><i>  883   </i></font></a>  emxInit_real_T(&amp;st, &amp;u, 2, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
-<a name="884"><font color="#888888 "><i>  884   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;r, 1, &amp;<a href="#var_ac_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ac_emlrtRTEI');" target="_self"><font color="#1122aa">ac_emlrtRTEI</font></a>, true);
+<a name="882"><font color="#888888 "><i>  882   </i></font></a>  emxInit_real_T(&amp;st, &amp;sigIn, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="883"><font color="#888888 "><i>  883   </i></font></a>  emxInit_real_T(&amp;st, &amp;u, 2, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
+<a name="884"><font color="#888888 "><i>  884   </i></font></a>  c_emxInit_real_T(&amp;st, &amp;r, 1, &amp;<a href="#var_bc_emlrtRTEI" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_bc_emlrtRTEI');" target="_self"><font color="#1122aa">bc_emlrtRTEI</font></a>, true);
 <a name="885"><font color="#888888 "><i>  885   </i></font></a>
 <a name="886"><font color="#888888 "><i>  886   </i></font></a>  <font color="#117755"><i>/* Marshall function inputs */</i></font>
 <a name="887"><font color="#888888 "><i>  887   </i></font></a>  <a href="#fcn_e_emlrt_marshallIn" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_e_emlrt_marshallIn');" target="_self"><font color="#1122aa">e_emlrt_marshallIn</font></a>(&amp;st, emlrtAlias(prhs[0]), <font color="#1122ff">&quot;sigIn&quot;</font>, sigIn);

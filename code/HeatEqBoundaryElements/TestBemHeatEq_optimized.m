@@ -64,6 +64,26 @@ q1j = zeros(N,1); % the flux
 h0j =  zeros(N,1);
 % u(1,t) = h1j
 h1j =  zeros(N,1); 
+elseif initCond==3
+E  = (sigIn)./2;      % int(u(x,t)dx) is a time function of size 1xN % assuming the temp drops to 0 at the boundaries linearly
+% set f to be active only in the initial point 
+f  = zeros(N,N0);    % function of N time points over N0 space points
+f(:,1) = 1; % the source is only active at the initial point x=0;
+% determine initial wave u(x,0) is the Phi function
+
+u0m      = max(sigIn(1:min(10,numel(sigIn)))); % take the max value 
+u0       = (u0m*exp(-10*linspace(0,1,N0)));%ones(1,N0); % u(x,0)
+
+% Determine the boundary and initial functions
+% du/dn(0,t) = q0j
+q0j = zeros(N,1); % the flux in
+%du/dn(1,t) = q1j
+q1j = zeros(N,1); % the flux out
+% u(0,t) = h0j
+h0j = sigIn;%zeros(N,1);
+% u(1,t) = h1j
+h1j = sigIn.*exp(-10*1);
+
 else
     error('unsupported condition')
 end
