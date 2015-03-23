@@ -24,7 +24,7 @@
 #include "eml_error.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo cc_emlrtRTEI = { 20, 5, "eml_error",
+static emlrtRTEInfo bc_emlrtRTEI = { 20, 5, "eml_error",
   "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_error.m"
 };
 
@@ -33,7 +33,7 @@ void eml_error(const emlrtStack *sp)
 {
   static char_T cv0[4][1] = { { 's' }, { 'q' }, { 'r' }, { 't' } };
 
-  emlrtErrorWithMessageIdR2012b(sp, &cc_emlrtRTEI,
+  emlrtErrorWithMessageIdR2012b(sp, &bc_emlrtRTEI,
     "Coder:toolbox:ElFunDomainError", 3, 4, 4, cv0);
 }
 

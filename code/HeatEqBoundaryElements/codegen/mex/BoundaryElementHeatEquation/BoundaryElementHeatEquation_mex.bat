@@ -1,5 +1,5 @@
 @echo off
-set MATLAB=D:\PROGRA~2\MATLAB\R2014a
+set MATLAB=D:\PROGRA~1\MATLAB\R2014a
 set MATLAB_ARCH=win64
 set MATLAB_BIN="D:\Program Files\MATLAB\R2014a\bin"
 set ENTRYPOINT=mexFunction

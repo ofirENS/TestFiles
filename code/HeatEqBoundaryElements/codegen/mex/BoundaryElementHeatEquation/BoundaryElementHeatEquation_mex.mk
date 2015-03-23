@@ -1,6 +1,6 @@
-START_DIR = D:\Ofir\ENS\TESTFI~1\code\HEATEQ~1
+START_DIR = D:\Ofir\Work\ENS\TESTFI~1\code\HEATEQ~1
 
-MATLAB_ROOT = D:\PROGRA~2\MATLAB\R2014a
+MATLAB_ROOT = D:\PROGRA~1\MATLAB\R2014a
 MAKEFILE = BoundaryElementHeatEquation_mex.mk
 
 include BoundaryElementHeatEquation_mex.mki
@@ -31,7 +31,6 @@ SRC_FILES =  \
 	eml_error.c \
 	abs.c \
 	mpower.c \
-	exp.c \
 	erf.c \
 	colon.c \
 	eml_int_forloop_overflow_check.c \
@@ -41,7 +40,6 @@ SRC_FILES =  \
 	diag.c \
 	error.c \
 	mod.c \
-	linspace.c \
 	_coder_BoundaryElementHeatEquation_api.c \
 	BoundaryElementHeatEquation_emxutil.c \
 	_coder_BoundaryElementHeatEquation_mex.c \

@@ -305,13 +305,13 @@ static real_T b_eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   }
 
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, atmp, mxDOUBLE_CLASS, (int32_T)atmp,
-    &lc_emlrtRTEI, sp);
+    &kc_emlrtRTEI, sp);
   for (i = 0; i < (int32_T)atmp; i++) {
     Y = B->data[0];
   }
 
   emlrtForLoopVectorCheckR2012b(atmp, -1.0, 1.0, mxDOUBLE_CLASS, (int32_T)-(1.0
-    + (-1.0 - atmp)), &kc_emlrtRTEI, sp);
+    + (-1.0 - atmp)), &jc_emlrtRTEI, sp);
   for (i = 0; i < (int32_T)-(1.0 + (-1.0 - atmp)); i++) {
     Y /= b_A->data[0];
   }
@@ -356,7 +356,7 @@ static void b_eml_xscal(const emlrtStack *sp, int32_T n, real_T a,
 {
   ptrdiff_t n_t;
   ptrdiff_t incx_t;
-  int32_T i99;
+  int32_T i96;
   double * xix0_t;
   double * a_t;
   emlrtStack st;
@@ -371,8 +371,8 @@ static void b_eml_xscal(const emlrtStack *sp, int32_T n, real_T a,
     b_st.site = &wd_emlrtRSI;
     n_t = (ptrdiff_t)(n);
     incx_t = (ptrdiff_t)(1);
-    i99 = x->size[0];
-    emlrtDynamicBoundsCheckFastR2012b(2, 1, i99, &of_emlrtBCI, &b_st);
+    i96 = x->size[0];
+    emlrtDynamicBoundsCheckFastR2012b(2, 1, i96, &of_emlrtBCI, &b_st);
     xix0_t = (double *)(&x->data[1]);
     a_t = (double *)(&a);
     dscal(&n_t, a_t, xix0_t, &incx_t);
@@ -1066,7 +1066,7 @@ static void eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
         xnorm = B->data[ix + B->size[0] * k];
         i41 = A->size[0] + (int32_T)(1.0 - ((1.0 + (real_T)ix) + 1.0));
         emlrtForLoopVectorCheckR2012b((1.0 + (real_T)ix) + 1.0, 1.0, A->size[0],
-          mxDOUBLE_CLASS, i41, &nc_emlrtRTEI, sp);
+          mxDOUBLE_CLASS, i41, &mc_emlrtRTEI, sp);
         for (i = 0; i < i41; i++) {
           unnamed_idx_0 = ((uint32_T)ix + i) + 2U;
           xnorm += b_A->data[((int32_T)unnamed_idx_0 + b_A->size[0] * ix) - 1] *
@@ -1078,7 +1078,7 @@ static void eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
           B->data[ix + B->size[0] * k] -= xnorm;
           i41 = A->size[0] + (int32_T)(1.0 - ((1.0 + (real_T)ix) + 1.0));
           emlrtForLoopVectorCheckR2012b((1.0 + (real_T)ix) + 1.0, 1.0, A->size[0],
-            mxDOUBLE_CLASS, i41, &mc_emlrtRTEI, sp);
+            mxDOUBLE_CLASS, i41, &lc_emlrtRTEI, sp);
           for (i = 0; i < i41; i++) {
             unnamed_idx_0 = ((uint32_T)ix + i) + 2U;
             B->data[((int32_T)unnamed_idx_0 + B->size[0] * k) - 1] -= b_A->data
@@ -1092,13 +1092,13 @@ static void eml_qrsolve(const emlrtStack *sp, const emxArray_real_T *A,
   emxFree_real_T(&tau);
   for (k = 0; k <= nb; k++) {
     emlrtForLoopVectorCheckR2012b(1.0, 1.0, atmp, mxDOUBLE_CLASS, (int32_T)atmp,
-      &lc_emlrtRTEI, sp);
+      &kc_emlrtRTEI, sp);
     for (i = 0; i < (int32_T)atmp; i++) {
       Y->data[(jpvt->data[i] + Y->size[0] * k) - 1] = B->data[i + B->size[0] * k];
     }
 
     emlrtForLoopVectorCheckR2012b(atmp, -1.0, 1.0, mxDOUBLE_CLASS, (int32_T)
-      -(1.0 + (-1.0 - atmp)), &kc_emlrtRTEI, sp);
+      -(1.0 + (-1.0 - atmp)), &jc_emlrtRTEI, sp);
     for (ix = 0; ix < (int32_T)-(1.0 + (-1.0 - atmp)); ix++) {
       xnorm = atmp + -(real_T)ix;
       Y->data[(jpvt->data[(int32_T)xnorm - 1] + Y->size[0] * k) - 1] = eml_div
@@ -1122,12 +1122,12 @@ void b_mrdivide(const emlrtStack *sp, emxArray_real_T *A, const emxArray_real_T 
                 B)
 {
   const mxArray *y;
-  static const int32_T iv74[2] = { 1, 21 };
+  static const int32_T iv70[2] = { 1, 21 };
 
   const mxArray *m28;
-  char_T cv71[21];
+  char_T cv69[21];
   int32_T i;
-  static const char_T cv72[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
+  static const char_T cv70[21] = { 'C', 'o', 'd', 'e', 'r', ':', 'M', 'A', 'T',
     'L', 'A', 'B', ':', 'd', 'i', 'm', 'a', 'g', 'r', 'e', 'e' };
 
   emxArray_real_T *b_B;
@@ -1178,12 +1178,12 @@ void b_mrdivide(const emlrtStack *sp, emxArray_real_T *A, const emxArray_real_T 
   if (B->size[1] == A->size[1]) {
   } else {
     y = NULL;
-    m28 = emlrtCreateCharArray(2, iv74);
+    m28 = emlrtCreateCharArray(2, iv70);
     for (i = 0; i < 21; i++) {
-      cv71[i] = cv72[i];
+      cv69[i] = cv70[i];
     }
 
-    emlrtInitCharArrayR2013a(sp, 21, m28, cv71);
+    emlrtInitCharArrayR2013a(sp, 21, m28, cv69);
     emlrtAssign(&y, m28);
     st.site = &lb_emlrtRSI;
     b_error(&st, message(&st, y, &emlrtMCI), &emlrtMCI);
@@ -1531,7 +1531,7 @@ void eml_xscal(const emlrtStack *sp, int32_T n, real_T a, emxArray_real_T *x,
 {
   ptrdiff_t n_t;
   ptrdiff_t incx_t;
-  int32_T i97;
+  int32_T i95;
   double * xix0_t;
   double * a_t;
   emlrtStack st;
@@ -1546,8 +1546,8 @@ void eml_xscal(const emlrtStack *sp, int32_T n, real_T a, emxArray_real_T *x,
     b_st.site = &wd_emlrtRSI;
     n_t = (ptrdiff_t)(n);
     incx_t = (ptrdiff_t)(1);
-    i97 = x->size[0] * x->size[1];
-    xix0_t = (double *)(&x->data[emlrtDynamicBoundsCheckFastR2012b(ix0, 1, i97,
+    i95 = x->size[0] * x->size[1];
+    xix0_t = (double *)(&x->data[emlrtDynamicBoundsCheckFastR2012b(ix0, 1, i95,
       &of_emlrtBCI, &b_st) - 1]);
     a_t = (double *)(&a);
     dscal(&n_t, a_t, xix0_t, &incx_t);

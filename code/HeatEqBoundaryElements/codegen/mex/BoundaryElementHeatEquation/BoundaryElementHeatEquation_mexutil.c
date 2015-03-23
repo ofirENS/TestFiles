@@ -97,13 +97,13 @@ const mxArray *emlrt_marshallOut(const real_T u)
 void m_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
   emlrtMsgIdentifier *msgId, char_T ret[14])
 {
-  int32_T iv67[2];
-  int32_T i95;
-  for (i95 = 0; i95 < 2; i95++) {
-    iv67[i95] = 1 + 13 * i95;
+  int32_T iv63[2];
+  int32_T i93;
+  for (i93 = 0; i93 < 2; i93++) {
+    iv63[i93] = 1 + 13 * i93;
   }
 
-  emlrtCheckBuiltInR2012b(sp, msgId, src, "char", false, 2U, iv67);
+  emlrtCheckBuiltInR2012b(sp, msgId, src, "char", false, 2U, iv63);
   emlrtImportCharArray(src, ret, 14);
   emlrtDestroyArray(&src);
 }

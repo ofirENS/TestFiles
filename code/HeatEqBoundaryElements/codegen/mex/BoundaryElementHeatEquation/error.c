@@ -29,24 +29,24 @@
 void error(const emlrtStack *sp)
 {
   const mxArray *y;
-  static const int32_T iv62[2] = { 1, 21 };
+  static const int32_T iv58[2] = { 1, 21 };
 
   const mxArray *m14;
-  char_T cv66[21];
+  char_T cv64[21];
   int32_T i;
-  static const char_T cv67[21] = { 'u', 'n', 's', 'u', 'p', 'p', 'o', 'r', 't',
+  static const char_T cv65[21] = { 'u', 'n', 's', 'u', 'p', 'p', 'o', 'r', 't',
     'e', 'd', ' ', 'c', 'o', 'n', 'd', 'i', 't', 'i', 'o', 'n' };
 
   emlrtStack st;
   st.prev = sp;
   st.tls = sp->tls;
   y = NULL;
-  m14 = emlrtCreateCharArray(2, iv62);
+  m14 = emlrtCreateCharArray(2, iv58);
   for (i = 0; i < 21; i++) {
-    cv66[i] = cv67[i];
+    cv64[i] = cv65[i];
   }
 
-  emlrtInitCharArrayR2013a(sp, 21, m14, cv66);
+  emlrtInitCharArrayR2013a(sp, 21, m14, cv64);
   emlrtAssign(&y, m14);
   st.site = &eh_emlrtRSI;
   b_error(&st, y, &u_emlrtMCI);

@@ -27,7 +27,7 @@
 #include "BoundaryElementHeatEquation_mexutil.h"
 
 /* Variable Definitions */
-static emlrtRTEInfo bc_emlrtRTEI = { 1, 1,
+static emlrtRTEInfo ac_emlrtRTEI = { 1, 1,
   "_coder_BoundaryElementHeatEquation_api", "" };
 
 /* Function Declarations */
@@ -81,11 +81,11 @@ static real_T c_emlrt_marshallIn(const emlrtStack *sp, const mxArray *ksi, const
 static const mxArray *c_emlrt_marshallOut(const emxArray_real_T *u)
 {
   const mxArray *y;
-  static const int32_T iv64[2] = { 0, 0 };
+  static const int32_T iv60[2] = { 0, 0 };
 
   const mxArray *m18;
   y = NULL;
-  m18 = emlrtCreateNumericArray(2, iv64, mxDOUBLE_CLASS, mxREAL);
+  m18 = emlrtCreateNumericArray(2, iv60, mxDOUBLE_CLASS, mxREAL);
   mxSetData((mxArray *)m18, (void *)u->data);
   emlrtSetDimensions((mxArray *)m18, u->size, 2);
   emlrtAssign(&y, m18);
@@ -104,11 +104,11 @@ static real_T d_emlrt_marshallIn(const emlrtStack *sp, const mxArray *u, const
 static const mxArray *d_emlrt_marshallOut(const emxArray_real_T *u)
 {
   const mxArray *y;
-  static const int32_T iv65[1] = { 0 };
+  static const int32_T iv61[1] = { 0 };
 
   const mxArray *m19;
   y = NULL;
-  m19 = emlrtCreateNumericArray(1, iv65, mxDOUBLE_CLASS, mxREAL);
+  m19 = emlrtCreateNumericArray(1, iv61, mxDOUBLE_CLASS, mxREAL);
   mxSetData((mxArray *)m19, (void *)u->data);
   emlrtSetDimensions((mxArray *)m19, u->size, 1);
   emlrtAssign(&y, m19);
@@ -128,11 +128,11 @@ static void e_emlrt_marshallIn(const emlrtStack *sp, const mxArray *gridT, const
 static const mxArray *e_emlrt_marshallOut(const emxArray_real_T *u)
 {
   const mxArray *y;
-  static const int32_T iv66[2] = { 0, 0 };
+  static const int32_T iv62[2] = { 0, 0 };
 
   const mxArray *m20;
   y = NULL;
-  m20 = emlrtCreateNumericArray(2, iv66, mxDOUBLE_CLASS, mxREAL);
+  m20 = emlrtCreateNumericArray(2, iv62, mxDOUBLE_CLASS, mxREAL);
   mxSetData((mxArray *)m20, (void *)u->data);
   emlrtSetDimensions((mxArray *)m20, u->size, 2);
   emlrtAssign(&y, m20);
@@ -214,20 +214,20 @@ static real_T n_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
 static void o_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
   emlrtMsgIdentifier *msgId, emxArray_real_T *ret)
 {
-  int32_T iv68[2];
+  int32_T iv64[2];
   boolean_T bv0[2];
-  int32_T i96;
+  int32_T i94;
   static const boolean_T bv1[2] = { false, true };
 
-  int32_T iv69[2];
-  for (i96 = 0; i96 < 2; i96++) {
-    iv68[i96] = 1 + -2 * i96;
-    bv0[i96] = bv1[i96];
+  int32_T iv65[2];
+  for (i94 = 0; i94 < 2; i94++) {
+    iv64[i94] = 1 + -2 * i94;
+    bv0[i94] = bv1[i94];
   }
 
-  emlrtCheckVsBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv68, bv0, iv69);
-  ret->size[0] = iv69[0];
-  ret->size[1] = iv69[1];
+  emlrtCheckVsBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv64, bv0, iv65);
+  ret->size[0] = iv65[0];
+  ret->size[1] = iv65[1];
   ret->allocatedSize = ret->size[0] * ret->size[1];
   ret->data = (real_T *)mxGetData(src);
   ret->canFreeData = false;
@@ -237,18 +237,18 @@ static void o_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
 static void p_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
   emlrtMsgIdentifier *msgId, emxArray_real_T *ret)
 {
-  int32_T iv70[2];
+  int32_T iv66[2];
   boolean_T bv2[2];
   int32_T i;
-  int32_T iv71[2];
+  int32_T iv67[2];
   for (i = 0; i < 2; i++) {
-    iv70[i] = -1;
+    iv66[i] = -1;
     bv2[i] = true;
   }
 
-  emlrtCheckVsBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv70, bv2, iv71);
-  ret->size[0] = iv71[0];
-  ret->size[1] = iv71[1];
+  emlrtCheckVsBuiltInR2012b(sp, msgId, src, "double", false, 2U, iv66, bv2, iv67);
+  ret->size[0] = iv67[0];
+  ret->size[1] = iv67[1];
   ret->allocatedSize = ret->size[0] * ret->size[1];
   ret->data = (real_T *)mxGetData(src);
   ret->canFreeData = false;
@@ -258,13 +258,13 @@ static void p_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
 static void q_emlrt_marshallIn(const emlrtStack *sp, const mxArray *src, const
   emlrtMsgIdentifier *msgId, emxArray_real_T *ret)
 {
-  int32_T iv72[1];
+  int32_T iv68[1];
   boolean_T bv3[1];
-  int32_T iv73[1];
-  iv72[0] = -1;
+  int32_T iv69[1];
+  iv68[0] = -1;
   bv3[0] = true;
-  emlrtCheckVsBuiltInR2012b(sp, msgId, src, "double", false, 1U, iv72, bv3, iv73);
-  ret->size[0] = iv73[0];
+  emlrtCheckVsBuiltInR2012b(sp, msgId, src, "double", false, 1U, iv68, bv3, iv69);
+  ret->size[0] = iv69[0];
   ret->allocatedSize = ret->size[0];
   ret->data = (real_T *)mxGetData(src);
   ret->canFreeData = false;
@@ -292,7 +292,7 @@ void Acoeff_api(const mxArray * const prhs[5], const mxArray *plhs[1])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &gridT, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridT, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   ksi = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "ksi");
@@ -322,7 +322,7 @@ void Bcoeff_api(const mxArray * const prhs[5], const mxArray *plhs[1])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &gridT, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridT, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   ksi = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "ksi");
@@ -356,11 +356,11 @@ void CalculateA1B1B1Star_api(const mxArray * const prhs[5], const mxArray *plhs
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &x, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridT, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &a1k, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &b1k, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &b1s, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &x, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridT, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &a1k, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &b1k, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &b1s, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   k = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "k");
@@ -404,14 +404,14 @@ void CalculateABBStarD_api(const mxArray * const prhs[5], const mxArray *plhs[4]
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &t, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridT, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &x, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &f, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &A, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &B, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &Bstar, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &D, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &t, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridT, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &x, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &f, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &A, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &B, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &Bstar, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &D, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   N = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "N");
@@ -458,9 +458,9 @@ void CalculateC_api(const mxArray * const prhs[4], const mxArray *plhs[1])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &t, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridX, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &C, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &t, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridX, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &C, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   N = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "N");
@@ -502,17 +502,17 @@ void CalculateHeatSolution_api(const mxArray * const prhs[12], const mxArray
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &t, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridT, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &x, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &u0, 2, &bc_emlrtRTEI, true);
-  c_emxInit_real_T(&st, &q0j, 1, &bc_emlrtRTEI, true);
-  c_emxInit_real_T(&st, &q1j, 1, &bc_emlrtRTEI, true);
-  c_emxInit_real_T(&st, &h0j, 1, &bc_emlrtRTEI, true);
-  c_emxInit_real_T(&st, &h1j, 1, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &f, 2, &bc_emlrtRTEI, true);
-  c_emxInit_real_T(&st, &r, 1, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &u, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &t, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridT, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &x, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &u0, 2, &ac_emlrtRTEI, true);
+  c_emxInit_real_T(&st, &q0j, 1, &ac_emlrtRTEI, true);
+  c_emxInit_real_T(&st, &q1j, 1, &ac_emlrtRTEI, true);
+  c_emxInit_real_T(&st, &h0j, 1, &ac_emlrtRTEI, true);
+  c_emxInit_real_T(&st, &h1j, 1, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &f, 2, &ac_emlrtRTEI, true);
+  c_emxInit_real_T(&st, &r, 1, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &u, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   N0 = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "N0");
@@ -581,20 +581,20 @@ void CalculateXY_api(const mxArray * const prhs[15], const mxArray *plhs[2])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &t, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridT, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &x, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridX, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &E, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &A, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &B, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &Bstar, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &C, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &D, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &u0, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &f, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &X, 2, &bc_emlrtRTEI, true);
-  c_emxInit_real_T(&st, &Y, 1, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &t, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridT, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &x, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridX, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &E, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &A, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &B, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &Bstar, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &C, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &D, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &u0, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &f, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &X, 2, &ac_emlrtRTEI, true);
+  c_emxInit_real_T(&st, &Y, 1, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   N = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "N");
@@ -662,8 +662,8 @@ void Ccoeff_api(const mxArray * const prhs[4], const mxArray *plhs[1])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &x, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &vals, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &x, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &vals, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   k = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "k");
@@ -694,10 +694,10 @@ void Cone_api(const mxArray * const prhs[4], const mxArray *plhs[1])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &x, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridX, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &t, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &vals, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &x, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridX, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &t, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &vals, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   k = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "k");
@@ -733,10 +733,10 @@ void Dcoeff_api(const mxArray * const prhs[6], const mxArray *plhs[1])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &y, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &x, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridT, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &f, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &y, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &x, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridT, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &f, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   e_emlrt_marshallIn(&st, emlrtAlias(prhs[0]), "y", y);
@@ -774,10 +774,10 @@ void Done_api(const mxArray * const prhs[6], const mxArray *plhs[1])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &x, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridX, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &gridT, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &f, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &x, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridX, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &gridT, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &f, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   k = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "k");
@@ -813,7 +813,7 @@ void GetRegularizationTerm_api(const mxArray * const prhs[2], const mxArray
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &regTerm, 2, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &regTerm, 2, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   N = c_emlrt_marshallIn(&st, emlrtAliasP(prhs[0]), "N");
@@ -839,10 +839,10 @@ void PlotResults_api(const mxArray * const prhs[4])
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &t, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &sigIn, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &u, 2, &bc_emlrtRTEI, true);
-  c_emxInit_real_T(&st, &r, 1, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &t, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &sigIn, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &u, 2, &ac_emlrtRTEI, true);
+  c_emxInit_real_T(&st, &r, 1, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   e_emlrt_marshallIn(&st, emlrtAlias(prhs[0]), "t", t);
@@ -879,9 +879,9 @@ void TestBemHeatEq_optimized_api(const mxArray * const prhs[7], const mxArray
 
   st.tls = emlrtRootTLSGlobal;
   emlrtHeapReferenceStackEnterFcnR2012b(&st);
-  emxInit_real_T(&st, &sigIn, 2, &bc_emlrtRTEI, true);
-  emxInit_real_T(&st, &u, 2, &bc_emlrtRTEI, true);
-  c_emxInit_real_T(&st, &r, 1, &bc_emlrtRTEI, true);
+  emxInit_real_T(&st, &sigIn, 2, &ac_emlrtRTEI, true);
+  emxInit_real_T(&st, &u, 2, &ac_emlrtRTEI, true);
+  c_emxInit_real_T(&st, &r, 1, &ac_emlrtRTEI, true);
 
   /* Marshall function inputs */
   e_emlrt_marshallIn(&st, emlrtAlias(prhs[0]), "sigIn", sigIn);

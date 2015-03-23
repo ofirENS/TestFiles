@@ -26,43 +26,51 @@
 
 /* Variable Definitions */
 static emlrtRSInfo x_emlrtRSI = { 10, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
 
 static emlrtRSInfo y_emlrtRSI = { 11, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
 
 static emlrtRTEInfo d_emlrtRTEI = { 1, 16, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
 
-static emlrtRTEInfo fc_emlrtRTEI = { 8, 1, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+static emlrtRTEInfo ec_emlrtRTEI = { 8, 1, "CalculateC",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
 
-static emlrtRTEInfo gc_emlrtRTEI = { 9, 5, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+static emlrtRTEInfo fc_emlrtRTEI = { 9, 5, "CalculateC",
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
 
 static emlrtBCInfo mc_emlrtBCI = { -1, -1, 10, 23, "C", "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m", 0 };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
+  0 };
 
 static emlrtDCInfo y_emlrtDCI = { 7, 11, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m", 1 };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
+  1 };
 
 static emlrtDCInfo ab_emlrtDCI = { 7, 11, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m", 4 };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
+  4 };
 
 static emlrtDCInfo bb_emlrtDCI = { 7, 15, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m", 1 };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
+  1 };
 
 static emlrtDCInfo cb_emlrtDCI = { 7, 15, "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m", 4 };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
+  4 };
 
 static emlrtBCInfo nc_emlrtBCI = { -1, -1, 10, 40, "t", "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m", 0 };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
+  0 };
 
 static emlrtBCInfo oc_emlrtBCI = { -1, -1, 11, 40, "t", "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m", 0 };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
+  0 };
 
 static emlrtBCInfo pc_emlrtBCI = { -1, -1, 10, 11, "C", "CalculateC",
-  "D:\\Ofir\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m", 0 };
+  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
+  0 };
 
 /* Function Definitions */
 void CalculateC(const emlrtStack *sp, real_T N, real_T N0, const emxArray_real_T
@@ -103,12 +111,12 @@ void CalculateC(const emlrtStack *sp, real_T N, real_T N0, const emxArray_real_T
   }
 
   emlrtForLoopVectorCheckR2012b(1.0, 1.0, N, mxDOUBLE_CLASS, (int32_T)N,
-    &fc_emlrtRTEI, sp);
+    &ec_emlrtRTEI, sp);
   i = 1;
   while (i - 1 <= (int32_T)N - 1) {
     /*  space */
     emlrtForLoopVectorCheckR2012b(1.0, 1.0, N0, mxDOUBLE_CLASS, (int32_T)N0,
-      &gc_emlrtRTEI, sp);
+      &fc_emlrtRTEI, sp);
     k = 0;
     while (k <= (int32_T)N0 - 1) {
       /*  time */
