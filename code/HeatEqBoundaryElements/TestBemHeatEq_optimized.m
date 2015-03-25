@@ -23,7 +23,7 @@ N  = numel(sigIn);   % time points
 
 
 if initCond==1
-E  = (sigIn)*N0;      % int(u(x,t)dx) is a time function of size 1xN % assuming the temp drops to 0 at the boundaries linearly
+E  = (sigIn);      % int(u(x,t)dx) is a time function of size 1xN % assuming the temp drops to 0 at the boundaries linearly
 f  = zeros(N,N0);    % function of N time points over N0 space points
 f(:,1) = 1; % the source is only active at the mid point x=0.5;
 
@@ -66,11 +66,11 @@ h0j =  zeros(N,1);
 % u(1,t) = h1j
 h1j =  zeros(N,1); 
 elseif initCond==3
-E  = (sigIn)*N0;      % int(u(x,t)dx) is a time function of size 1xN % assuming the temp drops to 0 at the boundaries linearly
+E  = (sigIn)*N0;     % int(u(x,t)dx) is a time function of size 1xN % assuming the temp drops to 0 at the boundaries linearly
 % set f to be active only in the initial point 
-f  = ones(N,N0);    % function of N time points over N0 space points
+f  = zeros(N,N0);    % function of N time points over N0 space points
 % determine initial wave u(x,0) is the Phi function
-
+f(:,1) = 1;
 u0m      = max(sigIn(1:min(10,numel(sigIn)))); % take the max value 
 u0       = (u0m*ones(1,N0));%exp(-10*linspace(0,1,N0)));%ones(1,N0); % u(x,0)
 
