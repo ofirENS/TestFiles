@@ -100,11 +100,20 @@ plot3(0,0,0,'or','MarkerSize',20)
 
 
 % patch('Vertices',zeroCrossVertices,'Faces',zeroCrossFaces,'EdgeColor','y','Parent',a)
-plot3(cPoints(:,1),cPoints(:,2),cPoints(:,3),'y.')
+% plot3(cPoints(:,1),cPoints(:,2),cPoints(:,3),'y.')
 cameratoolbar
 box on
 
 % rotate the points back 
+phi    = - phi;
+Ry     = [cos(phi), 0, sin(phi); 0 1 0;-sin(phi), 0,cos(phi)];
+newPos = (Ry*cPoints')';% roate about the y axis
+theta  = -theta;
+Rz = [cos(theta), -sin(theta), 0 ; sin(theta), cos(theta), 0; 0, 0, 1];
+% rotate around y 
+% rotate the mesh such that the path aligns with the x-z
+rPos = (Rz*newPos')';% rotate about the z axis
+plot3(rPos(:,1),rPos(:,2),rPos(:,3),'y.')
 
 end
 
