@@ -67,7 +67,7 @@ toc
 % plot 
 figure, hold on 
 line('XData',polyVert(:,1), 'YData',polyVert(:,2),'ZData',polyVert(:,3),'color','g','Marker','o','MarkerEdgeColor','m')
-% line('XData',[prevPos(1) curPos(1)],'YData',[prevPos(2) curPos(2)],'ZData',[prevPos(3) curPos(3)],'Marker','*','color','b');
+line('XData',[prevPos(1) curPos(1)],'YData',[prevPos(2) curPos(2)],'ZData',[prevPos(3) curPos(3)],'Marker','*','color','b');
 %plot new position 
 line('XData',newPos(1),'YData',newPos(2),'ZData',newPos(3),'Marker','o','MarkerEdgeColor','r','MarkerFaceColor','r')
 daspect([1 1 1])
