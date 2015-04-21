@@ -10,7 +10,7 @@ tic
 A = [vertices(1,1:2),1; vertices(2,1:2),1 ; prevPos(1,1:2),1];
 d = det(A);
 if d>eps
-    error('prevPos is not on the first vertex')
+    error('prevPos is not on the first edge')
 end
 % Get the exct position and trim the polygon such that the polygon and the
 % path start from the same positon 
@@ -24,9 +24,9 @@ vert1      = 1;
 vert2      = 2;
 polyLength = 0;
 numVert    = size(vertices,1);
-while flag && vert1<=numVert
+while flag 
     % iteratively calculate the length of the polygon 
-    % and subtract the length of the path 
+    % and subtract it from the length of the path 
     r          = sqrt(sum((vertices(vert2,:)-vertices(vert1,:)).^2));  % length of segment
     polyLength = polyLength + r;% cumulative length of polygon 
     d          = l-polyLength; % difference between path length and cumulative polygon length
@@ -48,7 +48,7 @@ while flag && vert1<=numVert
     end
 end
 
-% the actal point 
+% the actual point 
 a      = vertices(vert1,:);
 b      = vertices(vert2,:);
 dirVec = (b-a)./sqrt(sum((b-a).^2));
