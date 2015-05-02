@@ -13,8 +13,8 @@ sy          = sy*radius;
 sz          = sz*radius;
 
 % random angle sampling for points on the sphere
-u     = rand(1);
-v     = rand(1);
+u     = 2*randc(1);
+v     = 2*randc(1);
 phi   = 2*pi*u;
 theta = acos(2*v -1);
 % phi   = randc(1)*pi*2;
