@@ -1,8 +1,8 @@
 function DiffuseOnSphere
 % random walk on a sphere assuming the directions are indipendent
 close all
-numSteps       = 500;
-radius         = 2;
+numSteps       = 200;
+radius         = 1;
 dt             = 0.1;
 diffusionConst = 0.1;
 w              = sqrt(2*diffusionConst*dt)/radius;
@@ -13,22 +13,23 @@ sy          = sy*radius;
 sz          = sz*radius;
 
 % random angle sampling for points on the sphere
-u     = rand(1,1);
-v     = rand(1,1);
+u     = rand(1);
+v     = rand(1);
 phi   = 2*pi*u;
 theta = acos(2*v -1);
+% phi   = randc(1)*pi*2;
+% theta = randc(1)*pi*2;
 
-
-theta       = cumsum([theta; w*RandomWrappedNormalOnCircle(0,1,numSteps-1)]);
-phi         = cumsum([phi; w*RandomWrappedNormalOnCircle(0,1,numSteps-1)]);
+theta       = cumsum([theta; (w*RandomWrappedNormalOnCircle(0,1,numSteps-1))]);% change the sum of directions to a proper one 
+phi         = cumsum([phi; (w*RandomWrappedNormalOnCircle(0,1,numSteps-1))]);
 x           = radius*sin(phi).*cos(theta);
 y           = radius*sin(phi).*sin(theta);
 z           = radius*cos(phi);
 points      = [x,y,z];
 % for sIdx = 2:numSteps
 %     
-% %     theta = theta+;
-% %     phi   = phi+
+%     theta = theta+w*RandomWrappedNormalOnCircle(theta,1,1);
+%     phi   = phi+w*RandomWrappedNormalOnCircle(phi,1,1);
 % 
 %     x     = radius*sin(phi)*cos(theta);
 %     y     = radius*sin(phi)*sin(theta);
