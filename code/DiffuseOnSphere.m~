@@ -1,8 +1,8 @@
 function DiffuseOnSphere
 % random walk on a sphere assuming the directions are indipendent
 close all
-numSteps       = 2500;
-radius         = 2;
+numSteps       = 100;
+radius         = 1;
 dt             = 0.001;
 diffusionConst = 1;
 w              = sqrt(2*diffusionConst*dt)/radius;
@@ -15,23 +15,18 @@ sz          = sz*radius;
 % random angle sampling for points on the sphere
 u     = rand(1);
 v     = rand(1);
-phi   = pi/2;%2*pi*u;
-theta = pi/2;%acos(2*v -1);
+phi   = pi/4;%2*pi*u;
+theta = pi/4;%acos(2*v -1);
 
-% dTheta      = RandomWrappedNormalOnCircle(0,1,numSteps-1,-pi:.1:pi);
-% dPhi        = RandomWrappedNormalOnCircle(0,1,numSteps-1,-pi:.1:pi);
-dAngles    = RandomWrappedNormalOnCircle(0,1,[numSteps-1,2],0:.1:2*pi);
-dTheta     = dAngles(:,1);
-dPhi       = dAngles(:,2);
-w          = sqrt(2*diffusionConst*dt)./(radius );
-theta      = (cumsum([theta;w.*dTheta]));
-phi        = (cumsum([phi;w.*dPhi]));
+dTheta      = RandomWrappedNormalOnCircle(0,1,numSteps-1,-2*pi:.1:2*pi);
+dPhi        = RandomWrappedNormalOnCircle(0,1,numSteps-1,-2*pi:.1:2*pi);
+theta       = (cumsum([theta;w*dTheta]));
+phi         = (cumsum([phi;w*dPhi]));
 figure, subplot(141),plot(phi),set(gca,'YLim',[-2*pi 2*pi]), title('phi'), 
         subplot(142), plot(theta),set(gca,'YLim',[-2*pi 2*pi]), title('theta')
         x = xcorr(theta,phi);
         subplot(143), plot(x./sum(x))
-        dx = xcorr(dTheta,dPhi);
-        subplot(144), plot(dx./sum(dx)), title('xcorr dTheta, dPhi')
+        dx = xcorr(dTheta
 % theta = cumsum([theta;tt]);
 % phi  =  cumsum([phi;pp]);
 x           = radius*sin(phi).*cos(theta);
@@ -49,7 +44,7 @@ points      = [x,y,z];
 %     points(sIdx,:)= [x,y,z];    
 % end
 
-figure, plot(theta,phi), xlabel('theta'), ylabel('phi'), set(gca,'XLIm',2*[-pi pi],'YLim',2*[-pi pi])
+figure, plot(theta,phi), xlabel('\theta'), ylabel('\phi')
 figure, mesh(sx,sy,sz,'FaceColor','none','EdgeColor','g'), hold on, 
 % color = jet(numSteps);
 plot3(points(:,1), points(:,2),points(:,3))
