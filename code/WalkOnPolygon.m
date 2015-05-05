@@ -5,7 +5,7 @@ function [newPos, vert1,vert2] = WalkOnPolygon(prevPos, curPos,vertices,isCircul
 % vertices of the polygon should be ordered such that the firt vertex is
 % the closest to prevPos.
 % is circular is a flag for closed polygon 
-tic
+% tic
 % test that the prevPos is between the first two vertices 
 A = [vertices(1,1:2),1; vertices(2,1:2),1 ; prevPos(1,1:2),1];
 d = det(A);
@@ -62,8 +62,8 @@ if isCircular
     polyVert = [polyVert; vertices(1,:)];
 end
 
-toc
-
+% toc
+% 
 % plot 
 figure, hold on 
 line('XData',polyVert(:,1), 'YData',polyVert(:,2),'ZData',polyVert(:,3),'color','g','Marker','o','MarkerEdgeColor','m')

@@ -1,0 +1,21 @@
+% scrTestMorseForce
+% this script test the Morse force between particles 
+close all 
+numPart = 10;
+cMat    = true(numPart); 
+dt      = 0.01;
+De      = 0.0001;
+alpha   = 0.001;
+re      = 0.001;
+% initial position 
+r       = rand(numPart,3);
+
+figure, 
+l  = line('XData',r(:,1), 'YData',r(:,2),'ZData',r(:,3),'Marker','o','LineStyle','none');
+for step = 1:100; 
+    particleDist = ForceManager.GetParticleDistance(r); 
+    edgesVec     = ForceManager.GetEdgesVectors(r,cMat);
+    r            = r+MorseForce(De,alpha,re,edgesVec,particleDist)*dt;
+    set(l,'XData',r(:,1),'YData',r(:,2),'ZData',r(:,3));
+    drawnow;
+end
