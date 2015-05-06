@@ -1,17 +1,60 @@
-function [force] = MorseForce(De,alpha, re, edgesVector, particleDistance)
+function [force] = MorseForce(De,alpha, re, edgesX,edgesY,edgesZ, particleDistance,forceType)
 % calculate the Morse force, derived from the Morse potential
 % u = De*(exp(-2*a(r-re)) -2*exp(-a*(r-re)))
-% and the force 
+% The force is given by 
 % F = dv/dr = De*(-2*a*exp(-2*a*(r-re)) +2*a*exp(-a*(r-re)))
-
+% Input parameters:
 % re is the equilibrium bond distance 
 % De is the well depth
 % alpha is the width of the potential
+% edgesVector is numPartXnumPartXdim matrix representing the vectors
+% between particles
+% particleDistance is a numPartXnumPart matrix of pairwise distances 
+% forceType is a string [attractive |repuslsive |full] indicating whether
+% to use the attractive repulsive part of the Morse force or both
+% currently works in 3D only 
 
-% dim   = size(edgesVector,3);
-force = De*(-2*alpha*exp(-2*alpha*(particleDistance -re)) +2*alpha*exp(-alpha*(particleDistance-re)));
-% normalize the mean direction vectors 
-for dIdx = 1:size(edgesVector,3)
-dirVec(:,dIdx) = sqrt(sum(edgesVector(:,:,dIdx),2).^2);
+edgesVector(:,:,1)  = edgesX;
+edgesVector(:,:,2)  = edgesY;
+edgesVector(:,:,3)  = edgesZ;
+dim = 3; 
+% dim                 = size(edgesVector,3);
+numParticles        = size(particleDistance,1);
+
+% Calculate the force magnitude
+repulse      = exp(-alpha*(particleDistance-re)); % repulsive term
+attract      = 1-repulse; % attractive term 
+if strcmpi(forceType,'attractive')
+    forceMag = 2*alpha*De*attract;
+elseif strcmpi(forceType,'repulsive')
+    forceMag = 2*alpha*De*repulse;
+elseif strcmpi(forceType,'full');
+    forceMag = 2*De*alpha*attract*repulse;
+else
+    error('forceType not supported')
 end
-dirVec = dirVec./sqrt(sum(dirVec
+
+
+% remove the diagonal 
+% Normalize the mean direction vectors to unit vectors
+dirNorm = sqrt(edgesX.^2+edgesY.^2+edgesZ.^2);
+dirNorm = dirNorm+eye(numParticles);% put ones in the diagonal to prevent dividing by zeros
+dirVecX = edgesVectorX./dirNorm;
+dirVecY = edgesVectorY./dirNorm;
+dirVecZ = edgesVectorZ./dirNorm;
+
+dirVec  = bsxfun(@rdivide, edgesVector,dirNorm);
+
+% Multiply by the force magnitude
+forceVecX  = forceMag.*dirVecX
+forceVecY  = forceMag.*dirVecY;
+forceVecZ  = forceMag.*dirVecZ;
+
+bsxfun(@times,forceMag,dirVec);
+
+
+% Calculate the mean force direction and assign it to each particle
+force = zeros(numParticles,dim);
+for dIdx = 1:dim
+ force(:,dIdx) = -sum(forceVec(:,:,dIdx),2);
+end

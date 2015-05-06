@@ -1,21 +1,28 @@
 % scrTestMorseForce
 % this script test the Morse force between particles 
 close all 
-numPart = 10;
-cMat    = true(numPart); 
-dt      = 0.01;
-De      = 0.0001;
-alpha   = 0.001;
-re      = 0.001;
-% initial position 
-r       = rand(numPart,3);
 
-figure, 
-l  = line('XData',r(:,1), 'YData',r(:,2),'ZData',r(:,3),'Marker','o','LineStyle','none');
-for step = 1:100; 
-    particleDist = ForceManager.GetParticleDistance(r); 
+numPart = 200;
+cMat    = true(numPart); % conectivity matrix
+dt      = 0.001; % time step
+De      = .1;   % De is the well depth
+alpha   = .1;   % alpha is the width of the potential
+re      =  00; % re is the equilibrium bond distance 
+forceType = 'attractive'; % [attractive|repulsive|full]
+diffusionConst = 1;
+dimension      = 3;
+% initial position 
+r       = rand(numPart,dimension);
+% add random noise 
+f  = figure;
+a  = axes('Parent',f,'NextPlot','replaceChildren','XLim',[-15 15],'YLim',[-15 15],'ZLim',[-15 15]);
+l  = line('XData',r(:,1), 'YData',r(:,2),'ZData',r(:,3),'Marker','o','LineStyle','-','Parent',a);
+cameratoolbar
+for step = 1:2000; 
+    particleDist = ForceManager.GetParticleDistance(r);
     edgesVec     = ForceManager.GetEdgesVectors(r,cMat);
-    r            = r+MorseForce(De,alpha,re,edgesVec,particleDist)*dt;
+    mForce       = MorseForce(De,alpha,re,edgesVec(:,:,1),edgesVec(:,:,2), edgesVec(:,:,3),particleDist,forceType);
+    r            = r+mForce*dt;% +sqrt(2*diffusionConst*dt)*randn(numPart,dimension);
     set(l,'XData',r(:,1),'YData',r(:,2),'ZData',r(:,3));
     drawnow;
 end
