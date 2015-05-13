@@ -26,43 +26,43 @@
 
 /* Variable Definitions */
 static emlrtRSInfo g_emlrtRSI = { 12, "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m" };
 
 static emlrtRSInfo h_emlrtRSI = { 15, "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m" };
 
 static emlrtRSInfo i_emlrtRSI = { 16, "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m" };
 
 static emlrtBCInfo n_emlrtBCI = { -1, -1, 7, 7, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 static emlrtDCInfo b_emlrtDCI = { 7, 7, "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 1 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 1 };
 
 static emlrtBCInfo o_emlrtBCI = { -1, -1, 9, 15, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 static emlrtBCInfo p_emlrtBCI = { -1, -1, 9, 29, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 static emlrtBCInfo q_emlrtBCI = { -1, -1, 11, 15, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 static emlrtBCInfo r_emlrtBCI = { -1, -1, 11, 28, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 static emlrtBCInfo s_emlrtBCI = { -1, -1, 14, 10, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 static emlrtBCInfo t_emlrtBCI = { -1, -1, 15, 33, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 static emlrtBCInfo u_emlrtBCI = { -1, -1, 16, 33, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 static emlrtBCInfo v_emlrtBCI = { -1, -1, 12, 33, "gridT", "Bcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Bcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Bcoeff.m", 0 };
 
 /* Function Definitions */
 real_T Bcoeff(const emlrtStack *sp, real_T ksi, real_T j, real_T x, real_T t,

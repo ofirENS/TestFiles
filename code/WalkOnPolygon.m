@@ -2,7 +2,7 @@ function [newPos, vert1,vert2] = WalkOnPolygon(prevPos, curPos,vertices,isCircul
 % walk on a polygon curve from prevPos, which should lay on the polygon
 % edges, by projecting the [prevPos, curPos] vector on the polygon to give newPos
 % prevPos must lay between the first two vertices of the polygon 
-% vertices of the polygon should be ordered such that the firt vertex is
+% vertices of the polygon should be ordered such that the first vertex is
 % the closest to prevPos.
 % is circular is a flag for closed polygon 
 % tic
@@ -71,5 +71,5 @@ line('XData',[prevPos(1) curPos(1)],'YData',[prevPos(2) curPos(2)],'ZData',[prev
 %plot new position 
 line('XData',newPos(1),'YData',newPos(2),'ZData',newPos(3),'Marker','o','MarkerEdgeColor','r','MarkerFaceColor','r')
 daspect([1 1 1])
-cameratoolbar
+% cameratoolbar
 end

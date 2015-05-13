@@ -28,13 +28,13 @@
 
 /* Variable Definitions */
 static emlrtRSInfo ec_emlrtRSI = { 151, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRSInfo fc_emlrtRSI = { 156, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRTEInfo o_emlrtRTEI = { 152, 1, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 /* Function Definitions */
 void eml_signed_integer_colon(const emlrtStack *sp, int32_T b, emxArray_int32_T *

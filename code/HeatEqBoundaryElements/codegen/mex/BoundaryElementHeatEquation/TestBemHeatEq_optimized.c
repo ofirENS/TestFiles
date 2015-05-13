@@ -34,319 +34,305 @@
 
 /* Variable Definitions */
 static emlrtRSInfo nf_emlrtRSI = { 32, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo of_emlrtRSI = { 52, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo pf_emlrtRSI = { 56, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo qf_emlrtRSI = { 57, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo rf_emlrtRSI = { 74, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo sf_emlrtRSI = { 88, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo tf_emlrtRSI = { 93, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo uf_emlrtRSI = { 99, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo vf_emlrtRSI = { 109, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo wf_emlrtRSI = { 112, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo xf_emlrtRSI = { 119, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo yf_emlrtRSI = { 122, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo ag_emlrtRSI = { 125, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo bg_emlrtRSI = { 128, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo cg_emlrtRSI = { 133, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRSInfo dg_emlrtRSI = { 16, "max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\datafun\\max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/datafun/max.m" };
 
 static emlrtRSInfo eg_emlrtRSI = { 18, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtRSInfo fg_emlrtRSI = { 96, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtRSInfo gg_emlrtRSI = { 229, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtRSInfo hg_emlrtRSI = { 202, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtRSInfo ig_emlrtRSI = { 79, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRSInfo jg_emlrtRSI = { 283, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRSInfo kg_emlrtRSI = { 291, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRSInfo lg_emlrtRSI = { 1, "mldivide",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mldivide.p"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mldivide.p" };
 
 static emlrtRSInfo mg_emlrtRSI = { 117, "eml_lusolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_lusolve.m" };
 
 static emlrtRSInfo ng_emlrtRSI = { 128, "eml_lusolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_lusolve.m" };
 
 static emlrtRSInfo og_emlrtRSI = { 130, "eml_lusolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_lusolve.m" };
 
 static emlrtMCInfo b_emlrtMCI = { 405, 5, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtMCInfo c_emlrtMCI = { 404, 15, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtMCInfo bb_emlrtMCI = { 41, 9, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtMCInfo cb_emlrtMCI = { 38, 19, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtMCInfo db_emlrtMCI = { 82, 9, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtMCInfo eb_emlrtMCI = { 81, 19, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtMCInfo fb_emlrtMCI = { 1, 1, "mldivide",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mldivide.p"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mldivide.p" };
 
 static emlrtRTEInfo kb_emlrtRTEI = { 1, 17, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo lb_emlrtRTEI = { 284, 1, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRTEInfo mb_emlrtRTEI = { 26, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo nb_emlrtRTEI = { 27, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo ob_emlrtRTEI = { 33, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo pb_emlrtRTEI = { 37, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo qb_emlrtRTEI = { 39, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo rb_emlrtRTEI = { 41, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo sb_emlrtRTEI = { 43, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo tb_emlrtRTEI = { 93, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo ub_emlrtRTEI = { 94, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo vb_emlrtRTEI = { 99, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo wb_emlrtRTEI = { 100, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo xb_emlrtRTEI = { 112, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtRTEInfo yb_emlrtRTEI = { 122, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtECInfo t_emlrtECI = { 2, 125, 8, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtECInfo u_emlrtECI = { -1, 57, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtBCInfo af_emlrtBCI = { -1, -1, 57, 1, "u0",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
 static emlrtECInfo v_emlrtECI = { -1, 56, 1, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m"
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m"
 };
 
 static emlrtBCInfo bf_emlrtBCI = { -1, -1, 56, 1, "u0",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
 static emlrtBCInfo cf_emlrtBCI = { -1, -1, 55, 1, "u0",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo df_emlrtBCI = { -1, -1, 48, 5, "f", "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+static emlrtBCInfo df_emlrtBCI = { -1, -1, 73, 5, "f", "TestBemHeatEq_optimized",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo ef_emlrtBCI = { -1, -1, 28, 5, "f", "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+static emlrtBCInfo ef_emlrtBCI = { -1, -1, 48, 5, "f", "TestBemHeatEq_optimized",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo ff_emlrtBCI = { -1, -1, 102, 30, "gridX",
+static emlrtBCInfo ff_emlrtBCI = { -1, -1, 28, 5, "f", "TestBemHeatEq_optimized",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
+  0 };
+
+static emlrtBCInfo gf_emlrtBCI = { -1, -1, 102, 30, "gridX",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo gf_emlrtBCI = { -1, -1, 102, 16, "gridX",
+static emlrtBCInfo hf_emlrtBCI = { -1, -1, 102, 16, "gridX",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo hf_emlrtBCI = { -1, -1, 96, 28, "gridT",
+static emlrtBCInfo if_emlrtBCI = { -1, -1, 96, 28, "gridT",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo if_emlrtBCI = { -1, -1, 96, 16, "gridT",
+static emlrtBCInfo jf_emlrtBCI = { -1, -1, 96, 16, "gridT",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo jf_emlrtBCI = { -1, -1, 74, 16, "sigIn",
+static emlrtBCInfo kf_emlrtBCI = { -1, -1, 74, 16, "sigIn",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo kf_emlrtBCI = { -1, -1, 52, 16, "sigIn",
+static emlrtBCInfo lf_emlrtBCI = { -1, -1, 52, 16, "sigIn",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo lf_emlrtBCI = { -1, -1, 32, 16, "sigIn",
+static emlrtBCInfo mf_emlrtBCI = { -1, -1, 32, 16, "sigIn",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtDCInfo fc_emlrtDCI = { 71, 13, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+static emlrtDCInfo fc_emlrtDCI = { 71, 14, "TestBemHeatEq_optimized",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   1 };
 
-static emlrtDCInfo gc_emlrtDCI = { 71, 13, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+static emlrtDCInfo gc_emlrtDCI = { 71, 14, "TestBemHeatEq_optimized",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   4 };
 
 static emlrtDCInfo hc_emlrtDCI = { 47, 14, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   1 };
 
 static emlrtDCInfo ic_emlrtDCI = { 47, 14, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   4 };
 
 static emlrtDCInfo jc_emlrtDCI = { 27, 14, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   1 };
 
 static emlrtDCInfo kc_emlrtDCI = { 27, 14, "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   4 };
 
-static emlrtBCInfo mf_emlrtBCI = { -1, -1, 102, 5, "x",
+static emlrtBCInfo nf_emlrtBCI = { -1, -1, 102, 5, "x",
   "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
-static emlrtBCInfo nf_emlrtBCI = { -1, -1, 96, 5, "t", "TestBemHeatEq_optimized",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\TestBemHeatEq_optimized.m",
+static emlrtBCInfo of_emlrtBCI = { -1, -1, 96, 5, "t", "TestBemHeatEq_optimized",
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBemHeatEq_optimized.m",
   0 };
 
 static emlrtRSInfo xg_emlrtRSI = { 405, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRSInfo yg_emlrtRSI = { 82, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtRSInfo ah_emlrtRSI = { 41, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtRSInfo hh_emlrtRSI = { 404, "colon",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\colon.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/colon.m" };
 
 static emlrtRSInfo ih_emlrtRSI = { 81, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 static emlrtRSInfo jh_emlrtRSI = { 38, "eml_min_or_max",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_min_or_max.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_min_or_max.m" };
 
 /* Function Declarations */
 static void b_eml_lusolve(const emlrtStack *sp, const emxArray_real_T *A,
@@ -1262,7 +1248,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
                       &kb_emlrtRTEI);
     loop_ub = sigIn->size[0] * sigIn->size[1];
     for (i79 = 0; i79 < loop_ub; i79++) {
-      E->data[i79] = sigIn->data[i79] * numSpacePoints;
+      E->data[i79] = sigIn->data[i79];
     }
 
     /*  int(u(x,t)dx) is a time function of size 1xN % assuming the temp drops to 0 at the boundaries linearly */
@@ -1288,7 +1274,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 
     /*  function of N time points over N0 space points */
     i79 = (int32_T)numSpacePoints;
-    emlrtDynamicBoundsCheckFastR2012b(1, 1, i79, &ef_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(1, 1, i79, &ff_emlrtBCI, sp);
     ixstart = sigIn->size[1];
     for (i79 = 0; i79 < ixstart; i79++) {
       f->data[i79] = 1.0;
@@ -1301,9 +1287,9 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       i79 = 0;
     } else {
       i80 = sigIn->size[1];
-      emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &lf_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &mf_emlrtBCI, sp);
       i80 = sigIn->size[1];
-      i79 = emlrtDynamicBoundsCheckFastR2012b(i79, 1, i80, &lf_emlrtBCI, sp);
+      i79 = emlrtDynamicBoundsCheckFastR2012b(i79, 1, i80, &mf_emlrtBCI, sp);
     }
 
     st.site = &nf_emlrtRSI;
@@ -1459,7 +1445,7 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
 
     /*  function of N time points over N0 space points */
     i79 = (int32_T)numSpacePoints;
-    emlrtDynamicBoundsCheckFastR2012b(1, 1, i79, &df_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(1, 1, i79, &ef_emlrtBCI, sp);
     ixstart = sigIn->size[1];
     for (i79 = 0; i79 < ixstart; i79++) {
       f->data[i79] = 1.0;
@@ -1483,9 +1469,9 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
       i79 = 0;
     } else {
       i80 = sigIn->size[1];
-      emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &kf_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &lf_emlrtBCI, sp);
       i80 = sigIn->size[1];
-      i79 = emlrtDynamicBoundsCheckFastR2012b(i79, 1, i80, &kf_emlrtBCI, sp);
+      i79 = emlrtDynamicBoundsCheckFastR2012b(i79, 1, i80, &lf_emlrtBCI, sp);
     }
 
     st.site = &of_emlrtRSI;
@@ -1842,19 +1828,26 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
     loop_ub = sigIn->size[1] * (int32_T)emlrtIntegerCheckFastR2012b(sTime,
       &fc_emlrtDCI, sp);
     for (i79 = 0; i79 < loop_ub; i79++) {
-      f->data[i79] = 1.0;
+      f->data[i79] = 0.0;
     }
 
     /*  function of N time points over N0 space points */
     /*  determine initial wave u(x,0) is the Phi function */
+    i79 = (int32_T)numSpacePoints;
+    emlrtDynamicBoundsCheckFastR2012b(1, 1, i79, &df_emlrtBCI, sp);
+    ixstart = sigIn->size[1];
+    for (i79 = 0; i79 < ixstart; i79++) {
+      f->data[i79] = 1.0;
+    }
+
     i79 = (int32_T)muDoubleScalarMin(10.0, sigIn->size[1]);
     if (1 > i79) {
       i79 = 0;
     } else {
       i80 = sigIn->size[1];
-      emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &jf_emlrtBCI, sp);
+      emlrtDynamicBoundsCheckFastR2012b(1, 1, i80, &kf_emlrtBCI, sp);
       i80 = sigIn->size[1];
-      i79 = emlrtDynamicBoundsCheckFastR2012b(i79, 1, i80, &jf_emlrtBCI, sp);
+      i79 = emlrtDynamicBoundsCheckFastR2012b(i79, 1, i80, &kf_emlrtBCI, sp);
     }
 
     st.site = &rf_emlrtRSI;
@@ -2090,13 +2083,13 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   while (tIdx <= sigIn->size[1] - 1) {
     i79 = gridT->size[1];
     i80 = tIdx + 1;
-    emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &if_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &jf_emlrtBCI, sp);
     i79 = gridT->size[1];
     i80 = (int32_T)((1.0 + (real_T)tIdx) + 1.0);
-    emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &hf_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &if_emlrtBCI, sp);
     i79 = t->size[1];
     i80 = 1 + tIdx;
-    t->data[emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &nf_emlrtBCI, sp) - 1]
+    t->data[emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &of_emlrtBCI, sp) - 1]
       = (gridT->data[tIdx] + gridT->data[(int32_T)((1.0 + (real_T)tIdx) + 1.0) -
          1]) / 2.0;
     tIdx++;
@@ -2208,13 +2201,13 @@ void TestBemHeatEq_optimized(const emlrtStack *sp, const emxArray_real_T *sigIn,
   while (ixstart <= (int32_T)numSpacePoints - 1) {
     i79 = gridX->size[1];
     i80 = (int32_T)((1.0 + (real_T)ixstart) + 1.0);
-    emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &gf_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &hf_emlrtBCI, sp);
     i79 = gridX->size[1];
     i80 = ixstart + 1;
-    emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &ff_emlrtBCI, sp);
+    emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &gf_emlrtBCI, sp);
     i79 = x->size[1];
     i80 = 1 + ixstart;
-    x->data[emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &mf_emlrtBCI, sp) - 1]
+    x->data[emlrtDynamicBoundsCheckFastR2012b(i80, 1, i79, &nf_emlrtBCI, sp) - 1]
       = (gridX->data[(int32_T)((1.0 + (real_T)ixstart) + 1.0) - 1] + gridX->
          data[ixstart]) / 2.0;
     ixstart++;

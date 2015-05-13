@@ -1,0 +1,24 @@
+MEX {
+	global:
+		mexFunction;
+		emlrtMexFcnProperties;
+		Acoeff;
+		Bcoeff;
+		CalculateA1B1B1Star;
+		CalculateABBStarD;
+		CalculateC;
+		CalculateHeatSolution;
+		CalculateXY;
+		Ccoeff;
+		Cone;
+		Dcoeff;
+		Done;
+		GetRegularizationTerm;
+		PlotResults;
+		TestBemHeatEq_optimized;
+		BoundaryElementHeatEquation_initialize;
+		BoundaryElementHeatEquation_terminate;
+		BoundaryElementHeatEquation_atexit;
+	local:
+		*;
+};

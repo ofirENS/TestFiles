@@ -30,120 +30,91 @@
 
 /* Variable Definitions */
 static emlrtRSInfo fb_emlrtRSI = { 21, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRSInfo gb_emlrtRSI = { 22, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRSInfo hb_emlrtRSI = { 24, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRSInfo ib_emlrtRSI = { 29, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRSInfo jb_emlrtRSI = { 32, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRSInfo kb_emlrtRSI = { 34, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRSInfo me_emlrtRSI = { 70, "sum",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\datafun\\sum.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/datafun/sum.m" };
 
 static emlrtRTEInfo h_emlrtRTEI = { 1, 17, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRTEInfo j_emlrtRTEI = { 17, 1, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRTEInfo k_emlrtRTEI = { 18, 1, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRTEInfo l_emlrtRTEI = { 22, 5, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtRTEInfo ic_emlrtRTEI = { 19, 1, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtECInfo emlrtECI = { 2, 22, 27, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtECInfo b_emlrtECI = { 2, 22, 12, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtECInfo c_emlrtECI = { 2, 23, 25, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtECInfo d_emlrtECI = { 2, 23, 12, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtECInfo e_emlrtECI = { 2, 24, 18, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtECInfo f_emlrtECI = { 2, 29, 16, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtBCInfo rd_emlrtBCI = { -1, -1, 24, 12, "s1", "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m",
-  0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m", 0 };
 
 static emlrtECInfo g_emlrtECI = { -1, 24, 5, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtBCInfo sd_emlrtBCI = { -1, -1, 29, 10, "s2", "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m",
-  0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m", 0 };
 
 static emlrtECInfo h_emlrtECI = { -1, 29, 5, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtECInfo i_emlrtECI = { -1, 34, 5, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m"
-};
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m" };
 
 static emlrtDCInfo hb_emlrtDCI = { 17, 12, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m",
-  1 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m", 1 };
 
 static emlrtDCInfo ib_emlrtDCI = { 17, 12, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m",
-  4 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m", 4 };
 
 static emlrtDCInfo jb_emlrtDCI = { 17, 14, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m",
-  1 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m", 1 };
 
 static emlrtDCInfo kb_emlrtDCI = { 17, 14, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m",
-  4 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m", 4 };
 
 static emlrtDCInfo lb_emlrtDCI = { 17, 16, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m",
-  1 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m", 1 };
 
 static emlrtDCInfo mb_emlrtDCI = { 17, 16, "CalculateXY",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateXY.m",
-  4 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateXY.m", 4 };
 
 /* Function Definitions */
 void CalculateXY(const emlrtStack *sp, real_T N, real_T N0, const

@@ -28,8 +28,7 @@
 
 /* Variable Definitions */
 static emlrtRTEInfo ib_emlrtRTEI = { 1, 14, "diag",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elmat\\diag.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/elmat/diag.m" };
 
 /* Function Definitions */
 void b_diag(const emlrtStack *sp, const emxArray_real_T *v, emxArray_real_T *d)

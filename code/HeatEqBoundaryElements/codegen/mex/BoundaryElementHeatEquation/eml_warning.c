@@ -26,16 +26,13 @@
 
 /* Variable Definitions */
 static emlrtMCInfo f_emlrtMCI = { 16, 13, "eml_warning",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_warning.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_warning.m" };
 
 static emlrtMCInfo g_emlrtMCI = { 16, 5, "eml_warning",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_warning.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_warning.m" };
 
 static emlrtRSInfo ug_emlrtRSI = { 16, "eml_warning",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_warning.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_warning.m" };
 
 /* Function Declarations */
 static void warning(const emlrtStack *sp, const mxArray *b, emlrtMCInfo

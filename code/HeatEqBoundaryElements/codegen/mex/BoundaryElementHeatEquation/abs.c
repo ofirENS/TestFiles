@@ -26,7 +26,7 @@
 
 /* Variable Definitions */
 static emlrtRTEInfo eb_emlrtRTEI = { 16, 5, "abs",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\elfun\\abs.m" };
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/elfun/abs.m" };
 
 /* Function Definitions */
 void b_abs(const emlrtStack *sp, const emxArray_real_T *x, emxArray_real_T *y)

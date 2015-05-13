@@ -28,8 +28,7 @@
 
 /* Variable Definitions */
 static emlrtRTEInfo w_emlrtRTEI = { 1, 14, "sum",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\datafun\\sum.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/datafun/sum.m" };
 
 /* Function Definitions */
 void sum(const emlrtStack *sp, const emxArray_real_T *x, emxArray_real_T *y)

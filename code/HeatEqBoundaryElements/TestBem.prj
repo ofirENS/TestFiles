@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.matlabcoder" plugin-version="R2014a_nu">
-  <configuration build-checksum="1423890849" file="D:\Ofir\ENS\TestFiles\code\HeatEqBoundaryElements\TestBem.prj" location="D:\Ofir\ENS\TestFiles\code\HeatEqBoundaryElements" name="TestBem" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
+  <configuration build-checksum="2441387947" file="/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/TestBem.prj" location="/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements" name="TestBem" target="target.matlab.coder" target-name="MEX, C, and C++ Code Generation">
     <profile key="profile.mex">
       <param.MergeInstrumentationResults>false</param.MergeInstrumentationResults>
       <param.BuiltInstrumentedMex>false</param.BuiltInstrumentedMex>
@@ -321,10 +321,10 @@
         <param.UseECoderFeatures />
       </unset>
     </profile>
-    <param.outputfile>${PROJECT_ROOT}\BoundaryElementHeatEquation.mexw64</param.outputfile>
+    <param.outputfile>${PROJECT_ROOT}/BoundaryElementHeatEquation.mexa64</param.outputfile>
     <param.version>R2012a</param.version>
     <param.HasECoderFeatures>true</param.HasECoderFeatures>
-    <param.mex.mainhtml>D:\Ofir\Work\ENS\TestFiles\code\HeatEqBoundaryElements\codegen\mex\BoundaryElementHeatEquation\html\index.html</param.mex.mainhtml>
+    <param.mex.mainhtml>/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/codegen/mex/BoundaryElementHeatEquation/html/index.html</param.mex.mainhtml>
     <param.grt.mainhtml />
     <param.CallGeneratedCodeFromTest>true</param.CallGeneratedCodeFromTest>
     <param.VerificationMode>option.VerificationMode.None</param.VerificationMode>
@@ -432,7 +432,7 @@
       <param.DefaultFixedPointSignedness />
     </unset>
     <fileset.entrypoints>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\Acoeff.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/Acoeff.m">
         <Inputs fileName="Acoeff.m" functionName="Acoeff">
           <Input Name="ksi">
             <Class>double</Class>
@@ -476,7 +476,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\Bcoeff.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/Bcoeff.m">
         <Inputs fileName="Bcoeff.m" functionName="Bcoeff">
           <Input Name="ksi">
             <Class>double</Class>
@@ -520,7 +520,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateA1B1B1Star.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/CalculateA1B1B1Star.m">
         <Inputs fileName="CalculateA1B1B1Star.m" functionName="CalculateA1B1B1Star">
           <Input Name="k">
             <Class>double</Class>
@@ -564,7 +564,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateABBStarD.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/CalculateABBStarD.m">
         <Inputs fileName="CalculateABBStarD.m" functionName="CalculateABBStarD">
           <Input Name="N">
             <Class>double</Class>
@@ -608,7 +608,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateC.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/CalculateC.m">
         <Inputs fileName="CalculateC.m" functionName="CalculateC">
           <Input Name="N">
             <Class>double</Class>
@@ -644,7 +644,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateHeatSolution.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/CalculateHeatSolution.m">
         <Inputs fileName="CalculateHeatSolution.m" functionName="CalculateHeatSolution">
           <Input Name="N0">
             <Class>double</Class>
@@ -744,7 +744,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\CalculateXY.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/CalculateXY.m">
         <Inputs fileName="CalculateXY.m" functionName="CalculateXY">
           <Input Name="N">
             <Class>double</Class>
@@ -868,7 +868,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\Ccoeff.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/Ccoeff.m">
         <Inputs fileName="Ccoeff.m" functionName="Ccoeff">
           <Input Name="k">
             <Class>double</Class>
@@ -904,7 +904,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\Cone.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/Cone.m">
         <Inputs fileName="Cone.m" functionName="Cone">
           <Input Name="k">
             <Class>double</Class>
@@ -940,7 +940,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\Dcoeff.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/Dcoeff.m">
         <Inputs fileName="Dcoeff.m" functionName="Dcoeff">
           <Input Name="y">
             <Class>double</Class>
@@ -992,7 +992,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\Done.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/Done.m">
         <Inputs fileName="Done.m" functionName="Done">
           <Input Name="k">
             <Class>double</Class>
@@ -1044,7 +1044,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\GetRegularizationTerm.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/GetRegularizationTerm.m">
         <Inputs fileName="GetRegularizationTerm.m" functionName="GetRegularizationTerm">
           <Input Name="N">
             <Class>double</Class>
@@ -1064,7 +1064,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\PlotResults.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/PlotResults.m">
         <Inputs fileName="PlotResults.m" functionName="PlotResults">
           <Input Name="t">
             <Class>double</Class>
@@ -1100,7 +1100,7 @@
           </Input>
         </Inputs>
       </file>
-      <file custom-data-expanded="false" value="${PROJECT_ROOT}\TestBemHeatEq_optimized.m">
+      <file custom-data-expanded="false" value="${PROJECT_ROOT}/TestBemHeatEq_optimized.m">
         <Inputs fileName="TestBemHeatEq_optimized.m" functionName="TestBemHeatEq_optimized">
           <Input Name="sigIn">
             <Class>double</Class>
@@ -1163,11 +1163,11 @@
     <fileset.testbench />
     <fileset.package />
     <build-deliverables>
-      <file location="D:\Ofir\ENS\TestFiles\code\HeatEqBoundaryElements" name="BoundaryElementHeatEquation.mexw64" optional="false">D:\Ofir\ENS\TestFiles\code\HeatEqBoundaryElements\BoundaryElementHeatEquation.mexw64</file>
+      <file location="/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements" name="BoundaryElementHeatEquation.mexa64" optional="false">/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/BoundaryElementHeatEquation.mexa64</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>D:\Program Files\MATLAB\R2014a</root>
+      <root>/usr/local/MATLAB/R2014a</root>
       <toolboxes>
         <toolbox name="matlabhdlcoder" />
         <toolbox name="fixedpoint" />
@@ -1196,18 +1196,18 @@
       </toolbox>
     </matlab>
     <platform>
-      <unix>false</unix>
+      <unix>true</unix>
       <mac>false</mac>
-      <windows>true</windows>
+      <windows>false</windows>
       <win2k>false</win2k>
       <winxp>false</winxp>
       <vista>false</vista>
-      <linux>false</linux>
+      <linux>true</linux>
       <solaris>false</solaris>
-      <osver>6.1</osver>
+      <osver>3.16.0-37-generic</osver>
       <os32>false</os32>
       <os64>true</os64>
-      <arch>win64</arch>
+      <arch>glnxa64</arch>
       <matlab>true</matlab>
     </platform>
   </configuration>

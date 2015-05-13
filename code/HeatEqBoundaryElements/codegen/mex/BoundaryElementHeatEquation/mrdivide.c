@@ -31,79 +31,69 @@
 
 /* Variable Definitions */
 static emlrtRSInfo lb_emlrtRSI = { 1, "mrdivide",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mrdivide.p"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mrdivide.p" };
 
 static emlrtRSInfo pb_emlrtRSI = { 100, "eml_lusolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_lusolve.m" };
 
 static emlrtRSInfo qb_emlrtRSI = { 102, "eml_lusolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_lusolve.m" };
 
 static emlrtRSInfo rb_emlrtRSI = { 107, "eml_lusolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_lusolve.m" };
 
 static emlrtRSInfo rc_emlrtRSI = { 76, "eml_lusolve",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_lusolve.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_lusolve.m" };
 
 static emlrtRSInfo vd_emlrtRSI = { 28, "eml_xscal",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_xscal.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/blas/eml_xscal.m" };
 
 static emlrtRSInfo wd_emlrtRSI = { 1, "xscal",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xscal.p"
+  "/usr/local/MATLAB/R2014a/toolbox/coder/coder/+coder/+internal/+blas/xscal.p"
 };
 
 static emlrtRSInfo xd_emlrtRSI = { 103, "eml_matlab_zlarf",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarf.m"
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/lapack/matlab/eml_matlab_zlarf.m"
 };
 
 static emlrtRSInfo yd_emlrtRSI = { 50, "eml_matlab_zlarf",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarf.m"
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/lapack/matlab/eml_matlab_zlarf.m"
 };
 
 static emlrtRSInfo ae_emlrtRSI = { 68, "eml_matlab_zlarf",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarf.m"
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/lapack/matlab/eml_matlab_zlarf.m"
 };
 
 static emlrtRSInfo be_emlrtRSI = { 75, "eml_matlab_zlarf",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\lapack\\matlab\\eml_matlab_zlarf.m"
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/lapack/matlab/eml_matlab_zlarf.m"
 };
 
 static emlrtRSInfo ce_emlrtRSI = { 52, "eml_xgemv",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_xgemv.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/blas/eml_xgemv.m" };
 
 static emlrtRSInfo de_emlrtRSI = { 1, "xgemv",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xgemv.p"
+  "/usr/local/MATLAB/R2014a/toolbox/coder/coder/+coder/+internal/+blas/xgemv.p"
 };
 
 static emlrtRSInfo ee_emlrtRSI = { 41, "eml_xgerc",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\blas\\eml_xgerc.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/blas/eml_xgerc.m" };
 
 static emlrtRSInfo fe_emlrtRSI = { 1, "xgerc",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xgerc.p"
+  "/usr/local/MATLAB/R2014a/toolbox/coder/coder/+coder/+internal/+blas/xgerc.p"
 };
 
 static emlrtMCInfo emlrtMCI = { 1, 1, "mrdivide",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mrdivide.p"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mrdivide.p" };
 
 static emlrtRTEInfo m_emlrtRTEI = { 1, 2, "mrdivide",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mrdivide.p"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mrdivide.p" };
 
-static emlrtBCInfo of_emlrtBCI = { -1, -1, 1, 1, "", "xscal",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xscal.p",
+static emlrtBCInfo pf_emlrtBCI = { -1, -1, 1, 1, "", "xscal",
+  "/usr/local/MATLAB/R2014a/toolbox/coder/coder/+coder/+internal/+blas/xscal.p",
   0 };
 
-static emlrtBCInfo pf_emlrtBCI = { -1, -1, 1, 1, "", "xgemv",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\coder\\coder\\+coder\\+internal\\+blas\\xgemv.p",
+static emlrtBCInfo qf_emlrtBCI = { -1, -1, 1, 1, "", "xgemv",
+  "/usr/local/MATLAB/R2014a/toolbox/coder/coder/+coder/+internal/+blas/xgemv.p",
   0 };
 
 /* Function Declarations */
@@ -372,7 +362,7 @@ static void b_eml_xscal(const emlrtStack *sp, int32_T n, real_T a,
     n_t = (ptrdiff_t)(n);
     incx_t = (ptrdiff_t)(1);
     i96 = x->size[0];
-    emlrtDynamicBoundsCheckFastR2012b(2, 1, i96, &of_emlrtBCI, &b_st);
+    emlrtDynamicBoundsCheckFastR2012b(2, 1, i96, &pf_emlrtBCI, &b_st);
     xix0_t = (double *)(&x->data[1]);
     a_t = (double *)(&a);
     dscal(&n_t, a_t, xix0_t, &incx_t);
@@ -1451,14 +1441,14 @@ void eml_matlab_zlarf(const emlrtStack *sp, int32_T m, int32_T n, int32_T iv0,
       alpha1_t = (double *)(&alpha1);
       beta1_t = (double *)(&beta1);
       i = work->size[0];
-      emlrtDynamicBoundsCheckFastR2012b(1, 1, i, &pf_emlrtBCI, &c_st);
+      emlrtDynamicBoundsCheckFastR2012b(1, 1, i, &qf_emlrtBCI, &c_st);
       yiy0_t = (double *)(&work->data[0]);
       i = C->size[0] * C->size[1];
       Aia0_t = (double *)(&C->data[emlrtDynamicBoundsCheckFastR2012b(ic0, 1, i,
-        &pf_emlrtBCI, &c_st) - 1]);
+        &qf_emlrtBCI, &c_st) - 1]);
       i = C->size[0] * C->size[1];
       xix0_t = (double *)(&C->data[emlrtDynamicBoundsCheckFastR2012b(iv0, 1, i,
-        &pf_emlrtBCI, &c_st) - 1]);
+        &qf_emlrtBCI, &c_st) - 1]);
       dgemv(&TRANSA, &m_t, &n_t, alpha1_t, Aia0_t, &lda_t, xix0_t, &incx_t,
             beta1_t, yiy0_t, &incy_t);
     }
@@ -1548,7 +1538,7 @@ void eml_xscal(const emlrtStack *sp, int32_T n, real_T a, emxArray_real_T *x,
     incx_t = (ptrdiff_t)(1);
     i95 = x->size[0] * x->size[1];
     xix0_t = (double *)(&x->data[emlrtDynamicBoundsCheckFastR2012b(ix0, 1, i95,
-      &of_emlrtBCI, &b_st) - 1]);
+      &pf_emlrtBCI, &b_st) - 1]);
     a_t = (double *)(&a);
     dscal(&n_t, a_t, xix0_t, &incx_t);
   }

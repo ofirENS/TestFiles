@@ -28,32 +28,25 @@
 
 /* Variable Definitions */
 static emlrtRSInfo af_emlrtRSI = { 41, "mpower",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mpower.m" };
 
 static emlrtRSInfo bf_emlrtRSI = { 54, "mpower",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mpower.m" };
 
 static emlrtMCInfo o_emlrtMCI = { 34, 5, "mpower",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mpower.m" };
 
 static emlrtMCInfo p_emlrtMCI = { 33, 15, "mpower",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mpower.m" };
 
 static emlrtRTEInfo fb_emlrtRTEI = { 1, 14, "mpower",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mpower.m" };
 
 static emlrtRSInfo ch_emlrtRSI = { 34, "mpower",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mpower.m" };
 
 static emlrtRSInfo mh_emlrtRSI = { 33, "mpower",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\ops\\mpower.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/ops/mpower.m" };
 
 /* Function Definitions */
 void mpower(const emlrtStack *sp, const emxArray_real_T *a, emxArray_real_T *c)

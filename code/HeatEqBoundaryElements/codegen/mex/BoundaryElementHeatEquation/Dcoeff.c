@@ -26,21 +26,21 @@
 
 /* Variable Definitions */
 static emlrtRTEInfo g_emlrtRTEI = { 1, 17, "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Dcoeff.m" };
 
 static emlrtECInfo k_emlrtECI = { -1, 7, 1, "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Dcoeff.m" };
 
 static emlrtBCInfo pe_emlrtBCI = { -1, -1, 7, 1,
   "a(1) = Acoeff(y(1),j,x,t,gridT)", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Dcoeff.m", 0 };
 
 static emlrtECInfo l_emlrtECI = { -1, 10, 5, "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Dcoeff.m" };
 
 static emlrtBCInfo qe_emlrtBCI = { -1, -1, 10, 5,
   "a(aIdx) = Acoeff(y(aIdx),j,x,t,gridT)", "Dcoeff",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\Dcoeff.m", 0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/Dcoeff.m", 0 };
 
 /* Function Definitions */
 real_T Dcoeff(const emlrtStack *sp, const emxArray_real_T *y, real_T j, const

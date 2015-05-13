@@ -25,8 +25,7 @@
 
 /* Variable Definitions */
 static emlrtRTEInfo bc_emlrtRTEI = { 20, 5, "eml_error",
-  "D:\\Program Files\\MATLAB\\R2014a\\toolbox\\eml\\lib\\matlab\\eml\\eml_error.m"
-};
+  "/usr/local/MATLAB/R2014a/toolbox/eml/lib/matlab/eml/eml_error.m" };
 
 /* Function Definitions */
 void eml_error(const emlrtStack *sp)

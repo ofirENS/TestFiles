@@ -26,51 +26,43 @@
 
 /* Variable Definitions */
 static emlrtRSInfo x_emlrtRSI = { 10, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m" };
 
 static emlrtRSInfo y_emlrtRSI = { 11, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m" };
 
 static emlrtRTEInfo d_emlrtRTEI = { 1, 16, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m" };
 
 static emlrtRTEInfo ec_emlrtRTEI = { 8, 1, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m" };
 
 static emlrtRTEInfo fc_emlrtRTEI = { 9, 5, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m" };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m" };
 
 static emlrtBCInfo mc_emlrtBCI = { -1, -1, 10, 23, "C", "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
-  0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m", 0 };
 
 static emlrtDCInfo y_emlrtDCI = { 7, 11, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
-  1 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m", 1 };
 
 static emlrtDCInfo ab_emlrtDCI = { 7, 11, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
-  4 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m", 4 };
 
 static emlrtDCInfo bb_emlrtDCI = { 7, 15, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
-  1 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m", 1 };
 
 static emlrtDCInfo cb_emlrtDCI = { 7, 15, "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
-  4 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m", 4 };
 
 static emlrtBCInfo nc_emlrtBCI = { -1, -1, 10, 40, "t", "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
-  0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m", 0 };
 
 static emlrtBCInfo oc_emlrtBCI = { -1, -1, 11, 40, "t", "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
-  0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m", 0 };
 
 static emlrtBCInfo pc_emlrtBCI = { -1, -1, 10, 11, "C", "CalculateC",
-  "D:\\Ofir\\Work\\ENS\\TestFiles\\code\\HeatEqBoundaryElements\\CalculateC.m",
-  0 };
+  "/home/ofir/Work/ENS/TestFiles/code/HeatEqBoundaryElements/CalculateC.m", 0 };
 
 /* Function Definitions */
 void CalculateC(const emlrtStack *sp, real_T N, real_T N0, const emxArray_real_T
