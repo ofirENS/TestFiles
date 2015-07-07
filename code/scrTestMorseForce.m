@@ -2,13 +2,13 @@
 % this script test the Morse force between particles 
 close all 
 profile on 
-numPart = 100;
+numPart = 500;
 cMat    = true(numPart); % conectivity matrix
 dt      = 0.1; % time step
-De      = .01;   % De is the well depth
-alpha   = .01;   % alpha is the width of the potential
+De      = 0.01;   % De is the well depth
+alpha   = 0.01;   % alpha is the width of the potential
 re      =  2; % re is the equilibrium bond distance 
-forceType      = 'full'; % [attractive|repulsive|full]
+forceType      = 'repulsive'; % [attractive|repulsive|full]
 diffusionConst = 1;
 dimension      = 3;
 % initial position 
@@ -18,7 +18,7 @@ f  = figure;
 a  = axes('Parent',f,'NextPlot','replaceChildren','XLim',[-15 15],'YLim',[-15 15],'ZLim',[-15 15]);
 l  = line('XData',r(:,1), 'YData',r(:,2),'ZData',r(:,3),'Marker','o','LineStyle','none','Parent',a);
 cameratoolbar
-for step = 1:100; 
+for step = 1:500; 
     particleDist = ForceManager.GetParticleDistance(r);
     edgesVec     = ForceManager.GetEdgesVectors(r,cMat);
     tic
