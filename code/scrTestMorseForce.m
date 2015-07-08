@@ -5,10 +5,10 @@ profile on
 numPart = 500;
 cMat    = true(numPart); % conectivity matrix
 dt      = 0.1; % time step
-De      = 0.01;   % De is the well depth
+De      = 0.1;   % De is the well depth
 alpha   = 0.01;   % alpha is the width of the potential
 re      =  2; % re is the equilibrium bond distance 
-forceType      = 'repulsive'; % [attractive|repulsive|full]
+forceType      = 'attractive'; % [attractive|repulsive|full]
 diffusionConst = 1;
 dimension      = 3;
 % initial position 
