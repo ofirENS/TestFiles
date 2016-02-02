@@ -6,10 +6,11 @@ clear all
 close all 
 N              = 30; % num cells
 m              = 12;  % expected sum
-alpha          = 0.7;
-numAlphas      = 50;
+alpha          = 0.1;
+numAlphas      = 5;
 numExperiments = 100;
 s = zeros(N-1,numAlphas);
+sMat = zeros(N,N,numAlphas)
 for alphaIdx = 1:numAlphas
  numConnectors = floor(0.01*alphaIdx*(N-1)*(N/2-1));
  diagSum = zeros(N,numExperiments);
@@ -29,6 +30,7 @@ for expIdx =1:numExperiments
     end
     mat               = (mat+mat');
     diagSum(:,expIdx) = sum(mat,2);
+    sMat(:,:,alphaIdx) = sMat(:,:,alphaIdx)+mat;
 end
 
 % calculate the fraction of times the sum equals m
