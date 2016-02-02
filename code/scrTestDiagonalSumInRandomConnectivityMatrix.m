@@ -5,13 +5,18 @@
 clear all 
 close all 
 
-N              = 30; % num cells
+N              = 50; % num cells
 m              = 12;  % expected sum
 alpha          = 0.1;
 numAlphas      = 20;
 numExperiments = 500;
 s              = zeros(N-1,numAlphas);
 sMat           = zeros(N,N,numAlphas);
+gs             = zeros(N-1,numAlphas);
+meanGs         = zeros(1,numAlphas);
+meanGsTheoretical = zeros(1,numAlphas);
+% Theoretical distribution of the sum of the diagonal entries 
+diagEqn =  @(N,nc,n) nchoosek((N-2)*(N-1)/2 -(N-3),nc-n).*nchoosek(N-3,n)./nchoosek((N-2)*(N-1)/2, nc);
 for alphaIdx = 1:numAlphas
     
  numConnectors = floor(0.01*alphaIdx*(N-1)*(N/2-1));
@@ -19,7 +24,7 @@ for alphaIdx = 1:numAlphas
 % choose random cells in the upper triangular matrix removing the super
 % diagonal
 
-for expIdx =1:numExperiments
+for expIdx = 1:numExperiments
     z     = zeros(1,(N-1)*(N/2-1));
     rp    = randperm((N-1)*(N/2 -1));
     rp    = rp(1:numConnectors);
@@ -35,26 +40,24 @@ for expIdx =1:numExperiments
     sMat(:,:,alphaIdx) = sMat(:,:,alphaIdx)+mat;
 end
 
-% calculate the fraction of times the sum equals m
+% Calculate the fraction of times the sum equals m
 
 for mIdx = 1:N-3
   s(mIdx,alphaIdx) = sum(diagSum(:)==mIdx)/(N*numExperiments);
 end
-diagEqn =  @(N,nc,n) nchoosek((N-2)*(N-1)/2 -(N-3),nc-n).*nchoosek(N-3,n)./nchoosek((N-2)*(N-1)/2, nc);
 
+% Theoretical result
 for mIdx = 1:N-3
     if mIdx<=numConnectors
-     gs(mIdx,alphaIdx) = diagEqn(N,numConnectors,mIdx);
+     gs(mIdx,alphaIdx) = diagEqn(N,numConnectors,mIdx);     
     end
+    
+end
+meanGs(alphaIdx) = trapz(1:size(gs,1),(1:size(gs,1)).*gs(:,alphaIdx)');
+meanGsTheoretical(alphaIdx) = (N-3)*numConnectors/((N-2)*(N-1)/2);
 end
 
-end
-
-% diagEqn = @(N,n,alpha) (nchoosek(N-1,n)./nchoosek((N-1).*(N./2 -1),floor(alpha.*(N-1).*(N./2 -1))));%.*((1./((N-1).*(N./2 -1))).^(n)) .*((1-(1/((N-1)*(N/2 -1)))).^(N-1-n))
-diagEqn =  @(N,nc,n) nchoosek((N-2)*(N-1)/2 -(N-3),nc-n).*nchoosek(N-3,n)./nchoosek((N-2)*(N-1)/2, nc);
-for mIdx = 1:N-3
-    gs(mIdx) = diagEqn(N,numConnectors,mIdx);
-end
-
-figure, plot(s), 
-figure, plot(gs)
+figure, plot(s),  title('simulation derived distribution')
+figure, plot(gs), title('theoretical distribution')
+figure, plot(0.01*numAlphas.*(1:size(meanGsTheoretical,2)),meanGsTheoretical,'og','DisplayName','theoretical expected values'), title('expected number of connectors')
+xlabel('connectivity level, \alpha'), ylabel('exp num connectors')
