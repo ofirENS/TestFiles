@@ -8,13 +8,15 @@ close all
 N              = 50; % num cells
 m              = 12;  % expected sum
 alpha          = 0.1;
-numAlphas      = 20;
-numExperiments = 500;
+numAlphas      = 10;
+numExperiments = 100;
 s              = zeros(N-1,numAlphas);
 sMat           = zeros(N,N,numAlphas);
 gs             = zeros(N-1,numAlphas);
 meanGs         = zeros(1,numAlphas);
 meanGsTheoretical = zeros(1,numAlphas);
+meanGsTheoreticalEndMonomers = zeros(1,numAlphas);
+B              = zeros(N,N,numAlphas);
 % Theoretical distribution of the sum of the diagonal entries 
 diagEqn =  @(N,nc,n) nchoosek((N-2)*(N-1)/2 -(N-3),nc-n).*nchoosek(N-3,n)./nchoosek((N-2)*(N-1)/2, nc);
 for alphaIdx = 1:numAlphas
@@ -54,8 +56,28 @@ for mIdx = 1:N-3
     
 end
 meanGs(alphaIdx) = trapz(1:size(gs,1),(1:size(gs,1)).*gs(:,alphaIdx)');
-meanGsTheoretical(alphaIdx) = (N-3)*numConnectors/((N-2)*(N-1)/2);
+meanGsTheoretical(alphaIdx)            = (N-3)*numConnectors/((N-2)*(N-1)/2);
+meanGsTheoreticalEndMonomers(alphaIdx) = (N-2)*numConnectors/((N-2)*(N-1)/2);
+
+% construct the average matrix from the mean 
+temp = zeros(N);
+for tIdx = 2:N-1
+    temp(tIdx,2:N-1) = -meanGsTheoretical(alphaIdx)./(N-3);
 end
+
+temp(1,:)   = -meanGsTheoreticalEndMonomers(alphaIdx)/(N-2);
+temp(end,:) = -meanGsTheoreticalEndMonomers(alphaIdx)/(N-2);
+temp(:,1)   = -meanGsTheoreticalEndMonomers(alphaIdx)/(N-2);
+temp(:,end) = -meanGsTheoreticalEndMonomers(alphaIdx)/(N-2);
+
+temp(diag(true(1,N-1),1) | diag(true(1,N-1),-1) | diag(true(1,N),0)) = 0;
+temp(diag(true(1,N),0)) = -sum(temp,2);
+B(:,:,alphaIdx)         = temp;
+end
+
+% Get Rouse matrix with eigenvalues and vectors (m file in test files) 
+[rouseMat, rouseEigenVec, rouseEigenVal] = RouseMatrixSimple(N);
+
 
 figure, plot(s),  title('simulation derived distribution')
 figure, plot(gs), title('theoretical distribution')
